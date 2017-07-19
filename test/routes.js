@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-const {matchBestRoute} = require("../src/isomorphic/routes");
+const {matchBestRoute} = require("../app/isomorphic/routes");
 
 describe('routes', function() {
   describe('matchBestRoute', function() {

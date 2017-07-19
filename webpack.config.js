@@ -10,7 +10,7 @@ function outputFileName(suffix) {
 
 module.exports = {
     entry: {
-      app: "./src/client/app.js"
+      app: "./app/client/app.js"
     },
     output: {
         path: __dirname + "/public/toddy/assets",
