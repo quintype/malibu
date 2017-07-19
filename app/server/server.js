@@ -35,9 +35,17 @@ app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
+function withConfig(f) {
+  return function(req, res, opts) {
+    opts = opts || {};
+    return client.getConfig()
+      .then(c => f(req, res, Object.assign({}, opts, {config: c})));
+  }
+}
+
 app.set("view engine", "ejs");
-app.get("/service-worker.js", generateServiceWorker);
-app.get("/*", handleIsomorphicRoute);
+app.get("/service-worker.js", withConfig(generateServiceWorker));
+app.get("/*", withConfig(handleIsomorphicRoute));
 
 module.exports = function startApp() {
   return client.getConfig()
