@@ -1,10 +1,22 @@
-"use strict";
-require('node-jsx').install({harmony: true})
+var cluster = require('cluster');
+var process = require("process");
 
-const {generateRoutes, matchBestRoute} = require("./src/isomorphic/routes");
-
-console.log(matchBestRoute("/", generateRoutes()));
-console.log(matchBestRoute("/sect", generateRoutes()));
-console.log(matchBestRoute("/sect/sub-sect", generateRoutes()));
-console.log(matchBestRoute("/sect/foo", generateRoutes()));
-console.log(matchBestRoute("/sect/sub-sect/foo", generateRoutes()));
+if(cluster.isMaster) {
+  var os = require('os');
+  for (var i = 0; i < 4; i++) {
+    cluster.fork();
+  }
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
+    cluster.fork();
+  });
+} else {
+  var startApp = require("./src/server/app.js");
+  startApp().catch(function() {
+    var sleep = require("sleep-promise");
+    console.log("Worker died - Aborting");
+    return new Promise((resolve) => resolve(cluster.worker.disconnect()))
+      .then(() => sleep(250))
+      .then(() => process.exit());
+  });
+}
