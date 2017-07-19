@@ -1,0 +1,14 @@
+{
+  "name": "malibu",
+  "version": "1.0.0",
+  "description": "Quintype Starter PWA",
+  "main": "app.js",
+  "repository": "git@github.com:quintype/malibu.git",
+  "author": "Tejas Dinkar <tejas@gja.in>",
+  "license": "MIT",
+  "dependencies": {
+    "node-jsx": "^0.13.3",
+    "react": "^15.6.1",
+    "react-router": "^4.1.2"
+  }
+}
