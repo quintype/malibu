@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const client = require("./client");
 
+const {assetPath} = require("./asset-path");
+
 app.use(express.static("public"));
 app.use(compression());
 
@@ -33,9 +35,14 @@ app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
+app.set("view engine", "ejs");
+
 app.get("/foobar", function(req, res) {
   res.setHeader("Content-Type", "text/html");
-  res.send("<html><head><link rel='stylesheet' type='text/css' href='/toddy/assets/app.css'></head><body>Foo<script src='http://localhost:8080/toddy/assets/app.js' async></script></body></html>");
+  res.render("pages/layout", {
+    title: 'Testing Page',
+    assetPath: assetPath
+  });
 })
 
 module.exports = function startApp() {

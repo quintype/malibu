@@ -10,6 +10,7 @@
     "bluebird": "^3.5.0",
     "cluster": "^0.7.7",
     "compression": "^1.7.0",
+    "ejs": "^2.5.6",
     "express": "^4.15.3",
     "http-proxy": "^1.16.2",
     "js-yaml": "^3.9.0",
@@ -33,6 +34,7 @@
     "webpack-dev-server": "^2.5.1"
   },
   "scripts": {
+    "asset-server": "webpack-dev-server --hot",
     "test": "mocha",
     "webpack": "webpack"
   }
