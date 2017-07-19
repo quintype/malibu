@@ -7,10 +7,8 @@ describe('routes', function() {
   describe('matchBestRoute', function() {
     const routes = [
       {path: "/", pageType: "home-page", exact: true},
-
       {path: "/sect", pageType: "section-page", exact: true},
       {path: "/sect/sub-sect", pageType: "section-page", exact: true},
-
       {path: "/sect/:storySlug", pageType: "story-page", exact: true},
       {path: "/sect/*/:storySlug", pageType: "story-page", exact: true},
     ];
@@ -44,6 +42,7 @@ describe('routes', function() {
     it("generates routes correctly", function() {
       const expectedRoutes = [
         {path: "/", pageType: "home-page", exact: true},
+        {path: "/topic/:topicSlug", pageType: "tag-page", exact: true},
         {path: "/sect", pageType: "section-page", exact: true, params: {section: {id: 42, slug: "sect"}}},
         {path: "/sect/sub-sect", pageType: "section-page", exact: true, params: {section: {slug: "sub-sect", "parent-id": 42}}},
         {path: "/sect/:storySlug", pageType: "story-page", exact: true},
@@ -57,6 +56,7 @@ describe('routes', function() {
     it("does not go into infinite loop if sections are recursive", function() {
       const expectedRoutes = [
         {path: "/", pageType: "home-page", exact: true},
+        {path: "/topic/:topicSlug", pageType: "tag-page", exact: true},
         {path: "/sect/sect/sect/sect/sect/sect", pageType: "section-page", exact: true, params: {section: {id: 42, slug: "sect", "parent-id": 42}}}
       ];
       assert.deepEqual(expectedRoutes, generateRoutes({
