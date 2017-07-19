@@ -33,6 +33,11 @@ app.all("/rss-feed", sketchesProxy);
 app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
+app.get("/*", function(req, res) {
+  res.setHeader("Content-Type", "text/html");
+  res.send("<html><head></head><body>Foo<script src='/toddy/assets/app.js' async></script></body></html>");
+})
+
 module.exports = function startApp() {
   return client.getConfig()
     .then(function() {

@@ -20,11 +20,13 @@
     "sleep-promise": "^2.0.0"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
     "babel-preset-es2015": "^6.24.1",
     "mocha": "^3.4.2",
     "webpack": "^3.3.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "webpack": "webpack"
   }
 }
