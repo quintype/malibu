@@ -19,6 +19,7 @@ These routes are exposed via the `generateRoutes` function, and matched using th
 * This architecture is heavily influenced by the method described in this [video](https://www.youtube.com/watch?v=atUdVSuNRjA)
 * Code for the available video is available [here](https://github.com/gja/pwa-clojure)
 * I know there is a good tutorial video I've seen. But I can't remember where.
+* Great [intro to pwa](https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/)
 
 ## Running in development mode
 
