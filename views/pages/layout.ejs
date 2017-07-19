@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sample Application</title>
+    <title><%= title %></title>
     <%_ const cssPath = assetPath(["app", "css"]) _%>
     <%_ if(cssPath) { _%>
       <link rel="stylesheet" type="text/css" href="<%= cssPath %>"/>
@@ -9,7 +9,7 @@
   </head>
   <body>
     <script type="text/javascript">var qtReady = qtReady || [];</script>
-    <div id="container">Hello</div>
+    <div id="container"><%= content %></div>
     <script type="text/javascript" src="<%= assetPath(["app", "js"]) %>" async></script>
   </body>
 </html>

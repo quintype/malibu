@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const client = require("./client");
 
-const {assetPath} = require("./asset-path");
+const {renderLayout} = require("./render-layout");
 
 app.use(express.static("public"));
 app.use(compression());
@@ -39,9 +39,8 @@ app.set("view engine", "ejs");
 
 app.get("/foobar", function(req, res) {
   res.setHeader("Content-Type", "text/html");
-  res.render("pages/layout", {
-    title: 'Testing Page',
-    assetPath: assetPath
+  renderLayout(res, {
+    content: "Foobar"
   });
 })
 
