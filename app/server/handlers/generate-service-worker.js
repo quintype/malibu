@@ -2,7 +2,7 @@ const _ = require("lodash");
 const fs = require("fs");
 const process = require("process");
 
-const {generateRoutes} = require('./routes');
+const {generateRoutes} = require('../routes');
 
 const assets = JSON.parse(fs.readFileSync("webpack-assets.json"));
 function serviceWorkerHelperContents() {

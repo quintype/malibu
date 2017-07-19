@@ -1,7 +1,7 @@
 const fs = require("fs");
-const config = require("./publisher-config");
 const _ = require("lodash");
 
+const config = require("../publisher-config");
 const assets = JSON.parse(fs.readFileSync("webpack-assets.json"));
 
 function assetPath(asset) {

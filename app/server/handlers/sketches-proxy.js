@@ -1,4 +1,4 @@
-var config = require("./publisher-config");
+var config = require("../publisher-config");
 
 var sketchesHost = config.sketches_host;
 var httpHost = sketchesHost.replace(/https?:\/\//, "");
@@ -15,4 +15,4 @@ function redirectUpstream(req, res) {
   apiProxy.web(req, res);
 }
 
-module.exports = redirectUpstream;
+exports.sketchesProxy = redirectUpstream;

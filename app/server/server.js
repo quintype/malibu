@@ -3,8 +3,10 @@ const express = require('express');
 
 const app = express();
 const client = require("./client");
-const {handleIsomorphicRoute} = require("./handle-route");
-const {generateServiceWorker} = require("./generate-service-worker");
+
+const {handleIsomorphicRoute} = require("./handlers/handle-isomorphic-route");
+const {generateServiceWorker} = require("./handlers/generate-service-worker");
+const {sketchesProxy} = require("./handlers/sketches-proxy");
 
 app.use(express.static("public"));
 app.use(compression());
@@ -20,7 +22,6 @@ app.get("/ping", function(req, res) {
   );
 });
 
-const sketchesProxy = require("./sketches-proxy");
 app.all("/api/*", sketchesProxy);
 app.all("/login", sketchesProxy);
 app.all("/qlitics.js", sketchesProxy);

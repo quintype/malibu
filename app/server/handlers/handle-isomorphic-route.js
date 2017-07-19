@@ -1,7 +1,5 @@
-const client = require("./client");
-
-const {matchBestRoute} = require('../isomorphic/match-best-route');
-const {generateRoutes} = require('./routes');
+const {matchBestRoute} = require('../../isomorphic/match-best-route');
+const {generateRoutes} = require('../routes');
 const {renderLayout} = require('./render-layout');
 const urlLib = require("url");
 
