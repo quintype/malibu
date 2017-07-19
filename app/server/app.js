@@ -35,7 +35,7 @@ app.all("/news_sitemap.xml", sketchesProxy);
 
 app.get("/foobar", function(req, res) {
   res.setHeader("Content-Type", "text/html");
-  res.send("<html><head><link rel='stylesheet' type='text/css' href='/toddy/assets/app.css'></head><body>Foo<script src='/toddy/assets/app.js' async></script></body></html>");
+  res.send("<html><head><link rel='stylesheet' type='text/css' href='/toddy/assets/app.css'></head><body>Foo<script src='http://localhost:8080/toddy/assets/app.js' async></script></body></html>");
 })
 
 module.exports = function startApp() {
