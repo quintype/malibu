@@ -4,13 +4,17 @@ const AssetsPlugin = require('assets-webpack-plugin')
 const assetsPluginInstance = new AssetsPlugin()
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+function outputFileName(suffix) {
+  return process.env.NODE_ENV == "production" ? `[name]-[hash].${suffix}` : `[name].${suffix}`;
+}
+
 module.exports = {
     entry: {
-      app: ["./src/client/app.js", "./app/assets/stylesheets/app.scss"]
+      app: "./src/client/app.js"
     },
     output: {
         path: __dirname + "/public/toddy/assets",
-        filename: process.env.NODE_ENV == "production" ? "[name]-[hash].js" : "[name].js",
+        filename: outputFileName("js"),
         publicPath: "/toddy/assets/"
     },
     module: {
@@ -21,8 +25,8 @@ module.exports = {
         }
       ]
     },
-    plugins: [assetsPluginInstance, new ExtractTextPlugin({ // define where to save the file
-      filename: '[name].css',
+    plugins: [assetsPluginInstance, new ExtractTextPlugin({
+      filename: process.env.NODE_ENV == "production" ? `[name]-[contenthash:20].css` : `[name].css`,
       allChunks: true,
     })]
 };
