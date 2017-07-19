@@ -20,7 +20,7 @@ function sectionPageRoute(section, sectionsById) {
     pageType: "section-page",
     exact: true,
     params: {
-      section: section
+      sectionId: section.id
     }
   };
 }

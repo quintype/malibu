@@ -43,13 +43,13 @@ describe('routes', function() {
       const expectedRoutes = [
         {path: "/", pageType: "home-page", exact: true},
         {path: "/topic/:topicSlug", pageType: "tag-page", exact: true},
-        {path: "/sect", pageType: "section-page", exact: true, params: {section: {id: 42, slug: "sect"}}},
-        {path: "/sect/sub-sect", pageType: "section-page", exact: true, params: {section: {slug: "sub-sect", "parent-id": 42}}},
+        {path: "/sect", pageType: "section-page", exact: true, params: {sectionId: 42}},
+        {path: "/sect/sub-sect", pageType: "section-page", exact: true, params: {sectionId: 43}},
         {path: "/sect/:storySlug", pageType: "story-page", exact: true},
         {path: "/sect/*/:storySlug", pageType: "story-page", exact: true},
       ];
       assert.deepEqual(expectedRoutes, generateRoutes({
-        sections: [{id: 42, slug: "sect"}, {slug: "sub-sect", "parent-id": 42}]
+        sections: [{id: 42, slug: "sect"}, {id: 43, slug: "sub-sect", "parent-id": 42}]
       }))
     });
 
@@ -57,7 +57,7 @@ describe('routes', function() {
       const expectedRoutes = [
         {path: "/", pageType: "home-page", exact: true},
         {path: "/topic/:topicSlug", pageType: "tag-page", exact: true},
-        {path: "/sect/sect/sect/sect/sect/sect", pageType: "section-page", exact: true, params: {section: {id: 42, slug: "sect", "parent-id": 42}}}
+        {path: "/sect/sect/sect/sect/sect/sect", pageType: "section-page", exact: true, params: {sectionId: 42}}
       ];
       assert.deepEqual(expectedRoutes, generateRoutes({
         sections: [{id: 42, slug: "sect", "parent-id": 42}]
