@@ -1,4 +1,3 @@
-const {matchPath} = require("react-router");
 const _ = require("lodash");
 
 const STATIC_ROUTES = [
@@ -52,17 +51,4 @@ function generateRoutes(config) {
   return STATIC_ROUTES.concat(sectionPageRoutes, storyPageRoutes);
 }
 
-function matchBestRoute(path, routes) {
-  // Sure there is some construct to do these two lines
-  const match = routes.find(route => matchPath(path, route));
-  if(match) {
-    return {
-      pageType: match.pageType,
-      routeParams: match.params,
-      match: matchPath(path, match)
-    };
-  }
-}
-
 exports.generateRoutes = generateRoutes;
-exports.matchBestRoute = matchBestRoute;
