@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const client = require("./client");
 const {handleIsomorphicRoute} = require("./handle-route");
+const {generateServiceWorker} = require("./generate-service-worker");
 
 app.use(express.static("public"));
 app.use(compression());
@@ -35,6 +36,7 @@ app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
 app.set("view engine", "ejs");
+app.get("/service-worker.js", generateServiceWorker);
 app.get("/*", handleIsomorphicRoute);
 
 module.exports = function startApp() {
