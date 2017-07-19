@@ -7,8 +7,8 @@ function generateRoutes() {
     {path: "/sect", pageType: "section-page", exact: true},
     {path: "/sect/sub-sect", pageType: "section-page", exact: true},
 
-    {path: "/sect/:storySlug", pageType: "story-page", exact: false},
-    {path: "/sect/sub-sect/:storySlug", pageType: "story-page", exact: false},
+    {path: "/sect/:storySlug", pageType: "story-page", exact: true},
+    {path: "/sect/*/:storySlug", pageType: "story-page", exact: true},
   ];
 }
 
