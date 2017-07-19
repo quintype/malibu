@@ -19,7 +19,7 @@ module.exports = {
     },
     module: {
       rules: [
-        { test: /\.(sass|scss)$/, loader: ExtractTextPlugin.extract('css-loader!sass-loader') },
+        { test: /\.(sass|scss)$/, loader: process.env.NODE_ENV == "production" ? ExtractTextPlugin.extract('css-loader!sass-loader') : 'style-loader!css-loader!sass-loader' },
         {
           test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
           loader: "file-loader",
