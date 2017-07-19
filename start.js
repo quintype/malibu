@@ -11,7 +11,7 @@ if(cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  var startApp = require("./app/server/app.js");
+  var startApp = require("./app/server/server.js");
   startApp().catch(function() {
     var sleep = require("sleep-promise");
     console.log("Worker died - Aborting");

@@ -2,7 +2,7 @@
   "name": "malibu",
   "version": "1.0.0",
   "description": "Quintype Starter PWA",
-  "main": "app.js",
+  "main": "start.js",
   "repository": "git@github.com:quintype/malibu.git",
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
@@ -36,7 +36,7 @@
   "scripts": {
     "asset-server": "webpack-dev-server --hot",
     "compile": "NODE_ENV=production webpack",
-    "start": "node app.js",
+    "start": "node start.js",
     "test": "mocha"
   }
 }
