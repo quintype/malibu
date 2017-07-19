@@ -3,8 +3,7 @@ const express = require('express');
 
 const app = express();
 const client = require("./client");
-
-const {renderLayout} = require("./render-layout");
+const {handleIsomorphicRoute} = require("./handle-route");
 
 app.use(express.static("public"));
 app.use(compression());
@@ -36,13 +35,7 @@ app.all("/stories.rss", sketchesProxy);
 app.all("/news_sitemap.xml", sketchesProxy);
 
 app.set("view engine", "ejs");
-
-app.get("/foobar", function(req, res) {
-  res.setHeader("Content-Type", "text/html");
-  renderLayout(res, {
-    content: "Foobar"
-  });
-})
+app.get("/*", handleIsomorphicRoute);
 
 module.exports = function startApp() {
   return client.getConfig()

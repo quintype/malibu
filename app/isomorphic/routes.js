@@ -1,6 +1,6 @@
 const {matchPath} = require("react-router");
 
-function generateRoutes() {
+function generateRoutes(config) {
   return [
     {path: "/", pageType: "home-page", exact: true},
 
