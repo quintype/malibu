@@ -5,7 +5,7 @@ const assetsPluginInstance = new AssetsPlugin()
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function outputFileName(suffix) {
-  return process.env.NODE_ENV == "production" ? `[name]-[hash].${suffix}` : `[name].${suffix}`;
+  return process.env.NODE_ENV == "production" ? `[name]-[hash:20].${suffix}` : `[name].${suffix}`;
 }
 
 module.exports = {
@@ -19,9 +19,14 @@ module.exports = {
     },
     module: {
       rules: [
+        { test: /\.(sass|scss)$/, loader: ExtractTextPlugin.extract('css-loader!sass-loader') },
         {
-          test: /\.(sass|scss)$/,
-          loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+          test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
+          loader: "file-loader",
+          query: {
+            context: './app/assets',
+            name: outputFileName("[ext]")
+          }
         }
       ]
     },
