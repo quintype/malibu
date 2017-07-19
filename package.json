@@ -35,7 +35,8 @@
   },
   "scripts": {
     "asset-server": "webpack-dev-server --hot",
-    "test": "mocha",
-    "webpack": "webpack"
+    "compile": "NODE_ENV=production webpack",
+    "start": "node app.js",
+    "test": "mocha"
   }
 }
