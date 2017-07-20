@@ -61,8 +61,17 @@ These routes are exposed via the `generateRoutes` function, and matched using th
 ```shell
 $ brew install yarn       # install yarn, FB's NPM replacement
 $ yarn                    # install all libraries
-$ npm run asset-server    # start webkit hot loading server on port 8080
-$ npm start               # start the actual web server
+$ npm run asset-server    # start webkit hot loading server on port 8080. Does live push
+$ npm start               # start the actual web server. Restart this if server side code changes
+```
+
+### Working on the service worker
+
+Unfortunately, the service-worker cannot be run with the asset-server. Instead, run
+
+```shell
+$ vi config/publisher.yml      # remove the asset_host from publisher.yml
+$ npm run compile && npm start # restart this if you change the service worker
 ```
 
 ## Tasks Pending
