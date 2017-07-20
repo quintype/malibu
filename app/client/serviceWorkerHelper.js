@@ -5,11 +5,11 @@ global.initializeQServiceWorker = function(self, params) {
 
   self.addEventListener("install", function(event){
     console.log("[ServiceWorker] Installing Service Worker");
-    return event.waitUntil(
+    event.waitUntil(
       caches.open('pwa-static')
         .then(function(cache) {
           return cache.addAll(params.assets.map((asset) => new Request(asset, {mode: 'no-cors'})));
-        }).then(() => console.log("[ServiceWorker] Downloaded all assets"));
+        }).then(() => console.log("[ServiceWorker] Downloaded all assets"))
     );
   });
 
@@ -21,9 +21,9 @@ global.initializeQServiceWorker = function(self, params) {
     const match = matchBestRoute(url.pathname, params.routes)
     if(match) {
       console.log("[ServiceWorker] Rendering Shell");
-      return caches.match("/shell.html").then((r) => r || fetch(request));
+      event.respondWith(caches.match("/shell.html").then((r) => r || fetch(request)));
     } else {
-      return caches.match(request).then((r) => r || fetch(request));
+      event.respondWith(caches.match(request).then((r) => r || fetch(request)));
     }
   })
 };
