@@ -1,6 +1,10 @@
 <%- serviceWorkerHelper %>;
 
 const ISOMORPHIC_ROUTES = <%- JSON.stringify(routes) %>;
+const REQUIRED_ASSETS = [
+];
+
 initializeQServiceWorker(self, {
-  routes: ISOMORPHIC_ROUTES
+  routes: ISOMORPHIC_ROUTES,
+  assets: REQUIRED_ASSETS
 });

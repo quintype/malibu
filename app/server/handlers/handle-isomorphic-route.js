@@ -39,7 +39,7 @@ exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {
     });
     return new Promise((resolve) => resolve());
   }
-}
+};
 
 exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config}) {
   const url = urlLib.parse(req.url);
@@ -65,4 +65,10 @@ exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config
     });
     return new Promise((resolve) => resolve());
   }
+};
+
+exports.handleIsomorphicShell = function handleIsomorphicShell(req, res, {config}) {
+  renderLayout(res.status(200), {
+    content: '<div class="app-loading"></div>'
+  });
 }

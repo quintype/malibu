@@ -17,7 +17,7 @@ This will probably get renamed to toddy when it gets feature parity (soon)
 #### Client Side Flow
 
 1. The `startApp()` function starts as soon as the JS loads (async)
-2. The `startApp()` function calls `/routes.json?route=/current/path`.
+2. The `startApp()` function calls `/route-data.json?route=/current/path`.
 3. The server looks at `/current/path`, matching it against its known routes, and sends back the `pageType`, and data from `loadData(pageType)`
 4. A redux store is created based on the loaded data
 5. We render the `IsomorphicComponent`, which determines which page to render based on `pageType`, from the store
@@ -25,11 +25,19 @@ This will probably get renamed to toddy when it gets feature parity (soon)
 #### Links between pages
 
 1. The client is loaded, and you click on a link, there should be no need to reload the page
-2. Instead, the link should make a call to `/routes.json?route=/current/path`, and continue from step 2 of client side app
+2. Instead, the link should make a call to `/route-data.json?route=/current/path`, and continue from step 2 of client side app
 
 #### Service Worker
 
-1. To Do
+1. Service Workers act as a proxy between your browser, and all network requests (including XHR, Assets, etc...). A service worker is registered by the `app.js`
+2. When the service worker gets registered, it downloads a minimum set of files for offline use. Typically, this includes [/shell.html, app.js, app.css] and others
+3. When you go to a page in the browser, the service worker wakes up. It decides if it can handle the request (by matching against the same routes), and renders the shell.html if possible
+4. If the shell was rendered, the JS will wake up and continue with the client flow from step 4
+5. If no shell was rendered, the call will fallback to the server, and proceed normally.
+
+#### Service Worker - API Caching (not implemented in app)
+
+1. TODO - Service workers can also cache API requests, so that your app works totally offline
 
 ### Routing
 
