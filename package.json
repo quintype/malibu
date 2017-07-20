@@ -46,7 +46,7 @@
   },
   "scripts": {
     "asset-server": "webpack-dev-server --hot",
-    "compile": "NODE_ENV=production webpack",
+    "compile": "webpack",
     "start": "node start.js",
     "test": "mocha"
   }

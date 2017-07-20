@@ -1,9 +1,10 @@
 const React = require("react");
 const {connect} = require("react-redux");
 const {NAVIGATE} = require("../actions");
+const _ = require("lodash");
 
 function LinkBase(props) {
-  return <a {...props} onClick={(e) => {e.preventDefault(); e.stopPropagation(); props.navigateTo(props.href)}}/>;
+  return <a {..._.omit(props, "navigateTo")} onClick={(e) => {e.preventDefault(); e.stopPropagation(); props.navigateTo(props.href)}}/>;
 }
 
 function mapStateToProps(state) {
@@ -13,7 +14,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     navigateTo: function(url) {
-      global.navigateToPage(dispatch, url);      
+      global.navigateToPage(dispatch, url);
     }
   };
 }
