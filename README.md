@@ -11,14 +11,21 @@ This will probably get renamed to toddy when it gets feature parity (soon)
 1. If no 'regular' route is caught, it goes to the isomorphic handler
 2. The current route is matched via matchBestRoute (see routing)
 3. If a route is matched, we load data via the `loadData(pageType)` function.
-4. Once data is fetched from Upstream, it renders the `IsomorphicComponent`, which renders pages based on `pageType` and `data`
+4. A redux store is created based on the loaded data
+5. We render the `IsomorphicComponent`, which determines which page to render based on `pageType`, from the store
 
 #### Client Side Flow
 
 1. The `startApp()` function starts as soon as the JS loads (async)
 2. The `startApp()` function calls `/routes.json?route=/current/path`.
 3. The server looks at `/current/path`, matching it against its known routes, and sends back the `pageType`, and data from `loadData(pageType)`
-4. Once data is fetched from Upstream, it renders the `IsomorphicComponent`, which renders pages based on `pageType` and `data`
+4. A redux store is created based on the loaded data
+5. We render the `IsomorphicComponent`, which determines which page to render based on `pageType`, from the store
+
+#### Links between pages
+
+1. The client is loaded, and you click on a link, there should be no need to reload the page
+2. Instead, the link should make a call to `/routes.json?route=/current/path`, and continue from step 2 of client side app
 
 #### Service Worker
 
