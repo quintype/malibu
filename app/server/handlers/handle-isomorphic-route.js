@@ -2,6 +2,7 @@ const {matchBestRoute} = require('../../isomorphic/match-best-route');
 const {IsomorphicComponent} = require('../../isomorphic/component');
 const {generateRoutes} = require('../routes');
 const {renderLayout} = require('./render-layout');
+const {StaticRouter} = require("react-router");
 const urlLib = require("url");
 
 const React = require("react");
@@ -17,19 +18,40 @@ function loadData(pageType, params) {
   })
 }
 
+exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {config}) {
+  const url = urlLib.parse(req.query.path || "/");
+  const match = matchBestRoute(url.pathname, generateRoutes(config));
+  res.setHeader("Content-Type", "application/json");
+  if(match) {
+    loadData(match.pageType, match.params)
+      .then((data) => {
+        res.status(200).json({
+          pageType: match.pageType,
+          data: data,
+          config: config
+        })
+      });
+  } else {
+    res.status(404).json({
+      error: {message: "Not Found"}
+    });
+  }
+}
+
 exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config}) {
   const url = urlLib.parse(req.url);
   const match = matchBestRoute(url.pathname, generateRoutes(config));
   if(match) {
     loadData(match.pageType, match.params)
       .then((data) => {
+        const context = {};
         const component = React.createElement(IsomorphicComponent, {
           config: config,
           data: data,
           pageType: match.pageType
         });
         renderLayout(res.status(200), {
-          content: ReactDOMServer.renderToString(component)
+          content: ReactDOMServer.renderToString(React.createElement(StaticRouter, {context: context, location: req.url}, component))
         });
       });
   } else {

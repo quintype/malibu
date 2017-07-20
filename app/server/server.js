@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const client = require("./client");
 
-const {handleIsomorphicRoute} = require("./handlers/handle-isomorphic-route");
+const {handleIsomorphicRoute, handleIsomorphicDataLoad} = require("./handlers/handle-isomorphic-route");
 const {generateServiceWorker} = require("./handlers/generate-service-worker");
 const {sketchesProxy} = require("./handlers/sketches-proxy");
 
@@ -46,6 +46,7 @@ function withConfig(f) {
 
 app.set("view engine", "ejs");
 app.get("/service-worker.js", withConfig(generateServiceWorker));
+app.get("/route-data.json", withConfig(handleIsomorphicDataLoad));
 app.get("/*", withConfig(handleIsomorphicRoute));
 
 module.exports = function startApp() {

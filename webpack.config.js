@@ -20,6 +20,16 @@ module.exports = {
     },
     module: {
       rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react']
+            }
+          }
+        },
         { test: /\.(sass|scss)$/, loader: process.env.NODE_ENV == "production" ? ExtractTextPlugin.extract('css-loader!sass-loader') : 'style-loader!css-loader!sass-loader' },
         {
           test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
