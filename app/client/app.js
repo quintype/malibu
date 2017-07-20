@@ -54,3 +54,7 @@ global.navigateToPage = function(dispatch, path, doNotPushPath) {
 }
 
 startApp();
+
+if(global.navigator.serviceWorker) {
+    global.navigator.serviceWorker.register("/service-worker.js");
+}
