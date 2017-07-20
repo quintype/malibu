@@ -7,7 +7,6 @@ import React from 'react';
 import { IsomorphicComponent } from '../isomorphic/component';
 import { NAVIGATE_TO_PAGE } from '../isomorphic/actions';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import history from './history';
@@ -30,9 +29,7 @@ function startApp() {
       const store = createStore(reducer, Object.assign({currentPath: window.location.pathname}, result.body));
       ReactDOM.render((
         <Provider store={store}>
-          <BrowserRouter>
-            <IsomorphicComponent/>
-          </BrowserRouter>
+          <IsomorphicComponent/>
         </Provider>
       ), document.getElementById('container'));
       history.listen(change => maybeNavigateTo(change.pathname, store));

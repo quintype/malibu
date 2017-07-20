@@ -2,7 +2,6 @@ const {matchBestRoute} = require('../../isomorphic/match-best-route');
 const {IsomorphicComponent} = require('../../isomorphic/component');
 const {generateRoutes} = require('../routes');
 const {renderLayout} = require('./render-layout');
-const {StaticRouter} = require("react-router");
 const {Provider} = require("react-redux");
 const urlLib = require("url");
 
@@ -57,8 +56,7 @@ exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config
         renderLayout(res.status(200), {
           content: ReactDOMServer.renderToString(
             React.createElement(Provider, {store: store},
-              React.createElement(StaticRouter, {context: context, location: req.url},
-                React.createElement(IsomorphicComponent))))
+                React.createElement(IsomorphicComponent)))
         });
       });
   } else {
