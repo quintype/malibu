@@ -11,6 +11,7 @@ if(cluster.isMaster) {
     cluster.fork();
   });
 } else {
+  require('node-jsx').install();
   var startApp = require("./app/server/server.js");
   startApp().catch(function() {
     var sleep = require("sleep-promise");

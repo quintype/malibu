@@ -17,6 +17,7 @@
     "node-jsx": "^0.13.3",
     "quintype-backend": "^0.2.4",
     "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-router": "^4.1.2",
     "sleep-promise": "^2.0.0"
   },
