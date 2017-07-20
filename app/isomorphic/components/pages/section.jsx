@@ -2,7 +2,7 @@ const React = require("react");
 
 const { Link } = require("../link");
 
-class HomePage extends React.Component {
+class SectionPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class HomePage extends React.Component {
   render() {
     return <div>
       Hello, {this.props.pageType} - {this.state.counter}
-      <Link href="/politics">Politics</Link>
+      <Link href="/">Home</Link>
     </div>;
   }
 
@@ -26,4 +26,4 @@ class HomePage extends React.Component {
   }
 }
 
-exports.HomePage = HomePage;
+exports.SectionPage = SectionPage;

@@ -1,12 +1,14 @@
 const React = require("react");
 
 const {HomePage} = require("./components/pages/home.jsx");
+const {SectionPage} = require("./components/pages/section.jsx");
 const {NotFoundPage} = require("./components/pages/not-found.jsx");
 const {connect} = require("react-redux");
 
 function pickComponent(pageType) {
   switch (pageType) {
     case 'home-page': return HomePage;
+    case 'section-page': return SectionPage;
     default: return NotFoundPage;
   }
 }
