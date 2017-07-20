@@ -11,7 +11,7 @@ function pickComponent(pageType) {
   }
 }
 
-function IsomorphicComponent(props) {
+function IsomorphicComponentBase(props) {
   return React.createElement(pickComponent(props.pageType), props)
 }
 
@@ -27,4 +27,4 @@ function mapDispatchToProps() {
   return {};
 }
 
-exports.IsomorphicComponent = connect(mapStateToProps, mapDispatchToProps)(IsomorphicComponent);
+exports.IsomorphicComponent = connect(mapStateToProps, mapDispatchToProps)(IsomorphicComponentBase);

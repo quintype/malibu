@@ -1,0 +1,1 @@
+exports.NAVIGATE_TO_PAGE = 'QT-NAVIGATE';
