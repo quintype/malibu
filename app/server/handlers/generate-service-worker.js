@@ -17,6 +17,7 @@ function generateServiceWorker(req, res, {config}) {
     routes: generateRoutes(config),
     serviceWorkerHelper: serviceWorkerHelperContents()
   });
+  return new Promise((resolve) => resolve());
 }
 
 exports.generateServiceWorker = generateServiceWorker;

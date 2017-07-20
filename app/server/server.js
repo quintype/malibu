@@ -41,7 +41,7 @@ function withConfig(f) {
     opts = opts || {};
     return client.getConfig()
       .then(c => f(req, res, Object.assign({}, opts, {config: c})))
-      .catch((e) => console.log(e));      
+      .catch((e) => console.log(e));
   }
 }
 
