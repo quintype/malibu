@@ -4,6 +4,26 @@ This will probably get renamed to toddy when it gets feature parity (soon)
 
 ## Architecture
 
+### Isomorphic flow
+
+#### Server Side Flow
+
+1. If no 'regular' route is caught, it goes to the isomorphic handler
+2. The current route is matched via matchBestRoute (see routing)
+3. If a route is matched, we load data via the `loadData(pageType)` function.
+4. Once data is fetched from Upstream, it renders the `IsomorphicComponent`, which renders pages based on `pageType` and `data`
+
+#### Client Side Flow
+
+1. The `startApp()` function starts as soon as the JS loads (async)
+2. The `startApp()` function calls `/routes.json?route=/current/path`.
+3. The server looks at `/current/path`, matching it against its known routes, and sends back the `pageType`, and data from `loadData(pageType)`
+4. Once data is fetched from Upstream, it renders the `IsomorphicComponent`, which renders pages based on `pageType` and `data`
+
+#### Service Worker
+
+1. To Do
+
 ### Routing
 
 This app aims to be a Progressive Web App. Instead of guessing routes, it looks at the config to dynamically generate the required routes. For example, with sections /politics and /politics/karnataka, it will generate the following routes: [/politics, /politics/karnataka, /politics/:storySlug, /politics/*/:storySlug].
@@ -37,4 +57,3 @@ $ npm start               # start the actual web server
 - [ ] Add Components
 - [ ] Load Data
 - [X] Isomorphic Rendering
-
