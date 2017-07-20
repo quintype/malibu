@@ -3,10 +3,13 @@ const {IsomorphicComponent} = require('../../isomorphic/component');
 const {generateRoutes} = require('../routes');
 const {renderLayout} = require('./render-layout');
 const {StaticRouter} = require("react-router");
+const {Provider} = require("react-redux");
 const urlLib = require("url");
 
 const React = require("react");
 const ReactDOMServer = require('react-dom/server');
+
+const {createStore} = require("redux");
 
 function loadData(pageType, params) {
   return new Promise((resolve) => {
@@ -30,7 +33,7 @@ exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {
           data: data,
           config: config
         })
-      });
+      }).catch((e) => console.log(e));
   } else {
     res.status(404).json({
       error: {message: "Not Found"}
@@ -45,15 +48,18 @@ exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config
     loadData(match.pageType, match.params)
       .then((data) => {
         const context = {};
-        const component = React.createElement(IsomorphicComponent, {
+        const store = createStore((state) => state, {
           config: config,
           data: data,
           pageType: match.pageType
         });
         renderLayout(res.status(200), {
-          content: ReactDOMServer.renderToString(React.createElement(StaticRouter, {context: context, location: req.url}, component))
+          content: ReactDOMServer.renderToString(
+            React.createElement(Provider, {store: store},
+              React.createElement(StaticRouter, {context: context, location: req.url},
+                React.createElement(IsomorphicComponent))))
         });
-      });
+      }).catch((e) => console.log(e));;
   } else {
     renderLayout(res.status(404), {
       content: "Not Found"

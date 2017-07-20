@@ -7,6 +7,8 @@ import React from 'react';
 import { IsomorphicComponent } from '../isomorphic/component';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import {Provider} from 'react-redux';
+const {createStore} = require("redux");
 
 // Load Data
 // Mount React Component
@@ -14,11 +16,12 @@ import { BrowserRouter } from 'react-router-dom';
 function startApp() {
   superagent.get('/route-data.json', {path: window.location.pathname, config: true})
     .then((result) => {
-      const {config, data, pageType} = result.body;
       ReactDOM.render((
-        <BrowserRouter>
-          <IsomorphicComponent {...result.body}/>
-        </BrowserRouter>
+        <Provider store={createStore((state) => state, result.body)}>
+          <BrowserRouter>
+            <IsomorphicComponent/>
+          </BrowserRouter>
+        </Provider>
       ), document.getElementById('container'));
     });
 }
