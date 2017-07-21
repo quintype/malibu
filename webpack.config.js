@@ -4,9 +4,15 @@ const AssetsPlugin = require('assets-webpack-plugin')
 const assetsPluginInstance = new AssetsPlugin()
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-function outputFileName(suffix) {
-  return process.env.NODE_ENV == "production" ? `[name]-[hash:20].${suffix}` : `[name].${suffix}`;
-}
+const config = process.env.NODE_ENV == 'production' ? {
+    outputFileName: (suffix) => `[name]-[hash:20].${suffix}`,
+    sassLoader: ExtractTextPlugin.extract('css-loader!sass-loader'),
+    cssFile: `[name]-[contenthash:20].css`,
+  } : {
+    outputFileName: (suffix) => `[name].${suffix}`,
+    sassLoader: 'style-loader!css-loader!sass-loader',
+    cssFile: `[name].css`
+  };
 
 module.exports = {
     entry: {
@@ -15,7 +21,7 @@ module.exports = {
     },
     output: {
         path: __dirname + "/public/toddy/assets",
-        filename: outputFileName("js"),
+        filename: config.outputFileName("js"),
         publicPath: "/toddy/assets/"
     },
     module: {
@@ -30,19 +36,19 @@ module.exports = {
             }
           }
         },
-        { test: /\.(sass|scss)$/, loader: process.env.NODE_ENV == "production" ? ExtractTextPlugin.extract('css-loader!sass-loader') : 'style-loader!css-loader!sass-loader' },
+        { test: /\.(sass|scss)$/, loader: config.sassLoader },
         {
           test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
           loader: "file-loader",
           query: {
             context: './app/assets',
-            name: outputFileName("[ext]")
+            name: config.outputFileName("[ext]")
           }
         }
       ]
     },
     plugins: [assetsPluginInstance, new ExtractTextPlugin({
-      filename: process.env.NODE_ENV == "production" ? `[name]-[contenthash:20].css` : `[name].css`,
+      filename: config.cssFile,
       allChunks: true,
     })]
 };
