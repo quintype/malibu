@@ -2,7 +2,7 @@ const process = require('process')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const webpack = require("webpack");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const PUBLIC_PATH='/toddy/assets/';
 
@@ -11,7 +11,7 @@ const config = process.env.NODE_ENV == 'production' ? {
     sassLoader: ExtractTextPlugin.extract('css-loader!sass-loader'),
     cssFile: `[name]-[contenthash:20].css`,
     compressJSPlugins: [
-      new webpack.optimize.UglifyJsPlugin()
+      new UglifyJSPlugin()
     ],
   } : {
     outputFileName: (suffix) => `[name].${suffix}`,
