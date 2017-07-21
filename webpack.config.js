@@ -8,7 +8,7 @@ const PUBLIC_PATH='/toddy/assets/';
 
 const config = process.env.NODE_ENV == 'production' ? {
     outputFileName: (suffix) => `[name]-[hash:20].${suffix}`,
-    sassLoader: ExtractTextPlugin.extract('css-loader!sass-loader'),
+    sassLoader: ExtractTextPlugin.extract('css-loader?minimize=true!sass-loader'),
     cssFile: `[name]-[contenthash:20].css`,
     compressJSPlugins: [
       new UglifyJSPlugin()
