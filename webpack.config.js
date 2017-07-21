@@ -2,6 +2,7 @@ const process = require('process')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const webpack = require("webpack");
 
 const PUBLIC_PATH='/toddy/assets/';
 
@@ -9,10 +10,14 @@ const config = process.env.NODE_ENV == 'production' ? {
     outputFileName: (suffix) => `[name]-[hash:20].${suffix}`,
     sassLoader: ExtractTextPlugin.extract('css-loader!sass-loader'),
     cssFile: `[name]-[contenthash:20].css`,
+    compressJSPlugins: [
+      new webpack.optimize.UglifyJsPlugin()
+    ],
   } : {
     outputFileName: (suffix) => `[name].${suffix}`,
     sassLoader: 'style-loader!css-loader!sass-loader',
-    cssFile: `[name].css`
+    cssFile: `[name].css`,
+    compressJSPlugins: [],
   };
 
 module.exports = {
@@ -51,5 +56,5 @@ module.exports = {
     plugins: [
       new ExtractTextPlugin({ filename: config.cssFile, allChunks: true }),
       new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
-    ]
+    ].concat(config.compressJSPlugins)
 };
