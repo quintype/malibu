@@ -76,8 +76,9 @@ $ npm run compile && npm start # restart this if you change the service worker
 
 ## Tasks Pending
 
-- [ ] Minify JS
-- [ ] Add SASS support
+- [X] Minify JS
+- [X] Add SASS support
 - [ ] Add Components
 - [ ] Load Data
 - [X] Isomorphic Rendering
+- [ ] Get CORS working with ServiceWorker (possibly fix black knight)
