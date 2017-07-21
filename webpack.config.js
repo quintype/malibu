@@ -3,6 +3,9 @@ const path = require('path')
 const AssetsPlugin = require('assets-webpack-plugin')
 const assetsPluginInstance = new AssetsPlugin()
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+
+const PUBLIC_PATH='/toddy/assets/';
 
 const config = process.env.NODE_ENV == 'production' ? {
     outputFileName: (suffix) => `[name]-[hash:20].${suffix}`,
@@ -20,9 +23,9 @@ module.exports = {
       serviceWorkerHelper: "./app/client/serviceWorkerHelper.js"
     },
     output: {
-        path: __dirname + "/public/toddy/assets",
+        path: __dirname + `/public/${PUBLIC_PATH}`,
         filename: config.outputFileName("js"),
-        publicPath: "/toddy/assets/"
+        publicPath: PUBLIC_PATH
     },
     module: {
       rules: [
@@ -47,8 +50,9 @@ module.exports = {
         }
       ]
     },
-    plugins: [assetsPluginInstance, new ExtractTextPlugin({
-      filename: config.cssFile,
-      allChunks: true,
-    })]
+    plugins: [
+      assetsPluginInstance,
+      new ExtractTextPlugin({ filename: config.cssFile, allChunks: true }),
+      new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
+    ]
 };
