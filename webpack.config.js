@@ -1,5 +1,7 @@
-const process = require('process')
-const path = require('path')
+const webpack = require("webpack");
+const process = require('process');
+const path = require('path');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -57,6 +59,7 @@ module.exports = {
     },
     plugins: [
       new CleanWebpackPlugin([OUTPUT_DIRECTORY]),
+      new webpack.EnvironmentPlugin({ NODE_ENV: 'development'}),
       new ExtractTextPlugin({ filename: config.cssFile, allChunks: true }),
       new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
     ].concat(config.compressJSPlugins)
