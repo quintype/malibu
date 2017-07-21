@@ -15,12 +15,11 @@ RUN chown -R app:app /app
 USER app
 WORKDIR /app
 
-ENV NODE_ENV production
-
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
     npm install yarn && \
     ./node_modules/.bin/yarn
 
+ENV NODE_ENV production
 RUN npm run compile
 
 ENTRYPOINT ["npm"]
