@@ -1,7 +1,5 @@
 const process = require('process')
 const path = require('path')
-const AssetsPlugin = require('assets-webpack-plugin')
-const assetsPluginInstance = new AssetsPlugin()
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
@@ -51,7 +49,6 @@ module.exports = {
       ]
     },
     plugins: [
-      assetsPluginInstance,
       new ExtractTextPlugin({ filename: config.cssFile, allChunks: true }),
       new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
     ]

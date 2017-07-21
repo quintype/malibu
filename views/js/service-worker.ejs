@@ -3,11 +3,11 @@
 const ISOMORPHIC_ROUTES = <%- JSON.stringify(routes) %>;
 const REQUIRED_ASSETS = [
   '/shell.html',
-  <%_ const cssPath = assetPath(["app", "css"]) _%>
+  <%_ const cssPath = assetPath("app.css") _%>
   <%_ if(cssPath) { _%>
   "<%= cssPath %>",
   <%_ } _%>
-  "<%= assetPath(["app", "js"]) %>"
+  "<%= assetPath("app.js") %>"
 ];
 
 initializeQServiceWorker(self, {
