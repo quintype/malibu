@@ -3,8 +3,10 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const PUBLIC_PATH='/toddy/assets/';
+const OUTPUT_DIRECTORY = __dirname + `/public/${PUBLIC_PATH}`;
 
 const config = process.env.NODE_ENV == 'production' ? {
     outputFileName: (suffix) => `[name]-[hash:20].${suffix}`,
@@ -26,9 +28,9 @@ module.exports = {
       serviceWorkerHelper: "./app/client/serviceWorkerHelper.js"
     },
     output: {
-        path: __dirname + `/public/${PUBLIC_PATH}`,
+        path: OUTPUT_DIRECTORY,
         filename: config.outputFileName("js"),
-        publicPath: PUBLIC_PATH
+        publicPath: PUBLIC_PATH,
     },
     module: {
       rules: [
@@ -54,6 +56,7 @@ module.exports = {
       ]
     },
     plugins: [
+      new CleanWebpackPlugin([OUTPUT_DIRECTORY]),
       new ExtractTextPlugin({ filename: config.cssFile, allChunks: true }),
       new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
     ].concat(config.compressJSPlugins)
