@@ -82,3 +82,6 @@ $ npm run compile && npm start # restart this if you change the service worker
 - [ ] Load Data
 - [X] Isomorphic Rendering
 - [ ] Get CORS working with ServiceWorker (possibly fix black knight)
+- [ ] Get Preview to work
+- [ ] Get breaking news to work
+- [ ] Actually build a simple UI
