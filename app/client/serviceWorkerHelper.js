@@ -8,7 +8,7 @@ global.initializeQServiceWorker = function(self, params) {
     event.waitUntil(
       caches.open('pwa-static')
         .then(function(cache) {
-          return cache.addAll(params.assets.map((asset) => new Request(asset, {mode: 'no-cors'})));
+          return cache.addAll(params.assets);
         }).then(() => console.log("[ServiceWorker] Downloaded all assets"))
     );
   });
