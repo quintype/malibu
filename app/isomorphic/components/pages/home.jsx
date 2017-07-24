@@ -2,27 +2,15 @@ const React = require("react");
 
 const { Link } = require("../link");
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: 0
-    }
-  }
+function HomePageStoryItem(props) {
+  return <Link href={"/" + props.story.slug} className="homepage-story-item">{props.story.headline}</Link>;
+}
 
+class HomePage extends React.Component {
   render() {
     return <div>
-      Hello, {this.props.pageType} - {this.state.counter}
-      <Link href="/politics">Politics</Link>
+      {this.props.data.stories.map((story, index) => <HomePageStoryItem story={story} key={index}></HomePageStoryItem>)}
     </div>;
-  }
-
-  componentDidMount() {
-    this.interval = global.setInterval(() => this.setState({counter: this.state.counter + 1}), 1000);
-  }
-
-  componentWillUnmount() {
-    global.clearInterval(this.interval);
   }
 }
 

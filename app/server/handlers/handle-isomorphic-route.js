@@ -9,15 +9,14 @@ const React = require("react");
 const ReactDOMServer = require('react-dom/server');
 
 const {createStore} = require("redux");
+const {loadHomePageData} = require("../data-loaders/home-page-data");
 
 function loadData(pageType, params) {
-  return new Promise((resolve) => {
-    if(pageType == "story-page") {
-      resolve({story: {headline: "Foobar"}});
-    } else {
-      resolve({stories: [{headline: "Foobar"}]});
-    }
-  })
+  switch (pageType) {
+    case "home-page": return loadHomePageData(params);
+    case "story-page": return Promise.resolve({story: {headline: "Foobar"}})
+    default: return Promise.resolve({stories: [{headline: "Foobar"}]})
+  }
 }
 
 exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {config}) {
