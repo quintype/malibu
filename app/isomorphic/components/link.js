@@ -1,6 +1,5 @@
 const React = require("react");
 const {connect} = require("react-redux");
-const {NAVIGATE} = require("../actions");
 const _ = require("lodash");
 
 function LinkBase(props) {
