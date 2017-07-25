@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 const client = require("quintype-toddy-libs/server/api-client");
-const {upstreamQuintypeRoutes, isomorphicRoutes, withConfig} = require("quintype-toddy-libs/server/routes");
+const {upstreamQuintypeRoutes, isomorphicRoutes} = require("quintype-toddy-libs/server/routes");
 
 const {generateRoutes} = require('./routes');
 const {renderLayout} = require("./handlers/render-layout");
