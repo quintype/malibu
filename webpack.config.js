@@ -10,6 +10,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const PUBLIC_PATH='/toddy/assets/';
 const OUTPUT_DIRECTORY = __dirname + `/public/${PUBLIC_PATH}`;
 
+const BABEL_PRESET = {
+  loader: 'babel-loader',
+  options: {
+    presets: ['es2015', 'react']
+  }
+};
+
 const config = process.env.NODE_ENV == 'production' ? {
     outputFileName: (suffix) => `[name]-[hash:20].${suffix}`,
     sassLoader: ExtractTextPlugin.extract('css-loader?minimize=true!sass-loader'),
@@ -36,16 +43,8 @@ module.exports = {
     },
     module: {
       rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: /(node_modules|bower_components)/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015', 'react']
-            }
-          }
-        },
+        { test: /\.jsx?$/, exclude: /node_modules/, use: BABEL_PRESET },
+        { test: /\.jsx?$/, include: /node_modules\/quintype-toddy-libs/, use: BABEL_PRESET },
         { test: /\.(sass|scss)$/, loader: config.sassLoader },
         {
           test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
