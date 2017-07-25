@@ -1,0 +1,16 @@
+img.qt-image {
+  width: 100%; object-fit: cover;
+}
+
+.qt-image-16x9 {
+  padding-top: 56.25%;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+
+  & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

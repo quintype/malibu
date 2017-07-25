@@ -4,6 +4,7 @@ const {generateRoutes} = require('../routes');
 const {renderLayout} = require('./render-layout');
 const {Provider} = require("react-redux");
 const urlLib = require("url");
+const _ = require("lodash");
 
 const React = require("react");
 const ReactDOMServer = require('react-dom/server');
@@ -12,12 +13,19 @@ const {createStore} = require("redux");
 const {loadHomePageData} = require("../data-loaders/home-page-data");
 const {loadStoryPageData} = require("../data-loaders/story-page-data");
 
-function loadData(pageType, params) {
-  switch (pageType) {
-    case "home-page": return loadHomePageData();
-    case "story-page": return loadStoryPageData(params);
-    default: return Promise.resolve({stories: [{headline: "Foobar"}]})
+const WHITELIST_CONFIG_KEYS = ['cdn-image'];
+
+function loadData(pageType, params, config) {
+  function _loadData() {
+    switch (pageType) {
+      case "home-page": return loadHomePageData();
+      case "story-page": return loadStoryPageData(params);
+      default: return Promise.resolve({stories: [{headline: "Foobar"}]})
+    }
   }
+
+  return _loadData()
+    .then((data) => ({pageType: pageType, data: data, config: _.pick(config, WHITELIST_CONFIG_KEYS)}));
 }
 
 exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {config}) {
@@ -25,14 +33,8 @@ exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {
   const match = matchBestRoute(url.pathname, generateRoutes(config));
   res.setHeader("Content-Type", "application/json");
   if(match) {
-    return loadData(match.pageType, match.params)
-      .then((data) => {
-        res.status(200).json({
-          pageType: match.pageType,
-          data: data,
-          config: config
-        })
-      });
+    return loadData(match.pageType, match.params, config)
+      .then((result) => res.status(200).json(result));
   } else {
     res.status(404).json({
       error: {message: "Not Found"}
@@ -45,14 +47,10 @@ exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config
   const url = urlLib.parse(req.url);
   const match = matchBestRoute(url.pathname, generateRoutes(config));
   if(match) {
-    return loadData(match.pageType, match.params)
-      .then((data) => {
+    return loadData(match.pageType, match.params, config)
+      .then((result) => {
         const context = {};
-        const store = createStore((state) => state, {
-          config: config,
-          data: data,
-          pageType: match.pageType
-        });
+        const store = createStore((state) => state, result);
         renderLayout(res.status(200), {
           content: ReactDOMServer.renderToString(
             React.createElement(Provider, {store: store},

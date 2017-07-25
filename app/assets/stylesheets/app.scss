@@ -1,3 +1,5 @@
+@import "images";
+
 *,
 *:after,
 *:before {
@@ -19,6 +21,7 @@ body {
 img {
     max-width: 100%;
 }
+
 /*Menu*/
 #main-navigation {
     position: fixed;
@@ -147,5 +150,37 @@ a {
 }
 
 .homepage-story-item {
+  box-sizing: border-box;
   display: block;
+  background: white;
+  float: left;
+  margin: 10px 1%;
+  border: 1px solid black;
+  padding: 5px;
+
+  width: 23%;
+
+  @media only screen and (max-width: 768px) {
+    width: 48%;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 98%;
+  }
+}
+
+.homepage-story-item h2 {
+  font-size: 16px;
+  text-align: center;
+  height: 100px;
+}
+
+.homepage-story-item-image {
+  width: 100%;
+}
+
+.homepage-story-author {
+  display: block;
+  font-size: 12px;
+  float: right;
 }
