@@ -1,8 +1,8 @@
 const _ = require("lodash");
 
-const {loadHomePageData} = require("../data-loaders/home-page-data");
-const {loadStoryPageData} = require("../data-loaders/story-page-data");
-const {loadSectionPageData} = require("../data-loaders/section-page-data");
+const {loadHomePageData} = require("./data-loaders/home-page-data");
+const {loadStoryPageData} = require("./data-loaders/story-page-data");
+const {loadSectionPageData} = require("./data-loaders/section-page-data");
 
 const WHITELIST_CONFIG_KEYS = ['cdn-image'];
 

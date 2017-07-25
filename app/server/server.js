@@ -7,19 +7,20 @@ const {upstreamQuintypeRoutes, isomorphicRoutes, withConfig} = require("quintype
 
 const {generateRoutes} = require('./routes');
 const {renderLayout} = require("./handlers/render-layout");
-const {loadData} = require("./handlers/handle-isomorphic-route");
+const {loadData} = require("./load-data");
 const {pickComponent} = require("../isomorphic/pick-component");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(compression());
 upstreamQuintypeRoutes(app);
+
 isomorphicRoutes(app, {
   logError: (error) => console.error(error),
   generateRoutes: generateRoutes,
-  renderLayout: renderLayout,
   loadData: loadData,
   pickComponent: pickComponent,
+  renderLayout: renderLayout,
 });
 
 module.exports = function startApp() {
