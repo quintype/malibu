@@ -1,13 +1,14 @@
 const compression = require('compression');
 const express = require('express');
-
 const app = express();
+
 const client = require("quintype-toddy-libs/server/api-client");
 const {upstreamQuintypeRoutes, isomorphicRoutes, withConfig} = require("quintype-toddy-libs/server/routes");
-const {generateRoutes} = require('./routes');
 
+const {generateRoutes} = require('./routes');
 const {renderLayout} = require("./handlers/render-layout");
-const {handleIsomorphicRoute, loadData} = require("./handlers/handle-isomorphic-route");
+const {loadData} = require("./handlers/handle-isomorphic-route");
+const {pickComponent} = require("../isomorphic/pick-component");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -18,8 +19,8 @@ isomorphicRoutes(app, {
   generateRoutes: generateRoutes,
   renderLayout: renderLayout,
   loadData: loadData,
+  pickComponent: pickComponent,
 });
-app.get("/*", withConfig(null, handleIsomorphicRoute));
 
 module.exports = function startApp() {
   return client.getConfig()

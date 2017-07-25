@@ -4,7 +4,9 @@ global.Promise = global.Promise || require("bluebird");
 global.superagent = require('superagent-promise')(require('superagent'), Promise);
 
 import React from 'react';
-import { IsomorphicComponent } from '../isomorphic/component';
+import { pickComponent } from '../isomorphic/pick-component';
+import { IsomorphicComponent } from 'quintype-toddy-libs/isomorphic/component'
+
 import { BreakingNews } from '../isomorphic/components/breaking-news';
 import { NAVIGATE_TO_PAGE, BREAKING_NEWS_UPDATED } from '../isomorphic/actions';
 import ReactDOM from 'react-dom';
@@ -25,10 +27,10 @@ function getRouteData(path, opts) {
   return superagent.get('/route-data.json', Object.assign({path: path}, opts));
 }
 
-function renderComponent(clazz, container, store) {
+function renderComponent(clazz, container, store, props) {
   return ReactDOM.render(
     React.createElement(Provider, {store: store},
-      React.createElement(clazz)),
+      React.createElement(clazz, props || {})),
     document.getElementById(container));
 }
 
@@ -36,7 +38,7 @@ function startApp() {
   getRouteData(window.location.pathname, {config: true})
     .then((result) => {
       const store = createStore(reducer, Object.assign({currentPath: window.location.pathname}, result.body));
-      renderComponent(IsomorphicComponent, 'container', store);
+      renderComponent(IsomorphicComponent, 'container', store, {pickComponent: pickComponent});
       renderComponent(BreakingNews, 'breaking-news-container', store);
       history.listen(change => maybeNavigateTo(change.pathname, store));
     });
