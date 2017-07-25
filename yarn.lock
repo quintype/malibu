@@ -3691,14 +3691,15 @@ quintype-js@^0.1.6:
   dependencies:
     lodash "^4.13.1"
 
-quintype-toddy-libs@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/quintype-toddy-libs/-/quintype-toddy-libs-0.0.5.tgz#02e0197f7c7bb041f9e283d4b9858b3274b53a17"
+quintype-toddy-libs@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/quintype-toddy-libs/-/quintype-toddy-libs-0.1.0.tgz#031184f91fa66da9862a04de49141e098b0af9cc"
   dependencies:
     http-proxy "^1.16.2"
     js-yaml "^3.9.0"
     lodash "^4.17.4"
     quintype-backend "^0.2.4"
+    quintype-js "^0.1.6"
     react "^15.6.1"
     react-dom "^15.6.1"
     react-redux "^5.0.5"

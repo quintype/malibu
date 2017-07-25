@@ -1,22 +1,17 @@
 import css from '../../app/assets/stylesheets/app.scss';
 
+import { createStore } from 'quintype-toddy-libs/store/create-store';
+import { renderIsomorphicComponent, renderBreakingNews, history, navigateToPage, getRouteData } from 'quintype-toddy-libs/client/start';
+import { NAVIGATE_TO_PAGE } from 'quintype-toddy-libs/store/actions';
+
 global.Promise = global.Promise || require("bluebird");
 global.superagent = require('superagent-promise')(require('superagent'), Promise);
-
-import { createStore, navigateToPage } from 'quintype-toddy-libs/store/create-store';
-import { renderIsomorphicComponent, renderBreakingNews } from 'quintype-toddy-libs/client/start';
-import { NAVIGATE_TO_PAGE } from 'quintype-toddy-libs/store/actions';
+global.navigateToPage = navigateToPage;
 
 import { pickComponent } from '../isomorphic/pick-component';
 import { BreakingNewsView } from '../isomorphic/components/breaking-news-view';
 
-import history from './history';
-
-function getRouteData(path, opts) {
-  opts = opts || {};
-  return superagent.get('/route-data.json', Object.assign({path: path}, opts));
-}
-
+// This is the entry point. Ideally, unused functions will get compiled out
 function startApp() {
   getRouteData(window.location.pathname, {config: true})
     .then((result) => {
@@ -30,18 +25,6 @@ function startApp() {
 function maybeNavigateTo(path, store) {
   if(store.getState().currentPath != path)
     navigateToPage(store.dispatch, path, true);
-}
-
-global.navigateToPage = function(dispatch, path, doNotPushPath) {
-  getRouteData(path)
-    .then((response) => dispatch({
-      type: NAVIGATE_TO_PAGE,
-      page: response.body,
-      currentPath: path
-    })).then(() => {
-      if(!doNotPushPath)
-        history.push(path)
-    });
 }
 
 startApp();

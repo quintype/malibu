@@ -1,7 +1,7 @@
 const React = require("react");
 
 const { Link } = require("quintype-toddy-libs/components/link");
-const { ResponsiveImage } = require("../responsive-image");
+const { ResponsiveImage } = require("quintype-toddy-libs/components/responsive-image");
 
 function HomePageStoryItem(props) {
   return <Link href={"/" + props.story.slug} className="homepage-story-item">
