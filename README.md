@@ -85,3 +85,6 @@ $ npm run compile && npm start # restart this if you change the service worker
 - [ ] Get Preview to work
 - [ ] Get breaking news to work
 - [ ] Actually build a simple UI
+- [ ] Forcibly update the app
+- [ ] Actual Benchmarks
+- [ ] Move all actual code into a library so people can't screw around
