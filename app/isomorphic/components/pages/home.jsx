@@ -3,7 +3,7 @@ const React = require("react");
 const { Link } = require("../link");
 
 function HomePageStoryItem(props) {
-  return <Link href={"/" + props.story.slug} className="homepage-story-item">{props.story.headline}</Link>;
+  return <Link href={"/" + props.story.slug} className="homepage-story-item foo">{props.story.headline}</Link>;
 }
 
 class HomePage extends React.Component {

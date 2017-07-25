@@ -11,11 +11,13 @@ const ReactDOMServer = require('react-dom/server');
 const {createStore} = require("redux");
 const {loadHomePageData} = require("../data-loaders/home-page-data");
 const {loadStoryPageData} = require("../data-loaders/story-page-data");
+const {loadSectionPageData} = require("../data-loaders/section-page-data");
 
 function loadData(pageType, params) {
   switch (pageType) {
     case "home-page": return loadHomePageData();
     case "story-page": return loadStoryPageData(params);
+    case "section-page": return loadSectionPageData(params);
     default: return Promise.resolve({stories: [{headline: "Foobar"}]})
   }
 }
