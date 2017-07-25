@@ -7,5 +7,5 @@ const REQUIRED_ASSETS = [
 initializeQServiceWorker(self, {
   routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
-  currentHost: "foo" // FIXME
+  hostname: <%- JSON.stringify(hostname) %>
 });

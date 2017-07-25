@@ -17,13 +17,18 @@ global.initializeQServiceWorker = function(self, params) {
     const request = event.request;
     const url = urlLib.parse(request.url || "/");
 
-    console.log("[ServiceWorker] Trying to match Routes", url.pathname);
-    const match = matchBestRoute(url.pathname, params.routes)
-    if(match) {
-      console.log("[ServiceWorker] Rendering Shell");
-      event.respondWith(caches.match("/shell.html").then((r) => r || fetch(request)));
+    if(url.hostname == params.hostname) {
+      console.log("[ServiceWorker] Trying to match Routes", url.pathname);
+      const match = matchBestRoute(url.pathname, params.routes)
+      if(match) {
+        console.log("[ServiceWorker] Rendering Shell");
+        event.respondWith(caches.match("/shell.html").then((r) => r || fetch(request)));
+      } else {
+        event.respondWith(fetch(request));
+      }
     } else {
-      event.respondWith(caches.match(request).then((r) => r || fetch(request)));
+      event.respondWith(fetch(request));
     }
+
   })
 };
