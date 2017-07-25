@@ -5,7 +5,8 @@ global.superagent = require('superagent-promise')(require('superagent'), Promise
 
 import React from 'react';
 import { IsomorphicComponent } from '../isomorphic/component';
-import { NAVIGATE_TO_PAGE } from '../isomorphic/actions';
+import { BreakingNews } from '../isomorphic/components/breaking-news';
+import { NAVIGATE_TO_PAGE, BREAKING_NEWS_UPDATED } from '../isomorphic/actions';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -14,6 +15,7 @@ import history from './history';
 function reducer(state, action) {
   switch (action.type) {
     case NAVIGATE_TO_PAGE: return Object.assign({}, state, action.page, {currentPath: action.currentPath});
+    case BREAKING_NEWS_UPDATED: return Object.assign({}, state, {breakingNews: action.stories});
     default: return state;
   }
 }
@@ -23,15 +25,19 @@ function getRouteData(path, opts) {
   return superagent.get('/route-data.json', Object.assign({path: path}, opts));
 }
 
+function renderComponent(clazz, container, store) {
+  return ReactDOM.render(
+    React.createElement(Provider, {store: store},
+      React.createElement(clazz)),
+    document.getElementById(container));
+}
+
 function startApp() {
   getRouteData(window.location.pathname, {config: true})
     .then((result) => {
       const store = createStore(reducer, Object.assign({currentPath: window.location.pathname}, result.body));
-      ReactDOM.render((
-        <Provider store={store}>
-          <IsomorphicComponent/>
-        </Provider>
-      ), document.getElementById('container'));
+      renderComponent(IsomorphicComponent, 'container', store);
+      renderComponent(BreakingNews, 'breaking-news-container', store);
       history.listen(change => maybeNavigateTo(change.pathname, store));
     });
 }
