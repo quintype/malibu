@@ -2,7 +2,7 @@ const compression = require('compression');
 const express = require('express');
 
 const app = express();
-const client = require("./client");
+const client = require("quintype-toddy-libs/server/api-client");
 
 const {handleIsomorphicRoute, handleIsomorphicDataLoad, handleIsomorphicShell} = require("./handlers/handle-isomorphic-route");
 const {generateServiceWorker} = require("./handlers/generate-service-worker");

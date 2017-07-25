@@ -1,4 +1,4 @@
-var config = require("../publisher-config");
+var config = require("quintype-toddy-libs/server/publisher-config");
 
 var sketchesHost = config.sketches_host;
 var httpHost = sketchesHost.replace(/https?:\/\//, "");
