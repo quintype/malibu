@@ -2,6 +2,10 @@
 
 This will probably get renamed to toddy when it gets feature parity (soon)
 
+## toddy-libs
+
+IMPORTANT: This app implements very little functionality in the app itself. The majority of functionality is built into the [toddy-libs](https://github.com/quintype/quintype-toddy-libs) repository. This README will move there
+
 ## Architecture
 
 ### Isomorphic flow
@@ -87,4 +91,4 @@ $ npm run compile && npm start # restart this if you change the service worker
 - [ ] Actually build a simple UI
 - [ ] Forcibly update the app
 - [ ] Actual Benchmarks
-- [ ] Move all actual code into a library so people can't screw around
+- [X] Move all actual code into a library so people can't screw around
