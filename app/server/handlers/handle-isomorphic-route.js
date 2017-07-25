@@ -1,9 +1,7 @@
-const {matchBestRoute} = require('../../isomorphic/match-best-route');
 const {IsomorphicComponent} = require('../../isomorphic/component');
 const {generateRoutes} = require('../routes');
 const {renderLayout} = require('./render-layout');
 const {Provider} = require("react-redux");
-const urlLib = require("url");
 const _ = require("lodash");
 
 const React = require("react");
@@ -30,20 +28,7 @@ function loadData(pageType, params, config) {
     .then((data) => ({pageType: pageType, data: data, config: _.pick(config, WHITELIST_CONFIG_KEYS)}));
 }
 
-exports.handleIsomorphicDataLoad = function handleIsomorphicDataLoad(req, res, {config}) {
-  const url = urlLib.parse(req.query.path || "/");
-  const match = matchBestRoute(url.pathname, generateRoutes(config));
-  res.setHeader("Content-Type", "application/json");
-  if(match) {
-    return loadData(match.pageType, match.params, config)
-      .then((result) => res.status(200).json(result));
-  } else {
-    res.status(404).json({
-      error: {message: "Not Found"}
-    });
-    return new Promise((resolve) => resolve());
-  }
-};
+exports.loadData = loadData;
 
 exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config}) {
   const url = urlLib.parse(req.url);
@@ -66,9 +51,3 @@ exports.handleIsomorphicRoute = function handleIsomorphicRoute(req, res, {config
     return new Promise((resolve) => resolve());
   }
 };
-
-exports.handleIsomorphicShell = function handleIsomorphicShell(req, res, {config}) {
-  renderLayout(res.status(200), {
-    content: '<div class="app-loading"></div>'
-  });
-}
