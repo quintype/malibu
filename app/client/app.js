@@ -1,6 +1,6 @@
 import css from '../../app/assets/stylesheets/app.scss';
 
-import { createStore } from 'quintype-toddy-libs/store/create-store';
+import { createQtStore } from 'quintype-toddy-libs/store/create-store';
 import { renderIsomorphicComponent, renderBreakingNews, history, navigateToPage, getRouteData } from 'quintype-toddy-libs/client/start';
 import { NAVIGATE_TO_PAGE } from 'quintype-toddy-libs/store/actions';
 

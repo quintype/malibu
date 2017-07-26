@@ -3695,9 +3695,9 @@ quintype-js@^0.1.6:
   dependencies:
     lodash "^4.13.1"
 
-quintype-toddy-libs@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/quintype-toddy-libs/-/quintype-toddy-libs-0.2.5.tgz#be3b15137b409b53c103d9e3ee7d08def05104fc"
+quintype-toddy-libs@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/quintype-toddy-libs/-/quintype-toddy-libs-0.2.6.tgz#597ced934fa2f424e82314c15c79177f3bd765b1"
   dependencies:
     classnames "^2.2.5"
     http-proxy "^1.16.2"
