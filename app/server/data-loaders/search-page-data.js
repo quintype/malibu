@@ -1,6 +1,10 @@
 const {Story, client} = require("quintype-toddy-libs/server/api-client");
 
-exports.loadSearchPageData = function loadSearchPageData(){
-  return Story.getStories(client, 'top', {'section-id': '81', 'limit': '10'})
-    .then(stories => ({stories: stories.map(story => story.asJson())}));
+exports.loadSearchPageData = function loadSearchPageData(query) {
+  return Story.getSearch(client, {'q': query, 'limit': '20'})
+    .then(result => ({
+      stories: result.stories.map(story => story.asJson()),
+      total: result.total,
+      query: query
+    }));
 }
