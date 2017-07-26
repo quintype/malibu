@@ -15,7 +15,7 @@ import { BreakingNewsView } from '../isomorphic/components/breaking-news-view';
 function startApp() {
   getRouteData(window.location.pathname, {config: true})
     .then((result) => {
-      const store = createStore(null, result.body);
+      const store = createQtStore(null, result.body);
       renderIsomorphicComponent('container', store, pickComponent);
       renderBreakingNews('breaking-news-container', store, BreakingNewsView);
       history.listen(change => maybeNavigateTo(change.pathname, store));
