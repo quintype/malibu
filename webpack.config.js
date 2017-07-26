@@ -13,7 +13,7 @@ const OUTPUT_DIRECTORY = __dirname + `/public/${PUBLIC_PATH}`;
 const BABEL_PRESET = {
   loader: 'babel-loader',
   options: {
-    presets: ['es2015', 'react']
+    presets: ['es2015-tree-shaking', 'react']
   }
 };
 
