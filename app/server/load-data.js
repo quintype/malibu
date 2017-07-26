@@ -15,6 +15,7 @@ function loadData(pageType, params, config) {
       case "section-page": return loadSectionPageData(params.sectionId, config);
       case "tag-page": return loadTagPageData(params.tagSlug);
       case "search-page": return loadSearchPageData(params.searchQuery);
+      case "story-page": return loadStoryPageData(params);
       default: return Promise.resolve({stories: [{headline: "Foobar"}]})
     }
   }

@@ -1,8 +1,10 @@
 const React = require("react");
 
+const { BlankStory } = require("../story-templates/blank.jsx");
+
 class StoryPage extends React.Component {
   render() {
-    return <h1>{this.props.data.story.headline}</h1>;
+    return <BlankStory story={this.props.data.story}/>;
   }
 }
 
