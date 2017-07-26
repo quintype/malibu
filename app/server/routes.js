@@ -2,7 +2,8 @@ const {generateStoryPageRoutes, generateSectionPageRoutes} = require("quintype-t
 
 const STATIC_ROUTES = [
   {path: "/", pageType: "home-page", exact: true},
-  {path: "/topic/:topicSlug", pageType: "tag-page", exact: true, skipPWA: true}
+  {path: "/topic/:topicSlug", pageType: "tag-page", exact: true, skipPWA: true},
+  {path: "/search/:searchQuery", pageType: "search-page", exact: true, skipPWA: true},
 ];
 
 function generateRoutes(config) {

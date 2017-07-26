@@ -38,3 +38,5 @@ $ npm run compile && npm start # restart this if you change the service worker
 - [ ] Forcibly update the app
 - [ ] Actual Benchmarks
 - [X] Move all actual code into a library so people can't screw around
+- [ ] Not Found Handler
+- [ ] Valid Route, but data not found

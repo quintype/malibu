@@ -149,7 +149,7 @@ a {
     background: url("../images/gears.svg") no-repeat center center;
 }
 
-.homepage-story-item {
+.story-grid-item {
   box-sizing: border-box;
   display: block;
   background: white;
@@ -169,23 +169,18 @@ a {
   }
 }
 
-.homepage-story-item h2 {
+.story-grid-item h2 {
   font-size: 16px;
   text-align: center;
   height: 100px;
 }
 
-.homepage-story-item-image {
+.story-grid-item-image {
   width: 100%;
 }
 
-.homepage-story-author {
+.story-grid-author {
   display: block;
   font-size: 12px;
   float: right;
-}
-
-.sectionpage-story-item {
-  display: block;
-  color: green;
 }
