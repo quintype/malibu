@@ -34,7 +34,7 @@ const config = process.env.NODE_ENV == 'production' ? {
 module.exports = {
     entry: {
       app: "./app/client/app.js",
-      serviceWorkerHelper: "./app/client/serviceWorkerHelper.js"
+      serviceWorkerHelper: "./app/client/serviceWorkerHelper.sjs"
     },
     output: {
         path: OUTPUT_DIRECTORY,
@@ -61,5 +61,9 @@ module.exports = {
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development'}),
       new ExtractTextPlugin({ filename: config.cssFile, allChunks: true }),
       new ManifestPlugin({ fileName: '../../../asset-manifest.json', publicPath: PUBLIC_PATH, writeToFileEmit: true })
-    ].concat(config.compressJSPlugins)
+    ].concat(config.compressJSPlugins),
+
+    devServer: {
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }
 };

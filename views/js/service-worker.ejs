@@ -1,7 +1,12 @@
 <%- serviceWorkerHelper %>;
 
 const REQUIRED_ASSETS = [
-  '/shell.html'
+  {url: '/shell.html', revision: '1'},
+  <%_ const cssPath = assetPath("app.css") _%>
+  <%_ if(cssPath) { _%>
+  "<%= cssPath %>",
+  <%_ } _%>
+  "<%= assetPath("app.js") %>"
 ];
 
 initializeQServiceWorker(self, {
