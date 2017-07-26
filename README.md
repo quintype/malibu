@@ -28,14 +28,14 @@ $ npm run compile && npm start # restart this if you change the service worker
 
 - [X] Minify JS
 - [X] Add SASS support
-- [ ] Add Components
-- [ ] Load Data
+- [X] Add Components
+- [X] Load Data
 - [X] Isomorphic Rendering
 - [ ] Get CORS working with ServiceWorker (possibly fix black knight)
 - [ ] Get Preview to work
-- [ ] Get breaking news to work
-- [ ] Actually build a simple UI
-- [ ] Forcibly update the app
+- [X] Get breaking news to work
+- [X] Actually build a simple UI
+- [ ] Forcibly update the app when updates
 - [ ] Actual Benchmarks
 - [X] Move all actual code into a library so people can't screw around
 - [ ] Not Found Handler
