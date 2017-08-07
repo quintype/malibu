@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+yarn install
+yarn run compile
+supervisord -n -c <(cat <<EOF
+[supervisord]
+
+[program:app-server]
+command=yarn start
+stdout_events_enabled=true
+stderr_events_enabled=true
+stdout_logfile=/dev/stdout
+stderr_logfile=/dev/stderr
+stopasgroup=true
+
+[program:asset-server]
+command=yarn run asset-server
+stdout_events_enabled=true
+stderr_events_enabled=true
+stdout_logfile=/dev/stdout
+stderr_logfile=/dev/stderr
+stopasgroup=true
+EOF
+)

@@ -15,6 +15,13 @@ $ npm run asset-server    # start webkit hot loading server on port 8080. Does l
 $ npm start               # start the actual web server. Restart this if server side code changes
 ```
 
+#### Running with supervisord (local)
+
+```shell
+$ brew install supervisord
+$ ./run
+```
+
 ### Working on the service worker
 
 Unfortunately, the service-worker cannot be run with the asset-server. Instead, run
