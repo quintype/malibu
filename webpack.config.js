@@ -23,11 +23,15 @@ const config = process.env.NODE_ENV == 'production' ? {
     compressJSPlugins: [
       new UglifyJSPlugin()
     ],
+    outputPublicPath: PUBLIC_PATH,
   } : {
     outputFileName: (suffix) => `[name].${suffix}`,
     sassLoader: 'style-loader!css-loader!sass-loader',
     cssFile: `[name].css`,
-    compressJSPlugins: [],
+    compressJSPlugins: [
+      new webpack.NamedModulesPlugin()
+    ],
+    outputPublicPath: "http://localhost:8080" + PUBLIC_PATH,
   };
 
 module.exports = {
@@ -38,7 +42,7 @@ module.exports = {
     output: {
         path: OUTPUT_DIRECTORY,
         filename: config.outputFileName("js"),
-        publicPath: PUBLIC_PATH,
+        publicPath: config.outputPublicPath,
     },
     module: {
       rules: [

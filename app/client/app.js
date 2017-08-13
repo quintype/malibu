@@ -29,6 +29,6 @@ function maybeNavigateTo(path, store) {
 
 startApp();
 
-if(global.navigator.serviceWorker) {
+if(process.env.NODE_ENV == 'production' && global.navigator.serviceWorker) {
     global.navigator.serviceWorker.register("/service-worker.js");
 }

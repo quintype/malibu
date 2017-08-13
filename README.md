@@ -24,9 +24,10 @@ $ ./run
 
 ### Working on the service worker
 
-Unfortunately, the service-worker cannot be run with the asset-server. Instead, run
+Unfortunately, the service-worker cannot be run with the asset-server. Thus, the service worker is disabled in development mode. To work on the service worker, run
 
 ```shell
+$ vi app/client/app.js         # remove the check for process.env.NODE_ENV == 'production'
 $ vi config/publisher.yml      # remove the asset_host from publisher.yml
 $ npm run compile && npm start # restart this if you change the service worker
 ```
