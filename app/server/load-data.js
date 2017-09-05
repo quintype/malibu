@@ -8,6 +8,15 @@ const {loadSearchPageData} = require("./data-loaders/search-page-data");
 
 const WHITELIST_CONFIG_KEYS = ['cdn-image'];
 
+function loadErrorData(error) {
+  const errorComponents = { 404 : "not-found" };
+  return Promise.resolve({
+    data: null,
+    config: _.pick(config, WHITELIST_CONFIG_KEYS),
+    pageType : errorComponents[error.httpStatusCode]
+  })
+}
+
 function loadData(pageType, params, config) {
   function _loadData() {
     switch (pageType) {
