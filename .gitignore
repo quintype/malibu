@@ -60,3 +60,4 @@ typings/
 /public/toddy
 /webpack-assets.json
 /asset-manifest.json
+/package-lock.json
