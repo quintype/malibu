@@ -2960,7 +2960,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.4:
+"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.4, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -3995,6 +3995,12 @@ quintype-js@^0.1.6:
   resolved "https://registry.yarnpkg.com/quintype-js/-/quintype-js-0.1.6.tgz#0e0c8ef3623beb34854d783a209b14d79c6b6c82"
   dependencies:
     lodash "^4.13.1"
+
+quintype-seo-node@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/quintype-seo-node/-/quintype-seo-node-0.1.6.tgz#18bede03cf06d3557f7fbfa0a9ae4b3ad9edfde6"
+  dependencies:
+    lodash "^4.16.4"
 
 quintype-toddy-libs@^0.2.9:
   version "0.2.12"

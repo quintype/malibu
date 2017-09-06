@@ -7,8 +7,9 @@ const {upstreamQuintypeRoutes, isomorphicRoutes} = require("quintype-toddy-libs/
 
 const {generateRoutes} = require('./routes');
 const {renderLayout} = require("./handlers/render-layout");
-const {loadData} = require("./load-data");
+const {loadData, loadErrorData} = require("./load-data");
 const {pickComponent} = require("../isomorphic/pick-component");
+const SEO = require("./SEO");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -21,6 +22,8 @@ isomorphicRoutes(app, {
   loadData: loadData,
   pickComponent: pickComponent,
   renderLayout: renderLayout,
+  loadErrorData: loadErrorData,
+  loadSeoData: (config, pageType, data) => new SEO(config, data).getMetaTags(pageType)
 });
 
 module.exports = function startApp() {

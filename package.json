@@ -15,6 +15,7 @@
     "js-yaml": "^3.9.0",
     "node-jsx": "^0.13.3",
     "quintype-js": "^0.1.6",
+    "quintype-seo-node": "^0.1.6",
     "quintype-toddy-libs": "^0.2.9",
     "react": "^15.6.1",
     "sleep-promise": "^2.0.0",
