@@ -2,6 +2,7 @@ const _ = require("lodash");
 
 const {loadHomePageData} = require("./data-loaders/home-page-data");
 const {loadStoryPageData} = require("./data-loaders/story-page-data");
+const {loadStoryPublicPreviewPageData} = require("./data-loaders/story-public-preview-page-data");
 const {loadSectionPageData} = require("./data-loaders/section-page-data");
 const {loadTagPageData} = require("./data-loaders/tag-page-data");
 const {loadSearchPageData} = require("./data-loaders/search-page-data");
@@ -16,6 +17,7 @@ function loadData(pageType, params, config) {
       case "tag-page": return loadTagPageData(params.tagSlug);
       case "search-page": return loadSearchPageData(params.searchQuery);
       case "story-page": return loadStoryPageData(params);
+      case "story-public-preview-page": return loadStoryPublicPreviewPageData(params);
       default: return Promise.resolve({stories: [{headline: "Foobar"}]})
     }
   }
