@@ -1,7 +1,7 @@
 import css from '../../app/assets/stylesheets/app.scss';
 
 import { createQtStore } from 'quintype-toddy-libs/store/create-store';
-import { history, navigateToPage, getRouteData } from 'quintype-toddy-libs/client/start';
+import { history, navigateToPage, maybeNavigateTo, getRouteData } from 'quintype-toddy-libs/client/start';
 import { NAVIGATE_TO_PAGE } from 'quintype-toddy-libs/store/actions';
 
 global.Promise = global.Promise || require("bluebird");
@@ -23,11 +23,6 @@ function startApp() {
         module.hot.accept('./render', () => renderApplication(store));
       }
     });
-}
-
-function maybeNavigateTo(path, store) {
-  if(store.getState().currentPath != path)
-    navigateToPage(store.dispatch, path, true);
 }
 
 startApp();

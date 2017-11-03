@@ -16,7 +16,7 @@
     "node-jsx": "^0.13.3",
     "quintype-js": "^0.1.6",
     "quintype-seo-node": "^0.1.6",
-    "quintype-toddy-libs": "^0.2.9",
+    "quintype-toddy-libs": "^0.3.0",
     "react": "^15.6.1",
     "sleep-promise": "^2.0.0",
     "superagent": "^3.5.2",
