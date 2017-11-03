@@ -6,11 +6,15 @@ const REQUIRED_ASSETS = [
   <%_ if(cssPath) { _%>
   "<%= cssPath %>",
   <%_ } _%>
-  "<%= assetPath("app.js") %>"
+  "<%= assetPath("app.js") %>",
+  "<%= assetPath("pw_maze_white.png") %>",
+  "<%= assetPath("gears.svg") %>",
 ];
 
-initializeQServiceWorker(self, {
+const workbox = initializeQServiceWorker(self, {
   routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
   hostname: <%- JSON.stringify(hostname) %>
 });
+
+workbox.router.registerRoute('/route-data.json', workbox.strategies.networkFirst());
