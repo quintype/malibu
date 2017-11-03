@@ -2,6 +2,7 @@ const React = require("react");
 
 const { Link } = require("quintype-toddy-libs/components/link");
 const { ResponsiveImage } = require("quintype-toddy-libs/components/responsive-image");
+const { ClientSideOnly } = require("quintype-toddy-libs/components/client-side-only");
 
 function StoryGridStoryItem(props) {
   return <Link href={"/" + props.story.slug} className="story-grid-item">
@@ -19,6 +20,7 @@ function StoryGridStoryItem(props) {
 function StoryGrid(props) {
   return <div className="story-grid">
     {props.stories.map((story, index) => <StoryGridStoryItem story={story} key={index}></StoryGridStoryItem>)}
+    <ClientSideOnly/>
   </div>;
 }
 
