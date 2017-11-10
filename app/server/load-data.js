@@ -19,15 +19,15 @@ function loadErrorData(error) {
   })
 }
 
-function loadData(pageType, params, config) {
+function loadData(pageType, params, config, client) {
   function _loadData() {
     switch (pageType) {
-      case PAGE_TYPE.HOME_PAGE: return loadHomePageData();
-      case PAGE_TYPE.SECTION_PAGE: return loadSectionPageData(params.sectionId, config);
-      case PAGE_TYPE.TAG_PAGE: return loadTagPageData(params.tagSlug);
-      case PAGE_TYPE.SECTION_PAGE: return loadSearchPageData(params.searchQuery);
-      case PAGE_TYPE.STORY_PAGE: return loadStoryPageData(params);
-      case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE: return loadStoryPublicPreviewPageData(params);
+      case PAGE_TYPE.HOME_PAGE: return loadHomePageData(client);
+      case PAGE_TYPE.SECTION_PAGE: return loadSectionPageData(client, params.sectionId, config);
+      case PAGE_TYPE.TAG_PAGE: return loadTagPageData(client, params.tagSlug);
+      case PAGE_TYPE.SECTION_PAGE: return loadSearchPageData(client, params.searchQuery);
+      case PAGE_TYPE.STORY_PAGE: return loadStoryPageData(client, params);
+      case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE: return loadStoryPublicPreviewPageData(client, params);
       default: return Promise.resolve({stories: [{headline: "Foobar"}]})
     }
   }
@@ -40,7 +40,7 @@ function loadData(pageType, params, config) {
         data: data,
         config: _.pick(config, WHITELIST_CONFIG_KEYS)
       };
-    });    
+    });
 }
 
 exports.loadData = loadData;

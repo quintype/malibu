@@ -2,7 +2,7 @@ const compression = require('compression');
 const express = require('express');
 const app = express();
 
-const client = require("quintype-toddy-libs/server/api-client");
+const {initializeAllClients} = require("quintype-toddy-libs/server/api-client");
 const {upstreamQuintypeRoutes, isomorphicRoutes} = require("quintype-toddy-libs/server/routes");
 
 const {generateRoutes} = require('./routes');
@@ -27,7 +27,7 @@ isomorphicRoutes(app, {
 });
 
 module.exports = function startApp() {
-  return client.getConfig()
+  return initializeAllClients()
     .then(function() {
        app.listen(3000, function () {
          console.log('Example app listening on port 3000!');
