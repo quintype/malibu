@@ -13,9 +13,10 @@ if(cluster.isMaster) {
 } else {
   require('node-jsx').install();
   var startApp = require("./app/server/server.js");
-  startApp().catch(function() {
+  startApp().catch(function(e) {
     var sleep = require("sleep-promise");
-    console.log("Worker died - Aborting");
+    console.error("Worker died - Aborting");
+    console.error(e.stack);
     return new Promise((resolve) => resolve(cluster.worker.disconnect()))
       .then(() => sleep(250))
       .then(() => process.exit());

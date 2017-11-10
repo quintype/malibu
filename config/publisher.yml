@@ -2,3 +2,6 @@ asset_host: http://localhost:8080
 sketches_host: http://sketches.quintype.com
 host_to_api_host:
   help.lvh.me: http://help.quintype.com
+host_to_automatic_api_host:
+  - "-web"
+  - ".malibu"
