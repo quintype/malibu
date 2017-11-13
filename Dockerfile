@@ -9,10 +9,11 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json yarn.lock /app/
-RUN npm install -g yarn && \
-    yarn install --cache-folder /app/yarn-cache
-
+RUN yarn install --cache-folder /app/yarn-cache
 ENV NODE_ENV production
+
+# Everything above should be cached by docker. The below should run on every build
+
 COPY . /app
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
     yarn run compile && \
@@ -30,11 +31,12 @@ RUN apk update && \
     adduser -S -g app app
 
 ENV NODE_ENV production
+WORKDIR /app
+
+# Everything above should be cached by docker. The below should run on every build
 COPY --from=build /app /app
 RUN chown -R app:app /app
-
 USER app
-WORKDIR /app
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "start.js"]
