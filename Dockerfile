@@ -1,5 +1,4 @@
 FROM node:8.9-alpine AS build
-
 MAINTAINER Quintype Developers <dev-core@quintype.com>
 
 RUN apk update && \
@@ -22,7 +21,6 @@ RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %a
     rm -rf /app/yarn-cache /app/.git
 
 FROM node:8.9-alpine
-
 MAINTAINER Quintype Developers <dev-core@quintype.com>
 
 RUN apk update && \
