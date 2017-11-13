@@ -22,12 +22,12 @@ function loadErrorData(error) {
 function loadData(pageType, params, config, client) {
   function _loadData() {
     switch (pageType) {
-      case PAGE_TYPE.HOME_PAGE: return loadHomePageData(client);
+      case PAGE_TYPE.HOME_PAGE: return loadHomePageData(client, config);
       case PAGE_TYPE.SECTION_PAGE: return loadSectionPageData(client, params.sectionId, config);
-      case PAGE_TYPE.TAG_PAGE: return loadTagPageData(client, params.tagSlug);
-      case PAGE_TYPE.SECTION_PAGE: return loadSearchPageData(client, params.searchQuery);
-      case PAGE_TYPE.STORY_PAGE: return loadStoryPageData(client, params);
-      case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE: return loadStoryPublicPreviewPageData(client, params);
+      case PAGE_TYPE.TAG_PAGE: return loadTagPageData(client, params.tagSlug, config);
+      case PAGE_TYPE.SECTION_PAGE: return loadSearchPageData(client, params.searchQuery, config);
+      case PAGE_TYPE.STORY_PAGE: return loadStoryPageData(client, params, config);
+      case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE: return loadStoryPublicPreviewPageData(client, params, config);
       default: return Promise.resolve({stories: [{headline: "Foobar"}]})
     }
   }
