@@ -1,5 +1,4 @@
 FROM node:8.9-alpine AS build
-MAINTAINER Quintype Developers <dev-core@quintype.com>
 
 RUN apk update && \
     apk add git
