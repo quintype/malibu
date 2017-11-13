@@ -18,8 +18,8 @@ COPY . /app
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
     yarn run compile && \
     rm -rf .node-modules && \
-    yarn install --production --cache-folder /app/yarn-cache && \
-    rm -rf /app/yarn-cache
+    yarn install --ignore-optionals --production --cache-folder /app/yarn-cache && \
+    rm -rf /app/yarn-cache /app/.git
 
 FROM node:8.9-alpine
 
