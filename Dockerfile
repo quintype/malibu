@@ -13,7 +13,7 @@ ENV NODE_ENV production
 
 # Everything above should be cached by docker. The below should run on every build
 
-COPY . /app
+COPY . /app/
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
     yarn run compile && \
     rm -rf .node-modules && \
