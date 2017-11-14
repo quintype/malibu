@@ -8,7 +8,7 @@ const {loadTagPageData} = require("./data-loaders/tag-page-data");
 const {loadSearchPageData} = require("./data-loaders/search-page-data");
 const {PAGE_TYPE} = require("./constants");
 
-const WHITELIST_CONFIG_KEYS = ['cdn-image'];
+const WHITELIST_CONFIG_KEYS = ['cdn-image', 'polltype-host'];
 
 function loadErrorData(error) {
   const errorComponents = { 404 : "not-found" };
