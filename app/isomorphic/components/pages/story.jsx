@@ -1,7 +1,7 @@
 const React = require("react");
 
 const { BlankStory } = require("../story-templates/blank.jsx");
-const { StoryPageWithInfiniteScroll } = require("./story-page-with-infinite-scroll.jsx");
+const { InfiniteStoryBase } = require("quintype-toddy-libs/components/infinite-story-base");
 
 function StoryPageBase({index, story}) {
   return <BlankStory story={story} index={index} />
@@ -15,11 +15,11 @@ function storyPageLoadStories(pageNumber) {
 }
 
 function StoryPage(props) {
-  return <StoryPageWithInfiniteScroll {...props}
-                                      render={StoryPageBase}
-                                      loadStories={storyPageLoadStories}
-                                      onStoryFocus={(story) => console.log(`Story In View: ${story.headline}`)}
-                                      onInitialStoryFocus={(story) => console.log(`Do Analytics ${story.headline}`)} />
+  return <InfiniteStoryBase {...props}
+                            render={StoryPageBase}
+                            loadStories={storyPageLoadStories}
+                            onStoryFocus={(story) => console.log(`Story In View: ${story.headline}`)}
+                            onInitialStoryFocus={(story) => console.log(`Do Analytics ${story.headline}`)} />
 }
 
 exports.StoryPage = StoryPage;

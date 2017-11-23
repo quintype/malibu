@@ -3982,7 +3982,7 @@ querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
-quintype-backend@^0.4.0:
+quintype-backend@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/quintype-backend/-/quintype-backend-0.4.1.tgz#7817c42244aa11af7f7a720e148893b1e1f63eba"
   dependencies:
@@ -4002,9 +4002,9 @@ quintype-seo-node@^0.1.6:
   dependencies:
     lodash "^4.16.4"
 
-quintype-toddy-libs@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/quintype-toddy-libs/-/quintype-toddy-libs-1.0.1.tgz#19ac3aa0756e6a8ddf1bd93683e0b6120943a408"
+quintype-toddy-libs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/quintype-toddy-libs/-/quintype-toddy-libs-1.1.0.tgz#b282d767a348d7d81e78a6af81ae7e0e8dd87e45"
   dependencies:
     atob "^2.0.3"
     classnames "^2.2.5"
@@ -4012,7 +4012,7 @@ quintype-toddy-libs@^1.0.1:
     http-proxy "^1.16.2"
     js-yaml "^3.9.0"
     lodash "^4.17.4"
-    quintype-backend "^0.4.0"
+    quintype-backend "^0.4.1"
     quintype-js "^0.1.6"
     react "^15.6.1"
     react-dom "^15.6.1"
