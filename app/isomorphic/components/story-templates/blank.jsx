@@ -21,6 +21,7 @@ function BlankStoryTemplate(props) {
       <h1>{props.story.headline}</h1>
       <span className="blank-story-author">{props.story['author-name']}</span>
       {props.story.cards.map((card, index) => <StoryCard key={index} card={card} story={props.story}/>)}
+      <div className="space-before-next-story" style={{minHeight: 100}}/>
     </div>;
 }
 

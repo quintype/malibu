@@ -1,12 +1,22 @@
 import css from '../../app/assets/stylesheets/app.scss';
 
 import { createQtStore } from 'quintype-toddy-libs/store/create-store';
-import { history, navigateToPage, maybeNavigateTo, getRouteData } from 'quintype-toddy-libs/client/start';
+import { history, navigateToPage, maybeNavigateTo, getRouteData, app } from 'quintype-toddy-libs/client/start';
 import { NAVIGATE_TO_PAGE } from 'quintype-toddy-libs/store/actions';
 
 global.Promise = global.Promise || require("bluebird");
 global.superagent = require('superagent-promise')(require('superagent'), Promise);
 global.navigateToPage = navigateToPage;
+
+global.app = app || {};
+
+global.app.maybeSetUrl = function maybeSetUrl(path, title) {
+  if(global.location.pathname == path)
+    return;
+  console.log(null, title, path);
+  global.history.pushState && global.history.pushState(null, title, path);
+  global.window.document.title = title;
+}
 
 import { renderApplication } from './render'
 
