@@ -8,7 +8,8 @@ class StoryPageWithInfiniteScroll extends React.Component {
     this.state = {
       moreStories: [],
       loading: false,
-      pageNumber: 0
+      pageNumber: 0,
+      seenStoryIds: [props.data.story.id]
     }
   }
 
@@ -21,9 +22,17 @@ class StoryPageWithInfiniteScroll extends React.Component {
     return stories.filter(story => !existingStoryIds.includes(story.id));
   }
 
-  navigateToStory(index) {
+  onFocus(index) {
     const story = this.allStories()[index];
     global.app.maybeSetUrl("/" + story.slug, story.headline);
+
+    this.props.onStoryFocus && this.props.onStoryFocus(story, index);
+
+    if(!this.state.seenStoryIds.includes(story.id)) {
+      this.setState({seenStoryIds: this.state.seenStoryIds.concat([story.id])}, () => {
+        this.props.onInitialStoryFocus && this.props.onInitialStoryFocus(story, index);
+      })
+    }
   }
 
   loadMore() {
@@ -45,8 +54,8 @@ class StoryPageWithInfiniteScroll extends React.Component {
                            items={this.allStories().map(story => ({story: story}))}
                            loadNext={() => this.loadMore()}
                            loadMargin={this.props.loadMargin || "200px 0px 500px"}
-                           focusCallbackAt={20}
-                           focusCallback={(index) => this.navigateToStory(index)}/>
+                           focusCallbackAt={this.props.focusCallbackAt || 20}
+                           onFocus={(index) => this.onFocus(index)}/>
   }
 }
 

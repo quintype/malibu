@@ -52,8 +52,7 @@ class InfiniteScrollBase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibleComponents: {0: true},
-      itemCount: 1
+      visibleComponents: {0: true}
     }
     if(global.IntersectionObserver) {
       this.loadObserver = new IntersectionObserver((x) => this.intersectionCallback(x), {
@@ -114,7 +113,7 @@ function withFocusObserver(Component) {
       entries.forEach(entry => {
         const item = entry.target.getAttribute("data-infinite-scroll");
         if(entry.isIntersecting) {
-          this.props.focusCallback(item)
+          this.props.onFocus(item)
         }
       });
     }

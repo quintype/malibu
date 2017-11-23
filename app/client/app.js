@@ -13,7 +13,6 @@ global.app = app || {};
 global.app.maybeSetUrl = function maybeSetUrl(path, title) {
   if(global.location.pathname == path)
     return;
-  console.log(null, title, path);
   global.history.pushState && global.history.pushState(null, title, path);
   global.window.document.title = title;
 }
