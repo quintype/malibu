@@ -15,7 +15,7 @@ ENV NODE_ENV production
 COPY . /app/
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
     yarn run compile && \
-    rm -rf .node-modules && \
+    rm -rf node-modules && \
     yarn install --ignore-optionals --production --cache-folder /app/yarn-cache && \
     rm -rf /app/yarn-cache /app/.git
 
