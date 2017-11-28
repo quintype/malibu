@@ -18,6 +18,7 @@
     "quintype-seo-node": "^0.3.1",
     "quintype-toddy-libs": "^1.3.0",
     "react": "^16.1.1",
+    "react-soundcloud-widget": "git://github.com/gja/react-soundcloud-widget",
     "sleep-promise": "^2.0.0",
     "superagent": "^3.8.1",
     "superagent-promise": "^1.1.0"
@@ -29,6 +30,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2015-tree-shaking": "^1.0.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
