@@ -1,8 +1,8 @@
 import css from '../../app/assets/stylesheets/app.scss';
 
-import { createQtStore } from 'quintype-toddy-libs/store/create-store';
-import { history, getRouteData, app } from 'quintype-toddy-libs/client/start';
-import { NAVIGATE_TO_PAGE } from 'quintype-toddy-libs/store/actions';
+import { createQtStore } from '@quintype/framework/store/create-store';
+import { history, getRouteData, app } from '@quintype/framework/client/start';
+import { NAVIGATE_TO_PAGE } from '@quintype/framework/store/actions';
 
 global.Promise = global.Promise || require("bluebird");
 global.superagent = require('superagent-promise')(require('superagent'), Promise);

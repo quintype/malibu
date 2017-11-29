@@ -2,8 +2,8 @@ const compression = require('compression');
 const express = require('express');
 const app = express();
 
-const {initializeAllClients} = require("quintype-toddy-libs/server/api-client");
-const {upstreamQuintypeRoutes, isomorphicRoutes} = require("quintype-toddy-libs/server/routes");
+const {initializeAllClients} = require("@quintype/framework/server/api-client");
+const {upstreamQuintypeRoutes, isomorphicRoutes} = require("@quintype/framework/server/routes");
 
 const {generateRoutes} = require('./routes');
 const {renderLayout} = require("./handlers/render-layout");

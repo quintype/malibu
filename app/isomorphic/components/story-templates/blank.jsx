@@ -1,8 +1,8 @@
 const React = require("react");
 
-const { Link } = require("quintype-toddy-libs/components/link");
-const { ResponsiveImage } = require("quintype-toddy-libs/components/responsive-image");
-const { StoryElement } = require("quintype-toddy-libs/components/story-element");
+const { Link } = require("@quintype/framework/components/link");
+const { ResponsiveImage } = require("@quintype/framework/components/responsive-image");
+const { StoryElement } = require("@quintype/framework/components/story-element");
 
 function StoryCard(props){
   return <div>

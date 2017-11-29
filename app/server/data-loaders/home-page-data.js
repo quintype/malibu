@@ -1,5 +1,5 @@
-const {Story, Collection} = require("quintype-toddy-libs/server/api-client");
-const {storyToCacheKey} = require("quintype-toddy-libs/server/caching");
+const {Story, Collection} = require("@quintype/framework/server/api-client");
+const {storyToCacheKey} = require("@quintype/framework/server/caching");
 
 exports.loadHomePageData = function loadHomePageData(client, config){
   return Collection.getCollectionBySlug(client, 'home', {'item-type': 'story', 'limit': 20})

@@ -4,7 +4,7 @@ This will probably get renamed to toddy when it gets feature parity (soon)
 
 ## toddy-libs
 
-IMPORTANT: This app implements very little functionality in the app itself. The majority of functionality is built into the [toddy-libs](https://github.com/quintype/quintype-toddy-libs) repository.
+IMPORTANT: This app implements very little functionality in the app itself. The majority of functionality is built into the [toddy-libs](https://github.com/quintype/quintype-node-framework) repository.
 
 ## Running in development mode
 

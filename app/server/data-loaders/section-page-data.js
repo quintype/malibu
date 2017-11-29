@@ -1,5 +1,5 @@
-const {Story} = require("quintype-toddy-libs/server/api-client");
-const {sorterToCacheKey, storyToCacheKey} = require("quintype-toddy-libs/server/caching");
+const {Story} = require("@quintype/framework/server/api-client");
+const {sorterToCacheKey, storyToCacheKey} = require("@quintype/framework/server/caching");
 
 exports.loadSectionPageData = function loadSectionPageData(client, sectionId, config) {
   return Story.getStories(client, 'top', {'section-id': sectionId, 'limit': '20'})

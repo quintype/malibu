@@ -1,5 +1,5 @@
-const {Story} = require("quintype-toddy-libs/server/api-client");
-const {storyToCacheKey} = require("quintype-toddy-libs/server/caching");
+const {Story} = require("@quintype/framework/server/api-client");
+const {storyToCacheKey} = require("@quintype/framework/server/caching");
 
 exports.loadTagPageData = function loadTagPageData(client, tagSlug, config) {
   return Story.getStories(client, 'top', {'tag': tagSlug, 'limit': '20'})

@@ -1,2 +1,2 @@
-import { initializeQServiceWorker } from 'quintype-toddy-libs/client/service-worker-helper'
+import { initializeQServiceWorker } from '@quintype/framework/client/service-worker-helper'
 global.initializeQServiceWorker = initializeQServiceWorker;

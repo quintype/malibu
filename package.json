@@ -7,6 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
+    "@quintype/framework": "^1.5.0",
     "bluebird": "^3.5.1",
     "cluster": "^0.7.7",
     "compression": "^1.7.1",
@@ -16,7 +17,6 @@
     "node-jsx": "^0.13.3",
     "quintype-js": "^0.1.6",
     "quintype-seo-node": "^0.3.1",
-    "quintype-toddy-libs": "^1.4.0",
     "react": "^16.1.1",
     "sleep-promise": "^2.0.0",
     "superagent": "^3.8.1",

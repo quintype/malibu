@@ -1,4 +1,4 @@
-const {generateStoryPageRoutes, generateSectionPageRoutes} = require("quintype-toddy-libs/server/generate-routes");
+const {generateStoryPageRoutes, generateSectionPageRoutes} = require("@quintype/framework/server/generate-routes");
 
 const STATIC_ROUTES = [
   {path: "/", pageType: "home-page", exact: true},

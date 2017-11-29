@@ -1,4 +1,4 @@
-const {Story} = require("quintype-toddy-libs/server/api-client");
+const {Story} = require("@quintype/framework/server/api-client");
 
 exports.loadStoryPageData = function loadStoryPageData(client,  params, config){
   return Story.getStoryBySlug(client, params.storySlug)

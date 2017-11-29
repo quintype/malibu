@@ -1,8 +1,8 @@
 const React = require("react");
 
-const { Link } = require("quintype-toddy-libs/components/link");
-const { ResponsiveImage } = require("quintype-toddy-libs/components/responsive-image");
-const { ClientSideOnly } = require("quintype-toddy-libs/components/client-side-only");
+const { Link } = require("@quintype/framework/components/link");
+const { ResponsiveImage } = require("@quintype/framework/components/responsive-image");
+const { ClientSideOnly } = require("@quintype/framework/components/client-side-only");
 
 function StoryGridStoryItem(props) {
   return <Link href={"/" + props.story.slug} className="story-grid-item">
