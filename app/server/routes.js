@@ -10,7 +10,7 @@ const STATIC_ROUTES = [
 ];
 
 function generateRoutes(config) {
-  return STATIC_ROUTES.concat(generateSectionPageRoutes(config), generateStoryPageRoutes(config));
+  return STATIC_ROUTES.concat(generateSectionPageRoutes(config, {addSectionPrefix: true}), generateStoryPageRoutes(config));
 }
 
 exports.generateRoutes = generateRoutes;

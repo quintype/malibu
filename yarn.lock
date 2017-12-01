@@ -4264,9 +4264,9 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-"react-soundcloud-widget@git://github.com/gja/react-soundcloud-widget.git":
+"react-soundcloud-widget@git://github.com/gja/react-soundcloud-widget":
   version "2.0.4"
-  resolved "git://github.com/gja/react-soundcloud-widget.git#d42fab3c25cbab19aa38eab9dc33936acfed6ca8"
+  resolved "git://github.com/gja/react-soundcloud-widget#d42fab3c25cbab19aa38eab9dc33936acfed6ca8"
   dependencies:
     load-script "^1.0.0"
 
