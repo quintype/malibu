@@ -1,8 +1,6 @@
 const React = require("react");
 
-const { Link } = require("@quintype/framework/components/link");
-const { ResponsiveImage } = require("@quintype/framework/components/responsive-image");
-const { StoryElement } = require("@quintype/framework/components/story-element");
+const { Link, ResponsiveImage, StoryElement } = require("@quintype/components");
 
 function StoryCard(props){
   return <div>

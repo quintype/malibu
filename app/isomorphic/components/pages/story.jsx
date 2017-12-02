@@ -1,7 +1,7 @@
 const React = require("react");
 
 const { BlankStory } = require("../story-templates/blank.jsx");
-const { InfiniteStoryBase } = require("@quintype/framework/components/infinite-story-base");
+const { InfiniteStoryBase } = require("@quintype/components");
 
 function StoryPageBase({index, story, otherProp}) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0

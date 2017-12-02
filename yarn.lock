@@ -2,13 +2,29 @@
 # yarn lockfile v1
 
 
-"@quintype/framework@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-1.7.0.tgz#30829b63717c0d165b600154bf9851585b3434b9"
+"@quintype/components@^1.0.7", "@quintype/components@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@quintype/components/-/components-1.0.8.tgz#ecc0a73c3ef57b947124f099adfe3045beab1ffc"
   dependencies:
-    atob "^2.0.3"
-    bluebird "^3.5.1"
     classnames "^2.2.5"
+    get-youtube-id "^1.0.0"
+    lodash "^4.17.4"
+    prop-types "^15.6.0"
+    quintype-js "^0.1.6"
+    react "^16.2.0"
+    react-redux "^5.0.6"
+    react-soundcloud-widget "git://github.com/gja/react-soundcloud-widget"
+    react-youtube "^7.5.0"
+    redux "^3.7.2"
+    superagent-bluebird-promise "^4.2.0"
+    url "^0.11.0"
+
+"@quintype/framework@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.0.0.tgz#0e26221f3325510f0b60b029d4dfb48a4c9ebb65"
+  dependencies:
+    "@quintype/components" "^1.0.7"
+    atob "^2.0.3"
     cluster "^0.7.7"
     get-youtube-id "^1.0.0"
     http-proxy "^1.16.2"
@@ -21,8 +37,6 @@
     react-dom "^16.1.1"
     react-redux "^5.0.6"
     react-router "^4.2.0"
-    react-soundcloud-widget "git://github.com/gja/react-soundcloud-widget"
-    react-youtube "^7.5.0"
     redux "^3.7.2"
     sleep-promise "^2.0.0"
     url "^0.11.0"
@@ -937,7 +951,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.5.0, bluebird@^3.5.1:
+bluebird@^3.5.0:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -4551,6 +4565,15 @@ react@^16.1.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react@^16.2.0:
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
@@ -5280,6 +5303,10 @@ style-loader@^0.19.0:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
+
+superagent-bluebird-promise@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/superagent-bluebird-promise/-/superagent-bluebird-promise-4.2.0.tgz#0b6a6872cc830371cb9f4172dd0510751abd16b2"
 
 superagent-promise@^1.1.0:
   version "1.1.0"
