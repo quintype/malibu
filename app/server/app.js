@@ -26,11 +26,4 @@ isomorphicRoutes(app, {
   loadSeoData: (config, pageType, data) => new SEO(config, data).getMetaTags(pageType)
 });
 
-module.exports = function startApp() {
-  return initializeAllClients()
-    .then(function() {
-       app.listen(3000, function () {
-         console.log('Example app listening on port 3000!');
-       });
-    });
-}
+module.exports = app;

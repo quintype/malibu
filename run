@@ -6,7 +6,7 @@ supervisord -n -c <(cat <<EOF
 [supervisord]
 
 [program:app-server]
-command=yarn start
+command=yarn run dev-server
 stdout_events_enabled=true
 stderr_events_enabled=true
 stdout_logfile=/dev/stdout
