@@ -15,7 +15,7 @@ ENV NODE_ENV production
 COPY . /app/
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
     yarn run compile && \
-    ./node_modules/.bin/babel app -d app --presets react --plugins transform-es2015-modules-commonjs && \
+    ./node_modules/.bin/quintype-build && \
     rm -rf node-modules && \
     yarn install --ignore-optionals --production --cache-folder /app/yarn-cache && \
     rm -rf /app/yarn-cache /app/.git

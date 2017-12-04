@@ -2,7 +2,18 @@
 # yarn lockfile v1
 
 
-"@quintype/components@^1.0.7", "@quintype/components@^1.0.8":
+"@quintype/build@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@quintype/build/-/build-1.0.6.tgz#af74059eea9713ddc3475e1816e2d4263497b62f"
+  dependencies:
+    babel-register "^6.26.0"
+    extract-text-webpack-plugin "^3.0.2"
+    path "^0.12.7"
+    process "^0.11.10"
+    uglifyjs-webpack-plugin "^1.1.2"
+    webpack-manifest-plugin "^1.3.2"
+
+"@quintype/components@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@quintype/components/-/components-1.0.8.tgz#ecc0a73c3ef57b947124f099adfe3045beab1ffc"
   dependencies:
@@ -19,12 +30,13 @@
     superagent-bluebird-promise "^4.2.0"
     url "^0.11.0"
 
-"@quintype/framework@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.0.0.tgz#0e26221f3325510f0b60b029d4dfb48a4c9ebb65"
+"@quintype/framework@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-1.8.0.tgz#cb06ab0777ffb63248656f69b8a4c40ae90520a8"
   dependencies:
-    "@quintype/components" "^1.0.7"
     atob "^2.0.3"
+    bluebird "^3.5.1"
+    classnames "^2.2.5"
     cluster "^0.7.7"
     get-youtube-id "^1.0.0"
     http-proxy "^1.16.2"
@@ -37,6 +49,8 @@
     react-dom "^16.1.1"
     react-redux "^5.0.6"
     react-router "^4.2.0"
+    react-soundcloud-widget "git://github.com/gja/react-soundcloud-widget"
+    react-youtube "^7.5.0"
     redux "^3.7.2"
     sleep-promise "^2.0.0"
     url "^0.11.0"
@@ -980,7 +994,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.5.0:
+bluebird@^3.5.0, bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -4045,6 +4059,13 @@ path-type@^2.0.0:
   dependencies:
     pify "^2.0.0"
 
+path@^0.12.7:
+  version "0.12.7"
+  resolved "https://registry.yarnpkg.com/path/-/path-0.12.7.tgz#d4dc2a506c4ce2197eb481ebfcd5b36c0140b10f"
+  dependencies:
+    process "^0.11.1"
+    util "^0.10.3"
+
 pause-stream@0.0.11:
   version "0.0.11"
   resolved "https://registry.yarnpkg.com/pause-stream/-/pause-stream-0.0.11.tgz#fe5a34b0cbce12b5aa6a2b403ee2e73b602f1445"
@@ -4363,7 +4384,7 @@ process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
 
-process@^0.11.10:
+process@^0.11.1, process@^0.11.10:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
@@ -4559,17 +4580,6 @@ react-redux@^5.0.6:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
-
-react-router-dom@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
-  dependencies:
-    history "^4.7.2"
-    invariant "^2.2.2"
-    loose-envify "^1.3.1"
-    prop-types "^15.5.4"
-    react-router "^4.2.0"
-    warning "^3.0.0"
 
 react-router@^4.2.0:
   version "4.2.0"
@@ -5544,6 +5554,13 @@ uglify-es@^3.1.3:
     commander "~2.12.1"
     source-map "~0.6.1"
 
+uglify-es@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.2.1.tgz#93de0aad8a1bb629c8a316f686351bc4d6ece687"
+  dependencies:
+    commander "~2.12.1"
+    source-map "~0.6.1"
+
 uglify-js@^2.8.29:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
@@ -5574,6 +5591,18 @@ uglifyjs-webpack-plugin@^1.1.1:
     schema-utils "^0.3.0"
     source-map "^0.6.1"
     uglify-es "^3.1.3"
+    webpack-sources "^1.0.1"
+    worker-farm "^1.4.1"
+
+uglifyjs-webpack-plugin@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.1.2.tgz#8a9abc238d01a33daaf86fa9a84c7ebc1e67b0f9"
+  dependencies:
+    cacache "^10.0.0"
+    find-cache-dir "^1.0.0"
+    schema-utils "^0.3.0"
+    source-map "^0.6.1"
+    uglify-es "^3.2.0"
     webpack-sources "^1.0.1"
     worker-farm "^1.4.1"
 
