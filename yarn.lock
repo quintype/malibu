@@ -30,9 +30,9 @@
     superagent-bluebird-promise "^4.2.0"
     url "^0.11.0"
 
-"@quintype/framework@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.1.1.tgz#3c6c0b83018c0cec4479eebed8c7db009eb90567"
+"@quintype/framework@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.2.3.tgz#e174dc80abeae684d4d146004cc6c96819157579"
   dependencies:
     "@quintype/components" "^1.0.18"
     atob "^2.0.3"
