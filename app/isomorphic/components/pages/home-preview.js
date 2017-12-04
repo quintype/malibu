@@ -1,5 +1,5 @@
 const React = require("react");
-const { HomePage } = require("./home.jsx");
+const { HomePage } = require("./home.js");
 
 class HomePagePreview extends React.Component {
   constructor(props) {

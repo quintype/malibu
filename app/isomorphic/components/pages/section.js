@@ -1,6 +1,6 @@
 const React = require("react");
 
-const { StoryGrid } = require("../story-grid.jsx");
+const { StoryGrid } = require("../story-grid.js");
 
 class SectionPage extends React.Component {
   render() {

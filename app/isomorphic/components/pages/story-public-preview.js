@@ -1,6 +1,6 @@
 const React = require("react");
 
-const { StoryPage } = require("./story.jsx");
+const { StoryPage } = require("./story.js");
 
 class StoryPublicPagePreview extends React.Component {
   render() {
