@@ -18,7 +18,7 @@ function startApp() {
       const store = createQtStore(null, result.body);
 
       renderApplication(store);
-      history.listen(change => app.maybeNavigateTo(change.pathname, store));
+      history.listen(change => app.maybeNavigateTo(`${change.pathname}${change.search || ""}`, store));
 
       if(process.env.NODE_ENV == 'development' && module.hot) {
         module.hot.accept('./render', () => renderApplication(store));
