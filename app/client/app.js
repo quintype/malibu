@@ -12,7 +12,8 @@ import { renderApplication } from './render'
 
 // This is the entry point. Ideally, unused functions will get compiled out
 function startApp() {
-  getRouteData(window.location.pathname, {config: true})
+  const location = global.location;
+  getRouteData(`${location.pathname}${location.search || ""}`, {config: true})
     .then((result) => {
       const store = createQtStore(null, result.body);
 
