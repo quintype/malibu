@@ -1,6 +1,6 @@
-const React = require("react");
+import React from "react";
 
-const { Link, ResponsiveImage, StoryElement } = require("@quintype/components");
+import { Link, ResponsiveImage, StoryElement } from "@quintype/components";
 
 function StoryCard(props){
   return <div>
@@ -29,4 +29,4 @@ function BlankStory(props) {
   </div>;
 }
 
-exports.BlankStory = BlankStory;
+export { BlankStory };

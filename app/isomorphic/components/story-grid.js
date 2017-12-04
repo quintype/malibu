@@ -1,6 +1,6 @@
-const React = require("react");
+import React from "react";
 
-const { Link, ResponsiveImage, ClientSideOnly } = require("@quintype/components");
+import { Link, ResponsiveImage, ClientSideOnly } from "@quintype/components";
 
 function StoryGridStoryItem(props) {
   return <Link href={"/" + props.story.slug} className="story-grid-item">
@@ -22,4 +22,4 @@ function StoryGrid(props) {
   </div>;
 }
 
-exports.StoryGrid = StoryGrid;
+export { StoryGrid };

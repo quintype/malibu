@@ -1,4 +1,4 @@
-const React = require("react");
+import React from "react";
 
 function BreakingNewsView(props) {
   if(props.breakingNews.length == 0) {
@@ -13,4 +13,4 @@ function BreakingNewsView(props) {
   }
 }
 
-exports.BreakingNewsView = BreakingNewsView;
+export { BreakingNewsView };

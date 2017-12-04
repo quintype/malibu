@@ -1,12 +1,12 @@
-const _ = require("lodash");
+import _ from "lodash";
 
-const {loadHomePageData} = require("./data-loaders/home-page-data");
-const {loadStoryPageData} = require("./data-loaders/story-page-data");
-const {loadStoryPublicPreviewPageData} = require("./data-loaders/story-public-preview-page-data");
-const {loadSectionPageData} = require("./data-loaders/section-page-data");
-const {loadTagPageData} = require("./data-loaders/tag-page-data");
-const {loadSearchPageData} = require("./data-loaders/search-page-data");
-const {PAGE_TYPE} = require("./constants");
+import {loadHomePageData} from "./data-loaders/home-page-data";
+import {loadStoryPageData} from "./data-loaders/story-page-data";
+import {loadStoryPublicPreviewPageData} from "./data-loaders/story-public-preview-page-data";
+import {loadSectionPageData} from "./data-loaders/section-page-data";
+import {loadTagPageData} from "./data-loaders/tag-page-data";
+import {loadSearchPageData} from "./data-loaders/search-page-data";
+import {PAGE_TYPE} from "./constants";
 
 const WHITELIST_CONFIG_KEYS = ['cdn-image', 'polltype-host'];
 
@@ -43,4 +43,4 @@ function loadData(pageType, params, config, client) {
     });
 }
 
-exports.loadData = loadData;
+export { loadData };

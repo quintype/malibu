@@ -1,5 +1,5 @@
-const React = require("react");
-const { HomePage } = require("./home.js");
+import React from "react";
+import { HomePage } from "./home.js";
 
 class HomePagePreview extends React.Component {
   constructor(props) {
@@ -25,4 +25,4 @@ class HomePagePreview extends React.Component {
   }
 }
 
-exports.HomePagePreview = HomePagePreview;
+export { HomePagePreview };

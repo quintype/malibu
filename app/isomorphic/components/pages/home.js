@@ -1,6 +1,6 @@
-const React = require("react");
+import React from "react";
 
-const { StoryGrid } = require("../story-grid.js");
+import { StoryGrid } from "../story-grid.js";
 
 class HomePage extends React.Component {
   render() {
@@ -11,4 +11,4 @@ class HomePage extends React.Component {
   }
 }
 
-exports.HomePage = HomePage;
+export { HomePage };

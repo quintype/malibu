@@ -1,15 +1,15 @@
-const compression = require('compression');
-const express = require('express');
-const app = express();
+import compression from 'compression';
+import express from 'express';
+export const app = express();
 
-const {initializeAllClients} = require("@quintype/framework/server/api-client");
-const {upstreamQuintypeRoutes, isomorphicRoutes} = require("@quintype/framework/server/routes");
+import {initializeAllClients} from "@quintype/framework/server/api-client";
+import {upstreamQuintypeRoutes, isomorphicRoutes} from "@quintype/framework/server/routes";
 
-const {generateRoutes} = require('./routes');
-const {renderLayout} = require("./handlers/render-layout");
-const {loadData, loadErrorData} = require("./load-data");
-const {pickComponent} = require("../isomorphic/pick-component");
-const SEO = require("./SEO");
+import {generateRoutes} from './routes';
+import {renderLayout} from "./handlers/render-layout";
+import {loadData, loadErrorData} from "./load-data";
+import {pickComponent} from "../isomorphic/pick-component";
+import SEO from "./SEO";
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -25,5 +25,3 @@ isomorphicRoutes(app, {
   loadErrorData: loadErrorData,
   loadSeoData: (config, pageType, data) => new SEO(config, data).getMetaTags(pageType)
 });
-
-module.exports = app;

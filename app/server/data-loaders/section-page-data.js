@@ -1,7 +1,7 @@
-const {Story} = require("@quintype/framework/server/api-client");
-const {sorterToCacheKey, storyToCacheKey} = require("@quintype/framework/server/caching");
+import {Story} from "@quintype/framework/server/api-client";
+import {sorterToCacheKey, storyToCacheKey} from "@quintype/framework/server/caching";
 
-exports.loadSectionPageData = function loadSectionPageData(client, sectionId, config) {
+export function loadSectionPageData(client, sectionId, config) {
   return Story.getStories(client, 'top', {'section-id': sectionId, 'limit': '20'})
     .then(stories => ({
       section: config["sections"].find(section => section.id == sectionId),

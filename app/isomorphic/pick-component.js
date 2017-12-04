@@ -1,12 +1,12 @@
-const {HomePage} = require("./components/pages/home.js");
-const {SectionPage} = require("./components/pages/section.js");
-const {TagPage} = require("./components/pages/tag.js");
-const {SearchPage} = require("./components/pages/search.js");
-const {StoryPage} = require("./components/pages/story.js");
-const {StoryPagePreview} = require("./components/pages/story-preview.js");
-const {StoryPublicPagePreview} = require("./components/pages/story-public-preview.js");
-const {HomePagePreview} = require("./components/pages/home-preview.js");
-const {NotFoundPage} = require("./components/pages/not-found.js");
+import {HomePage} from "./components/pages/home.js";
+import {SectionPage} from "./components/pages/section.js";
+import {TagPage} from "./components/pages/tag.js";
+import {SearchPage} from "./components/pages/search.js";
+import {StoryPage} from "./components/pages/story.js";
+import {StoryPagePreview} from "./components/pages/story-preview.js";
+import {StoryPublicPagePreview} from "./components/pages/story-public-preview.js";
+import {HomePagePreview} from "./components/pages/home-preview.js";
+import {NotFoundPage} from "./components/pages/not-found.js";
 
 function pickComponent(pageType) {
   switch (pageType) {
@@ -22,4 +22,4 @@ function pickComponent(pageType) {
   }
 }
 
-exports.pickComponent = pickComponent;
+export { pickComponent };

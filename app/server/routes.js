@@ -1,4 +1,4 @@
-const {generateStoryPageRoutes, generateSectionPageRoutes} = require("@quintype/framework/server/generate-routes");
+import {generateStoryPageRoutes, generateSectionPageRoutes} from "@quintype/framework/server/generate-routes";
 
 const STATIC_ROUTES = [
   {path: "/", pageType: "home-page", exact: true},
@@ -13,4 +13,4 @@ function generateRoutes(config) {
   return STATIC_ROUTES.concat(generateSectionPageRoutes(config, {addSectionPrefix: true}), generateStoryPageRoutes(config));
 }
 
-exports.generateRoutes = generateRoutes;
+export { generateRoutes };

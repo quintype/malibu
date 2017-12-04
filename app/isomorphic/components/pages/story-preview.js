@@ -1,5 +1,5 @@
-const React = require("react");
-const { StoryPage } = require("./story.js");
+import React from "react";
+import { StoryPage } from "./story.js";
 
 class StoryPagePreview extends React.Component {
   constructor(props) {
@@ -25,4 +25,4 @@ class StoryPagePreview extends React.Component {
   }
 }
 
-exports.StoryPagePreview = StoryPagePreview;
+export { StoryPagePreview };
