@@ -7,7 +7,6 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/build": "^1.0.6",
     "@quintype/components": "^1.0.8",
     "@quintype/framework": "^1.8.0",
     "compression": "^1.7.1",
@@ -22,6 +21,7 @@
     "superagent-promise": "^1.1.0"
   },
   "devDependencies": {
+    "@quintype/build": "^1.0.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
