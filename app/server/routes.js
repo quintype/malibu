@@ -6,7 +6,7 @@ const STATIC_ROUTES = [
   {path: "/preview/story/:encryptedKey", pageType: "story-public-preview-page", exact: true},
   {path: "/preview/home", pageType: "home-preview-page", exact: true},
   {path: "/topic/:tagSlug", pageType: "tag-page", exact: true, skipPWA: true},
-  {path: "/search/:searchQuery", pageType: "search-page", exact: true, skipPWA: true},
+  {path: "/search", pageType: "search-page", exact: true, skipPWA: true},
 ];
 
 function generateRoutes(config) {

@@ -7,16 +7,14 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/components": "^1.0.8",
-    "@quintype/framework": "^1.8.0",
+    "@quintype/components": "^1.0.20",
+    "@quintype/framework": "^2.1.1",
     "compression": "^1.7.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "js-yaml": "^3.10.0",
     "quintype-js": "^0.1.6",
     "quintype-seo-node": "^0.3.1",
     "react": "^16.1.1",
-    "sleep-promise": "^2.0.0",
     "superagent": "^3.8.1",
     "superagent-promise": "^1.1.0"
   },
