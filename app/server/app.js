@@ -1,6 +1,5 @@
 import compression from 'compression';
 import express from 'express';
-export const app = express();
 
 import {initializeAllClients} from "@quintype/framework/server/api-client";
 import {upstreamQuintypeRoutes, isomorphicRoutes} from "@quintype/framework/server/routes";
@@ -10,6 +9,8 @@ import {renderLayout} from "./handlers/render-layout";
 import {loadData, loadErrorData} from "./load-data";
 import {pickComponent} from "../isomorphic/pick-component";
 import SEO from "./SEO";
+
+export const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
