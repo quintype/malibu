@@ -28,7 +28,7 @@ function loadData(pageType, params, config, client) {
       case PAGE_TYPE.SECTION_PAGE: return loadSearchPageData(client, params.q, config);
       case PAGE_TYPE.STORY_PAGE: return loadStoryPageData(client, params, config);
       case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE: return loadStoryPublicPreviewPageData(client, params, config);
-      default: return Promise.resolve({stories: [{headline: "Foobar"}]})
+      default: return Promise.resolve({error: {message: "No Loader"}})
     }
   }
 
