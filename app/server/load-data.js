@@ -6,7 +6,7 @@ import {loadStoryPublicPreviewPageData} from "./data-loaders/story-public-previe
 import {loadSectionPageData} from "./data-loaders/section-page-data";
 import {loadTagPageData} from "./data-loaders/tag-page-data";
 import {loadSearchPageData} from "./data-loaders/search-page-data";
-import {PAGE_TYPE} from "./constants";
+import {PAGE_TYPE} from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = ['cdn-image', 'polltype-host', 'layout'];
 

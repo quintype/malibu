@@ -1,4 +1,4 @@
-import {PAGE_TYPE} from "./constants";
+import {PAGE_TYPE} from "../isomorphic/constants";
 import {HomeSeo, SectionSeo, StorySeo} from "quintype-seo-node";
 
 export default class SEO {
