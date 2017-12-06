@@ -13,7 +13,24 @@
     uglifyjs-webpack-plugin "^1.1.2"
     webpack-manifest-plugin "^1.3.2"
 
-"@quintype/components@^1.0.18", "@quintype/components@^1.0.20":
+"@quintype/components@^1.0.18":
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/@quintype/components/-/components-1.0.25.tgz#5fdf3b6cb3d0c335f11162b0f42e4e485698f7ec"
+  dependencies:
+    classnames "^2.2.5"
+    get-youtube-id "^1.0.0"
+    lodash "^4.17.4"
+    prop-types "^15.6.0"
+    quintype-js "^0.1.6"
+    react "^16.2.0"
+    react-redux "^5.0.6"
+    react-soundcloud-widget "git://github.com/gja/react-soundcloud-widget"
+    react-youtube "^7.5.0"
+    redux "^3.7.2"
+    superagent-bluebird-promise "^4.2.0"
+    url "^0.11.0"
+
+"@quintype/components@^1.0.20":
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/@quintype/components/-/components-1.0.20.tgz#a5ea12a7d6bdf15a3084f4ecb60b8a8ee40ae029"
   dependencies:
@@ -30,9 +47,9 @@
     superagent-bluebird-promise "^4.2.0"
     url "^0.11.0"
 
-"@quintype/framework@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.2.3.tgz#e174dc80abeae684d4d146004cc6c96819157579"
+"@quintype/framework@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.5.0.tgz#21b2134126e4eaacc675860e4fbea507719d372b"
   dependencies:
     "@quintype/components" "^1.0.18"
     atob "^2.0.3"
@@ -89,9 +106,18 @@ ajv@^4.9.1:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
 
-ajv@^5.0.0, ajv@^5.1.0, ajv@^5.1.5:
+ajv@^5.0.0, ajv@^5.1.5:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.0.tgz#eb2840746e9dc48bd5e063a36e3fd400c5eab5a9"
+  dependencies:
+    co "^4.6.0"
+    fast-deep-equal "^1.0.0"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.3.0"
+
+ajv@^5.1.0:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.1.tgz#b38bb8876d9e86bee994956a04e721e88b248eb2"
   dependencies:
     co "^4.6.0"
     fast-deep-equal "^1.0.0"
@@ -2186,9 +2212,13 @@ extract-text-webpack-plugin@^3.0.2:
     schema-utils "^0.3.0"
     webpack-sources "^1.0.1"
 
-extsprintf@1.3.0, extsprintf@^1.2.0:
+extsprintf@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
+
+extsprintf@^1.2.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
 
 fast-deep-equal@^1.0.0:
   version "1.0.0"

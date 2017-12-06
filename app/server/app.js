@@ -2,9 +2,9 @@ import compression from 'compression';
 import express from 'express';
 
 import {initializeAllClients} from "@quintype/framework/server/api-client";
-import {upstreamQuintypeRoutes, isomorphicRoutes} from "@quintype/framework/server/routes";
+import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";
 
-import {generateRoutes} from './routes';
+import {generateRoutes, STATIC_ROUTES} from './routes';
 import {renderLayout} from "./handlers/render-layout";
 import {loadData, loadErrorData} from "./load-data";
 import {pickComponent} from "../isomorphic/pick-component";
@@ -24,5 +24,6 @@ isomorphicRoutes(app, {
   pickComponent: pickComponent,
   renderLayout: renderLayout,
   loadErrorData: loadErrorData,
-  loadSeoData: (config, pageType, data) => new SEO(config, data).getMetaTags(pageType)
+  loadSeoData: (config, pageType, data) => new SEO(config, data).getMetaTags(pageType),
+  staticRoutes: STATIC_ROUTES,
 });

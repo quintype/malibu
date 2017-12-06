@@ -32,8 +32,11 @@
         <h1 class="title"><%= title %></h1>
         <div id='breaking-news-container'></div>
       </header>
-      <div id="container"><%- content %></div>
+      <div id="container"><%_ if(contentTemplate) { _%><%- include(contentTemplate) -%><%_ }else { _%><%- content %><%_ } _%></div>
     </div>
+    <%_ if(disableAjaxNavigation) { _%>
+    <script type="text/javascript">window.disableAjaxNavigation = true;</script>
+    <%_ } _%>
     <script type="text/javascript" src="<%= assetPath("app.js") %>" async></script>
    </body>
 </html>

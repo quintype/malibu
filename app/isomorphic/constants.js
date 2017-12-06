@@ -7,5 +7,5 @@ export const PAGE_TYPE = Object.freeze({
   STORY_PUBLIC_PREVIEW_PAGE : "story-public-preview-page",
   STORY_PREVIEW: 'story-preview',
   HOME_PREVIEW: 'home-preview',
-  ABOUT_US: "about-us",
+  STATIC_PAGE: 'static-page',
 });

@@ -5,7 +5,9 @@ export function renderLayout(res, params){
   res.render("pages/layout", _.extend({
     assetPath: assetPath,
     content: "",
+    contentTemplate: null,
     title: "Sample Application",
-    metadata : []
+    metadata : [],
+    disableAjaxNavigation: false,
   }, params))
 }
