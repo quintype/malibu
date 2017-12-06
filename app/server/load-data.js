@@ -10,7 +10,7 @@ import {PAGE_TYPE} from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = ['cdn-image', 'polltype-host', 'layout'];
 
-function loadErrorData(error) {
+export function loadErrorData(error) {
   const errorComponents = { 404 : "not-found" };
   return Promise.resolve({
     data: null,
@@ -19,7 +19,7 @@ function loadErrorData(error) {
   })
 }
 
-function loadData(pageType, params, config, client) {
+export function loadData(pageType, params, config, client) {
   function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE: return loadHomePageData(client, config);
@@ -39,9 +39,8 @@ function loadData(pageType, params, config, client) {
         httpStatusCode : 200,
         pageType: pageType,
         data: data,
-        config: _.pick(config.asJson(), WHITELIST_CONFIG_KEYS)
+        config: _.pick(config.asJson(), WHITELIST_CONFIG_KEYS),
+        title: data.title ? `${data.title} - Sample Application` : `Sample Application`
       };
     });
 }
-
-export { loadData };

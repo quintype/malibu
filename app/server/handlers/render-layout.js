@@ -6,7 +6,7 @@ export function renderLayout(res, params){
     assetPath: assetPath,
     content: "",
     contentTemplate: null,
-    title: "Sample Application",
+    title: params.title,
     metadata : [],
     disableAjaxNavigation: false,
   }, params))
