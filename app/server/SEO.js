@@ -4,7 +4,7 @@ import {HomeSeo, SectionSeo, StorySeo} from "quintype-seo-node";
 export default class SEO {
 
   constructor(config, seoParams) {
-    this._config = config;
+    this._config = config.asJson();
     this._seoParams = seoParams;
     this._pageSEOObj = this.getPageSEOObj();
   }
