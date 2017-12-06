@@ -47,9 +47,9 @@
     superagent-bluebird-promise "^4.2.0"
     url "^0.11.0"
 
-"@quintype/framework@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.5.0.tgz#21b2134126e4eaacc675860e4fbea507719d372b"
+"@quintype/framework@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.5.2.tgz#b1829733a18d146b4eb2fb69b1a3c2e109e3a2ec"
   dependencies:
     "@quintype/components" "^1.0.18"
     atob "^2.0.3"
@@ -60,7 +60,7 @@
     js-yaml "^3.10.0"
     lodash "^4.17.4"
     node-jsx "^0.13.3"
-    quintype-backend "^0.4.1"
+    quintype-backend "^0.4.3"
     quintype-js "^0.1.6"
     react "^16.1.1"
     react-dom "^16.1.1"
@@ -4527,9 +4527,9 @@ querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
-quintype-backend@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/quintype-backend/-/quintype-backend-0.4.1.tgz#7817c42244aa11af7f7a720e148893b1e1f63eba"
+quintype-backend@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/quintype-backend/-/quintype-backend-0.4.3.tgz#6895b5684cf4dfca411b21836bf7ac373f8f306a"
   dependencies:
     lodash "^3.10.1"
     request "^2.74.0"
