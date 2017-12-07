@@ -6,6 +6,6 @@ exports.renderLayout = function renderLayout(res, params){
     assetPath: assetPath,
     content: "",
     title: "Sample Application",
-    metadata : []
+    metaTags: params.seoTags ? params.seoTags.toString() : ""
   }, params))
 }
