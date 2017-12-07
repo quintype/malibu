@@ -1,25 +1,26 @@
-const {HomePage} = require("./components/pages/home.jsx");
-const {SectionPage} = require("./components/pages/section.jsx");
-const {TagPage} = require("./components/pages/tag.jsx");
-const {SearchPage} = require("./components/pages/search.jsx");
-const {StoryPage} = require("./components/pages/story.jsx");
-const {StoryPagePreview} = require("./components/pages/story-preview.jsx");
-const {StoryPublicPagePreview} = require("./components/pages/story-public-preview.jsx");
-const {HomePagePreview} = require("./components/pages/home-preview.jsx");
-const {NotFoundPage} = require("./components/pages/not-found.jsx");
+import { PAGE_TYPE } from './constants';
+
+import {HomePage} from "./components/pages/home.js";
+import {SectionPage} from "./components/pages/section.js";
+import {TagPage} from "./components/pages/tag.js";
+import {SearchPage} from "./components/pages/search.js";
+import {StoryPage} from "./components/pages/story.js";
+import {StoryPagePreview} from "./components/pages/story-preview.js";
+import {HomePagePreview} from "./components/pages/home-preview.js";
+import {NotFoundPage} from "./components/pages/not-found.js";
 
 function pickComponent(pageType) {
   switch (pageType) {
-    case 'home-page': return HomePage;
-    case 'section-page': return SectionPage;
-    case 'tag-page': return TagPage;
-    case 'search-page': return SearchPage;
-    case 'story-page': return StoryPage;
-    case 'story-preview-page': return StoryPagePreview ;
-    case 'story-public-preview-page': return StoryPublicPagePreview ;
-    case 'home-preview-page': return HomePagePreview ;
+    case PAGE_TYPE.HOME_PAGE: return HomePage;
+    case PAGE_TYPE.SECTION_PAGE: return SectionPage;
+    case PAGE_TYPE.TAG_PAGE: return TagPage;
+    case PAGE_TYPE.SEARCH_PAGE: return SearchPage;
+    case PAGE_TYPE.STORY_PAGE: return StoryPage;
+    case PAGE_TYPE.STORY_PREVIEW: return StoryPagePreview ;
+    case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE: return StoryPage ;
+    case PAGE_TYPE.HOME_PREVIEW: return HomePagePreview ;
     default: return NotFoundPage;
   }
 }
 
-exports.pickComponent = pickComponent;
+export { pickComponent };

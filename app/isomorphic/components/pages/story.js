@@ -1,7 +1,7 @@
-const React = require("react");
+import React from "react";
 
-const { BlankStory } = require("../story-templates/blank.jsx");
-const { InfiniteStoryBase } = require("@quintype/components");
+import { BlankStory } from "../story-templates/blank.js";
+import { InfiniteStoryBase } from "@quintype/components";
 
 function StoryPageBase({index, story, otherProp}) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
@@ -23,4 +23,4 @@ function StoryPage(props) {
                             onInitialItemFocus={(item) => console.log(`Do Analytics ${item.story.headline}`)} />
 }
 
-exports.StoryPage = StoryPage;
+export { StoryPage };

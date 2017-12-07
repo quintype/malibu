@@ -1,6 +1,6 @@
-const React = require("react");
+import React from "react";
 
-const { StoryGrid } = require("../story-grid.jsx");
+import { StoryGrid } from "../story-grid.js";
 
 class SearchPage extends React.Component {
   render() {
@@ -11,4 +11,4 @@ class SearchPage extends React.Component {
   }
 }
 
-exports.SearchPage = SearchPage;
+export { SearchPage };

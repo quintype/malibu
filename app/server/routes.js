@@ -1,16 +1,20 @@
-const {generateStoryPageRoutes, generateSectionPageRoutes} = require("@quintype/framework/server/generate-routes");
+import {generateStoryPageRoutes, generateSectionPageRoutes} from "@quintype/framework/server/generate-routes";
+import { PAGE_TYPE } from "../isomorphic/constants";
 
-const STATIC_ROUTES = [
-  {path: "/", pageType: "home-page", exact: true},
-  {path: "/preview/story", pageType: "story-preview-page", exact: true},
-  {path: "/preview/story/:encryptedKey", pageType: "story-public-preview-page", exact: true},
-  {path: "/preview/home", pageType: "home-preview-page", exact: true},
-  {path: "/topic/:tagSlug", pageType: "tag-page", exact: true, skipPWA: true},
-  {path: "/search/:searchQuery", pageType: "search-page", exact: true, skipPWA: true},
+// Static Routes are not part of the PWA. Also, they aren't part of the JS bundle
+export const STATIC_ROUTES = [
+  {path: "/about-us", pageType: PAGE_TYPE.STATIC_PAGE, renderParams: {contentTemplate: "./about-us"}}
 ];
 
-function generateRoutes(config) {
-  return STATIC_ROUTES.concat(generateSectionPageRoutes(config, {addSectionPrefix: true}), generateStoryPageRoutes(config));
-}
+const ISOMORPHIC_ROUTES = [
+  {path: "/", pageType: PAGE_TYPE.HOME_PAGE, exact: true},
+  {path: "/preview/story", pageType: PAGE_TYPE.STORY_PREVIEW, exact: true},
+  {path: "/preview/story/:encryptedKey", pageType: PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE, exact: true},
+  {path: "/preview/home", pageType: PAGE_TYPE.HOME_PREVIEW, exact: true},
+  {path: "/topic/:tagSlug", pageType: PAGE_TYPE.TAG_PAGE, exact: true},
+  {path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true},
+];
 
-exports.generateRoutes = generateRoutes;
+export function generateRoutes(config) {
+  return ISOMORPHIC_ROUTES.concat(generateSectionPageRoutes(config, {addSectionPrefix: true}), generateStoryPageRoutes(config));
+}

@@ -1,4 +1,4 @@
-const React = require("react");
+import React from "react";
 
 class NotFoundPage extends React.Component {
   render() {
@@ -6,4 +6,4 @@ class NotFoundPage extends React.Component {
   }
 }
 
-exports.NotFoundPage = NotFoundPage;
+export { NotFoundPage };

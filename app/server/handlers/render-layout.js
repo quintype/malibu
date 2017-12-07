@@ -1,10 +1,13 @@
-const _ = require("lodash");
-const {assetPath} = require("@quintype/framework/server/asset-helper");
+import _ from "lodash";
+import {assetPath} from "@quintype/framework/server/asset-helper";
 
-exports.renderLayout = function renderLayout(res, params){
+export function renderLayout(res, params){
   res.render("pages/layout", _.extend({
     assetPath: assetPath,
     content: "",
+    contentTemplate: null,
+    title: params.title,
+    disableAjaxNavigation: false,
     title: "Sample Application",
     metaTags: params.seoTags ? params.seoTags.toString() : ""
   }, params))

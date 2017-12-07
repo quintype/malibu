@@ -1,15 +1,15 @@
-const compression = require('compression');
-const express = require('express');
-const app = express();
+import compression from 'compression';
+import express from 'express';
 
-const {initializeAllClients} = require("@quintype/framework/server/api-client");
-const {upstreamQuintypeRoutes, isomorphicRoutes} = require("@quintype/framework/server/routes");
+import {initializeAllClients} from "@quintype/framework/server/api-client";
+import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";
+import {generateRoutes, STATIC_ROUTES} from './routes';
+import {renderLayout} from "./handlers/render-layout";
+import {loadData, loadErrorData} from "./load-data";
+import {pickComponent} from "../isomorphic/pick-component";
+import {SEO, StaticTags} from "@quintype/seo";
 
-const {generateRoutes} = require('./routes');
-const {renderLayout} = require("./handlers/render-layout");
-const {loadData, loadErrorData} = require("./load-data");
-const {pickComponent} = require("../isomorphic/pick-component");
-const {SEO, StaticTags} = require("@quintype/seo");
+export const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -38,10 +38,9 @@ isomorphicRoutes(app, {
   pickComponent: pickComponent,
   renderLayout: renderLayout,
   loadErrorData: loadErrorData,
+  staticRoutes: STATIC_ROUTES,
   seo: new SEO({
     generators: [StaticTags],
     staticTags: STATIC_TAGS
   })
 });
-
-module.exports = app;

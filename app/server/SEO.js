@@ -1,10 +1,10 @@
-const {PAGE_TYPE} = require("./constants");
-const {HomeSeo, SectionSeo, StorySeo} = require("quintype-seo-node");
+import {PAGE_TYPE} from "../isomorphic/constants";
+import {HomeSeo, SectionSeo, StorySeo} from "quintype-seo-node";
 
-module.exports = class SEO {
+export default class SEO {
 
   constructor(config, seoParams) {
-    this._config = config;
+    this._config = config.asJson();
     this._seoParams = seoParams;
     this._pageSEOObj = this.getPageSEOObj();
   }
