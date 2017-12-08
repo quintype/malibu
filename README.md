@@ -9,10 +9,8 @@ IMPORTANT: This app implements very little functionality in the app itself. The 
 ## Running in development mode
 
 ```shell
-$ brew install yarn       # install yarn, FB's NPM replacement
-$ yarn                    # install all libraries
-$ npm run asset-server    # start webkit hot loading server on port 8080. Does live push
-$ npm start               # start the actual web server. Restart this if server side code changes
+$ npm install             # install all libraries
+$ ./run                   # Run both web server and asset server
 ```
 
 #### Running with supervisord (local)
