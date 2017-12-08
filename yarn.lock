@@ -53,13 +53,9 @@
     sleep-promise "^2.0.0"
     url "^0.11.0"
 
-"@quintype/seo@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@quintype/seo/-/seo-0.0.6.tgz#8ed4f02977deacfc22e129be7fd3d94a5e0317ed"
-  dependencies:
-    lodash "^4.17.4"
-    react "^16.2.0"
-    react-dom "^16.2.0"
+"@quintype/seo@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@quintype/seo/-/seo-0.0.9.tgz#7a11319546b8741993371a98b999e3d801a6b366"
 
 abbrev@1:
   version "1.1.1"
@@ -3400,7 +3396,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.4, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@~4.17.4:
+"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4518,12 +4514,6 @@ quintype-js@^0.1.6:
   resolved "https://registry.yarnpkg.com/quintype-js/-/quintype-js-0.1.6.tgz#0e0c8ef3623beb34854d783a209b14d79c6b6c82"
   dependencies:
     lodash "^4.13.1"
-
-quintype-seo-node@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/quintype-seo-node/-/quintype-seo-node-0.3.1.tgz#17c0ce42af03d34abca304f0217b10d4b029575d"
-  dependencies:
-    lodash "^4.16.4"
 
 randomatic@^1.1.3:
   version "1.1.7"
