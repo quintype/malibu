@@ -30,9 +30,9 @@
     superagent-bluebird-promise "^4.2.0"
     url "^0.11.0"
 
-"@quintype/framework@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.6.0.tgz#cc22d3fd3175ce35555edec568ee1a23215fe506"
+"@quintype/framework@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@quintype/framework/-/framework-2.6.1.tgz#c9384b091235812503a1b356612f9a86f890cbfc"
   dependencies:
     "@quintype/components" "^1.0.18"
     atob "^2.0.3"
@@ -53,9 +53,9 @@
     sleep-promise "^2.0.0"
     url "^0.11.0"
 
-"@quintype/seo@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@quintype/seo/-/seo-0.0.5.tgz#c095300e68ce1c03fa72ff7ef78bb9b64346a1b1"
+"@quintype/seo@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@quintype/seo/-/seo-0.0.6.tgz#8ed4f02977deacfc22e129be7fd3d94a5e0317ed"
   dependencies:
     lodash "^4.17.4"
     react "^16.2.0"
