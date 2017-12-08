@@ -42,6 +42,7 @@ isomorphicRoutes(app, {
   seo: new SEO({
     staticTags: STATIC_TAGS,
     enableTwitterCards: true,
-    enableOgTags: true
+    enableOgTags: true,
+    enableNews: true
   })
 });
