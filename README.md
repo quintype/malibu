@@ -6,13 +6,6 @@ This will probably get renamed to toddy when it gets feature parity (soon)
 
 IMPORTANT: This app implements very little functionality in the app itself. The majority of functionality is built into the [toddy-libs](https://github.com/quintype/quintype-node-framework) repository.
 
-## Running in development mode
-
-```shell
-$ npm install             # install all libraries
-$ ./run                   # Run both web server and asset server
-```
-
 #### Running with supervisord (local)
 
 ```shell
