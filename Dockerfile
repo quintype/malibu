@@ -7,7 +7,7 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json package-lock.json /app/
-RUN npm install
+RUN npm install --no-optional
 ENV NODE_ENV production
 
 # Everything above should be cached by docker. The below should run on every build
@@ -30,11 +30,9 @@ RUN apk update && \
 
 ENV NODE_ENV production
 WORKDIR /app
-
-# Everything above should be cached by docker. The below should run on every build
-COPY --from=build /app /app
-RUN chown -R app:app /app
 USER app
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "start.js"]
+
+COPY --from=build --chown=app:app /app /app
