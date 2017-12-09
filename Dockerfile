@@ -8,17 +8,12 @@ WORKDIR /app
 
 COPY package.json package-lock.json /app/
 RUN npm install --no-optional
-ENV NODE_ENV production
 
 # Everything above should be cached by docker. The below should run on every build
 
 COPY . /app/
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
-    npm run compile && \
-    ./node_modules/.bin/quintype-build && \
-    rm -rf node-modules && \
-    npm install --no-optional --production && \
-    rm -rf /app/.git
+    ./node_modules/.bin/quintype-build
 
 FROM node:8.9-alpine
 MAINTAINER Quintype Developers <dev-core@quintype.com>

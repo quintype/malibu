@@ -19,7 +19,7 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "@quintype/build": "^1.0.6",
+    "@quintype/build": "^1.1.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
