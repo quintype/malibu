@@ -1,13 +1,17 @@
-import compression from 'compression';
-import express from 'express';
+import compression from "compression";
+import express from "express";
 
-import {initializeAllClients} from "@quintype/framework/server/api-client";
-import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";
-import {generateRoutes, STATIC_ROUTES} from './routes';
-import {renderLayout} from "./handlers/render-layout";
-import {loadData, loadErrorData} from "./load-data";
-import {pickComponent} from "../isomorphic/pick-component";
-import {SEO} from "@quintype/seo";
+import { initializeAllClients } from "@quintype/framework/server/api-client";
+import {
+  upstreamQuintypeRoutes,
+  isomorphicRoutes,
+  staticRoutes
+} from "@quintype/framework/server/routes";
+import { generateRoutes, STATIC_ROUTES } from "./routes";
+import { renderLayout } from "./handlers/render-layout";
+import { loadData, loadErrorData } from "./load-data";
+import { pickComponent } from "../isomorphic/pick-component";
+import { SEO } from "@quintype/seo";
 
 export const app = express();
 
@@ -33,15 +37,20 @@ const STATIC_TAGS = {
 
 const STRUCTURED_DATA = {
   organization: {
-    name:"Quintype",
-    url:"http://www.quintype.com/",
-    logo:"https://quintype.com/logo.png",
-    sameAs:["https://www.facebook.com/quintype","https://twitter.com/quintype_in","https://plus.google.com/+quintype","https://www.youtube.com/user/Quintype"],
+    name: "Quintype",
+    url: "http://www.quintype.com/",
+    logo: "https://quintype.com/logo.png",
+    sameAs: [
+      "https://www.facebook.com/quintype",
+      "https://twitter.com/quintype_in",
+      "https://plus.google.com/+quintype",
+      "https://www.youtube.com/user/Quintype"
+    ]
   }
-}
+};
 
 isomorphicRoutes(app, {
-  logError: (error) => console.error(error),
+  logError: error => console.error(error),
   generateRoutes: generateRoutes,
   loadData: loadData,
   pickComponent: pickComponent,

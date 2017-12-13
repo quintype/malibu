@@ -12,16 +12,16 @@ class HomePagePreview extends React.Component {
   }
 
   collectStoryData() {
-    global.addEventListener("message", (event) => {
+    global.addEventListener("message", event => {
       if (event.data.story) {
-        this.setState({stories: Array(10).fill(event.data.story)});
+        this.setState({ stories: Array(10).fill(event.data.story) });
       }
     });
   }
 
   render() {
-    if (!this.state.stories) return <div></div>;
-    return <HomePage data={this.state}/>
+    if (!this.state.stories) return <div />;
+    return <HomePage data={this.state} />;
   }
 }
 

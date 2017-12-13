@@ -12,16 +12,16 @@ class StoryPagePreview extends React.Component {
   }
 
   collectStoryData() {
-    global.addEventListener("message", (event) => {
+    global.addEventListener("message", event => {
       if (event.data.story) {
-        this.setState({story: event.data.story});
+        this.setState({ story: event.data.story });
       }
     });
   }
 
   render() {
-    if (!this.state.story) return <div></div>;
-    return <StoryPage data={this.state}/>
+    if (!this.state.story) return <div />;
+    return <StoryPage data={this.state} />;
   }
 }
 
