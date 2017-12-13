@@ -1,6 +1,8 @@
+/* eslint-disable no-console, no-unused-vars */
+
 import compression from "compression";
 import express from "express";
-
+import { SEO } from "@quintype/seo";
 import { initializeAllClients } from "@quintype/framework/server/api-client";
 import {
   upstreamQuintypeRoutes,
@@ -11,7 +13,6 @@ import { generateRoutes, STATIC_ROUTES } from "./routes";
 import { renderLayout } from "./handlers/render-layout";
 import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
-import { SEO } from "@quintype/seo";
 
 export const app = express();
 
@@ -51,11 +52,11 @@ const STRUCTURED_DATA = {
 
 isomorphicRoutes(app, {
   logError: error => console.error(error),
-  generateRoutes: generateRoutes,
-  loadData: loadData,
-  pickComponent: pickComponent,
-  renderLayout: renderLayout,
-  loadErrorData: loadErrorData,
+  generateRoutes,
+  loadData,
+  pickComponent,
+  renderLayout,
+  loadErrorData,
   staticRoutes: STATIC_ROUTES,
   seo: new SEO({
     staticTags: STATIC_TAGS,

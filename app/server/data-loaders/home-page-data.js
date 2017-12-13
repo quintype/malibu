@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Story, Collection } from "@quintype/framework/server/api-client";
 import { storyToCacheKey } from "@quintype/framework/server/caching";
 

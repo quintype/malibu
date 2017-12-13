@@ -6,12 +6,11 @@ export function renderLayout(res, params) {
     "pages/layout",
     _.extend(
       {
-        assetPath: assetPath,
+        assetPath,
         content: "",
         contentTemplate: null,
-        title: params.title,
+        title: params.title ? params.title : "Sample Application",
         disableAjaxNavigation: false,
-        title: "Sample Application",
         metaTags: params.seoTags ? params.seoTags.toString() : ""
       },
       params

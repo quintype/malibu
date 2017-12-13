@@ -1,7 +1,8 @@
-import React from "react";
+/* eslint-disable no-unused-vars, no-console */
 
-import { BlankStory } from "../story-templates/blank.js";
+import React from "react";
 import { InfiniteStoryBase } from "@quintype/components";
+import { BlankStory } from "../story-templates/blank";
 
 function StoryPageBase({ index, story, otherProp }) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
@@ -18,7 +19,7 @@ function storyPageLoadItems(pageNumber) {
       offset: 5 * pageNumber
     })
     .then(response =>
-      response.body.stories.map(story => ({ story: story, otherProp: "value" }))
+      response.body.stories.map(story => ({ story, otherProp: "value" }))
     );
 }
 

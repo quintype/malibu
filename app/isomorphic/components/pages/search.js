@@ -1,18 +1,14 @@
 import React from "react";
 
-import { StoryGrid } from "../story-grid.js";
+import { StoryGrid } from "../story-grid";
 
-class SearchPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>
-          Search - {this.props.data.query} ({this.props.data.total} results)
-        </h1>
-        <StoryGrid stories={this.props.data.stories} />
-      </div>
-    );
-  }
-}
+const SearchPage = props => (
+  <div>
+    <h1>
+      Search - {props.data.query} ({props.data.total} results)
+    </h1>
+    <StoryGrid stories={props.data.stories} />
+  </div>
+);
 
 export { SearchPage };

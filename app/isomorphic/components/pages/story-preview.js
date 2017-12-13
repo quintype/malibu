@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryPage } from "./story.js";
+import { StoryPage } from "./story";
 
 class StoryPagePreview extends React.Component {
   constructor(props) {

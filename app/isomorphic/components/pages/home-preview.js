@@ -1,5 +1,5 @@
 import React from "react";
-import { HomePage } from "./home.js";
+import { HomePage } from "./home";
 
 class HomePagePreview extends React.Component {
   constructor(props) {

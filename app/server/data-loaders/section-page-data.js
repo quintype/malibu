@@ -9,7 +9,7 @@ export function loadSectionPageData(client, sectionId, config) {
     "section-id": sectionId,
     limit: "20"
   }).then(stories => ({
-    section: config["sections"].find(section => section.id == sectionId),
+    section: config.sections.find(section => section.id === sectionId),
     stories: stories.map(story => story.asJson()),
     cacheKeys: [
       sorterToCacheKey(config["publisher-id"], "top", sectionId)

@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Link, ResponsiveImage, StoryElement } from "@quintype/components";
+import { ResponsiveImage, StoryElement } from "@quintype/components";
 
 function StoryCard(props) {
   return (
     <div>
-      {props.card["story-elements"].map((element, index) => (
-        <StoryElement element={element} key={index} story={props.story} />
+      {props.card["story-elements"].map(element => (
+        <StoryElement element={element} key={element.id} story={props.story} />
       ))}
     </div>
   );
@@ -28,8 +28,8 @@ function BlankStoryTemplate(props) {
       </figure>
       <h1>{props.story.headline}</h1>
       <span className="blank-story-author">{props.story["author-name"]}</span>
-      {props.story.cards.map((card, index) => (
-        <StoryCard key={index} card={card} story={props.story} />
+      {props.story.cards.map(card => (
+        <StoryCard key={card.id} card={card} story={props.story} />
       ))}
       <div className="space-before-next-story" style={{ minHeight: 100 }} />
     </div>

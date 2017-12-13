@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { PAGE_TYPE } from "../isomorphic/constants";
 import { HomeSeo, SectionSeo, StorySeo } from "quintype-seo-node";
 
@@ -9,10 +10,10 @@ export default class SEO {
   }
 
   getPageSEOObj() {
-    let config = this._config;
-    let seoParams = this._seoParams;
+    const config = this._config;
+    const seoParams = this._seoParams;
 
-    let pageSEOObj = {};
+    const pageSEOObj = {};
 
     pageSEOObj[PAGE_TYPE.HOME_PAGE] = function() {
       return new HomeSeo(config);
@@ -30,7 +31,7 @@ export default class SEO {
   }
 
   getMetaTags(pageType) {
-    let metaTags = [];
+    const metaTags = [];
 
     if (this._pageSEOObj.hasOwnProperty(pageType)) {
       return this._pageSEOObj[pageType]().getMetaTags();

@@ -4,7 +4,7 @@ import { Link, ResponsiveImage, ClientSideOnly } from "@quintype/components";
 
 function StoryGridStoryItem(props) {
   return (
-    <Link href={"/" + props.story.slug} className="story-grid-item">
+    <Link href={`/${props.story.slug}`} className="story-grid-item">
       <figure className="story-grid-item-image qt-image-16x9">
         <ResponsiveImage
           slug={props.story["hero-image-s3-key"]}
@@ -27,8 +27,8 @@ function StoryGridStoryItem(props) {
 function StoryGrid(props) {
   return (
     <div className="story-grid">
-      {props.stories.map((story, index) => (
-        <StoryGridStoryItem story={story} key={index} />
+      {props.stories.map(story => (
+        <StoryGridStoryItem story={story} key={story.id} />
       ))}
       <ClientSideOnly />
     </div>
