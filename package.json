@@ -57,7 +57,8 @@
     "start": "node start.js",
     "test": "mocha",
     "lint:js": "$(npm bin)/eslint './app/**/*.{js,jsx}'",
-    "format": "$(npm bin)/prettier '**/*.{js,jsx,css,scss}' --write",
-    "lint:css": "$(npm bin)/stylelint ./app/assets/stylesheets/*.scss"
+    "lint:css": "$(npm bin)/stylelint ./app/assets/stylesheets/*.scss",
+    "lint": "npm run lint:js -s; npm run lint:css -s",
+    "format": "$(npm bin)/prettier '**/*.{js,jsx,css,scss}' --write"
   }
 }
