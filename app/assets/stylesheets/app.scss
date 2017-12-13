@@ -1,8 +1,8 @@
 @import "images";
 
 *,
-*:after,
-*:before {
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -22,7 +22,12 @@ img {
   max-width: 100%;
 }
 
-/*Menu*/
+a {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+/* Menu */
 #main-navigation {
   position: fixed;
   left: 0;
@@ -57,7 +62,7 @@ img {
   transition: all 0.5s;
 }
 
-#main-navigation li a::hover {
+#main-navigation li a:hover {
   border-bottom: 1px solid white;
 }
 
@@ -96,15 +101,15 @@ h1 span {
   margin: 30px auto 10px;
 }
 
-.toggle span:after,
-.toggle span:before {
+.toggle span::after,
+.toggle span::before {
   content: "";
   position: absolute;
   left: 0;
   top: -9px;
 }
 
-.toggle span:after {
+.toggle span::after {
   top: 9px;
 }
 
@@ -114,8 +119,8 @@ h1 span {
 }
 
 .toggle span,
-.toggle span:after,
-.toggle span:before {
+.toggle span::after,
+.toggle span::before {
   width: 100%;
   height: 5px;
   background-color: black;
@@ -123,24 +128,20 @@ h1 span {
   backface-visibility: hidden;
   border-radius: 2px;
 }
+
 /* on activation */
 .toggle.on span {
   background-color: transparent;
 }
 
-.toggle.on span:before {
+.toggle.on span::before {
   background-color: white;
   transform: rotate(45deg) translate(5px, 5px);
 }
 
-.toggle.on span:after {
+.toggle.on span::after {
   background-color: white;
   transform: rotate(-45deg) translate(7px, -8px);
-}
-
-a {
-  text-decoration: none;
-  font-weight: normal;
 }
 
 .app-loading {
@@ -157,7 +158,6 @@ a {
   margin: 10px 1%;
   border: 1px solid black;
   padding: 5px;
-
   width: 23%;
 
   @media only screen and (max-width: 768px) {
