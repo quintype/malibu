@@ -7,38 +7,14 @@ import {generateRoutes, STATIC_ROUTES} from './routes';
 import {renderLayout} from "./handlers/render-layout";
 import {loadData, loadErrorData} from "./load-data";
 import {pickComponent} from "../isomorphic/pick-component";
-import {SEO} from "@quintype/seo";
+import seo from "./seo";
 
 export const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(compression());
-upstreamQuintypeRoutes(app);
-
-const STATIC_TAGS = {
-  "twitter:site": "Quintype",
-  "twitter:domain": "quintype.com",
-  "twitter:app:name:ipad": undefined,
-  "twitter:app:name:googleplay": undefined,
-  "twitter:app:id:googleplay": undefined,
-  "twitter:app:name:iphone": undefined,
-  "twitter:app:id:iphone": undefined,
-  "apple-itunes-app": undefined,
-  "google-play-app": undefined,
-  "fb:app_id": undefined,
-  "fb:pages": undefined,
-  "og:site_name": "Quintype"
-};
-
-const STRUCTURED_DATA = {
-  organization: {
-    name: "Quintype",
-    url: "http://www.quintype.com/",
-    logo: "https://quintype.com/logo.png",
-    sameAs: ["https://www.facebook.com/quintype","https://twitter.com/quintype_in","https://plus.google.com/+quintype","https://www.youtube.com/user/Quintype"],
-  }
-}
+upstreamQuintypeRoutes(app, {forwardAmp: true});
 
 isomorphicRoutes(app, {
   logError: (error) => console.error(error),
@@ -48,11 +24,5 @@ isomorphicRoutes(app, {
   renderLayout: renderLayout,
   loadErrorData: loadErrorData,
   staticRoutes: STATIC_ROUTES,
-  seo: new SEO({
-    staticTags: STATIC_TAGS,
-    enableTwitterCards: true,
-    enableOgTags: true,
-    enableNews: true,
-    structuredData: STRUCTURED_DATA
-  })
+  seo: seo
 });
