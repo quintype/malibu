@@ -19,8 +19,8 @@ function StoryPage(props) {
   return <InfiniteStoryBase {...props}
                             render={StoryPageBase}
                             loadItems={storyPageLoadItems}
-                            onItemFocus={(item) => console.log(`Story In View: ${item.story.headline}`)}
-                            onInitialItemFocus={(item) => console.log(`Do Analytics ${item.story.headline}`)} />
+                            onInitialItemFocus={(item) => app.registerPageView({pageType: "story-page", data: {story: item.story}}, `/${item.story.slug}`)}
+                            onItemFocus={(item) => console.log(`Story In View: ${item.story.headline}`)}/>
 }
 
 export { StoryPage };
