@@ -1,6 +1,5 @@
 import createApp from '@quintype/framework/server/create-app';
 
-import {initializeAllClients} from "@quintype/framework/server/api-client";
 import logger from "@quintype/framework/server/logger";
 import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";
 import {generateRoutes, STATIC_ROUTES} from './routes';
