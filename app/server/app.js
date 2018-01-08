@@ -1,6 +1,7 @@
 import createApp from '@quintype/framework/server/create-app';
 
 import {initializeAllClients} from "@quintype/framework/server/api-client";
+import logger from "@quintype/framework/server/logger";
 import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";
 import {generateRoutes, STATIC_ROUTES} from './routes';
 import {renderLayout} from "./handlers/render-layout";
@@ -13,7 +14,7 @@ export const app = createApp();
 upstreamQuintypeRoutes(app, {forwardAmp: true});
 
 isomorphicRoutes(app, {
-  logError: (error) => console.error(error),
+  logError: (error) => logger.error(error),
   generateRoutes: generateRoutes,
   loadData: loadData,
   pickComponent: pickComponent,
