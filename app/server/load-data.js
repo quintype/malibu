@@ -10,7 +10,7 @@ import {PAGE_TYPE} from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = ['cdn-image', 'polltype-host', 'layout'];
 
-export function loadErrorData(error) {
+export function loadErrorData(error, config) {
   const errorComponents = { 404 : "not-found" };
   return Promise.resolve({
     data: null,

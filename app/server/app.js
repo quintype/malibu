@@ -1,5 +1,4 @@
-import compression from 'compression';
-import express from 'express';
+import createApp from '@quintype/framework/server/create-app';
 
 import {initializeAllClients} from "@quintype/framework/server/api-client";
 import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";
@@ -9,11 +8,8 @@ import {loadData, loadErrorData} from "./load-data";
 import {pickComponent} from "../isomorphic/pick-component";
 import seo from "./seo";
 
-export const app = express();
+export const app = createApp();
 
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(compression());
 upstreamQuintypeRoutes(app, {forwardAmp: true});
 
 isomorphicRoutes(app, {
