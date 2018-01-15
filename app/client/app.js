@@ -12,5 +12,6 @@ function enableHotReload(store) {
 const CUSTOM_REDUCERS = {};
 
 startApp(renderApplication, CUSTOM_REDUCERS, {
-  enableServiceWorker: process.env.NODE_ENV == 'production'
+  enableServiceWorker: process.env.NODE_ENV == 'production',
+  appVersion: require("../isomorphic/app-version"),
 }).then(enableHotReload);

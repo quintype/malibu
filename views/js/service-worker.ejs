@@ -1,7 +1,7 @@
 <%- serviceWorkerHelper %>;
 
 const REQUIRED_ASSETS = [
-  {url: '/shell.html', revision: '1'},
+  {url: '/shell.html', revision: '<%= appVersion %>'},
   <%_ const cssPath = assetPath("app.css") _%>
   <%_ if(cssPath) { _%>
   "<%= cssPath %>",

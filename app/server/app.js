@@ -13,6 +13,7 @@ export const app = createApp();
 upstreamQuintypeRoutes(app, {forwardAmp: true});
 
 isomorphicRoutes(app, {
+  appVersion: require("../isomorphic/app-version"),
   logError: (error) => logger.error(error),
   generateRoutes: generateRoutes,
   loadData: loadData,
