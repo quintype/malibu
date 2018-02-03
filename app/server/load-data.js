@@ -1,4 +1,4 @@
-import _ from "lodash";
+import pick from "lodash/pick";
 
 import {loadHomePageData} from "./data-loaders/home-page-data";
 import {loadStoryPageData} from "./data-loaders/story-page-data";
@@ -14,7 +14,7 @@ export function loadErrorData(error, config) {
   const errorComponents = { 404 : "not-found" };
   return Promise.resolve({
     data: null,
-    config: _.pick(config, WHITELIST_CONFIG_KEYS),
+    config: pick(config, WHITELIST_CONFIG_KEYS),
     pageType : errorComponents[error.httpStatusCode]
   })
 }
