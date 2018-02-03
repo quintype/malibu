@@ -10,6 +10,7 @@ function StoryPageBase({index, story, otherProp}) {
 
 const FIELDS = "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,cards";
 function storyPageLoadItems(pageNumber) {
+  // FIXME. This is broken
   return global.superagent
            .get("/api/v1/stories", {fields: FIELDS, limit:5, offset:5*pageNumber})
            .then(response => response.body.stories.map(story => ({story: story, otherProp: "value"})));
