@@ -21,5 +21,7 @@ isomorphicRoutes(app, {
   renderLayout: renderLayout,
   loadErrorData: loadErrorData,
   staticRoutes: STATIC_ROUTES,
-  seo: seo
+  seo: seo,
+  preloadJs: true,
+  preloadRouteData: true,
 });
