@@ -39,7 +39,7 @@ export function loadData(pageType, params, config, client) {
         httpStatusCode : 200,
         pageType: pageType,
         data: data,
-        config: _.pick(config.asJson(), WHITELIST_CONFIG_KEYS),
+        config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
         title: data.title ? `${data.title} - Sample Application` : `Sample Application`
       };
     });

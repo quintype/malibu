@@ -7,13 +7,15 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/components": "^1.10.0",
-    "@quintype/framework": "^2.34.0",
+    "@quintype/components": "^1.10.2",
+    "@quintype/framework": "^2.40.0",
     "@quintype/seo": "^1.4.1",
     "babel-plugin-transform-assets-import-to-string": "^1.0.1",
     "lodash": "^4.0.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "superagent": "^3.8.2",
+    "superagent-promise": "^1.1.0"
   },
   "devDependencies": {
     "@quintype/build": "^1.2.0",
