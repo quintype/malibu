@@ -1,4 +1,4 @@
-/* eslint-disable no-console, no-unused-vars */
+/* eslint-disable no-console, no-unused-vars, import/extensions, object-shorthand, global-require */
 import createApp from '@quintype/framework/server/create-app';
 import logger from "@quintype/framework/server/logger";
 import {upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes} from "@quintype/framework/server/routes";

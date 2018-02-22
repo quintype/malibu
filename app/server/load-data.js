@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle, no-undef, no-unused-vars  */
+/* eslint-disable no-underscore-dangle, no-undef, no-unused-vars, object-shorthand, arrow-body-style  */
 import pick from "lodash/pick";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
