@@ -1,14 +1,16 @@
 <%- serviceWorkerHelper %>;
 
 const REQUIRED_ASSETS = [
-  {url: '/shell.html', revision: '1'},
   <%_ const cssPath = assetPath("app.css") _%>
   <%_ if(cssPath) { _%>
   "<%= cssPath %>",
   <%_ } _%>
-  "<%= assetPath("app.js") %>",
-  "<%= assetPath("pw_maze_white.png") %>",
-  "<%= assetPath("gears.svg") %>",
+  // Put other images here
+  <%_ ["app.js"].map(x => { _%>
+  "<%- assetPath(x) %>",
+  <%_ }) _%>
+  // Put fonts here
+  {url: '/shell.html', revision: '<%= assetHash("app.js") %>'}
 ];
 
 const workbox = initializeQServiceWorker(self, {

@@ -12,6 +12,7 @@ function StoryPageBase({ index, story, otherProp }) {
 const FIELDS =
   "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,cards";
 function storyPageLoadItems(pageNumber) {
+  // FIXME. This is broken
   return global.superagent
     .get("/api/v1/stories", {
       fields: FIELDS,
@@ -24,17 +25,11 @@ function storyPageLoadItems(pageNumber) {
 }
 
 function StoryPage(props) {
-  return (
-    <InfiniteStoryBase
-      {...props}
-      render={StoryPageBase}
-      loadItems={storyPageLoadItems}
-      onItemFocus={item => console.log(`Story In View: ${item.story.headline}`)}
-      onInitialItemFocus={item =>
-        console.log(`Do Analytics ${item.story.headline}`)
-      }
-    />
-  );
+  return <InfiniteStoryBase {...props}
+                            render={StoryPageBase}
+                            loadItems={storyPageLoadItems}
+                            onInitialItemFocus={(item) => app.registerPageView({pageType: "story-page", data: {story: item.story}}, `/${item.story.slug}`)}
+                            onItemFocus={(item) => console.log(`Story In View: ${item.story.headline}`)}/>
 }
 
 export { StoryPage };

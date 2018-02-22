@@ -10,6 +10,9 @@ function enableHotReload(store) {
 
 const CUSTOM_REDUCERS = {};
 
+// REMOVE ME
+global.superagent = require('superagent-promise')(require('superagent'), Promise);
 startApp(renderApplication, CUSTOM_REDUCERS, {
-  enableServiceWorker: process.env.NODE_ENV === "production"
+  enableServiceWorker: process.env.NODE_ENV == 'production',
+  appVersion: require("../isomorphic/app-version"),
 }).then(enableHotReload);

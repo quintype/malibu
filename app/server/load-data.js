@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle, no-undef, no-unused-vars  */
+import pick from "lodash/pick";
 
-import _ from "lodash";
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData } from "./data-loaders/story-page-data";
 import { loadStoryPublicPreviewPageData } from "./data-loaders/story-public-preview-page-data";
@@ -11,13 +11,13 @@ import { PAGE_TYPE } from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout"];
 
-export function loadErrorData(error) {
-  const errorComponents = { 404: "not-found" };
+export function loadErrorData(error, config) {
+  const errorComponents = { 404 : "not-found" };
   return Promise.resolve({
     data: null,
-    config: _.pick(config, WHITELIST_CONFIG_KEYS),
-    pageType: errorComponents[error.httpStatusCode]
-  });
+    config: pick(config, WHITELIST_CONFIG_KEYS),
+    pageType : errorComponents[error.httpStatusCode]
+  })
 }
 
 export function loadData(pageType, params, config, client) {
@@ -40,13 +40,14 @@ export function loadData(pageType, params, config, client) {
     }
   }
 
-  return _loadData().then(data => ({
-    httpStatusCode: 200,
-    pageType,
-    data,
-    config: _.pick(config.asJson(), WHITELIST_CONFIG_KEYS),
-    title: data.title
-      ? `${data.title} - Sample Application`
-      : `Sample Application`
-  }));
+  return _loadData()
+    .then((data) => {
+      return {
+        httpStatusCode : 200,
+        pageType: pageType,
+        data: data,
+        config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
+        title: data.title ? `${data.title} - Sample Application` : `Sample Application`
+      };
+    });
 }
