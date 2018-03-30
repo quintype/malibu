@@ -10,7 +10,6 @@ import { generateRoutes, STATIC_ROUTES } from "./routes";
 import { renderLayout } from "./handlers/render-layout";
 import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
-import seo from "./seo";
 
 export const app = createApp();
 
@@ -25,7 +24,7 @@ isomorphicRoutes(app, {
   renderLayout: renderLayout,
   loadErrorData: loadErrorData,
   staticRoutes: STATIC_ROUTES,
-  seo: seo,
+  seo: "",
   preloadJs: true,
   preloadRouteData: true
 });
