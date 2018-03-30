@@ -9,7 +9,7 @@
   "dependencies": {
     "@quintype/components": "^1.10.2",
     "@quintype/framework": "^2.40.0",
-    "@quintype/seo": "^1.4.1",
+    "@quintype/seo": "^1.4.2",
     "babel-plugin-transform-assets-import-to-string": "^1.0.1",
     "lodash": "^4.0.0",
     "react": "^16.2.0",
