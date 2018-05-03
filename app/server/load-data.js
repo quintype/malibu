@@ -2,8 +2,7 @@
 import pick from "lodash/pick";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
-import { loadStoryPageData } from "./data-loaders/story-page-data";
-import { loadStoryPublicPreviewPageData } from "./data-loaders/story-public-preview-page-data";
+import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";

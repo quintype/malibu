@@ -7,3 +7,9 @@ export function loadStoryPageData(client, params, config) {
     title: story.headline
   }));
 }
+
+export function loadStoryPublicPreviewPageData(client, params) {
+  return Story.getPublicPreviewStory(client, params.encryptedKey).then(
+    story => ({ story: story.asJson() })
+  );
+}
