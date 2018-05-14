@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/components": "^1.10.2",
-    "@quintype/framework": "^2.40.0",
+    "@quintype/framework": "^2.48.0",
     "@quintype/seo": "^1.4.2",
     "babel-plugin-transform-assets-import-to-string": "^1.0.1",
     "lodash": "^4.0.0",

@@ -41,8 +41,8 @@ export function loadData(pageType, params, config, client) {
 
   return _loadData().then(data => {
     return {
-      httpStatusCode: 200,
-      pageType: pageType,
+      httpStatusCode: data.httpStatusCode || 200,
+      pageType: data.pageType || pageType,
       data: data,
       config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
       title: data.title
