@@ -1,6 +1,6 @@
 # malibu
 
-This will probably get renamed to toddy when it gets feature parity (soon)
+This is a node sample application, build with the quintype node framework.
 
 ## toddy-libs
 
@@ -23,21 +23,11 @@ $ vi config/publisher.yml      # remove the asset_host from publisher.yml
 $ npm run compile && npm start # restart this if you change the service worker
 ```
 
-## Tasks Pending
+### Merging malibu back to your app
 
-- [X] Minify JS
-- [X] Add SASS support
-- [X] Add Components
-- [X] Load Data
-- [X] Isomorphic Rendering
-- [ ] Get CORS working with ServiceWorker (possibly fix black knight)
-- [ ] Get Preview to work
-- [X] Get breaking news to work
-- [X] Actually build a simple UI
-- [ ] Forcibly update the app when updates
-- [ ] Actual Benchmarks
-- [X] Move all actual code into a library so people can't screw around
-- [ ] Not Found Handler
-- [ ] Valid Route, but data not found
-- [ ] SEO Stuff
-- [ ] Analytics stuff
+```shell
+$ git pull git@github.com:quintype/malibu.git master
+# Ignore Changes to (say) app/isomorphic/components
+$ git checkout --ours app/isomorphic/components
+$ git add app/isomorphic/components
+```
