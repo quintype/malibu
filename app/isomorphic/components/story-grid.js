@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, ResponsiveImage, ClientSideOnly } from "@quintype/components";
-import "./story-grid.module.css";
+import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
   return (
