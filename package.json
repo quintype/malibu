@@ -8,10 +8,9 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/components": "^1.24.0",
-    "@quintype/framework": "^2.53.2",
+    "@quintype/framework": "^2.54.0",
     "@quintype/seo": "^1.8.1",
     "lodash": "^4.0.0",
-    "quintype-backend": "^1.10.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
