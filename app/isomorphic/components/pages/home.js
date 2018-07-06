@@ -2,7 +2,7 @@
 import React from "react";
 import assetify from "@quintype/framework/assetify";
 
-import { getCollectionTemplate } from "../get-collection-templates";
+import { getCollectionTemplate } from "../get-collection-template";
 import img from "../../../assets/images/pw_maze_white.png";
 import { DfpAd } from "../dfp-ad";
 import { Collection } from '@quintype/components';
