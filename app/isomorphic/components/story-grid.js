@@ -30,7 +30,6 @@ function StoryGrid(props) {
       {props.stories.map(story => (
         <StoryGridStoryItem story={story} key={story.id} />
       ))}
-      <ClientSideOnly />
     </div>
   );
 }

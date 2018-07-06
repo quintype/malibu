@@ -2,14 +2,15 @@
 import React from "react";
 import assetify from "@quintype/framework/assetify";
 
-import { StoryGrid } from "../story-grid";
+import { getCollectionTemplate } from "../get-collection-templates";
 import img from "../../../assets/images/pw_maze_white.png";
 import { DfpAd } from "../dfp-ad";
+import { Collection } from '@quintype/components';
 
 const HomePage = props => (
   <div>
     <h1>Home</h1>
-    <StoryGrid stories={props.data.stories} />
+    <Collection collection={props.data.collection} collectionTemplates={getCollectionTemplate} />
     <p>
       Here is an image: <img src={assetify(img)} border={1} alt="some image" />
     </p>

@@ -47,6 +47,7 @@ isomorphicRoutes(app, {
   loadData: loadData,
   pickComponent: pickComponent,
   renderLayout: renderLayout,
+  templateOptions: true,
   loadErrorData: loadErrorData,
   staticRoutes: STATIC_ROUTES,
   seo: new SEO({

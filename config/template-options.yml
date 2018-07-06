@@ -1,0 +1,4 @@
+collection-layouts:
+- name: FourColGrid
+  display: Default Malibu Widget
+  options: []
