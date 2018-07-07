@@ -1,0 +1,103 @@
+.widget-header {
+  color: white; 
+  margin: 30px auto; 
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between; 
+  overflow: initial!important;
+}
+
+.widget-header:after {
+  content: none!important;
+}
+
+.widget-description {
+  padding-top: 12px;
+}
+
+.widget-options {
+  text-align: right;
+  display: none;
+}
+
+.btn {
+  outline: none;
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+} 
+
+.configureBtn {
+  border: 0;
+  margin-top: 20px;
+  width: 100%;
+  outline: none;
+  border-radius: 2px;
+  background-color: #2f73e4;
+  color: white;
+}
+
+.container {
+  border-top: 1px solid black;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.dropdownBox {
+  border-radius: 2px;
+  text-align: left;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  width: 300px;
+  height: auto;
+  min-height: 100px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+  border: 1px solid #dedede;
+  background-color: whitesmoke;
+}
+
+.numberInput {
+  margin-top: 7px;
+  outline: none;
+  border: 1px solid #a3a3a3;
+}
+
+.checkboxWrapper {
+  display: flex;
+  margin-top: 7px;
+}
+
+.checkboxInput {
+  width: 23px;
+  margin-top: 5px;
+}
+
+.widget-container {
+  background: whitesmoke;
+  border-top: 1px dashed black;
+  border-bottom: 1px dashed black;
+}
+
+.options {
+  position: relative;
+}
+
+:global body.template-options {
+  background: black;
+}
+
+.option-wrapper { 
+  margin: 5px auto;
+}
+
+@media(min-width: 768px) {
+  .widget-options {
+    display: block;
+  }
+}

@@ -5,6 +5,7 @@ import { SectionPage } from "./components/pages/section";
 import { TagPage } from "./components/pages/tag";
 import { SearchPage } from "./components/pages/search";
 import { StoryPage } from "./components/pages/story";
+import { CatalogPage } from "./components/pages/catalog";
 import { StoryPagePreview } from "./components/pages/story-preview";
 import { HomePagePreview } from "./components/pages/home-preview";
 import { NotFoundPage } from "./components/pages/not-found";
@@ -21,6 +22,8 @@ function pickComponent(pageType) {
       return SearchPage;
     case PAGE_TYPE.STORY_PAGE:
       return StoryPage;
+    case PAGE_TYPE.CATALOG_PAGE:
+      return CatalogPage;
     case PAGE_TYPE.STORY_PREVIEW:
       return StoryPagePreview;
     case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE:

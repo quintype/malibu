@@ -29,13 +29,10 @@ export const STATIC_ROUTES = [
 
 const ISOMORPHIC_ROUTES = [
   { path: "/", pageType: PAGE_TYPE.HOME_PAGE, exact: true },
-  {
-    path: "/preview/story/:encryptedKey",
-    pageType: PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE,
-    exact: true
-  },
+  { path: "/template-options", pageType: PAGE_TYPE.CATALOG_PAGE, exact: true, skipPWA: true },
+  { path: "/preview/story/:encryptedKey", pageType: PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE, exact: true },
   { path: "/topic/:tagSlug", pageType: PAGE_TYPE.TAG_PAGE, exact: true },
-  { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true }
+  { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true },
 ];
 
 export function generateRoutes(config) {

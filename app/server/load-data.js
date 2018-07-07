@@ -6,6 +6,7 @@ import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loader
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
+import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { PAGE_TYPE } from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout"];
@@ -30,6 +31,8 @@ export function loadData(pageType, params, config, client) {
         return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:
         return loadStoryPageData(client, params, config);
+      case PAGE_TYPE.CATALOG_PAGE:
+        return catalogDataLoader(client, config);
       case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE:
         return loadStoryPublicPreviewPageData(client, params, config);
       case PAGE_TYPE.STATIC_PAGE:
