@@ -20,7 +20,7 @@ export function loadErrorData(error, config) {
   });
 }
 
-export function loadData(pageType, params, config, client) {
+export function loadData(pageType, params, config, client, {host, next}) {
   function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE:
@@ -30,7 +30,7 @@ export function loadData(pageType, params, config, client) {
       case PAGE_TYPE.TAG_PAGE:
         return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:
-        return loadStoryPageData(client, params, config);
+        return loadStoryPageData(client, params, config, next);
       case PAGE_TYPE.CATALOG_PAGE:
         return catalogDataLoader(client, config);
       case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE:
