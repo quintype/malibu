@@ -1,6 +1,6 @@
 import { Story } from "@quintype/framework/server/api-client";
 
-export function loadStoryPageData(client, params, config) {
+export function loadStoryPageData(client, params, config, next) {
   function returnStoryData(story) {
     return {
       story: story.asJson(),
@@ -10,7 +10,7 @@ export function loadStoryPageData(client, params, config) {
   }
 
   return Story.getStoryBySlug(client, params.storySlug)
-              .then(story => story ? returnStoryData(story) : {pageType: 'not-found', httpStatusCode: 404});
+              .then(story => story ? returnStoryData(story) : next());
 }
 
 export function loadStoryPublicPreviewPageData(client, params) {
