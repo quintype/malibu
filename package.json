@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/components": "^1.28.1",
-    "@quintype/framework": "^2.56.0",
+    "@quintype/framework": "^2.60.0",
     "@quintype/seo": "^1.8.1",
     "lodash": "^4.0.0",
     "react": "^16.2.0",
