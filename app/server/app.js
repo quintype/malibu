@@ -18,7 +18,6 @@ upstreamQuintypeRoutes(app, { forwardAmp: true });
 
 const STATIC_TAGS = {
   "twitter:site": "Quintype",
-  "twitter:domain": "quintype.com",
   "twitter:app:name:ipad": undefined,
   "twitter:app:name:googleplay": undefined,
   "twitter:app:id:googleplay": undefined,
