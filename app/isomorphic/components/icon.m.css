@@ -1,0 +1,17 @@
+.facebook {
+  color: #FFF;
+  background: #3B5998;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  padding: 4px 5px;
+}
+.twitter {
+  color: #FFF;
+  background: #1DA1F2;
+  margin-left: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  padding: 2px 4px;
+}

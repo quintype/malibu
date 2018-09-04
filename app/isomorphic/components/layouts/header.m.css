@@ -27,23 +27,6 @@
 .DateFont {
   padding-right: 10px;
 }
-.SocialLogoList {
-  padding: 4px 5px;
-  height: 20px;
-  border-radius: 10px;
-  width: 20px;
-  font-size: 14px;
-}
-
-.facebook {
-  color: #FFF;
-  background: #3B5998;
-}
-.twitter {
-  color: #FFF;
-  background: #1DA1F2;
-  margin-left: 10px;
-}
 
 @media screen and (min-width: 767px) {
   .TopHeader {

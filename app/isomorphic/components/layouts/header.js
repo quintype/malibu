@@ -1,6 +1,7 @@
 import React from "react";
 import "./header.m.css";
 import format from 'date-fns/format';
+import { Icon } from "../icon";
 
 let MultiLanguages = props => {
   return <div>
@@ -13,8 +14,8 @@ let MultiLanguages = props => {
 }
 let Sociallogo = props => {
   return <div styleName="SocialLogoRight">
-        {props.socialLinks.map(sociallogo => {
-           return <a href="#" key={sociallogo.type} className={`fa fa-${sociallogo.type}`} styleName={`SocialLogoList ${sociallogo.type}`}></a>;
+        {props.socialLinks.map(socialLogo => {
+           return <Icon iconType = {socialLogo.type} key = {socialLogo.type} />;
         })}
     </div>
 }
@@ -37,6 +38,5 @@ let Header = props => {
       </div>
   </div>
 }
-
 
 export { Header };
