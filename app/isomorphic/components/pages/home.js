@@ -6,20 +6,48 @@ import { getCollectionTemplate } from "../get-collection-template";
 import img from "../../../assets/images/pw_maze_white.png";
 import { DfpAd } from "../dfp-ad";
 import { Collection } from '@quintype/components';
+import { Header } from "../layouts/header.js";
+
+import './home.m.css';
+
+const menu = {
+  externalLinks: [{
+    url: '#',
+    heading: 'Telungu'
+  }, {
+    url: '#',
+    heading: 'Hindi'
+  }, {
+    url: '#',
+    heading: 'E-Paper'
+  }, {
+    url: '#',
+    heading: 'education'
+  }],
+  socialLinks: [{
+    url: '#',
+    heading: 'Facebook',
+    type: 'facebook'
+  }, {
+    url: '#',
+    heading: 'Twitter',
+    type: 'twitter'
+  }]
+};
+
+const logo = {
+  url: 'https://d1y1r594kapmgi.cloudfront.net/sakshipost/assets/sakshipost-logo-416180c61c1e354365e90d654b29a29dcfc0f7c33f20a930430499d9d58d724f.jpg'
+
+};
+
+
 
 const HomePage = props => (
   <div>
-    <h1>Home</h1>
-    <Collection collection={props.data.collection} collectionTemplates={getCollectionTemplate} />
-    <p>
-      Here is an image: <img src={assetify(img)} border={1} alt="some image" />
-    </p>
-    <br />
-    <p>
-      Here is an ad: <DfpAd adtype="homepage-banner" />
-    </p>
-    <br />
+    <Header menu={menu} logo={logo}/>
   </div>
 );
+
+
 
 export { HomePage };

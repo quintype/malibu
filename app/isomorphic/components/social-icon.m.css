@@ -1,0 +1,28 @@
+.SocialMediaIcons {
+  list-style: none;
+  display: flex;
+  padding-top: 10px;
+  align-items: flex-end;
+  margin: 0px;
+  height: 20px !important;
+  margin-left: auto;
+}
+.Facebook {
+    background-color: #054eaf;
+    border-radius: 53%;
+    font-size: 14px;
+    padding: 5px 7px;
+    width: 22px;
+    height: 22px;
+    color: #fff;
+    margin-right: 10px;
+  }
+.Twitter {
+    background-color: #60a3fb;
+    border-radius: 53%;
+    font-size: 14px;
+    padding: 5px 6px;
+    width: 22px;
+    height: 22px;
+    color: #fff;
+}
