@@ -15,15 +15,24 @@
 }
 .HeaderLaguageList {
   list-style: none;
-  padding: 0 10px;
-  border-left: 2px solid #ccc;
 }
 .LaguageFont,
 .DateFont {
   font-weight: 700;
   color: #7b7b7b;
   font-size: 1em;
+  border-left: 2px solid #ccc;
+  padding: 0 10px;
 }
+.DateFont {
+  border-left: none;
+}
+.LaguageFont:hover {
+  color: #000;
+  border-color: #000;
+  font-weight: 900;
+}
+
 .DateFont {
   padding-right: 10px;
 }
