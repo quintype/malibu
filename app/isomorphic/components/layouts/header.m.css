@@ -1,0 +1,54 @@
+.TopHeader {
+  display: none;
+}
+.Wrapper {
+  display: flex;
+  align-items: center;
+}
+.HeaderLaguage {
+  display: flex;
+  margin: 0;
+  padding-left: 0;
+}
+.SocialLogoRight {
+  margin-left: auto;
+}
+.HeaderLaguageList {
+  list-style: none;
+  padding: 0 10px;
+  border-left: 2px solid #ccc;
+}
+.LaguageFont,
+.DateFont {
+  font-weight: 700;
+  color: #7b7b7b;
+  font-size: 1em;
+}
+.DateFont {
+  padding-right: 10px;
+}
+.SocialLogoList {
+  padding: 4px 5px;
+  height: 20px;
+  border-radius: 10px;
+  width: 20px;
+  font-size: 14px;
+}
+
+.facebook {
+  color: #FFF;
+  background: #3B5998;
+}
+.twitter {
+  color: #FFF;
+  background: #1DA1F2;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 767px) {
+  .TopHeader {
+    display: block;
+    background-color:  #f2f2f2;
+    padding: 15px 0;
+  }
+}
