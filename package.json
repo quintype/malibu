@@ -10,7 +10,9 @@
     "@quintype/components": "^1.28.1",
     "@quintype/framework": "^2.60.0",
     "@quintype/seo": "^1.8.1",
+    "date-fns": "^1.29.0",
     "lodash": "^4.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
