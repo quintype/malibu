@@ -1,0 +1,48 @@
+:root {
+  --titleFont : "Roboto Condensed", Helvetica, Arial, sans-serif;
+  --contentFont: "Droid Serif", "gerogia", serif;
+  --baseFont:16px;
+}
+$font-progression: (
+  desktop: (3,2.5,2,1.75,1.5,1.25,1,.75,.5),
+  mobile: (2.5,2.25,2,1.75,1.5,1.25,1,.75,.5)
+);
+
+@each $viewport, $progression in $font-progression {
+  @include breakpoint(map-get($media-query,$viewport)){
+    :root {
+      @each $font in $progression {
+        $i: index($progression, $font);
+        --fontSize-#{$i}: #{$font}rem;
+      }
+    }
+  }
+}
+
+body {
+  font-family: var(--titleFont);
+  font-size: var(--baseFont);
+}
+
+h1 {
+  font-size: var(--fontSize1);
+}
+h2 {
+  font-size: var(--fontSize2);
+}
+h3 {
+  font-size: var(--fontSize3);
+}
+h4 {
+  font-size: var(--fontSize4);
+}
+h5 {
+  font-size: var(--fontSize5);
+}
+h6 {
+  font-size: var(--fontSize6);
+}
+p {
+  font-size: var(--fontSize7);
+}
+
