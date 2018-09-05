@@ -1,3 +1,6 @@
+.Header {
+  background-color: #fff;
+}
 .TopHeader {
   display: none;
 }
@@ -17,14 +20,14 @@
   list-style: none;
 }
 .LaguageFont,
-.DateFont {
+.Date {
   font-weight: 700;
   color: #7b7b7b;
   font-size: 1em;
   border-left: 2px solid #ccc;
   padding: 0 10px;
 }
-.DateFont {
+.Date {
   border-left: none;
 }
 .LaguageFont:hover {
@@ -32,15 +35,20 @@
   border-color: #000;
   font-weight: 900;
 }
-
-.DateFont {
+.Date {
   padding-right: 10px;
 }
-
+.Logo {
+  padding: 20px 0;
+  height: 80px;
+}
 @media screen and (min-width: 767px) {
   .TopHeader {
     display: block;
     background-color:  #f2f2f2;
     padding: 15px 0;
+  }
+  .Logo {
+    height: 110px;
   }
 }

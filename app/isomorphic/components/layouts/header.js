@@ -21,9 +21,9 @@ let Sociallogo = props => {
 }
 
 let Datecomponent = () => {
-  return <span styleName="DateFont">{format(new Date(),"ddd MMM DD,YYYY")}</span>
+  return <span styleName="Date">{format(new Date(),"ddd MMM DD,YYYY")}</span>
 }
-let Headerwrapper = props => {
+let HeaderWrapper = props => {
   return <div styleName="Wrapper">
         <Datecomponent />
         <MultiLanguages externalLinks={props.menu.externalLinks}/>
@@ -31,12 +31,23 @@ let Headerwrapper = props => {
     </div>
 }
 
+let HeaderLogo = props => {
+  return <img src={props.logo.url} alt={props.logo.heading} styleName="Logo"/>
+}
+
 let Header = props => {
-  return <div styleName="TopHeader">
-  <div className="container">
-      <Headerwrapper menu={props.menu} />
+  return (
+    <div styleName="Header">
+      <div styleName="TopHeader">
+        <div className="container">
+          <HeaderWrapper menu={props.menu} />
+        </div>
       </div>
-  </div>
+      <div className="container">
+        <HeaderLogo logo = {props.logo} />
+      </div>
+    </div>
+  )
 }
 
 export { Header };

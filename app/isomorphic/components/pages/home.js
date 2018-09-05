@@ -6,6 +6,7 @@ import { getCollectionTemplate } from "../get-collection-template";
 // import { Twocolninecomponent } from "../Twocolninecomponent";
 
 import { Header } from "../layouts/header";
+import { Nav } from "../layouts/nav";
 
 import img from "../../../assets/images/pw_maze_white.png";
 import { DfpAd } from "../dfp-ad";
@@ -23,7 +24,7 @@ const menu = {
     heading: 'E-Paper'
   }, {
     url: '#',
-    heading: 'education'
+    heading: 'Education'
   }],
   socialLinks: [{
     url: '#',
@@ -36,10 +37,17 @@ const menu = {
   }]
 }
 
-const HomePage = props => (
-  <div>
-    <Header menu= {menu}/>
-  </div>
-);
+const logo = {
+  url: 'https://d1y1r594kapmgi.cloudfront.net/sakshipost/assets/sakshipost-logo-416180c61c1e354365e90d654b29a29dcfc0f7c33f20a930430499d9d58d724f.jpg',
+  heading: 'sakshipost'
+}
+
+const HomePage = props => {
+  return (
+    <div>
+      <Header menu={menu} logo={logo} />
+    </div>
+  )
+};
 
 export { HomePage };
