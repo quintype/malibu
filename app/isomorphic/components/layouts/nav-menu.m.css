@@ -1,0 +1,79 @@
+.MenuHeader {
+  background-color: var(--nav-menu-bg);
+  border-bottom: 3px solid var(--accent-color);
+  padding: 15px 0;
+  display: none;
+}
+@media (min-width:768px){
+  .MenuHeader {
+    display: block;
+  }
+}
+.NavMenu {
+  display: flex;
+  align-items: center;
+}
+.IconHome {
+  color: var(--accent-color);
+  font-size: 26px;
+}
+.TopNavMenu {
+  display: flex;
+  padding-right: 0px;
+  margin: 0px;
+  height: 20px;
+  list-style: none;
+}
+.NavMenuLink {
+  color: #fff;
+  font-size: 18px;
+  margin:10px 22px;
+}
+.NavMenuLink:hover {
+  color: var(--accent-color);
+}
+.NavMenuItem {
+  position: relative;
+}
+.NavMenuItem:first-child .NavMenuLink {
+  margin-left: 0px;
+}
+.NavMenuItem:last-child .NavMenuLink {
+  color: var(--primary-color);
+}
+.IconSearch {
+  color:var(--accent-color);
+  font-size: 22px;
+  margin-left: auto;
+  cursor: pointer;
+
+}
+.DropdownContent {
+  list-style: none;
+  padding-left: 0px;
+  display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 0;
+  top: 40px;
+  border:1px solid #ccc;
+}
+.DropdownLink {
+  color: #000;
+  padding: 5px 10px;
+  font-size: 14px;
+  display: block;
+  margin: 0 5px;
+  border-bottom: 1px solid #ccc;
+}
+.DropdownLink:hover{
+  color: var(--accent-color);
+}
+.NavMenuItem:hover .DropdownContent {
+  display: block;
+}
+.DropdownItem:last-child .DropdownLink {
+  border-bottom: 0px;
+}

@@ -39,12 +39,41 @@ const logo = {
   url: 'https://d1y1r594kapmgi.cloudfront.net/sakshipost/assets/sakshipost-logo-416180c61c1e354365e90d654b29a29dcfc0f7c33f20a930430499d9d58d724f.jpg'
 
 };
+const NavMenu =[{
+  url: '#',
+  name: 'News',
+  children: [{
+    url: '#',
+    name: 'Market',
+  }, {
+    url: '#',
+    name: 'Bollybood',
+  }]
+}, {
+  url: '#',
+  name: 'Delhi',
+}, {
+  url: '#',
+  name: 'Market',
+}, {
+  url: '#',
+  name: 'Bollybood',
+}, {
+  url: '#',
+  name: 'Travel',
+},{
+  url: '#',
+  name: 'Entertainment',
+}, {
+  url: '#',
+  name: 'Praja Sankalpa Yatra',
+}];
 
 
 
 const HomePage = props => (
   <div>
-    <Header menu={menu} logo={logo}/>
+    <Header menu={menu} logo={logo} NavMenu={NavMenu}/>
   </div>
 );
 

@@ -1,50 +1,44 @@
-@import './_media-query';
+$base-spacing: 21px;
+$base-spacing-desktop: 24px;
+$base-font-size: 14px;
+$base-font-size-desktop: 16px;
+
 :root {
---titleFont:'Roboto Condensed', sans-serif;
---contentFont:'fDroid', Serif;
---fontWeightNormal:400;
---fontWeightBold:600;
---fontWeightLight:100;
-
-}
-body {
-  font-family: var(--titleFont);
-  font-weight: var(--fontWeightNormal);
-  /*$base-font-size: 16px;
-  $base-line-height: 24px;*/
+  --titleFont : "Roboto Condensed", Helvetica, Arial, sans-serif;
+  --contentFont: "Droid Serif", "gerogia", serif;
+  --spacing: $base-spacing;
 }
 
-$base-font-size: 16px;
+html {
+  font-size: $base-font-size;
 
+  @include breakpoint(map-get($media-query, desktop)) {
+    font-size: $base-font-size-desktop;
+  }
+}
 a {
   text-decoration: none;
-  font-weight: normal;
 }
 
 $font-progression: (
-  mobile: (2.5,2.25,2,1.75,1.5,1.25,1,.75,.5),
-  desktop: (3,2.5,2,1.75,1.5,1.25,1,.75,.5)
+  desktop: (3,2.5,2,1.75,1.5,1.25,1,.75,.5),
+  mobile: (2.5,2.25,2,1.75,1.5,1.25,1,.75,.5)
 );
 
-@mixin getFontVars($progression) {
-  :root {
-    @each $fon in $progression {
-      $i: index($progression, $fon);
-      --fontSize-#{$i}: #{$fon}rem;
-    }
-  }
-}
-
 @each $viewport, $progression in $font-progression {
-  @if ($viewport == mobile) {
-    @include getFontVars($progression);
-  } @else {
-    @include breakpoint(map-get($media-query, $viewport)){
-      @include getFontVars($progression);
+  @include breakpoint(map-get($media-query,$viewport)){
+    :root {
+      @each $font in $progression {
+        $i: index($progression, $font);
+        --fontSize-#{$i}: #{$font}rem;
+      }
     }
   }
 }
 
+body {
+  font-family: var(--titleFont);
+}
 h1 {
   font-size: var(--fontSize-1);
 }
@@ -63,7 +57,6 @@ h5 {
 h6 {
   font-size: var(--fontSize-6);
 }
-
-
-
-
+p {
+  font-size: var(--fontSize-7);
+}

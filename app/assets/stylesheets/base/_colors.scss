@@ -1,0 +1,31 @@
+$white                    : #fff;
+$black                    : #000;
+$grey                     : #f2f2f2;
+$primary-color            : #E20C1E;
+$accent-color             : #FCB32B;
+$lighten-black            : #262626;
+
+//header
+
+$darker-grey              : #7b7b7b;
+$top-nav-bg               : $grey;
+$top-nav-menu-color       : $darker-grey;
+$nav-menu-bg              : $lighten-black;
+
+//nav
+
+:root {
+--white                    : $white;
+--black                    : $black;
+--grey                     : $grey ;
+--primary-color            : $primary-color;
+--accent-color             : $accent-color;
+
+//header
+
+--darker-grey              : $darker-grey;
+--top-nav-bg               : $top-nav-bg ;
+--top-nav-menu-color       : $top-nav-menu-color;
+--nav-menu-bg              : $nav-menu-bg ;
+}
+

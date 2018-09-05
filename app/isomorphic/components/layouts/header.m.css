@@ -1,7 +1,7 @@
 
 
 .TopHeader {
-  background-color: #f2f2f2;
+  background-color: var(--top-nav-bg);
   padding: 12px 0;
   display: none;
 }
@@ -19,8 +19,8 @@
 .Date {
   font-size: 16px;
   font-weight: 700;
-  color: #7b7b7b;
-  border-right: 2px solid #7b7b7b;
+  color: var(--top-nav-menu-color);
+  border-right: 2px solid var(--top-nav-menu-color);
   padding-right: 5px;
 }
 .Container {
@@ -40,7 +40,7 @@
 	font-size: 16px;
 	font-weight: 700;
   color: #7b7b7b;
-  border-right: 2px solid #7b7b7b;
+  border-right: 2px solid var(--top-nav-menu-color);
   margin-right: 5px;
   padding: 0 10px;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import {SocialIcons} from  '../social-icons.js';
 import {format} from 'date-fns';
 import {Logo} from "./logo.js";
+import {NavMenu} from "./nav-menu.js";
 import "./header.m.css";
 
 function TopHeader({TopHeaderMenu}){
@@ -25,6 +26,7 @@ function Header(props) {
 		<div className="Header">
 			<TopHeader TopHeaderMenu={props.menu} />
 			<Logo LogoUrl={props.logo} />
+			<NavMenu MenuList={props.NavMenu} />
 		</div>
 	);
 }

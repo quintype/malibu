@@ -4,6 +4,7 @@
 @import "./base/media-query";
 @import "./base/mixins";
 @import "./base/typography";
+@import "./base/colors";
 
 *,
 *::after,
@@ -13,5 +14,9 @@
 img {
   max-width: 100%;
 }
-
+.container {
+  max-width: 1150px;
+  padding: 0 15px;
+  margin: auto;
+}
 
