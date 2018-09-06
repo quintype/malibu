@@ -7,7 +7,7 @@ import img from "../../../assets/images/pw_maze_white.png";
 import { DfpAd } from "../dfp-ad";
 import { Collection } from '@quintype/components';
 import { Header } from "../layouts/header.js";
-
+import { TwoCol } from "../collection-templates/two-col";
 import './home.m.css';
 
 const menu = {
@@ -74,6 +74,8 @@ const NavMenu =[{
 const HomePage = props => (
   <div>
     <Header menu={menu} logo={logo} NavMenu={NavMenu}/>
+    <TwoCol stories={props.data.collection.items[0].items}  collection={props.data.collection.items[0]}/>
+
   </div>
 );
 

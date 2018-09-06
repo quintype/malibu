@@ -1,0 +1,39 @@
+.CardLeftImage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.CardLeftImageHeading {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: var(--FontWeightNormal);
+  margin: 0px;
+}
+.CardLeftImageContent {
+  display: block;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.CardLeftImg {
+  display: none;
+}
+@media (min-width:768px){
+  .CardLeftImageHeading {
+    font-size: 12px;
+  }
+  .CardLeftImageContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+
+  }
+  .CardLeftImg {
+    display: block;
+  }
+}
+.CardLeftImageContent:last-child {
+  border-bottom: 0px;
+}

@@ -1,0 +1,66 @@
+.TwoCol {
+  padding: 20px 0;
+}
+@media (min-width:768px){
+  .TwoCol {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 10px;
+  }
+}
+.TwoColContent {
+ grid-column: 1/10;
+}
+.TwoColAdd {
+  grid-column: 10/13;
+}
+.CollectionName {
+  padding: 8px 15px;
+  font-size: var(--fontSize-6);
+  background-color: #000;
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight:var(--fontWeightBold);
+  margin: 0;
+
+}
+.Collection::after {
+  content: '';
+  height: 2px;
+  background-color: var(--black);
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+
+}
+.TwoColStory {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-column-gap: 10px;
+}
+.TwoColMain {
+  grid-column: 1/10;
+}
+.TwoColSidebar {
+  grid-column: 1/10;
+}
+@media (min-width:768px){
+  .TwoColMain {
+    grid-column: 1/7;
+  }
+  .TwoColSidebar {
+    grid-column: 7/10;
+  }
+}
+.TwoCardHorizontal {
+
+}
+@media (min-width:768px){
+  .TwoCardHorizontal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+}
+
