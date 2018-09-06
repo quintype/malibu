@@ -2,6 +2,7 @@ import React from "react";
 import "./two-col.m.css";
 import {CardTopImage} from "../cards/card-top-image.js";
 import {CardLeftImage} from "../cards/card-left-image.js";
+import {CollectionName} from "../layouts/collection-name.js";
 
 function TwoCol({collection}){
   const stories = collection.items;
@@ -10,9 +11,7 @@ function TwoCol({collection}){
     <div class="container">
       <div styleName="TwoCol">
         <div styleName="TwoColContent">
-          <div styleName="Collection">
-            <h2 styleName="CollectionName">{name}</h2>
-          </div>
+          <CollectionName collection={name} />
           <div styleName="TwoColStory">
             <div styleName="TwoColMain">
               <CardTopImage modifier="BigHeadline" story={stories[0].story} />
