@@ -1,0 +1,53 @@
+.ThreeCol {
+  display: block;
+
+}
+@media (min-width:768px){
+  .ThreeCol {
+    display: grid;
+    grid-template-columns: repeat(12 , 1fr);
+    padding: 10px 0;
+    grid-column-gap: 10px;
+
+  }
+
+  .ThreeColMain {
+    grid-column: 1/10;
+    grid-column-gap: 10px;
+  }
+  .ThreeColSidebar {
+    grid-column: 10/13;
+
+  }
+
+}
+.ThreeColMainContent {
+  display: block;
+
+}
+@media (min-width: 768px){
+  .ThreeColMainContent {
+    display: grid;
+    grid-template-columns: repeat(9 , 1fr);
+    grid-gap: 10px;
+
+  }
+}
+.ThreeColMainContentLeft {
+  grid-column: 1/5;
+}
+.ThreeColMainContentRight {
+  grid-column: 5/9;
+}
+.ThreeColReadMore {
+  text-align: right;
+  padding: 15px 0;
+}
+.ReadMoreLink {
+  color: var(--lighten-black);
+  text-transform: uppercase;
+  font-weight: var(--fontWeightNormal);
+}
+.ReadMoreLink:hover {
+  color: var(--accent-color);
+}

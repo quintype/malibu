@@ -4,7 +4,7 @@ import {CardTopImage} from "../cards/card-top-image.js";
 import {CardLeftImage} from "../cards/card-left-image.js";
 import {CollectionName} from "../layouts/collection-name.js";
 
-function TwoCol({collection}){
+function TwoCol({collection, getImageUrl}){
   const stories = collection.items;
   const name = collection.name;
   return(
@@ -14,15 +14,15 @@ function TwoCol({collection}){
           <CollectionName collection={name} />
           <div styleName="TwoColStory">
             <div styleName="TwoColMain">
-              <CardTopImage modifier="BigHeadline" story={stories[0].story} />
+              <CardTopImage modifier="BigHeadline" story={stories[0].story}  getImageUrl={getImageUrl}/>
               <div styleName="TwoCardHorizontal">
-                <CardTopImage modifier="SmallHeadline" story={stories[1].story} />
-                <CardTopImage modifier="SmallHeadline" story={stories[2].story} />
+                <CardTopImage modifier="SmallHeadline" story={stories[1].story} getImageUrl={getImageUrl}/>
+                <CardTopImage modifier="SmallHeadline" story={stories[2].story} getImageUrl={getImageUrl} />
               </div>
             </div>
             <div styleName="TwoColSidebar">
               {stories.slice(3,9).map(({story}) =>
-                <CardLeftImage story={story}/>
+                <CardLeftImage story={story} getImageUrl={getImageUrl} />
               )}
             </div>
           </div>

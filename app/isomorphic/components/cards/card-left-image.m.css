@@ -35,5 +35,11 @@
   }
 }
 .CardLeftImageContent:last-child {
-  border-bottom: 0px;
+  border-bottom: 0;
+}
+.CardTopImage--HeadlineNoBorder {
+
+}
+.CardTopImage--HeadlineNoBorder .CardLeftImageHeading {
+  border-bottom: 0;
 }

@@ -1,0 +1,13 @@
+.SideBarHeading {
+  background-color: var(--lighten-black);
+  color: var(--white);
+  font-size: var(--fontSize-7);
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  margin:0px;
+}
+.SideBar {
+  background-color: var(--grey );
+  padding: 10px;
+}

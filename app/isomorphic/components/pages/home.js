@@ -7,7 +7,8 @@ import img from "../../../assets/images/pw_maze_white.png";
 import { DfpAd } from "../dfp-ad";
 import { Collection } from '@quintype/components';
 import { Header } from "../layouts/header.js";
-import { TwoCol } from "../collection-templates/two-col";
+import { TwoCol } from "../collection-templates/two-col.js";
+import { ThreeCol } from "../collection-templates/three-col.js"
 import './home.m.css';
 
 const menu = {
@@ -71,13 +72,24 @@ const NavMenu =[{
 
 
 
-const HomePage = props => (
-  <div>
-    <Header menu={menu} logo={logo} NavMenu={NavMenu}/>
-    <TwoCol stories={props.data.collection.items[0].items}  collection={props.data.collection.items[0]}/>
+const HomePage = props => {
+  console.log(props.config['cdn-image']);
+  function getImageUrl(imgUrl) {
+    return (
 
-  </div>
-);
+       `https://${props.config['cdn-image']}/${imgUrl}`
+    );
+  }
+
+  return (
+    <div>
+      <Header menu={menu} logo={logo} NavMenu={NavMenu}/>
+      <TwoCol stories={props.data.collection.items[0].items}  collection={props.data.collection.items[0]} getImageUrl={getImageUrl}/>
+      <ThreeCol stories={props.data.collection.items[1].items}  collection={props.data.collection} getImageUrl={getImageUrl}/>
+    </div>
+  );
+};
+
 
 
 

@@ -2,6 +2,9 @@
 .CardTopImage--BigHeadline {
 
 }
+.CardTopImage--MediumHeadline {
+
+}
 
 .CardTopImage--BigHeadline .Headline {
   font-size: var(--fontSize-6);
@@ -14,14 +17,21 @@
   grid-column-gap: 10px;
   padding-bottom: 10px;
 }
+
 @media (min-width:768px){
   .CardTopImage--SmallHeadline {
     display: block;
   }
 }
 
+
 .CardTopImage--SmallHeadline .Headline {
   font-size: 14px;
+  color: var(--lighten-black);
+  font-weight: var(--FontWeightNormal);
+}
+.CardTopImage--MediumHeadline .Headline {
+  font-size: 16px;
   color: var(--lighten-black);
   font-weight: var(--FontWeightNormal);
 }
