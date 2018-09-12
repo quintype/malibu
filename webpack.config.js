@@ -1,3 +1,3 @@
 const { webpackConfig } = require("@quintype/build/webpack-config");
 
-module.exports = webpackConfig("quintype-malibu", __dirname);
+module.exports = Object.assign({node: {Buffer: false}}, webpackConfig("quintype-malibu", __dirname));
