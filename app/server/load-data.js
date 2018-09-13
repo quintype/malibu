@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle, no-undef, no-unused-vars, object-shorthand, arrow-body-style  */
-import pick from "lodash/pick";
+import pick from "object.pick";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
