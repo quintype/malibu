@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/components": "^1.33.0-beta.3",
-    "@quintype/framework": "^2.70.0-beta.0",
+    "@quintype/framework": "^2.70.0-beta.1",
     "@quintype/seo": "^1.8.1",
     "dot-prop-immutable": "^1.4.0",
     "object.pick": "^1.3.0",
