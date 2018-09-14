@@ -7,7 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/components": "^1.33.0-beta.5",
+    "@quintype/components": "^1.33.0-beta.7",
     "@quintype/framework": "^2.70.0-beta.4",
     "@quintype/seo": "^1.8.1",
     "lodash": "^4.17.11",
