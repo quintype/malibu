@@ -13,6 +13,8 @@
     "lodash": "^4.17.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "superagent": "^3.8.3",
+    "superagent-promise": "^1.1.0",
     "wretch": "^1.4.1"
   },
   "devDependencies": {
