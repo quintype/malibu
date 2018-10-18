@@ -75,6 +75,8 @@
     "analyze-stats": "NODE_ENV=production ANALYZE_STATS=true npx webpack --profile --mode=production -p",
     "start": "node start.js",
     "test": "jest",
+    "lint:js": "$(npm bin)/eslint ./app/**/*.js",
+    "lint:js:ci": "$(npm bin)/eslint $(git show --pretty='' --name-only)",
     "lint:css": "$(npm bin)/stylelint './app/**/*.{scss,css}'"
   }
 }
