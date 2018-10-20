@@ -1,5 +1,6 @@
 const { webpackConfig } = require("@quintype/build/webpack-config");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const ShakePlugin = require("webpack-common-shake").Plugin;
 
 const config = Object.assign(
@@ -8,6 +9,11 @@ const config = Object.assign(
 );
 
 config.plugins.push(new ShakePlugin());
+config.plugins.push(
+  new DuplicatePackageCheckerPlugin({
+    verbose: true
+  })
+);
 
 if (process.env.ANALYZE_STATS === "true") {
   config.plugins.push(
