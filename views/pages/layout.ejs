@@ -11,6 +11,9 @@
     <style>
       <%- cssContent %>
     </style>
+    <%_ if(pageChunk) { _%>
+    <style data-href="<%= pageChunk.cssPath %>"><%- pageChunk.cssContent %></style>
+    <%_ } _%>
   </head>
 
   <body>

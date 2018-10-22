@@ -1,13 +1,11 @@
 <%- serviceWorkerHelper %>;
 
+// FIXME: Put this into asset helper
+<%_ const SERVICE_WORKER_ASSETS = ["app.css", "app.js", "list.js", "list.css", "vendors~list.js", "story.js", "story.css", "vendors~story.css"] _%>
+
 const REQUIRED_ASSETS = [
-  <%_ const cssPath = assetPath("app.css") _%>
-  <%_ if(cssPath) { _%>
-  "<%= cssPath %>",
-  <%_ } _%>
-  // Put other images here
-  <%_ ["app.js"].map(x => { _%>
-  "<%- assetPath(x) %>",
+  <%_ SERVICE_WORKER_ASSETS.map(x => assetPath(x)).map(x => { _%>
+  <%_ if (x) { %>  "<%=x%>",<%_ } %>
   <%_ }) _%>
   // Put fonts here
   {url: '/shell.html', revision: '<%= assetHash("app.js") %>'}
