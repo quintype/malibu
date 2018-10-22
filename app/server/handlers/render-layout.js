@@ -21,8 +21,6 @@ export function renderLayout(res, params) {
     res.append("Link", chunk.jsPath.map(x => `<${x}>; rel=preload; as=script`).join(", "))
   }
 
-  res.append("Link", '<https://prod-analytics.qlitics.com>; rel=preconnect; crossorigin')
-
   res.render(
     "pages/layout",
     Object.assign(
