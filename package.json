@@ -7,7 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/components": "^1.35.0",
+    "@quintype/components": "^1.38.0",
     "@quintype/framework": "^2.74.0",
     "@quintype/seo": "^1.8.1",
     "lodash": "^4.17.11",
@@ -30,6 +30,7 @@
     "babel-preset-es2015-tree-shaking": "^1.0.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-standard": "^12.0.0",
@@ -56,6 +57,7 @@
     "webpack": "^4.21.0",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.0.13",
+    "webpack-common-shake": "^2.1.0",
     "webpack-dev-server": "^3.1.9"
   },
   "babel": {
@@ -69,10 +71,11 @@
     }
   },
   "scripts": {
+    "analyze-stats": "NODE_ENV=production ANALYZE_STATS=true npx webpack --profile --mode=production -p",
     "asset-server": "webpack-dev-server --hot",
     "compile": "webpack",
     "dev-server": "nodemon --watch app/server --watch app/isomorphic --exec 'node start.js'",
-    "analyze-stats": "NODE_ENV=production ANALYZE_STATS=true npx webpack --profile --mode=production -p",
+    "prune-packages": "rm -rf node_modules && npm install && npm dedupe",
     "start": "node start.js",
     "test": "jest",
     "lint:js": "npx eslint './app/**/*.{js,jsx}'",
