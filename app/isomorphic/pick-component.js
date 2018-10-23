@@ -13,12 +13,14 @@ export const COMPONENTS = {
   "default": {chunk: "list", component: "NotFoundPage"},
 }
 
+// eslint-disable
 function importChunk(chunkName) {
   switch(chunkName) {
     case 'list': return import(/* webpackChunkName: "list" */ './component-bundles/list.js');
     case 'story': return import(/* webpackChunkName: "story" */ './component-bundles/story.js');
   }
 }
+// eslint-enable
 
 export function getChunkName(pageType) {
   const {chunk, component} = COMPONENTS[pageType] || COMPONENTS["default"];
