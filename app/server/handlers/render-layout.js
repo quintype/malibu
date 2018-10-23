@@ -1,16 +1,11 @@
 /* eslint-disable object-shorthand */
-import { assetPath, readAsset, assetFiles } from "@quintype/framework/server/asset-helper";
-import { COMPONENTS, getChunkName } from '../../isomorphic/pick-component'
+import { assetPath, readAsset, assetFiles, getChunk } from "@quintype/framework/server/asset-helper";
+import { COMPONENTS, getChunkName } from '../../isomorphic/pick-component';
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 
-// TODO: Move this inside assetHelper
 function loadChunk(acc, {chunk}) {
-  acc[chunk] = acc[chunk] || {
-    cssPath: assetPath(`${chunk}.css`),
-    cssContent: readAsset(`${chunk}.css`),
-    jsPaths: [assetPath(`${chunk}.js`), assetPath(`vendors~${chunk}.js`)],
-  };
+  acc[chunk] = acc[chunk] || getChunk(chunk);
   return acc;
 }
 const allChunks = Object.values(COMPONENTS).reduce(loadChunk, {});
