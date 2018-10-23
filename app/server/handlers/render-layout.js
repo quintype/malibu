@@ -1,14 +1,9 @@
 /* eslint-disable object-shorthand */
-import { assetPath, readAsset, assetFiles, getChunk } from "@quintype/framework/server/asset-helper";
+import { assetPath, readAsset, assetFiles, getAllChunks } from "@quintype/framework/server/asset-helper";
 import { COMPONENTS, getChunkName } from '../../isomorphic/pick-component';
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
-
-function loadChunk(acc, {chunk}) {
-  acc[chunk] = acc[chunk] || getChunk(chunk);
-  return acc;
-}
-const allChunks = Object.values(COMPONENTS).reduce(loadChunk, {});
+const allChunks = getAllChunks("list", "story");
 
 export function renderLayout(res, params) {
   const chunk = allChunks[getChunkName(params.pageType)];
