@@ -9,7 +9,7 @@ function loadChunk(acc, {chunk}) {
   acc[chunk] = acc[chunk] || {
     cssPath: assetPath(`${chunk}.css`),
     cssContent: readAsset(`${chunk}.css`),
-    jsPath: [assetPath(`${chunk}.js`), assetPath(`vendors~${chunk}.js`)],
+    jsPaths: [assetPath(`${chunk}.js`), assetPath(`vendors~${chunk}.js`)],
   };
   return acc;
 }
@@ -17,9 +17,6 @@ const allChunks = Object.values(COMPONENTS).reduce(loadChunk, {});
 
 export function renderLayout(res, params) {
   const chunk = allChunks[getChunkName(params.pageType)];
-  if(chunk) {
-    res.append("Link", chunk.jsPath.map(x => `<${x}>; rel=preload; as=script`).join(", "))
-  }
 
   res.render(
     "pages/layout",

@@ -14,6 +14,9 @@
     </style>
     <%_ if(pageChunk) { _%>
     <style data-href="<%= pageChunk.cssPath %>"><%- pageChunk.cssContent %></style>
+    <%_ pageChunk.jsPaths.map(jsPath => {_%>
+      <link rel="preload" href="<%= jsPath %>" as="script">
+    <%_ }) _%>
     <%_ } _%>
   </head>
 
