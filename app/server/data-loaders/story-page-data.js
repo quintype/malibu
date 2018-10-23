@@ -9,8 +9,9 @@ export function loadStoryPageData(client, params, config, next) {
     };
   }
 
-  return Story.getStoryBySlug(client, params.storySlug)
-              .then(story => story ? returnStoryData(story) : next());
+  return Story.getStoryBySlug(client, params.storySlug).then(
+    story => (story ? returnStoryData(story) : next())
+  );
 }
 
 export function loadStoryPublicPreviewPageData(client, params) {

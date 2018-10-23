@@ -9,9 +9,11 @@ function StoryPageBase({ index, story, otherProp }) {
   return <BlankStory story={story} />;
 }
 
-const FIELDS = "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,cards";
+const FIELDS =
+  "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,cards";
 function storyPageLoadItems(pageNumber) {
-  return global.wretch("/api/v1/stories")
+  return global
+    .wretch("/api/v1/stories")
     .query({
       fields: FIELDS,
       limit: 5,

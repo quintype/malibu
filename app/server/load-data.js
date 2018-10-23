@@ -2,7 +2,10 @@
 import pick from "lodash/pick";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
-import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
+import {
+  loadStoryPageData,
+  loadStoryPublicPreviewPageData
+} from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
@@ -20,7 +23,7 @@ export function loadErrorData(error, config) {
   });
 }
 
-export function loadData(pageType, params, config, client, {host, next}) {
+export function loadData(pageType, params, config, client, { host, next }) {
   function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE:
