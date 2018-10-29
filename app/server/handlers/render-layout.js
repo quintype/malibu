@@ -6,7 +6,7 @@ const cssContent = assetPath('app.css') ? readAsset('app.css') : ''
 const allChunks = getAllChunks('list', 'story')
 
 export function renderLayout (res, params) {
-  const chunk = allChunks[getChunkName(params.pageType)]
+  const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)]
 
   res.render(
     'pages/layout',
