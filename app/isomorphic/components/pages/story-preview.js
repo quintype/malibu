@@ -1,28 +1,28 @@
-import React from "react";
-import { StoryPage } from "./story";
+import React from 'react'
+import { StoryPage } from './story'
 
 class StoryPagePreview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  constructor (props) {
+    super(props)
+    this.state = {}
   }
 
-  componentDidMount() {
-    this.collectStoryData();
+  componentDidMount () {
+    this.collectStoryData()
   }
 
-  collectStoryData() {
-    global.addEventListener("message", event => {
+  collectStoryData () {
+    global.addEventListener('message', event => {
       if (event.data.story) {
-        this.setState({ story: event.data.story });
+        this.setState({ story: event.data.story })
       }
-    });
+    })
   }
 
-  render() {
-    if (!this.state.story) return <div />;
-    return <StoryPage data={this.state} />;
+  render () {
+    if (!this.state.story) return <div />
+    return <StoryPage data={this.state} />
   }
 }
 
-export { StoryPagePreview };
+export { StoryPagePreview }
