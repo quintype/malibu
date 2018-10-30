@@ -1,5 +1,9 @@
 /* eslint-disable object-shorthand */
-import { assetPath, readAsset, getAllChunks } from '@quintype/framework/server/asset-helper'
+import {
+  assetPath,
+  readAsset,
+  getAllChunks
+} from '@quintype/framework/server/asset-helper'
 import { getChunkName } from '../../isomorphic/pick-component'
 
 const cssContent = assetPath('app.css') ? readAsset('app.css') : ''

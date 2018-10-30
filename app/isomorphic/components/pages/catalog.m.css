@@ -1,14 +1,14 @@
 .widget-header {
-  color: white; 
-  margin: 30px auto; 
+  color: white;
+  margin: 30px auto;
   margin-bottom: 30px;
   display: flex;
-  justify-content: space-between; 
-  overflow: initial!important;
+  justify-content: space-between;
+  overflow: initial !important;
 }
 
 .widget-header:after {
-  content: none!important;
+  content: none !important;
 }
 
 .widget-description {
@@ -25,7 +25,7 @@
   border-radius: 2px;
   background-color: white;
   color: black;
-} 
+}
 
 .configureBtn {
   border: 0;
@@ -92,11 +92,11 @@
   background: black;
 }
 
-.option-wrapper { 
+.option-wrapper {
   margin: 5px auto;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   .widget-options {
     display: block;
   }
