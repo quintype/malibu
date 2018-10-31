@@ -24,22 +24,11 @@
 
   <body>
     <div class="container">
-      <div id="header-container">
-        <nav id="main-navigation">
-          <ul class="main-navigation">
-            <li><a href="#hide-navigation" class="toggle"><span></span></a></li>
-            <li><a href="/">Home</a></li>
-            <li><a href="/politics">Politics</a></li>
-            <li><a href="/culture/2016/04/07/5-Times-Joey-was-more-thoughtful-than-his-other-friends">Story</a></li>
-          </ul>
-        </nav>
-      </div>
-      <header>
-        <a class="toggle" href="#main-navigation" title="menu"><span></span></a>
-        <h1 class="title">Sample Application</h1>
-        <div id='breaking-news-container'></div>
-      </header>
+      <header id="header"><%- navbar %></header>
       <div id="container"><%_ if(contentTemplate) { _%><%- include(contentTemplate) -%><%_ }else { _%><%- content %><%_ } _%></div>
+      <footer id="footer">
+        <%- footer %>
+      </footer>
     </div>
     <%_ if(disableAjaxNavigation) { _%>
     <script type="text/javascript">window.disableAjaxNavigation = true;</script>

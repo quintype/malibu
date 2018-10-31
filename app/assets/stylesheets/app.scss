@@ -180,3 +180,19 @@ h1 span {
   font-size: 12px;
   float: right;
 }
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: #000;
+  margin-bottom: 10px;
+}
+#footer {
+  clear: both;
+  text-align: center;
+  background: black;
+  color: white;
+  padding: 20px 0;
+}
+

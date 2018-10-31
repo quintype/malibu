@@ -1,0 +1,83 @@
+.qt-search {
+  align-self: center;
+}
+.btn_search {
+  background: transparent;
+  border: none;
+  margin-right: 12px;
+  cursor: pointer;
+  padding: 6px 3px 3px;
+  @media only screen and (min-width: 767px) {
+    margin-right: 16px;
+  }
+}
+
+.qt-search button {
+    margin-right: 5px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+ }
+
+ .qt-search-form {
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    transform: translate(0, -100%) rotateX(90deg);
+    transition-property: all;
+    transition-duration: 0.8s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    :global .component-wrapper {
+      max-width: 300px;
+      width: 100%;
+       display: flex;
+
+      @media only screen and (min-width: 767px) {
+        max-width: 600px;
+      }
+    }
+
+    :global .qt-search__form-input {
+      width: 100%;
+      padding: 12px;
+      color: #FFF;
+      box-shadow: none;
+      outline: none;
+      background: #000;
+      border: 1px solid #CCC;
+      font-size:16PX;
+      color: #FFF;
+      height: 40px;
+    }
+
+}
+:global .qt-search__form-input:focus {
+  border: 1px solid #FFF;
+}
+
+.qt-search__form-label {
+  width: 80%;
+}
+
+.qt-search__form-submit {
+    margin-left: 10px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background: ;
+    border: 0;
+}
+
+.close-icon {
+    position: absolute;
+    right: 0;
+    margin-right: 24px;
+    cursor: pointer;
+}

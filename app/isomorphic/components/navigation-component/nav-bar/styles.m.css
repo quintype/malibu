@@ -1,0 +1,30 @@
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+.menu-group-header-links {
+  display: none;
+  color: white;
+  @media only screen and (min-width: 768px) {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 30px;
+    display: flex;
+  }
+}
+/* TODO: Extract to seperate component */
+.menu-group-header-links li {
+  cursor: pointer;
+  padding: 12px;
+}
+
+.menu-group-header-links li a {
+  display: flex;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
