@@ -150,6 +150,10 @@ h1 span {
   background: url("../images/gears.svg") no-repeat center center;
 }
 
+.story-grid {
+  overflow: auto;
+}
+
 .story-grid-item {
   box-sizing: border-box;
   display: block;
