@@ -61,7 +61,11 @@
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.0.13",
     "webpack-common-shake": "^2.1.0",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^3.1.9",
+    "@storybook/react": "^4.0.0",
+    "@storybook/addon-actions": "^4.0.0",
+    "@storybook/addon-links": "^4.0.0",
+    "@storybook/addons": "^4.0.0"
   },
   "babel": {
     "env": {
@@ -83,7 +87,9 @@
     "test": "jest",
     "lint:js": "npx eslint './app/**/*.{js,jsx}'",
     "lint:js:ci": "npx eslint $(git diff --pretty='' --name-only origin/master..HEAD -- '*.js' '*.jsx')",
-    "lint:css": "npx stylelint './app/**/*.{scss,css}'"
+    "lint:css": "npx stylelint './app/**/*.{scss,css}'",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
