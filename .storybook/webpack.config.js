@@ -16,7 +16,7 @@ module.exports = {
         }
       } },
       {
-        test: /\.m.{css, scss}$/,
+        test: /\.m.(css|scss)$/,
         use: [{loader: "style-loader"}, {
           loader: "css-loader", options: { modules: true, importLoaders: 1, localIdentName: "[name]__[local]__[hash:base64:5]" },
         }, {
@@ -28,11 +28,6 @@ module.exports = {
               require("autoprefixer"),
               require("precss")()
             ]
-          }
-        }, { loader: "sass-loader" }, {
-          loader: "sass-resources-loader",
-          options: {
-            resources: "./app/assets/stylesheets/base/tools/mixins.scss"
           }
         }],
         include: path.resolve(__dirname, "../")
