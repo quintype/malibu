@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-import { StoryGrid } from '../story-grid'
+import { StoryGrid } from "../story-grid";
 
 const SearchPage = props => (
   <div>
@@ -9,6 +9,6 @@ const SearchPage = props => (
     </h1>
     <StoryGrid stories={props.data.stories} />
   </div>
-)
+);
 
-export { SearchPage }
+export { SearchPage };

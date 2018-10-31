@@ -1,5 +1,5 @@
-import templates from './collection-templates'
+import templates from "./collection-templates";
 
-export function getCollectionTemplate (designTemplate) {
-  return templates[designTemplate] || templates.defaultTemplate
+export function getCollectionTemplate(designTemplate) {
+  return templates[designTemplate] || templates.defaultTemplate;
 }

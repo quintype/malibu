@@ -1,31 +1,31 @@
 /* eslint-disable object-shorthand */
-import { createDfpAdComponent } from '@quintype/components'
-import get from 'lodash/get'
+import { createDfpAdComponent } from "@quintype/components";
+import get from "lodash/get";
 
 export const CONFIG = {
-  'homepage-banner': { adUnit: 'Rio_Story_LB1', sizes: [[728, 90]] }
-}
+  "homepage-banner": { adUnit: "Rio_Story_LB1", sizes: [[728, 90]] }
+};
 
 export const DfpAd = createDfpAdComponent({
-  defaultNetworkID: '60988533',
+  defaultNetworkID: "60988533",
   config: CONFIG,
-  targeting: function (state) {
-    const params = {}
+  targeting: function(state) {
+    const params = {};
 
     if (
-      get(state, ['qt', 'pageType']) === 'story-page' &&
-      get(state, ['qt', 'data', 'story', 'metadata', 'sponsored-by'])
+      get(state, ["qt", "pageType"]) === "story-page" &&
+      get(state, ["qt", "data", "story", "metadata", "sponsored-by"])
     ) {
       params.sponsor = get(state, [
-        'qt',
-        'data',
-        'story',
-        'metadata',
-        'sponsored-by'
-      ])
-      return params.sponsor
+        "qt",
+        "data",
+        "story",
+        "metadata",
+        "sponsored-by"
+      ]);
+      return params.sponsor;
     }
 
-    return params
+    return params;
   }
-})
+});

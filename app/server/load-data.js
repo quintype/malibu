@@ -1,47 +1,47 @@
 /* eslint-disable no-underscore-dangle, no-undef, no-unused-vars, object-shorthand, arrow-body-style  */
-import pick from 'lodash/pick'
+import pick from "lodash/pick";
 
-import { loadHomePageData } from './data-loaders/home-page-data'
+import { loadHomePageData } from "./data-loaders/home-page-data";
 import {
   loadStoryPageData,
   loadStoryPublicPreviewPageData
-} from './data-loaders/story-page-data'
-import { loadSectionPageData } from './data-loaders/section-page-data'
-import { loadTagPageData } from './data-loaders/tag-page-data'
-import { loadSearchPageData } from './data-loaders/search-page-data'
-import { catalogDataLoader } from '@quintype/framework/server/data-loader-helpers'
-import { PAGE_TYPE } from '../isomorphic/constants'
+} from "./data-loaders/story-page-data";
+import { loadSectionPageData } from "./data-loaders/section-page-data";
+import { loadTagPageData } from "./data-loaders/tag-page-data";
+import { loadSearchPageData } from "./data-loaders/search-page-data";
+import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
+import { PAGE_TYPE } from "../isomorphic/constants";
 
-const WHITELIST_CONFIG_KEYS = ['cdn-image', 'polltype-host', 'layout']
+const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout"];
 
-export function loadErrorData (error, config) {
-  const errorComponents = { 404: 'not-found' }
+export function loadErrorData(error, config) {
+  const errorComponents = { 404: "not-found" };
   return Promise.resolve({
     data: null,
     config: pick(config, WHITELIST_CONFIG_KEYS),
     pageType: errorComponents[error.httpStatusCode]
-  })
+  });
 }
 
-export function loadData (pageType, params, config, client, { host, next }) {
-  function _loadData () {
+export function loadData(pageType, params, config, client, { host, next }) {
+  function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE:
-        return loadHomePageData(client, config)
+        return loadHomePageData(client, config);
       case PAGE_TYPE.SECTION_PAGE:
-        return loadSectionPageData(client, params.sectionId, config)
+        return loadSectionPageData(client, params.sectionId, config);
       case PAGE_TYPE.TAG_PAGE:
-        return loadTagPageData(client, params.tagSlug, config)
+        return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:
-        return loadStoryPageData(client, params, config, next)
+        return loadStoryPageData(client, params, config, next);
       case PAGE_TYPE.CATALOG_PAGE:
-        return catalogDataLoader(client, config)
+        return catalogDataLoader(client, config);
       case PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE:
-        return loadStoryPublicPreviewPageData(client, params, config)
+        return loadStoryPublicPreviewPageData(client, params, config);
       case PAGE_TYPE.STATIC_PAGE:
-        return Promise.resolve({ cacheKeys: ['static'] })
+        return Promise.resolve({ cacheKeys: ["static"] });
       default:
-        return Promise.resolve({ error: { message: 'No Loader' } })
+        return Promise.resolve({ error: { message: "No Loader" } });
     }
   }
 
@@ -54,6 +54,6 @@ export function loadData (pageType, params, config, client, { host, next }) {
       title: data.title
         ? `${data.title} - Sample Application`
         : `Sample Application`
-    }
-  })
+    };
+  });
 }
