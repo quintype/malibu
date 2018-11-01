@@ -23,4 +23,4 @@ HomePage.propTypes = {
   data: shape({
     collection: object
   })
-}
+};

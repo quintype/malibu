@@ -2,17 +2,22 @@
   "extends": [
     "standard",
     "plugin:react/recommended",
+    "plugin:jest/recommended",
     "plugin:prettier/recommended",
     "prettier/react",
     "prettier/standard"
   ],
   "plugins": [
     "react",
-    "standard"
+    "standard",
+    "jest"
   ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     }
+  },
+  "rules": {
+    "react/prop-types": "warn"
   }
 }
