@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt, import/extensions */
 import React from "react";
 import assetify from "@quintype/framework/assetify";
+import { object, shape } from "prop-types";
 
 import { getCollectionTemplate } from "../get-collection-template";
 import img from "../../../assets/images/pw_maze_white.png";
@@ -14,5 +15,12 @@ export const HomePage = props => (
       collectionTemplates={getCollectionTemplate}
       lazyAfter={2}
     />
+    <img src={assetify(img)} />
   </div>
 );
+
+HomePage.propTypes = {
+  data: shape({
+    collection: object
+  })
+}
