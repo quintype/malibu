@@ -1,3 +1,3 @@
-const { startApp } = require('@quintype/framework/server/start')
+const { startApp } = require("@quintype/framework/server/start");
 
-startApp(() => require('./app/server/app.js').app)
+startApp(() => require("./app/server/app.js").app);
