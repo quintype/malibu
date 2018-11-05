@@ -1,7 +1,11 @@
 /* eslint-disable object-shorthand */
+import {
+  assetPath,
+  readAsset,
+  getAllChunks
+} from "@quintype/framework/server/asset-helper";
+import { getChunkName } from "../../isomorphic/pick-component";
 import {renderReduxComponent} from "@quintype/framework/server/render";
-import { assetPath, readAsset, getAllChunks } from '@quintype/framework/server/asset-helper'
-import { getChunkName } from '../../isomorphic/pick-component';
 import { NavigationComponent } from "../../isomorphic/components/navigation-component";
 import Footer from '../../isomorphic/components/layouts/footer';
 
