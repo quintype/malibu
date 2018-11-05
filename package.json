@@ -7,7 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/components": "^1.38.0",
+    "@quintype/components": "^1.39.0",
     "@quintype/framework": "^2.78.0",
     "@quintype/seo": "^1.8.1",
     "lodash": "^4.17.11",
@@ -35,6 +35,7 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.2",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-promise": "^4.0.1",
@@ -42,7 +43,9 @@
     "eslint-plugin-standard": "^4.0.0",
     "file-loader": "^1.1.11",
     "history": "^4.7.2",
+    "husky": "^1.1.2",
     "jest": "^22.4.3",
+    "lint-staged": "^8.0.2",
     "mocha": "^4.0.1",
     "node-sass": "^4.9.4",
     "nodemon": "^1.18.4",
@@ -53,7 +56,8 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.19.0",
     "stylelint": "^8.3.1",
-    "stylelint-config-standard": "^18.0.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.3.2",
     "webpack": "^4.21.0",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.0.13",
@@ -79,7 +83,25 @@
     "start": "node start.js",
     "test": "jest",
     "lint:js": "npx eslint './app/**/*.{js,jsx}'",
-    "lint:js:ci": "npx eslint $(git diff --pretty='' --name-only origin/master..HEAD -- '*.js' '*.jsx')",
-    "lint:css": "npx stylelint './app/**/*.{scss,css}'"
+    "lint:js:ci": "npx eslint $(git diff --pretty='' --name-only origin/master..HEAD -- '*.js' '*.jsx') ./start.js",
+    "lint:css": "npx stylelint './app/**/*.{scss,css}'",
+    "lint:css:ci": "npx stylelint $(git diff --pretty='' --name-only origin/master..HEAD -- '*.css' '*.scss') ./app/assets/stylesheets/app.scss",
+    "lint:ci": "npm run lint:js:ci && npm run lint:css:ci"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npx eslint --fix",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "npx prettier --write",
+      "npx stylelint",
+      "git add"
+    ]
   }
 }

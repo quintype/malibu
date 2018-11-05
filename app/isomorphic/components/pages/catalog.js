@@ -158,11 +158,12 @@ export class CatalogPage extends React.Component {
     };
     const templates = {};
     this.templatePicker = template => {
-      if (!templates[template])
+      if (!templates[template]) {
         templates[template] = createTemplateClass(
           template,
           this.updateComponentAttribute.bind(this, template)
         );
+      }
       return templates[template];
     };
   }
