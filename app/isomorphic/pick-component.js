@@ -1,5 +1,5 @@
 import { PAGE_TYPE } from "./constants";
-import { pickComponentHelper } from "./pick-component-helper";
+import { pickComponentHelper } from "@quintype/framework/server/pick-component-helper";
 
 const { pickComponent, getChunkName } = pickComponentHelper(
   {
