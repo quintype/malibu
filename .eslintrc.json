@@ -12,9 +12,5 @@
     "standard",
     "jest"
   ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  }
+  "parser": "babel-eslint"
 }
