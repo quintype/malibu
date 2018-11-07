@@ -83,9 +83,9 @@
     "start": "node start.js",
     "test": "jest",
     "lint:js": "npx eslint './app/**/*.{js,jsx}'",
-    "lint:js:ci": "npx eslint $(git diff --pretty='' --name-only origin/master..HEAD -- '*.js' '*.jsx') ./start.js",
+    "lint:js:ci": "npx eslint $(git diff --pretty='' --diff-filter=d --name-only origin/master..HEAD -- '*.js' '*.jsx') ./start.js",
     "lint:css": "npx stylelint './app/**/*.{scss,css}'",
-    "lint:css:ci": "npx stylelint $(git diff --pretty='' --name-only origin/master..HEAD -- '*.css' '*.scss') ./app/assets/stylesheets/app.scss",
+    "lint:css:ci": "npx stylelint $(git diff --pretty='' --diff-filter=d --name-only origin/master..HEAD -- '*.css' '*.scss') ./app/assets/stylesheets/app.scss",
     "lint:ci": "npm run lint:js:ci && npm run lint:css:ci"
   },
   "husky": {
