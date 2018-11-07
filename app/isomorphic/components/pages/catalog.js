@@ -1,6 +1,7 @@
 import React from "react";
 import { getCollectionTemplate } from "../get-collection-template";
 import { Collection } from "@quintype/components";
+import PT from "prop-types";
 import "./catalog.m.css";
 
 function layoutToCollection(template, stories, associatedMetadata) {
@@ -24,7 +25,7 @@ function layoutToCollection(template, stories, associatedMetadata) {
 }
 
 function createTemplateClass(template, updateTemplateAttribute) {
-  return class Wrapper extends React.Component {
+  class Wrapper extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -146,7 +147,17 @@ function createTemplateClass(template, updateTemplateAttribute) {
         </div>
       );
     }
+  }
+
+  Wrapper.propTypes = {
+    collection: PT.shape({
+      "associated-metadata": PT.object,
+      templatePageDisplay: PT.string,
+      options: PT.array
+    })
   };
+
+  return Wrapper;
 }
 
 export class CatalogPage extends React.Component {
@@ -212,3 +223,12 @@ export class CatalogPage extends React.Component {
     global.document.body.classList.remove("template-options");
   }
 }
+
+CatalogPage.propTypes = {
+  data: PT.shape({
+    templateOptions: PT.shape({
+      "collection-layouts": PT.array
+    }),
+    stories: PT.array
+  })
+};
