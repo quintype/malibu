@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
+import PT from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
@@ -24,6 +25,19 @@ function StoryGridStoryItem(props) {
   );
 }
 
+const storyPropType = PT.shape({
+  id: PT.string,
+  slug: PT.string,
+  "hero-image-s3-key": PT.string,
+  "hero-image-metadata": PT.object,
+  headline: PT.string,
+  "author-name": PT.string
+});
+
+StoryGridStoryItem.propTypes = {
+  story: storyPropType
+};
+
 function StoryGrid(props) {
   return (
     <div className="story-grid">
@@ -33,5 +47,9 @@ function StoryGrid(props) {
     </div>
   );
 }
+
+StoryGrid.propTypes = {
+  stories: PT.arrayOf(storyPropType)
+};
 
 export { StoryGrid };
