@@ -10,3 +10,4 @@ export const PAGE_TYPE = Object.freeze({
   HOME_PREVIEW: "home-preview",
   STATIC_PAGE: "static-page"
 });
+export const TAG_PAGE_URL_PREFIX = "/topic/";
