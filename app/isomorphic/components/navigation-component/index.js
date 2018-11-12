@@ -1,30 +1,32 @@
 import React from "react";
 import get from "lodash/get";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import { NavBar } from './nav-bar';
+import { NavBar } from "./nav-bar";
 
 import "./styles.m.css";
 
+// Common wrapper for navigation. We could add OffcanvasMenu, Navbar etc components here.
 class NavigationBase extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
-    return <React.Fragment>
-      <NavBar {...this.props} />
-    </React.Fragment>
+    return (
+      <div styleName="navigation-component">
+        <NavBar {...this.props} />
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    title: 'malibu',
+    title: "malibu",
     menu: get(state, ["qt", "data", "navigationMenu"], []),
-    socialLinks: get(state, ["qt", "config", 'social-links'], []),
-    config: state.qt.config || {},
+    socialLinks: get(state, ["qt", "config", "social-links"], []),
+    config: state.qt.config || {}
   };
 }
 
-export const NavigationComponent = connect(mapStateToProps, () => ({}))(NavigationBase);
+export const NavigationComponent = connect(
+  mapStateToProps,
+  () => ({})
+)(NavigationBase);

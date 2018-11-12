@@ -25,6 +25,7 @@
   <body>
     <div class="container">
       <header id="header"><%- navbar %></header>
+      <div id='breaking-news-container'></div>
       <div id="container"><%_ if(contentTemplate) { _%><%- include(contentTemplate) -%><%_ }else { _%><%- content %><%_ } _%></div>
       <footer id="footer">
         <%- footer %>
