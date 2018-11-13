@@ -1,0 +1,12 @@
+{
+  "files.autoSave": "onWindowChange",
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 120,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "files.associations": {
+    "*.css": "scss"
+  }
+}
