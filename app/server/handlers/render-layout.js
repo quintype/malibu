@@ -5,7 +5,7 @@ import {
   getAllChunks
 } from "@quintype/framework/server/asset-helper";
 import { getChunkName } from "../../isomorphic/pick-component";
-import {renderReduxComponent} from "@quintype/framework/server/render";
+import { renderReduxComponent } from "@quintype/framework/server/render";
 import { NavigationComponent } from "../../isomorphic/components/navigation-component";
 import Footer from "../../isomorphic/components/layouts/footer";
 
