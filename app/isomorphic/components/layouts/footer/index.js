@@ -45,5 +45,5 @@ FooterBase.propTypes = {
 
 export const Footer = connect(
   mapStateToProps,
-  () => ({})
+  null
 )(FooterBase);

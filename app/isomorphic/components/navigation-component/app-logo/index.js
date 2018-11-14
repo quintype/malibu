@@ -6,7 +6,7 @@ import "./styles.m.css";
 
 import logo from "./publisher-logo.png";
 
-function AppLogo(props) {
+function AppLogo() {
   return (
     <div>
       <Link href="/">
@@ -14,7 +14,7 @@ function AppLogo(props) {
           styleName="publisher-logo"
           srcSet={` ${assetify(logo)}`}
           src={assetify(logo)}
-          alt="mailbu"
+          alt="Logo"
         />
       </Link>
     </div>

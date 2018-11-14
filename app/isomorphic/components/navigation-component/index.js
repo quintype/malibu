@@ -19,8 +19,7 @@ class NavigationBase extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    menu: get(state, ["qt", "data", "navigationMenu"], []),
-    socialLinks: get(state, ["qt", "config", "social-links"], [])
+    menu: get(state, ["qt", "data", "navigationMenu"], [])
   };
 }
 
