@@ -39,20 +39,17 @@ class NavbarSearch extends React.Component {
   }
 
   render() {
-    let formStyle = {
+    const formStyle = {
       transform: this.state.isSearchFormOpen ? "translate(0, 0)" : ""
     };
-    let initialStyle = {
-      opacity: this.state.initialized ? 1 : 0
-    };
     return (
-      <div styleName="search" style={initialStyle}>
-        <button styleName="btn_search" onClick={() => this.toggleSearchForm()}>
-          <Search width="16" height="16" />
+      <div styleName="search">
+        <button styleName="search__btn" onClick={() => this.toggleSearchForm()}>
+          <Search />
         </button>
-        <div id="searchBox" styleName="search-form" style={formStyle}>
+        <div styleName="search-form" style={formStyle}>
           <SearchBox
-            className="component-wrapper"
+            styleName="search-box"
             template={DrawForm}
             inputId="searchForm"
             inputRef={input => (this.input = input)}
@@ -63,7 +60,7 @@ class NavbarSearch extends React.Component {
             placeholder="Search Stories"
           />
           <div styleName="close-icon" onClick={() => this.toggleSearchForm()}>
-            <CloseIcon color="#fff" />
+            <CloseIcon />
           </div>
         </div>
       </div>

@@ -1,13 +1,16 @@
-/* TODO: Do very basic styling only*/
+/* NOTE: Change these styles as per the publisher design */
 .search {
   align-self: center;
 }
-.btn_search {
+.search__btn {
   background: transparent;
   border: none;
   margin-right: 12px;
   cursor: pointer;
   padding: 6px 3px 3px;
+}
+.search-box {
+  display: flex;
 }
 
 .search__form-submit {

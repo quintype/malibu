@@ -1,7 +1,7 @@
 import React from "react";
 import PT from "prop-types";
 
-export function CloseIcon({ color = "#d0021b", width = 21, height = 21 }) {
+export function CloseIcon({ color = "#fff", width = 21, height = 21 }) {
   return (
     <svg
       width={width}
