@@ -7,7 +7,7 @@ import {
 import { getChunkName } from "../../isomorphic/pick-component";
 import { renderReduxComponent } from "@quintype/framework/server/render";
 import { NavigationComponent } from "../../isomorphic/components/navigation-component";
-import Footer from "../../isomorphic/components/layouts/footer";
+import { Footer } from "../../isomorphic/components/layouts/footer";
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const allChunks = getAllChunks("list", "story");

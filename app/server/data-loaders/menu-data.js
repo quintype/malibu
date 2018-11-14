@@ -27,9 +27,7 @@ exports.getNavigationMenuArray = function(menuList, sectionList) {
     .filter(item => item["parent-id"] == null)
     .value();
   return {
-    headerLinks: menu.filter(item => item["menu-group-slug"] === "headerLinks"),
     footerLinks: menu.filter(item => item["menu-group-slug"] === "footerLinks"),
-    events: menu.filter(item => item["menu-group-slug"] === "events"),
     default: menu.filter(item => item["menu-group-slug"] === "default")
   };
 };

@@ -6,7 +6,7 @@ import {
 import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { NavigationComponent } from "../isomorphic/components/navigation-component";
-import Footer from "../isomorphic/components/layouts/footer";
+import { Footer } from "../isomorphic/components/layouts/footer";
 
 // This is a separate file as everything from here on is hot reloaded when the app changes
 export function renderApplication(store) {
