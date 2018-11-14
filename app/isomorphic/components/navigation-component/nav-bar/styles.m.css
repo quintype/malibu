@@ -1,0 +1,10 @@
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 30px;
+  display: flex;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 12px;
+}

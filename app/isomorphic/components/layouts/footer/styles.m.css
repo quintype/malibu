@@ -1,0 +1,13 @@
+.footer {
+  clear: both;
+  text-align: center;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  padding: 20px 0;
+}
+
+.link {
+  color: #fff;
+  margin-right: 10px;
+}

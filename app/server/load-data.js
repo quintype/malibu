@@ -10,6 +10,7 @@ import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
+import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout"];
@@ -17,7 +18,12 @@ const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout"];
 export function loadErrorData(error, config) {
   const errorComponents = { 404: "not-found" };
   return Promise.resolve({
-    data: null,
+    data: {
+      navigationMenu: getNavigationMenuArray(
+        config.layout.menu,
+        config.sections
+      )
+    },
     config: pick(config, WHITELIST_CONFIG_KEYS),
     pageType: errorComponents[error.httpStatusCode]
   });
@@ -40,6 +46,8 @@ export function loadData(pageType, params, config, client, { host, next }) {
         return loadStoryPublicPreviewPageData(client, params, config);
       case PAGE_TYPE.STATIC_PAGE:
         return Promise.resolve({ cacheKeys: ["static"] });
+      case PAGE_TYPE.SEARCH_PAGE:
+        return loadSearchPageData(client, params.q, config);
       default:
         return Promise.resolve({ error: { message: "No Loader" } });
     }
@@ -49,7 +57,12 @@ export function loadData(pageType, params, config, client, { host, next }) {
     return {
       httpStatusCode: data.httpStatusCode || 200,
       pageType: data.pageType || pageType,
-      data: data,
+      data: Object.assign({}, data, {
+        navigationMenu: getNavigationMenuArray(
+          config.layout.menu,
+          config.sections
+        )
+      }),
       config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
       title: data.title
         ? `${data.title} - Sample Application`
