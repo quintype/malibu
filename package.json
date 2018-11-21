@@ -9,7 +9,7 @@
   "dependencies": {
     "@quintype/components": "^1.39.0",
     "@quintype/framework": "^2.80.0",
-    "@quintype/seo": "^1.8.1",
+    "@quintype/seo": "^1.14.1",
     "lodash": "^4.17.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -85,9 +85,9 @@
     "start": "node start.js",
     "test": "jest",
     "lint:js": "npx eslint './app/**/*.{js,jsx}'",
-    "lint:js:ci": "npx eslint $(git diff --pretty='' --diff-filter=d --name-only origin/master..HEAD -- '*.js' '*.jsx') ./start.js",
+    "lint:js:ci": "npx eslint $(git diff --pretty='' --diff-filter=d --name-only origin/master...HEAD -- '*.js' '*.jsx') ./start.js",
     "lint:css": "npx stylelint './app/**/*.{scss,css}'",
-    "lint:css:ci": "npx stylelint $(git diff --pretty='' --diff-filter=d --name-only origin/master..HEAD -- '*.css' '*.scss') ./app/assets/stylesheets/app.scss",
+    "lint:css:ci": "npx stylelint $(git diff --pretty='' --diff-filter=d --name-only origin/master...HEAD -- '*.css' '*.scss') ./app/assets/stylesheets/app.scss",
     "lint:ci": "npm run lint:js:ci && npm run lint:css:ci"
   },
   "husky": {
