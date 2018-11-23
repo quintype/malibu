@@ -1,12 +1,8 @@
 /* eslint-disable object-shorthand */
-import {
-  assetPath,
-  readAsset,
-  getAllChunks
-} from "@quintype/framework/server/asset-helper";
+import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/asset-helper";
 import { getChunkName } from "../../isomorphic/pick-component";
 import { renderReduxComponent } from "@quintype/framework/server/render";
-import { NavigationComponent } from "../../isomorphic/components/navigation-component";
+import { Header } from "../../isomorphic/components/header";
 import { Footer } from "../../isomorphic/components/layouts/footer";
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
@@ -24,7 +20,7 @@ export function renderLayout(res, params) {
         cssContent: cssContent,
         contentTemplate: null,
         title: params.title,
-        navbar: renderReduxComponent(NavigationComponent, params.store),
+        navbar: renderReduxComponent(Header, params.store),
         footer: renderReduxComponent(Footer, params.store),
         disableAjaxNavigation: false,
         metaTags: params.seoTags ? params.seoTags.toString() : "",

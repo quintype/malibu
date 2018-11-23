@@ -11,11 +11,7 @@ function NavBar(props) {
       <ul styleName="navbar">
         {get(props, ["menu", "default"], []).map((item, index) => {
           return (
-            <li
-              key={`${item["id"]}${index}`}
-              onClick={props.closeMenu}
-              styleName="menu-item"
-            >
+            <li key={`${item["id"]}${index}`} onClick={props.closeMenu} styleName="menu-item">
               <MenuItem item={item} />
             </li>
           );

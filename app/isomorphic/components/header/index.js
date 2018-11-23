@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 
 import { NavBar } from "./nav-bar";
 
-import "./styles.m.css";
+import "./header.m.css";
 
 // Common wrapper for navigation. We could add OffcanvasMenu, Navbar etc components here.
-class NavigationBase extends React.Component {
+class HeaderBase extends React.Component {
   render() {
     return (
-      <div styleName="navigation-component">
+      <div styleName="container">
         <NavBar {...this.props} />
       </div>
     );
@@ -23,7 +23,7 @@ function mapStateToProps(state) {
   };
 }
 
-export const NavigationComponent = connect(
+export const Header = connect(
   mapStateToProps,
   () => ({})
-)(NavigationBase);
+)(HeaderBase);
