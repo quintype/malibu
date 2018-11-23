@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { Story, Collection } from "@quintype/framework/server/api-client";
-import { homeCollectionOrStories } from "@quintype/framework/server/data-loader-helpers";
+import { Collection } from "@quintype/framework/server/api-client";
 
-export function loadHomePageData(client, config) {
-  return homeCollectionOrStories(client).then(collection => ({
+export async function loadHomePageData(client, config) {
+  const collection = await Collection.getCollectionBySlug(client, "home", { "item-type": "collection" }, { depth: 1 });
+  return {
     collection: collection.asJson(),
     cacheKeys: collection.cacheKeys(config["publisher-id"])
-  }));
+  };
 }

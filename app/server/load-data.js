@@ -2,10 +2,7 @@
 import pick from "lodash/pick";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
-import {
-  loadStoryPageData,
-  loadStoryPublicPreviewPageData
-} from "./data-loaders/story-page-data";
+import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
@@ -13,23 +10,13 @@ import { catalogDataLoader } from "@quintype/framework/server/data-loader-helper
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
 
-const WHITELIST_CONFIG_KEYS = [
-  "cdn-image",
-  "polltype-host",
-  "layout",
-  "sections",
-  "social-links",
-  "publisher-name"
-];
+const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout", "sections", "social-links", "publisher-name"];
 
 export function loadErrorData(error, config) {
   const errorComponents = { 404: "not-found" };
   return Promise.resolve({
     data: {
-      navigationMenu: getNavigationMenuArray(
-        config.layout.menu,
-        config.sections
-      )
+      navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
     config: pick(config, WHITELIST_CONFIG_KEYS),
     pageType: errorComponents[error.httpStatusCode]
@@ -65,15 +52,10 @@ export function loadData(pageType, params, config, client, { host, next }) {
       httpStatusCode: data.httpStatusCode || 200,
       pageType: data.pageType || pageType,
       data: Object.assign({}, data, {
-        navigationMenu: getNavigationMenuArray(
-          config.layout.menu,
-          config.sections
-        )
+        navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
       config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
-      title: data.title
-        ? `${data.title} - Sample Application`
-        : `Sample Application`
+      title: data.title ? `${data.title} - Sample Application` : `Sample Application`
     };
   });
 }
