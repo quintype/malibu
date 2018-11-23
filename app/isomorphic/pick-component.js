@@ -9,22 +9,14 @@ const { pickComponent, getChunkName } = pickComponentHelper(
     [PAGE_TYPE.SEARCH_PAGE]: { chunk: "list", component: "SearchPage" },
     [PAGE_TYPE.STORY_PAGE]: { chunk: "story", component: "StoryPage" },
     [PAGE_TYPE.CATALOG_PAGE]: { chunk: "list", component: "CatalogPage" },
-    [PAGE_TYPE.STORY_PREVIEW]: {
-      chunk: "story",
-      component: "StoryPagePreview"
-    },
-    [PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE]: {
-      chunk: "story",
-      component: "StoryPage"
-    },
+    [PAGE_TYPE.STORY_PREVIEW]: { chunk: "story", component: "StoryPagePreview" },
+    [PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE]: { chunk: "story", component: "StoryPage" },
     [PAGE_TYPE.HOME_PREVIEW]: { chunk: "list", component: "HomePagePreview" },
     default: { chunk: "list", component: "NotFoundPage" }
   },
   {
-    list: () =>
-      import(/* webpackChunkName: "list" */ "./component-bundles/list.js"),
-    story: () =>
-      import(/* webpackChunkName: "story" */ "./component-bundles/story.js")
+    list: () => import(/* webpackChunkName: "list" */ "./component-bundles/list.js"),
+    story: () => import(/* webpackChunkName: "story" */ "./component-bundles/story.js")
   }
 );
 
