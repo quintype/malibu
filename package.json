@@ -80,7 +80,7 @@
     "analyze-stats": "NODE_ENV=production ANALYZE_STATS=true npx webpack --profile --mode=production -p",
     "asset-server": "webpack-dev-server --hot",
     "compile": "webpack",
-    "dev-server": "nodemon --watch app/server --watch app/isomorphic --exec 'node start.js'",
+    "dev-server": "nodemon --watch app/server --watch app/isomorphic --exec 'node start.js' --signal SIGHUP",
     "prune-packages": "rm -rf node_modules && npm install && npm dedupe",
     "start": "node start.js",
     "test": "jest",
