@@ -10,6 +10,7 @@
     "@quintype/components": "^1.39.0",
     "@quintype/framework": "^2.85.0",
     "@quintype/seo": "^1.14.1",
+    "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

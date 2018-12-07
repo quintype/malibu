@@ -5,7 +5,9 @@ const ShakePlugin = require("webpack-common-shake").Plugin;
 
 const config = Object.assign(
   { node: { Buffer: false } },
-  webpackConfig("quintype-malibu", __dirname)
+  webpackConfig("quintype-malibu", __dirname, {
+    entryFiles: { font: "./app/client/font.js" }
+  })
 );
 
 config.plugins.push(new ShakePlugin());
