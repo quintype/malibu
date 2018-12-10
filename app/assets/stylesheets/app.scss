@@ -6,15 +6,19 @@
   box-sizing: border-box;
 }
 
+:root {
+  --title-font: sans-serif;
+  --content-font: sans-serif;
+}
+
 html {
-  font-family: sans-serif;
+  font-family: var(--content-font);
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: "Cardo", serif;
   background: #eee url("../images/pw_maze_white.png");
 }
 
@@ -57,7 +61,7 @@ a {
   color: white;
   font-size: 32px;
   text-transform: uppercase;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--title-font);
   text-decoration: none;
   transition: all 0.5s;
 }
@@ -77,7 +81,7 @@ a {
 }
 
 h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--title-font);
   font-size: 30px;
   font-weight: 800;
   margin: 10px 0;
@@ -86,7 +90,7 @@ h1 {
 }
 
 h1 span {
-  font-family: "Cardo", serif;
+  font-family: var(--content-font);
   font-size: 24px;
   font-style: italic;
   font-weight: 400;
@@ -177,10 +181,12 @@ h1 span {
   font-size: 16px;
   text-align: center;
   height: 100px;
+  font-family: var(--title-font);
 }
 
-.story-grid-author {
+.story-grid-item-author {
   display: block;
   font-size: 12px;
   float: right;
+  font-family: var(--content-font);
 }
