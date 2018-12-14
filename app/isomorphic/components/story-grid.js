@@ -13,14 +13,12 @@ function StoryGridStoryItem(props) {
           aspectRatio={[16, 9]}
           defaultWidth={480}
           widths={[250, 480, 640]}
-          sizes="( max-width: 500px ) 98%, ( max-width: 768px ) 48%, 23%"
+          sizes="( max-width: 500px ) 98vw, ( max-width: 768px ) 48vw, 23vw"
           imgParams={{ auto: ["format", "compress"] }}
         />
       </figure>
       <h2>{props.story.headline}</h2>
-      <span className="story-grid-item-author">
-        {props.story["author-name"]}
-      </span>
+      <span className="story-grid-item-author">{props.story["author-name"]}</span>
     </Link>
   );
 }
