@@ -56,8 +56,7 @@ export function loadData(pageType, params, config, client, { host, next }) {
       data: Object.assign({}, data, {
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
-      config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
-      title: data.title ? `${data.title} - Sample Application` : `Sample Application`
+      config: pick(config.asJson(), WHITELIST_CONFIG_KEYS)
     };
   });
 }
