@@ -1,5 +1,20 @@
 version: 2
 jobs:
+  build:
+    docker:
+      - image: circleci/node:8.11
+    steps:
+      - setup_remote_docker:
+            docker_layer_caching: true
+      - checkout
+      - run: mkdir -p /tmp/workspace && echo $CIRCLE_BRANCH-$CIRCLE_BUILD_NUM > /tmp/workspace/docker-tag.txt
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker build -t quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt) .
+      - run: docker push quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt)
+      - persist_to_workspace:
+           root: /tmp/workspace
+           paths:
+              - docker-tag.txt
   lint_js:
     docker:
       - image: circleci/node:8.11
@@ -7,6 +22,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint:js:ci
+
   lint_css:
     docker:
       - image: circleci/node:8.11
@@ -14,9 +30,19 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint:css:ci
+
+  cypress:
+    docker:
+      - image: quay.io/quintype/docker-base:cypress-3.1.1
+      - image: quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt)
+    steps:
+      - checkout
+      - run: /node_modules/.bin/cypress run
 workflows:
   version: 2
   build_and_test:
     jobs:
+      - build
       - lint_js
       - lint_css
+      - cypress

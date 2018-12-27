@@ -1,0 +1,13 @@
+// my-project/cypress/.eslintrc.json
+
+{
+  "plugins": [
+    "cypress"
+  ],
+  "extends": [
+    "plugin:cypress/recommended"
+  ],
+  "env": {
+    "cypress/globals": true
+  }
+}
