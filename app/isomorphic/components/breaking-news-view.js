@@ -1,19 +1,42 @@
 import React from "react";
+import { bool, array } from "prop-types";
+import "./breaking-news.m.css";
 
-function breakingNewsItem(story) {
-  return <li key={story.id}>{story.headline}</li>;
-}
-
-function BreakingNewsView(props) {
-  if (props.breakingNews.length === 0) {
-    return <span />;
+export class BreakingNewsView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { item: 0 };
   }
 
-  return (
-    <ul className="breaking-news">
-      {props.breakingNews.map(story => breakingNewsItem(story))}
-    </ul>
-  );
+  componentDidMount() {
+    this.interval = global.setInterval(() => this.setState({ item: this.state.item + 1 }), 2000);
+  }
+
+  componentWillUnmount() {
+    global.clearInterval(this.interval);
+  }
+
+  render() {
+    const { breakingNewsLoaded, breakingNews } = this.props;
+
+    if (breakingNewsLoaded && breakingNews.length === 0) {
+      return <span />;
+    }
+
+    const content =
+      breakingNews.length === 0 ? { headline: " ", metadata: {} } : breakingNews[this.state.item % breakingNews.length];
+
+    console.log(content);
+
+    return (
+      <a href={"/" + (content.metadata["linked-story-slug"] || "")} styleName="link">
+        {content.headline}
+      </a>
+    );
+  }
 }
 
-export { BreakingNewsView };
+BreakingNewsView.propTypes = {
+  breakingNewsLoaded: bool,
+  breakingNews: array
+};
