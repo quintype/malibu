@@ -26,8 +26,6 @@ export class BreakingNewsView extends React.Component {
     const content =
       breakingNews.length === 0 ? { headline: " ", metadata: {} } : breakingNews[this.state.item % breakingNews.length];
 
-    console.log(content);
-
     return (
       <a href={"/" + (content.metadata["linked-story-slug"] || "")} styleName="link">
         {content.headline}
