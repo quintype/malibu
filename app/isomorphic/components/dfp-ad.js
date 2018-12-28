@@ -3,7 +3,11 @@ import { createDfpAdComponent } from "@quintype/components";
 import get from "lodash/get";
 
 export const CONFIG = {
-  "homepage-banner": { adUnit: "Rio_Story_LB1", sizes: [[728, 90]] }
+  "homepage-banner": {
+    adUnit: "Rio_Story_LB1",
+    sizes: [[728, 90]],
+    viewPortSizeMapping: [{ viewport: [980, 90], sizes: [[728, 90]] }]
+  }
 };
 
 export const DfpAd = createDfpAdComponent({
