@@ -5,16 +5,12 @@ import { object, shape } from "prop-types";
 
 import { getCollectionTemplate } from "../get-collection-template";
 import img from "../../../assets/images/pw_maze_white.png";
-import { LazyCollection } from "@quintype/components";
+import { LazyCollection, WithPreview, replaceAllStoriesInCollection } from "@quintype/components";
 
 export const HomePage = props => (
   <div>
     <h1>Home</h1>
-    <LazyCollection
-      collection={props.data.collection}
-      collectionTemplates={getCollectionTemplate}
-      lazyAfter={2}
-    />
+    <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
     <img src={assetify(img)} />
   </div>
 );
@@ -24,3 +20,9 @@ HomePage.propTypes = {
     collection: object
   })
 };
+
+export const HomePagePreview = WithPreview(HomePage, (data, story) =>
+  Object.assign({}, data, {
+    collection: replaceAllStoriesInCollection(data.collection, story)
+  })
+);
