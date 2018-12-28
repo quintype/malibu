@@ -16,13 +16,7 @@ export const DfpAd = createDfpAdComponent({
       get(state, ["qt", "pageType"]) === "story-page" &&
       get(state, ["qt", "data", "story", "metadata", "sponsored-by"])
     ) {
-      params.sponsor = get(state, [
-        "qt",
-        "data",
-        "story",
-        "metadata",
-        "sponsored-by"
-      ]);
+      params.sponsor = get(state, ["qt", "data", "story", "metadata", "sponsored-by"]);
       return params.sponsor;
     }
 
