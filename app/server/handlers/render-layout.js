@@ -13,7 +13,7 @@ const allChunks = getAllChunks("list", "story");
 
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-
+  res.append("Link", "<https://www.googletagservices.com/tag/js/gpt.js>; rel=preload; as=script;");
   res.render(
     "pages/layout",
     Object.assign(
