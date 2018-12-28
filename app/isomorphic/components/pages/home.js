@@ -11,6 +11,8 @@ import { DfpAd } from "../dfp-ad";
 export const HomePage = props => (
   <div>
     <DfpAd adtype="homepage-banner" />
+    <DfpAd adtype="homepage-banner" />
+    <DfpAd adtype="homepage-banner" />
     <h1>Home</h1>
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
