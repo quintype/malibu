@@ -10,7 +10,16 @@ import { catalogDataLoader } from "@quintype/framework/server/data-loader-helper
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
 
-const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout", "sections", "social-links", "publisher-name"];
+const WHITELIST_CONFIG_KEYS = [
+  "cdn-image",
+  "polltype-host",
+  "layout",
+  "sections",
+  "social-links",
+  "publisher-name",
+  "publisher-settings",
+  "sketches-host"
+];
 
 export function loadErrorData(error, config) {
   const errorComponents = { 404: "not-found" };
