@@ -19,7 +19,7 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
-    "@quintype/build": "^2.8.0",
+    "@quintype/build": "^2.9.0",
     "autoprefixer": "^8.6.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
