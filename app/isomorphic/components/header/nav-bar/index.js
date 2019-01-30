@@ -1,5 +1,5 @@
 import React from "react";
-import get from "lodash/get";
+import { get } from "@quintype/lodash";
 import { NavbarSearch } from "../navbar-search";
 import { MenuItem } from "../helper-components";
 import { AppLogo } from "../app-logo";

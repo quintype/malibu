@@ -1,4 +1,4 @@
-import { get } from "lodash";
+import { get } from "@quintype/lodash";
 import React from "react";
 import PropTypes from "prop-types";
 

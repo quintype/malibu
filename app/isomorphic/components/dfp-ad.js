@@ -1,6 +1,6 @@
 /* eslint-disable object-shorthand */
 import { createDfpAdComponent } from "@quintype/components";
-import get from "lodash/get";
+import { get } from "@quintype/lodash";
 
 export const CONFIG = {
   "homepage-banner": { adUnit: "Rio_Story_LB1", sizes: [[728, 90]] }

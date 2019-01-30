@@ -1,7 +1,7 @@
 import React from "react";
 import PT from "prop-types";
 import { connect } from "react-redux";
-import get from "lodash/get";
+import { get } from "@quintype/lodash";
 import { Link } from "@quintype/components";
 import "./styles.m.css";
 
@@ -10,12 +10,7 @@ const FooterBase = ({ footerLinks }) => (
     {footerLinks.map(
       item =>
         item.isExternalLink ? (
-          <a
-            href={item.completeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            styleName="link"
-          >
+          <a href={item.completeUrl} target="_blank" rel="noopener noreferrer" styleName="link">
             {item.title}
           </a>
         ) : (
