@@ -1,5 +1,5 @@
 import React from "react";
-import get from "lodash/get";
+import { get } from "@quintype/lodash";
 import { connect } from "react-redux";
 
 import { NavBar } from "./nav-bar";
