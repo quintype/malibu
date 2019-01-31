@@ -19,7 +19,7 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
-    "@quintype/build": "^3.6.0",
+    "@quintype/build": "^3.7.1",
     "babel-eslint": "^7.2.3",
     "cosmiconfig": "^5.0.7",
     "eslint": "^5.7.0",
