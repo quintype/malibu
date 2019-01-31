@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-NODE_ENV=production npx webpack --json > stats.json
+NODE_ENV=production BABEL_TARGET=browser npx webpack --json > stats.json
 sed -i "" 's/asset_host:.*$/asset_host:/' config/publisher.yml
 
 exec npm start
