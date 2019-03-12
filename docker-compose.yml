@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: ./dev-docker
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: npm run dev-server
+  assets:
+    build: ./dev-docker
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    command: npm run asset-server
