@@ -6,11 +6,15 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-    command: npm run dev-server
+      - malibu-node-modules:/app/node_modules
+    command: sh -c 'npm run compile && npm run dev-server'
   assets:
     build: ./dev-docker
     ports:
       - "8080:8080"
     volumes:
       - .:/app
-    command: npm run asset-server
+      - malibu-node-modules:/app/node_modules
+    command: npm run asset-server -- --host 0.0.0.0
+volumes:
+  malibu-node-modules:
