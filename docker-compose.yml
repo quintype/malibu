@@ -1,20 +1,18 @@
 version: '3'
 services:
-  web:
+  web: &common
     build: ./dev-docker
-    ports:
-      - "3000:3000"
     volumes:
       - .:/app
-      - node-modules:/app/node_modules
+      - node_modules:/app/node_modules
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    ports: ["3000:3000"]
     command: sh -c 'npm run compile && npm run dev-server'
   assets:
-    build: ./dev-docker
-    ports:
-      - "8080:8080"
-    volumes:
-      - .:/app
-      - node-modules:/app/node_modules
+    <<: *common
+    ports: ["8080:8080"]
     command: npm run asset-server -- --host 0.0.0.0
 volumes:
-  node-modules:
+  node_modules:
