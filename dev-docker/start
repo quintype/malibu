@@ -5,6 +5,7 @@ export WEBPACK_DEV_OPTS=""
 
 if [[ "$(pwd)" != "$HOME"* ]]; then 
   echo This script must be run in a codebase located within the $HOME folder. Please re-clone this repository and try again
+  exit 1
 fi
 
 if [ "$MSYSTEM" == "MINGW64" ]; then
