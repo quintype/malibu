@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker-machine ssh default -fN -L 3000:localhost:3000 -L 8080:localhost:8080

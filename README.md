@@ -31,3 +31,12 @@ $ git pull git@github.com:quintype/malibu.git master
 $ git checkout --ours app/isomorphic/components
 $ git add app/isomorphic/components
 ```
+
+## Running on Windows
+
+Here are some considerations while running on windows
+* Please install docker (Docker for Desktop on Windows Enterprise / Professional, and Docker Toolbox on Windows Home)
+* The app is to be run as follows: `./dev-docker/start`
+* In case localhost:3000 shows a connection refused, you can forward ports to the `docker-machine` as follows `./dev-docker/port-forward`. This should only be needed on Windows home
+* Windows uses nodemon and webpack polling to detect updates. This eats CPU
+* You can use `./dev-docker/force-reload` to force the web server and webpack to reload
