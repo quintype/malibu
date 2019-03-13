@@ -38,4 +38,5 @@ Here are some considerations while running on windows
 * Please install docker (Docker for Desktop on Windows Enterprise / Professional, and Docker Toolbox on Windows Home)
 * The app is to be run as follows: `./dev-docker/start`
 * In case localhost:3000 shows a connection refused, you can forward ports to the `docker-machine` as follows `./dev-docker/port-forward`. This should only be needed on Windows home
-* Force Reload may not work correctly on windows home. You can use `./dev-docker/force-reload` to force the web server and webpack to hot reload
+* Windows uses nodemon and webpack polling to detect updates. This eats CPU
+* You can use `./dev-docker/force-reload` to force the web server and webpack to reload

@@ -9,10 +9,10 @@ services:
       - 8.8.8.8
       - 1.1.1.1
     ports: ["3000:3000"]
-    command: sh -c 'npm run compile && npm run dev-server'
+    command: sh -c 'npm run compile && npm run dev-server -- ${NODEMON_OPTS}'
   assets:
     <<: *common
     ports: ["8080:8080"]
-    command: npm run asset-server -- --host 0.0.0.0
+    command: npm run asset-server -- --host 0.0.0.0 ${WEBPACK_DEV_OPTS}
 volumes:
   node_modules:
