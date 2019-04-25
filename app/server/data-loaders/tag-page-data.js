@@ -4,7 +4,7 @@ import { storyToCacheKey } from "@quintype/framework/server/caching";
 import { TAG_PAGE_URL_PREFIX } from "../../isomorphic/constants";
 
 export function loadTagPageData(client, tagSlug, config) {
-  return Story.getStories(client, "top", { tag: tagSlug, limit: "20" }).then(
+  return Story.getStories(client, "top", { "tag-slugs": tagSlug, limit: "20" }).then(
     stories => {
       return client.getTags(tagSlug).then(({ tags }) => {
         const tagName = get(tags, [0, "name"], tagSlug);
