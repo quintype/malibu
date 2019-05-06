@@ -23,11 +23,11 @@ export function loadErrorData(error, config) {
   });
 }
 
-export function loadData(pageType, params, config, client, { host, next }) {
+export function loadData(pageType, params, config, client, { host, next, domainSlug }) {
   function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE:
-        return loadHomePageData(client, config);
+        return loadHomePageData(client, config, params.collectionSlug);
       case PAGE_TYPE.HOME_PREVIEW:
         return loadHomePageData(client, config);
       case PAGE_TYPE.SECTION_PAGE:

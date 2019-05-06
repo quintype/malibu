@@ -1,7 +1,4 @@
-import {
-  generateStoryPageRoutes,
-  generateSectionPageRoutes
-} from "@quintype/framework/server/generate-routes";
+import { generateCommonRoutes } from "@quintype/framework/server/generate-routes";
 import { PAGE_TYPE, TAG_PAGE_URL_PREFIX } from "../isomorphic/constants";
 
 // Static Routes are not part of the PWA. Also, they aren't part of the JS bundle
@@ -28,7 +25,6 @@ export const STATIC_ROUTES = [
 ];
 
 const ISOMORPHIC_ROUTES = [
-  { path: "/", pageType: PAGE_TYPE.HOME_PAGE, exact: true },
   {
     path: "/template-options",
     pageType: PAGE_TYPE.CATALOG_PAGE,
@@ -49,9 +45,8 @@ const ISOMORPHIC_ROUTES = [
   { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true }
 ];
 
-export function generateRoutes(config) {
-  return ISOMORPHIC_ROUTES.concat(
-    generateSectionPageRoutes(config, { addSectionPrefix: true }),
-    generateStoryPageRoutes(config)
+export function generateRoutes(config, domainSlug) {
+  return config.memoize(`routes${domainSlug}`, () =>
+    ISOMORPHIC_ROUTES.concat(generateCommonRoutes(config, domainSlug))
   );
 }

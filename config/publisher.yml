@@ -5,3 +5,5 @@ host_to_api_host:
 host_to_automatic_api_host:
   - "-web"
   - ".malibu"
+domain_mapping:
+  subdomain.lvh.me: subdomain
