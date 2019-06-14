@@ -1,3 +1,5 @@
+@custom-media --viewport-medium (width >=768px);
+
 .amazon-polly-wrapper {
   padding: 8px 0;
 }
@@ -16,7 +18,7 @@
 .amazon-polly-text {
   margin-left: 8px;
   padding-top: 5px;
-  color: var(--light-gray);
+  color: #333;
   line-height: 1.25rem;
   font-size: 1.125rem;
   @media (--viewport-medium) {
@@ -30,7 +32,7 @@
   left: 0;
   background-color: #fff;
   width: 100vw;
-  z-index: var(--zIndex-60);
+  z-index: 600;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
 }
 
@@ -47,7 +49,7 @@
   margin-bottom: 8px;
   width: 100%;
   font-weight: bold;
-  color: var(--light-gray);
+  color: #333;
   font-size: 1rem;
   line-height: 1.3;
   @media (--viewport-medium) {

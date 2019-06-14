@@ -31,22 +31,22 @@ export class AmazonPolly extends React.Component {
     const audioS3Key = get(story, ["story-audio", "s3-key"]);
     const audioSrc = `//${cdn}/${audioS3Key}`;
 
-    return <div className={`amazon-polly-wrapper`}>
-      <div className={`amazon-polly-text-wrapper`} onClick={this.onClickHandler}>
-        <div className={`amazon-polly-headset-wrapper`}>
-          <HeadsetIcon size={headsetSize} color={headsetColor} className={`amazon-polly-headset`} />
+    return <div styleName="amazon-polly-wrapper">
+      <div styleName="amazon-polly-text-wrapper" onClick={this.onClickHandler}>
+        <div styleName="amazon-polly-headset-wrapper">
+          <HeadsetIcon size={headsetSize} color={headsetColor} />
         </div>
-        <span className={`amazon-polly-text`}>Listen to story</span>
+        <span styleName="amazon-polly-text">Listen to story</span>
       </div>
-      {!this.state.isOpen ? null : <div className={`amazon-polly-bar-wrapper`}>
-        <figure className={`amazon-polly-content`}>
-          <figcaption className={`amazon-polly-caption`}>{caption}</figcaption>
-          <audio className={`amazon-polly-audio`} src={audioSrc} {...audioAttributes}>
+      {!this.state.isOpen ? null : <div styleName="amazon-polly-bar-wrapper">
+        <figure styleName="amazon-polly-content">
+          <figcaption styleName="amazon-polly-caption">{caption}</figcaption>
+          <audio styleName="amazon-polly-audio" src={audioSrc} {...audioAttributes}>
             Your browser doesn't support the <code>audio</code> element.
           </audio>
         </figure>
-        <div className={`amazon-polly-close-wrapper`} onClick={this.closeHandler}>
-          <CloseIcon className={`amazon-polly-close`} />
+        <div styleName="amazon-polly-close-wrapper" onClick={this.closeHandler}>
+          <CloseIcon />
         </div>
       </div>}
     </div>;
