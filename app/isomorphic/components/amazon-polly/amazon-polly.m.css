@@ -1,0 +1,79 @@
+.amazon-polly-wrapper {
+  padding: 8px 0;
+}
+
+.amazon-polly-text-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.amazon-polly-headset-wrapper {
+  width: 24px;
+  height: 24px;
+}
+
+.amazon-polly-text {
+  margin-left: 8px;
+  padding-top: 5px;
+  color: var(--light-gray);
+  line-height: 1.25rem;
+  font-size: 1.125rem;
+  @media (--viewport-medium) {
+    font-size: 1.25rem;
+  }
+}
+
+.amazon-polly-bar-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100vw;
+  z-index: var(--zIndex-60);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+}
+
+.amazon-polly-bar-wrapper .amazon-polly-content {
+  padding: 44px 12px 24px;
+  margin: auto;
+  @media (--viewport-medium) {
+    padding: 16px 0;
+    width: 50%;
+  }
+}
+
+.amazon-polly-caption {
+  margin-bottom: 8px;
+  width: 100%;
+  font-weight: bold;
+  color: var(--light-gray);
+  font-size: 1rem;
+  line-height: 1.3;
+  @media (--viewport-medium) {
+    font-size: 1.125rem;
+    line-height: 1.22;
+  }
+}
+
+.amazon-polly-audio {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  @media (--viewport-medium) {
+    height: 48px;
+  }
+}
+
+.amazon-polly-close-wrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  @media (--viewport-medium) {
+    top: 16px;
+    right: 16px;
+  }
+}
