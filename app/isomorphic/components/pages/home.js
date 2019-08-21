@@ -6,10 +6,14 @@ import { object, shape } from "prop-types";
 import { getCollectionTemplate } from "../get-collection-template";
 import img from "../../../assets/images/pw_maze_white.png";
 import { LazyCollection, WithPreview, replaceAllStoriesInCollection, LazyLoadImages } from "@quintype/components";
+import { DfpAd } from "../../components/dfp-ad";
 
 export const HomePage = props => (
   <div>
     <h1>Home</h1>
+    <div style={{ textAlign: "center" }}>
+      <DfpAd adtype="homepage-banner" />
+    </div>
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
     </LazyLoadImages>
