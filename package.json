@@ -7,11 +7,11 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/components": "^2.0.1",
-    "@quintype/framework": "^3.3.1",
-    "@quintype/seo": "^1.24.0",
+    "@quintype/components": "^2.8.2",
+    "@quintype/framework": "^3.10.1",
+    "@quintype/seo": "^1.32.0",
     "fontfaceobserver": "^2.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -21,7 +21,7 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
-    "@quintype/build": "^3.8.1",
+    "@quintype/build": "^3.9.0",
     "babel-eslint": "^7.2.3",
     "cosmiconfig": "^5.0.7",
     "eslint": "^5.7.0",
