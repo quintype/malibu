@@ -2,12 +2,13 @@
 
 import React from "react";
 import { InfiniteStoryBase, WithPreview } from "@quintype/components";
-import { BlankStory } from "../story-templates/blank";
+import BlankStory from "../story-templates/blank";
 import { number, object, shape, any } from "prop-types";
+import metypeConfig from "../../../../config/metype-config";
 
 function StoryPageBase({ index, story, otherProp }) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
-  return <BlankStory story={story} />;
+  return <BlankStory story={story} metypeConfig={metypeConfig} />;
 }
 
 StoryPageBase.propTypes = {

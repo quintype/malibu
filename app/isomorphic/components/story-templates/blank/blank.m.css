@@ -1,0 +1,5 @@
+.metype-widget {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  padding: 32px;
+}
