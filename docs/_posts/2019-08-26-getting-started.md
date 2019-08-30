@@ -2,6 +2,9 @@
 layout: post
 title: Getting Started with Quintype, Node, and React
 author: Tejas Dinkar
+permalink: tutorial/getting-started
+tags: malibu, vscode, introduction
+redirect_from: "/tutorial/"
 ---
 
 Welcome to Quintype :-).
