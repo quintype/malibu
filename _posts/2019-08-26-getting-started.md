@@ -27,7 +27,9 @@ In many of these examples, we will be using [VS Code](https://code.visualstudio.
 
 ## Generating a new repository
 
-The first step is to clone the malibu repository. This can be done here: [Create a new repository from malibu](https://github.com/quintype/malibu/generate). You can save the repository in your own organization, or you can ask the Quintype team to set up this repository under the quintype organization.
+The first step is to [Create a new repository from malibu](https://github.com/quintype/malibu/generate).
+
+You can save the repository in your own organization, or you can ask the Quintype team to set up this repository under the quintype organization (by emailing support@quintype.com).
 
 You may now clone this repository using the git command line or the [GitHub app](https://desktop.github.com).
 

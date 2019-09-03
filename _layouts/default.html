@@ -73,4 +73,13 @@
     }
     </script>
   </body>
+  <script type="text/javascript">
+    document.querySelectorAll("section a").forEach(function(link) {
+      if(link.href.startsWith("/") || link.href.startsWith(location.origin)) {
+      } else {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener");
+      }
+    })
+  </script>
 </html>
