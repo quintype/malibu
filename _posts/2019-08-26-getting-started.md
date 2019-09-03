@@ -98,7 +98,7 @@ web_1     | Example app listening on port 3000!
 
 Open a browser, and navigate over to [http://localhost:3000](http://localhost:3000). You should see something that looks like the following:
 
-![Malibu Running](/images/img-1.jpg)
+![Malibu Running](/malibu/images/img-1.jpg)
 
 
 Hooray, you now have a running instance of a simple quintype publisher
