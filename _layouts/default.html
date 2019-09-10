@@ -62,24 +62,38 @@
     </script>
     {% endif %}
     <script type="application/json" id="search-data">
+    {% assign routes = site.pages | concat: site.posts -%}
     {
-      {% for entry in site.posts %}
+      {%- for entry in routes -%}
+      {%- if entry.title %}
       "{{ entry.url | slugify }}": {
         "title": "{{ entry.title | xml_escape }}",
         "url": "{{ entry.url | xml_escape }}",
         "summary": "{{ entry.content | strip_html | strip_newlines | truncatewords: 50 | xml_escape }}"
       }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
+      {%- endif -%}
+      {%- endfor %}
     }
     </script>
   </body>
   <script type="text/javascript">
-    document.querySelectorAll("section a").forEach(function(link) {
-      if(link.href.startsWith("/") || link.href.startsWith(location.origin)) {
-      } else {
-        link.setAttribute("target", "_blank");
-        link.setAttribute("rel", "noopener");
-      }
-    })
+    function publisherEntered(input) {
+      document.querySelectorAll("section span[data-editor-path]").forEach(function (span) {
+        if(input && input.value){
+          var path = "https://" + input.value + ".quintype.com" + span.getAttribute("data-editor-path");
+          span.innerHTML = '<a href="' + path + '" target="_blank" rel="noopener">' + path + '</a>';
+        } else {
+          span.innerHTML = span.getAttribute("data-editor-path");
+        }
+      })
+    }
+    document.querySelectorAll("section a").forEach(function (link) {
+        if (link.href.startsWith("/") || link.href.startsWith(location.origin)) {
+        } else {
+          link.setAttribute("target", "_blank");
+          link.setAttribute("rel", "noopener");
+        }
+      })
+    publisherEntered();
   </script>
 </html>

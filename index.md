@@ -1,6 +1,9 @@
 ---
 title: Quintype
 ---
+
+## Malibu
+
 <ul>
   {% for post in site.posts %}
     <li>
