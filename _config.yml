@@ -5,6 +5,7 @@ logo: https://images.assettype.com/quintype-website/2018-10/013e8cbe-92b4-435f-b
 repository: quintype/malibu
 google_analytics: UA-66074042-1
 baseurl: /malibu
+url: https://developers.quintype.com
 plugins:
 - jekyll-seo-tag
 - jekyll-sitemap
