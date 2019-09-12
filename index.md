@@ -1,13 +1,11 @@
 ---
-title: Quintype
+title: Malibu By Quintype
 ---
+# {{page.title}}
 
-## Malibu
+A Javascript framework for building apps with Quintype.
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+You might want to check out the following topics, before jumping right in to the [tutorial]({{"/tutorial" | absolute_url}})
+
+* [Common Terminology]({{"/terminology" | absolute_url}})
+* [Why Malibu?]({{"/why-malibu" | absolute_url}})

@@ -2,6 +2,7 @@
 title: Common Terminology
 permalink: /terminology
 ---
+# {{page.title}}
 
 In this document, we explain some of the common concepts and terminology that the Quintype CMS uses.
 
