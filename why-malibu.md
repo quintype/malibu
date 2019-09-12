@@ -3,7 +3,7 @@ title: Why Malibu?
 ---
 # {{page.title}}
 
-Malibu is the culmination of Quintype's experiences of taking over 50 content websites into production. The goal is for malibu and the underlying tools to do all the heavy lifting for you, so that you can build a immersive applications quickly.
+Malibu is the culmination of Quintype's experiences of taking hundreds of content websites into production. The goal is for malibu and the underlying tools to do all the heavy lifting for you, so that you can build an immersive applications quickly.
 
 ### Progressive Web Apps, out of the box
 
