@@ -43,4 +43,4 @@ Malibu handles a lot of the heavy lifting that developers typically have to do t
 
 ### Tutorials to help you get started
 
-Head over to the {{"/tutorial" | absolute_url}} to get started.
+Head over to the [tutorial]({{"/tutorial" | absolute_url}}) to get started.
