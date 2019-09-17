@@ -80,16 +80,28 @@
     </script>
   </body>
   <script type="text/javascript">
-    function publisherEntered(input) {
-      document.querySelectorAll("section span[data-editor-path]").forEach(function (span) {
-        if(input && input.value){
-          var path = "https://" + input.value + ".quintype.com" + span.getAttribute("data-editor-path");
-          span.innerHTML = '<a href="' + path + '" target="_blank" rel="noopener">' + path + '</a>';
-        } else {
-          span.innerHTML = span.getAttribute("data-editor-path");
-        }
+    (function setupPublisherChange() {
+      const PUBLISHER_KEY = "malibu_docs_publisher_name";
+      function publisherEntered(input) {
+        const publisherName = input || "";
+        localStorage.setItem(PUBLISHER_KEY, publisherName);
+        document.querySelectorAll("section span[data-editor-path]").forEach(function (span) {
+          if (publisherName) {
+            var path = "https://" + publisherName + ".quintype.com" + span.getAttribute("data-editor-path");
+            span.innerHTML = '<a href="' + path + '" target="_blank" rel="noopener">' + path + '</a>';
+          } else {
+            span.innerHTML = span.getAttribute("data-editor-path");
+          }
+        })
+      }
+      const initialPublisher = localStorage.getItem(PUBLISHER_KEY) || "";
+      publisherEntered(initialPublisher);
+      document.querySelectorAll("section #publisher-name").forEach(function (input) {
+        input.value = initialPublisher;
+        input.onchange = () => publisherEntered(input.value);
       })
-    }
+    })();
+
     document.querySelectorAll("section a").forEach(function (link) {
         if (link.href.startsWith("/") || link.href.startsWith(location.origin)) {
         } else {
@@ -97,6 +109,5 @@
           link.setAttribute("rel", "noopener");
         }
       })
-    publisherEntered();
   </script>
 </html>
