@@ -118,6 +118,8 @@ To configure the list of attributes and possible values, please click here: <spa
 
 Entities are a flexible way to store structured information in Quintype. Each entity has a schema, refered to as the *"type"* of the entity.
 
+As an example, you may want to link news stories to an entity of type *city*, indicating which city the story broke in. The city entity may have a field called *"mayor"*, which is filled by an entity of type *person*.
+
 The schema of the entity may various fields as either mandatory or optional, including fields which link to other entities.
 
 Though Entities can be used for many of the same use cases as [simple attributes](#attributes), entities allow you to provide much more rich data.
