@@ -52,6 +52,12 @@ See the [tutoria]({{"/tutorial" | absolute_url}}) for more examples.
 
 For more information, please see [@quintype/seo on github](https://github.com/quintype/quintype-node-seo) or [the documentation](https://developers.quintype.com/quintype-node-seo)
 
+## @quintype/build
+
+The Quintype build plugin handles the ease of developement of Quintype plugins. It runs on your development machine, and during the building of the final image. This plugin is not deployed to production.
+
+For more information, please see [@quintype/build on github](https://github.com/quintype/quintype-node-build) or [the documentation](https://developers.quintype.com/quintype-node-build)
+
 ## Metype
 
 Metype is Quintype's engagement product. It provides a number of useful widgets such as a commenting widget, a trending content feed, page reactions, and many more.
