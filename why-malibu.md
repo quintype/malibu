@@ -17,6 +17,10 @@ Malibu can be integrated with [Project Lancelot](https://developers.quintype.com
 
 Malibu starts with a sub second First Contentful Paint and First Meaningful Paint by default. Even when multiple rich components are added, most malibu based sites load sub 2 seconds. Multiple components are available for performance tuning, like [LazyLoadImages](https://developers.quintype.com/quintype-node-components/LazyLoadImages.html)
 
+### Design it your way
+
+Malibu does not enforce any constraints on the design of your site. You can build any kind of UI on top of malibu.
+
 ### Wide range of Logic Components available
 
 Malibu includes [@quintype/components](https://developers.quintype.com/quintype-node-components), a set of viewless components to handle common patterns like logins, paywalls, lazy loading images, and infinite scroll.
@@ -25,6 +29,10 @@ Malibu includes [@quintype/components](https://developers.quintype.com/quintype-
 
 Most Quintype features are supported by default in Malibu, and often simply involves enabling features in the configuration
 
+### CDN Caching By Default
+
+Malibu's pages are already configured with the correct *Cache-Control* and *Cache-Tag* headers, so that our CDN keeps your pages in cache, but still expires pages as soon as you update your content.
+
 ### Continuous updates
 
 Malibu is built and maintained by a dedicated team at Quintype, and receives weekly updates. Getting the latest features is as simple as `npm install`.
@@ -32,10 +40,6 @@ Malibu is built and maintained by a dedicated team at Quintype, and receives wee
 ### SEO Compliant
 
 All of Quintype's SEO features are already implemented via the [@quintype/seo](https://github.com/quintype/quintype-node-seo) package.
-
-### Design it your way
-
-Malibu does not enforce any constraints on the design of your site. You can build any kind of UI on top of malibu.
 
 ### Easy for developers to setup and deploy
 
