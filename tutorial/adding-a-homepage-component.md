@@ -12,6 +12,8 @@ In this chapter, we will discuss how to add a new component to your home page a
 
 Components are an essential part of any React application, that we can reuse all over our site.
 
+For this example we will be adding a component called ```FourColGrid```
+
 step 1
 * Create new folder  called ```four-col-grid``` inside ```app/isomorphic/components/four-col-grid``` 
 
