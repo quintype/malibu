@@ -124,6 +124,10 @@ Hit save, then come back to the browser. The header should immediately change to
 
 If the browser didn't immediately reload, try refreshing your browser.
 
+## Switching to a different API end point
+
+By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit `config/publisher.yml`, and update the `sketches_host` to `https://<your-name>.quintype.io`.
+
 ## Wrapping Up
 
 Hooray, you now have a running instance of a simple quintype publisher!
