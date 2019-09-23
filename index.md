@@ -1,5 +1,6 @@
 ---
 title: Malibu By Quintype
+nav_order: 1
 ---
 # {{page.title}}
 

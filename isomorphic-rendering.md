@@ -1,6 +1,7 @@
 ---
 title: How Does Isomorphic Rendering Work?
 permalink: /isomorphic-rendering
+nav_order: 6
 ---
 # {{page.title}}
 

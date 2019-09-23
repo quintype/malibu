@@ -1,5 +1,6 @@
 ---
 title: Malibu Tutorial
+nav_order: 5
 ---
 # {{page.title}}
 

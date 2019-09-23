@@ -1,5 +1,6 @@
 ---
 title: Why Malibu?
+nav_order: 2
 ---
 # {{page.title}}
 

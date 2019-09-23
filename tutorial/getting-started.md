@@ -2,6 +2,7 @@
 title: Getting Started with Malibu
 post_number: 01
 tutorial: true
+nav_exclude: true
 ---
 
 # {{page.title}}

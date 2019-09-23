@@ -1,6 +1,7 @@
 ---
 title: Moving Parts
 permalink: /moving-parts
+nav_order: 4
 ---
 # {{page.title}}
 

@@ -1,6 +1,7 @@
 ---
 title: Common Terminology
 permalink: /terminology
+nav_order: 3
 ---
 # {{page.title}}
 

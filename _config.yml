@@ -1,12 +1,13 @@
-theme: jekyll-theme-minimal
+remote_theme: pmarsceill/just-the-docs
 title: Malibu
 description: Documentation for building Quintype publisher apps on the Malibu framework
 logo: https://images.assettype.com/quintype-website/2018-10/013e8cbe-92b4-435f-bbbb-3e101efbc99a/quintype_logo.png
 repository: quintype/malibu
-google_analytics: UA-66074042-1
+ga_tracking: UA-66074042-1
 baseurl: /malibu
 url: https://developers.quintype.com
 plugins:
+- jekyll-remote-theme
 - jekyll-seo-tag
 - jekyll-sitemap
 - jekyll-redirect-from
