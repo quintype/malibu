@@ -4,17 +4,36 @@ post_number: 03
 tutorial: true
 ---
 
-# {{page.title}}
+# WIP: {{page.title}}
 
-In this chapter, we will discuss how to add a new component to your home page and how we choose different template options for each home collection from the editor.
+In this chapter, we will add a new component to your home page, and configure this component from the editor.
 
-## How to create a new component?
+## Creating the Component
 
-Components are an essential part of any React application, that we can reuse all over our site.
+Components are an essential part of any React application, and can be reused across your app.
 
-For this example we will be adding a component called ```FourColGrid```
+For this example we will be creating a component called ```FourColGrid```
 
-step 1
+### Building the folder structure
+
+### Setting up the HTML
+
+### Styling the CSS
+
+### Seeing the component live
+
+## Exposing the component via template-options.json
+
+### Brief explanation of what template-options.json is
+
+### Link to 'chapter 2 - deploying with black knight'
+
+### Add to template options
+
+### Configuring template with Bold
+
+### Building the folder structure
+
 * Create new folder  called ```four-col-grid``` inside ```app/isomorphic/components/four-col-grid``` 
 
 * Create an ```index.js``` and ```four-col-grid.m.css``` in above folder ```four-col-grid```
@@ -23,7 +42,7 @@ step 1
 
 * The FourColGrid component is our main row and it contains the ```StoryGrid``` as a molecule, which is responsible for each story card.
 
-``` 
+```javascript
 import React from "react";
 import { StoryGrid } from "../story-grid";
 import "./four-col-grid.m.css";
@@ -44,7 +63,7 @@ step 2 
 * After creating the row component, import the component to the collection-layout and use ```wrapCollectionLayout(component)``` , this function will wrap a UI for the collection.
 
 
-```
+```javascript
 import { wrapCollectionLayout } from "@quintype/components";
 import { FourColGrid } from  "../four-col-grid"
 
@@ -75,8 +94,8 @@ step 4  
 step 5 
 * Go to the editor and create a collection called **Home** that will appear on the home page.
 
-* The layout of each collection on the home page will be decided based on the associated metadata 
-called layout set using the **manage** button against each collection. 
+* The layout of each collection on the home page will be decided based on the associated metadata
+called layout set using the **manage** button against each collection.
 
 * Click on the manage button to select one of the ```collection template``` from the drop down list.
 
