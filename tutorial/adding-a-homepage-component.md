@@ -1,8 +1,7 @@
 ---
 title: Adding a new component to your home page
-post_number: 03
-tutorial: true
-nav_exclude: true
+nav_order: 03
+parent: Malibu Tutorial
 ---
 
 # WIP: {{page.title}}

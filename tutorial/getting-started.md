@@ -1,8 +1,7 @@
 ---
 title: Getting Started with Malibu
-post_number: 01
-tutorial: true
-nav_exclude: true
+parent: Malibu Tutorial
+nav_order: 01
 ---
 
 # {{page.title}}
