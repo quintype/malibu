@@ -45,7 +45,7 @@ const ISOMORPHIC_ROUTES = [
   { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true }
 ];
 
-export function generateRoutes(config, domainSlug) {
+export function generateRoutes(config, domainSlug = undefined) {
   return config.memoize(`routes${domainSlug}`, () =>
     ISOMORPHIC_ROUTES.concat(generateCommonRoutes(config, domainSlug))
   );
