@@ -23,6 +23,7 @@ export function loadErrorData(error, config) {
   });
 }
 
+// FIXME: Convert this to async/await
 export function loadData(pageType, params, config, client, { host, next, domainSlug }) {
   function _loadData() {
     switch (pageType) {
