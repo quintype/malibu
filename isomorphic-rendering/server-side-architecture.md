@@ -8,7 +8,7 @@ nav_order: 01
 
 In this document, we describe the flow of control when malibu gets a request for a page.
 
-![Server Side Architecture]({{"images/server-side-architecture.png" | absolute_url}})
+![Server Side Architecture]({{"images/server-side-architecture.svg" | absolute_url}})
 
 ## Before the Request Starts
 
