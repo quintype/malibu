@@ -1,5 +1,5 @@
 import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
-import { FourColGrid } from "./four-col-grid";
+import { FourColGrid } from "../four-col-grid";
 import React from "react";
 
 function wrapEager(f) {

@@ -1,6 +1,8 @@
 // Implement more logic here
 
 import React from "react";
+import { array, object } from "prop-types";
+
 import { StoryGrid } from "../story-grid";
 import "./four-col-grid.m.css";
 
@@ -12,3 +14,8 @@ export function FourColGrid({ collection, stories }) {
     </div>
   );
 }
+
+FourColGrid.propTypes = {
+  collection: object,
+  stories: array
+};
