@@ -4,7 +4,7 @@ parent: Malibu Tutorial
 nav_order: 02
 ---
 
-In this chapter, we will add a new page to our Malibu app.
+ At times, we might need to add a custom page apart from the default pages provided by the malibu app. A custom page can have its own logic of fetching respective data and to render a separate UI. In this chapter, we will add a new custom page to our Malibu app.
 
 ## Building a custom page
 
@@ -50,7 +50,29 @@ export { pickComponent, getChunkName };
 
 ### Loading the data
 
-In this case, we need to add a file in `app/server/data-loaders` called
+In order to load the data, we need to add a condition for the Author page to make a call to a function that loads the data. We do this in `app/server/load-data.js`.
+
+In `app/server/load-data.js`, we modify the `loadData` function to add the case which invokes the particular loadData call depending on the page.
+
+Example, in `app/server/load-data.js`, we add the following 
+
+```
+import { loadAuthorPageData } from "./data-loaders/author-page-data";
+
+export function loadData(pageType, params, config, client, { host, next }) {
+  function _loadData() {
+    switch (pageType) {
+      ....
+      ....
+      case PAGE_TYPE.AUTHOR_PAGE:
+        return loadAuthorPageData(client, params.authorId, config);
+      ....
+      ....
+    }
+  }
+```
+
+ We need to add a file in `app/server/data-loaders` called
 `author-page-data.js` where we make an api call to get the respective author data.
 
 ```
@@ -108,7 +130,5 @@ class AuthorPage extends React.Component {
 
 export { AuthorPage };
 ```
-
-
 
 
