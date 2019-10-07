@@ -132,4 +132,4 @@ By default, Malibu points to https://quintype-demo.quintype.io as it's API endpo
 
 Hooray, you now have a running instance of a simple quintype publisher!
 
-You may now proceed to [Chapter 2, whatever it is about]() or jump to a recipe from the [Home Page]({{"/" | absolute_url}}).
+You may now proceed to [Creating a Page]({{"/tutorial/creating-a-page" | absolute_url}}) or jump to a recipe from the [Home Page]({{"/" | absolute_url}}).
