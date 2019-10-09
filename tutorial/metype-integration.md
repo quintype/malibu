@@ -9,7 +9,7 @@ In order to use metype in malibu, we can use [metype-react](https://github.com/q
 
 In our `app/isomorphic/components` we can have something like, `metype-comments/index.js`, that can have the following code.
 
-```
+```javascript
 import React from "react";
 import { connect } from "react-redux";
 import { MetypeCommentingWidget } from "@metype/components";
@@ -44,7 +44,7 @@ We need the wrapper component in order to get the `publisherAttributes` that can
 
 `config/publisher.yml` should look something like this.
 
-```
+```yml
 publisher :
   metypeHost: "https://staging.metype.com"
   metypeAccountId: "1"
@@ -62,7 +62,7 @@ The publisher config value can be fetched from quintype/framework's [publisher-c
 
 Our `app/server/load-data.js`'s `loadData` method should look something like this.
 
-```
+```javascript
 import config from "@quintype/framework/server/publisher-config";
 
 ....

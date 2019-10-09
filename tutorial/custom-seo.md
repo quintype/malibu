@@ -8,7 +8,7 @@ Most of the SEO is handled by [Quintype Node SEO](https://developers.quintype.co
 
 In our malibu app, a default set of SEO implementation containing the basic structured data and static tags can be found in `app/server/app.js`.
 
-```
+```javascript
 isomorphicRoutes(app, {
     ....
     ....
@@ -27,7 +27,7 @@ The custom SEO logic can be added by using [Generators](https://developers.quint
 
 Lets say we want to add a custom tag, we can do it as follows
 
-```
+```javascript
 isomorphicRoutes(app, {
     ....
     ....

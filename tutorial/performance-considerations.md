@@ -18,7 +18,7 @@ Before getting in detail about optimizing images, it is recommended to go throug
 
 Using of webp images helps in compression of images and makes the webpage faster. More about [webp](https://developers.google.com/speed/webp) can be found here. This can be done by passing a `type` prop to the `ResponsiveImage` component.
 
-```
+```javascript
 import { ResponsiveSource } from "@quintype/components";
 
 const SomeComponent = (props) => {
@@ -34,7 +34,7 @@ const SomeComponent = (props) => {
 
 The `defaultWidth` and `widths` props can be used to tell the browser which sizes are available for any image.
 
-```
+```javascript
 <ResponsiveImage ... defaultWidth={480} widths={[250,480,640]}/>
 ```
 
@@ -46,7 +46,7 @@ The widths parameter tells the browser which image sizes are available. However,
 
 In order to do this, you can use the sizes parameter. Let us consider the following application
 
-```
+```javascript
 <ResponsiveImage ... sizes="(max-width: 500px) 98vw, (max-width: 768px) 48vw, 23vw"/>
 
 ```
