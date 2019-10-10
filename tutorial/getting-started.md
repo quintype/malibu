@@ -130,8 +130,14 @@ If the browser didn't immediately reload, try refreshing your browser.
 
 By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit `config/publisher.yml`, and update the `sketches_host` to `https://<your-name>.quintype.io`.
 
+## Pushing to a staging environment
+
+Please see [Chapter 3 - Deploying With Black Knight]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) to understand how to push these changes to a staging environment. However, you may also proceed with the tutorial and do this step later.
+
 ## Wrapping Up
 
 Hooray, you now have a running instance of a simple quintype publisher!
+
+
 
 You may now proceed to [Creating a Page]({{"/tutorial/creating-a-page" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

@@ -61,7 +61,13 @@ Entering any built tag from Quay in the input box and click on the *Deploy* butt
 
 Black Knight allows you to add configuration files to various environments. This allows publishers to reuse the same docker image in multiple environments, but inject in configuration.
 
-By default, Malibu based projects have one important configuration file, the *app/config/publisher.yml*. This file contains various parameters which are read by the [@quintype/framework](https://developers.quintype.com/quintype-node-framework), the most important being the *sketches_host*, which indicates the location of your API server. This should typically be *&lt;yourname&gt;.internal.quintype.io* for production. Similarly, the *asset_host* should usually be set to *fea.quintype.com*
+By default, Malibu based projects have one important configuration file, the *app/config/publisher.yml*. This file contains various parameters which are read by the [@quintype/framework](https://developers.quintype.com/quintype-node-framework), the most important being the *sketches_host*, which indicates the location of your API server. This should typically be *&lt;yourname&gt;.internal.quintype.io* for production. Similarly, the *asset_host* should usually be set to *fea.assettype.com*.
+
+A sample *app/config/publisher.yml* file can be found below:
+```yaml
+sketches_host: <yourname>.internal.quintype.io
+asset_host: fea.assettype.com
+```
 
 ### Logs
 The Logs tab allows you to see logs from *stdout* or *error.log* from the running container.
