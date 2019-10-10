@@ -55,7 +55,6 @@ We need the wrapper component in order to get the metype configuration (includin
 
 ```yaml
 publisher :
-  ...
   metype:
     host: "https://staging.metype.com"
     accountId: "1"
@@ -94,9 +93,9 @@ Finally, we add the component onto the story page. Let's add this to the end of 
 
 ```javascript
 ...
-import MetypeComments from '../metype-comments";
-
+import MetypeComments from "../metype-comments";
 ...
+
 function BlankStory(props) {
   return (
     <div className="story-grid">
@@ -105,7 +104,6 @@ function BlankStory(props) {
     </div>
   );
 }
-...
 ```
 
 ### Seeing it live
