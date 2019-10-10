@@ -108,7 +108,7 @@ function BlankStory(props) {
 
 ### Seeing it live
 
-FIXME: Please add a screenshot
+![Metype Comments Widget]({{"images/metype-comments-widget.png" | absolute_url}})
 
 ## Integrating the Feed Widget
 
