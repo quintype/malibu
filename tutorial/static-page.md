@@ -1,7 +1,7 @@
 ---
 title: Adding a static page
 parent: Malibu Tutorial
-nav_order: 05
+nav_exclude: true
 ---
 
 ## Adding a static page

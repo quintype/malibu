@@ -1,7 +1,7 @@
 ---
 title: Custom SEO
 parent: Malibu Tutorial
-nav_order: 04
+nav_exclude: true
 ---
 
 Most of the SEO is handled by [Quintype Node SEO](https://developers.quintype.com/quintype-node-seo/).

@@ -1,7 +1,7 @@
 ---
 title: Performance Considerations
 parent: Malibu Tutorial
-nav_order: 04
+nav_exclude: true
 ---
 
 One of the most important things to consider is the performance of a website. These are the following things to consider while building a webpage using malibu.
