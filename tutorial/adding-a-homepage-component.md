@@ -1,32 +1,35 @@
 ---
 title: Adding a new component to your home page
-nav_order: 03
+nav_order: 04
 parent: Malibu Tutorial
 ---
 
-# WIP: {{page.title}}
+# {{page.title}}
 
-In this chapter, we will add a new component to your home page, and configure this component from the editor.
+*This tutorial was contributed by [Athira MR](https://twitter.com/AthiraMRaju)*
+
+Quintype organizes content using [Collections]({{"/malibu/terminology#collections" | absolute_url}}). Each collection can contain stories or other collections, and also contains information required for rendering that collection, such as the *"layout"*.
+
+In this tutorial we will build a component that can be used on the home page (or any other collection page). In order to do this, the component we create must be compatible with the [Collection Component](https://developers.quintype.com/quintype-node-components/Collection.html)
 
 ## Creating the Component
 
-Components are an essential part of any React application, and can be reused across your app.
-
-For this example we will be creating a new component called ```TwoColGrid```
+For this example we will be creating a new component called *TwoColGrid*, which is a simple story grid with two columns.
 
 ### Building the folder structure
 
-* Create new folder  called ```two-col-grid``` inside ```app/isomorphic/components``` 
-
-* Create an ```index.js``` and ```two-col-grid.m.css``` in above folder ```two-col-grid```
-
 ![Malibu Running]({{"images/creating-folder.gif" | absolute_url}})
+
+We first start by creating the folder structure.
+
+* Create new folder called *two-col-grid* inside *app/isomorphic/components/collection-templates* 
+* Create an *index.js* and *two-col-grid.m.css* in above folder *two-col-grid*
 
 ### Setting up the HTML
 
-The standard convention is to write the component within a file called `index.js`.
+The convention typically followed is to have **index.js** export the component that is being built.
 
-The simplest way to define a component is to write a React functional component. The `index.js` file contains the component, which accepts props as an argument and returns valid JSX.
+The simplest way to define the component as a React functional component. The **index.js** file contains the component, which accepts props as an argument and returns valid JSX.
 
 ```javascript
 import React from "react";
@@ -35,7 +38,7 @@ import { Link, ResponsiveImage } from "@quintype/components";
 
 import "./two-col-grid.m.css";
 
-export function TwoColGrid({ collection, stories }) {
+export function TwoColGrid({ collection, stories, associatedMetadata }) {
   return (
     <div>
       <h3 styleName="heading">{collection.name}</h3>
@@ -54,7 +57,8 @@ TwoColGrid.propTypes = {
 };
 ```
 
-The component ```HorizontalStoryCard``` which is responsible for the each horizontal story card.
+As you can see, *TwoColGrid* in turn calls *HorizontalStoryCard* which is responsible for each card. We will put this component into the same file for now, but do check out the [next chapter]({{"/tutorial/organizing-into-atoms-molecules-and-rows" | absolute_url}}) for a better way to organize this.
+
 ```javascript
 function HorizontalStoryCard({story}) {
   return (
@@ -82,14 +86,16 @@ function HorizontalStoryCard({story}) {
 }
 ```
 
-The component ```HorizontalStoryCard``` should see something like the following:
 ![Malibu Running]({{"images/horizontal-story-card.png" | absolute_url}})
 
-### Styling the CSS
-The ```two-col-grid.m.css``` file in which all style names are scoped locally by default.
-The style name here are scoped locally. With CSS Modules, your CSS style names become similar to local variables in JavaScript.
+When rendered, *HorizontalStoryCard* will look like the above picture (though it's not visible yet!).
 
-```
+
+### Styling the CSS
+
+Let's fill out the CSS file to style our component. For this component, the styles will come from *two-col-grid.m.css*.
+
+```css
 .heading {
   font-size: 20px;
   text-transform: uppercase;
@@ -135,66 +141,75 @@ The style name here are scoped locally. With CSS Modules, your CSS style names b
 }
 ```
 
-### Seeing the component live
+Malibu uses CSS modules by default, which scopes all class names locally. This means a class listed here will not clash with other classes with the same name. For more information, see [CSS Modules](https://github.com/css-modules/css-modules).
 
-After creating the ```TwoColGrid``` component,import the component to the ```collection-template``` and use ```wrapCollectionLayout(component)``` ,this function will wrap a UI for the collection.
+### Previewing the Component
+
+After creating the *TwoColGrid* component, import the component in *collection-templates/index.js*.
 
 
 ```javascript
 import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
-import { FourColGrid } from "../four-col-grid";
-import { TwoColGrid } from "../two-col-grid"
+import { FourColGrid } from "./four-col-grid";
+import { TwoColGrid } from "./two-col-grid"
 import React from "react";
 
-function wrapEager(f) {
-  return function WrapEager(props) {
-    if (props.index === 0) {
-      return (
-        <EagerLoadImages predicate={token => token === "above-fold"}>{React.createElement(f, props)}</EagerLoadImages>
-      );
-    } else {
-      return React.createElement(f, props);
-    }
-  };
-}
+...
 
 export default {
   FourColGrid: wrapEager(wrapCollectionLayout(FourColGrid)),
   TwoColGrid: wrapEager(wrapCollectionLayout(TwoColGrid)),
   defaultTemplate: wrapEager(wrapCollectionLayout(TwoColGrid))
 };
-
 ```
 
-Open a browser, and navigate over to http://localhost:3000. You should see something that looks like the following:
+The functions *wrapEager* and *[wrapCollectionLayout](https://developers.quintype.com/quintype-node-components/global.html#wrapCollectionLayout)* provide some utilities for collections.
 
 ![Malibu Running]({{"images/two-col-grid.png" | absolute_url}})
 
-### Add to template options
-```config/template-options.yml``` is a config file which is responsible for showing the various collection templates on the editor. 
+Once this file is saved, you can open a browser, and navigate over http://localhost:3000. You should see your updated component, and it should look like the image above.
 
-```
+## Exporting the component to the editor
+
+Now that we have the component working locally, let's deploy this to a staging environment, and get the our new component to show up in the CMS (under the layout options of the home page).
+
+The CMS picks up the available components by querying `/template-options.json` on your domain, which in turn reads a list of available components from `config/template-options.yml`.
+
+### Add to template options
+*config/template-options.yml* lists out all the templates which are available to the editor. We first add our new component to this list
+
+```yaml
 collection-layouts:
 - name: FourColGrid
   display: Default Malibu Widget
   options: []
+- name: TwoColGrid
+  display: Two Column Grid
+  options:
+  - name: color_scheme
+    type: string
 ```
 
-### Deploy the app with [black knight]({{"/" | absolute_url}})
- 
-Go to [black knight]({{"/" | absolute_url}}) and deploy the latest build to the server. Please make sure that you are able to see the template options in the front end route (domain-name/template-options.json)
+In the above example, we have added *TwoColGrid*. We have also requested the editor to show an option for entering *"color_sheme"*, which is a string. The value entered is currently ignored by our component, but can be accessed via *associatedMetadata["color_scheme"]*.
 
-![Malibu Running]({{"images/template-options.gif" | absolute_url}})
+You should now see [https://localhost:3000/template-options.json](https://localhost:3000/template-options.json) updated with the new component.
+
+### Deploy the app with [black knight]({{"/" | absolute_url}})
+
+In order to see these changes reflected in the editor, the updated code must be deployed to some environment (such as staging). Please see the [Black Knight Tutorial]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) for help on deploying.
+
+Once the deploy has completed, please ensure that you are able to see the template options on your staging instance (https://&lt;your-name&gt;-web.qtstage.io/template-options.json)
 
 ### Configuring template with Bold
 
-* Go to the editor and create a collection called **Home** that will appear on the home page.
-
-* The layout of each collection on the home page will be decided based on the associated metadata
-called layout set using the **manage** button against each collection.
-
-* Click on the manage button to select one of the ```collection template``` from the drop down list.
-
 ![Malibu Running]({{"images/template-option-editor.gif" | absolute_url}})
 
-* If the value of layout is anything other than the dropdown values, it will fall back to the default layout.
+Your template will now be available for configuration on the CMS.
+* Go to the editor and find the *home* collection.
+* The home collection usually contains multiple collections, each collection having a layout set via the *Manage* button.
+* Add a collection to the home page, the select the *Manage* button. You should see the new template in the the drop down list.
+* If the value of layout is anything other than the dropdown values, it will fall back to the default layout. You can use this behaviour to test our new collections locally.
+
+Congratulations, you have now created a new component which can be used across any collection pages, including the Home and Section pages.
+
+You may now proceed to [Organizing into atoms, molecules and rows]({{"/tutorial/organizing-into-atoms-molecules-and-rows" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

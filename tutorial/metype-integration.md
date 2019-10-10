@@ -1,13 +1,22 @@
 ---
 title: Metype Integration
 parent: Malibu Tutorial
-nav_order: 05
+nav_order: 06
 ---
 
-Metype provides a commenting system for users to engage with the content. It is basically an iframe that can be embedded in a story for comments.
-In order to use metype in malibu, we can use [metype-react](https://github.com/quintype/metype-react), a react component to embed metype widgets.
+# {{page.title}}
 
-In our `app/isomorphic/components` we can have something like, `metype-comments/index.js`, that can have the following code.
+*This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan)*
+
+Metype provides a commenting system for users to engage with the content. It integrates as an iframe that can be embedded in a story for comments, as well as feeds for recent comments which can appear as a sidebar.
+
+In order to use metype with malibu, we can use [metype-react](https://github.com/quintype/metype-react), a react component to embed metype widgets.
+
+Before getting started, please ensure that the domain you are currently working on (both localhost and the staging domain) is whitelisted in your metype configuration.
+
+## Integrating Metype Comments
+
+In our *app/isomorphic/components* we create *metype-comments/index.js*, that exports the metype commenting widget.
 
 ```javascript
 import React from "react";
@@ -15,84 +24,94 @@ import { connect } from "react-redux";
 import { MetypeCommentingWidget } from "@metype/components";
 import get from "lodash/get";
 
-const MetypeWrapperBase = ({ publisherAttributes = {}, story }) => (
+const MetypeCommentsBase = ({ metypeConfig = {}, story }) => (
   <div>
     <MetypeCommentingWidget
-      host={publisherAttributes["metypeHost"]}
-      accountId={publisherAttributes["metypeAccountId"]}
+      host={metypeConfig["host"]}
+      accountId={metypeConfig["accountId"]}
       pageURL={story.url}
-      primaryColor={publisherAttributes["primaryColor"]}
-      className={publisherAttributes["className"]}
+      primaryColor="#eeeeee"
+      className="metype-comments-widget"
     />
   </div>
 );
 
 const mapStateToProps = state => {
   return {
-    publisherAttributes: get(state, ["qt", "config", "publisher"], {})
+    metypeConfig: get(state, ["qt", "config", "metype"], {})
   };
 };
 
-const MetypeWrapper = connect(mapStateToProps)(MetypeWrapperBase);
+const MetypeComments = connect(mapStateToProps)(MetypeCommentsBase);
 
-export default MetypeWrapper;
+export default MetypeComments;
 ```
 
 ### Why do we need the wrapper component?
 
-We need the wrapper component in order to get the `publisherAttributes` that can be fed into the `MetypeCommentingWidget` component. The `MetypeCommentingWidget` takes few props and respective values to generate the iframe. These values can be fetched from `config/publisher.yml`.
+We need the wrapper component in order to get the metype configuration (including the *metypeHost* and *metypeAccountId*). These values come from *config/publisher.yml*.
 
 `config/publisher.yml` should look something like this.
 
-```yml
+```yaml
 publisher :
-  metypeHost: "https://staging.metype.com"
-  metypeAccountId: "1"
-  primaryColor: "#eeeeee"
-  secondaryColor: "#ffffff"
-  className: "story-comments-widget"
-  publisher: "xyz"
+  ...
+  metype:
+    host: "https://staging.metype.com"
+    accountId: "1"
 ```
 
 The above file can be edited and updated in black knight's respective publisher's config file.
 
-### Getting publisher attributes from yml file and adding it to the config
+### Passing the new configuration to MetypeComments
 
 The publisher config value can be fetched from quintype/framework's [publisher-config](https://developers.quintype.com/quintype-node-framework/module-publisher-config.html). Once the value is fetched, we need to add it to the config in `app/server/load-data.js`.
 
-Our `app/server/load-data.js`'s `loadData` method should look something like this.
+Our `app/server/load-data.js`'s `loadData` will get amended to look something like this.
 
 ```javascript
 import config from "@quintype/framework/server/publisher-config";
-
-....
-....
-....
-
-const publisherAttributes = config.publisher || {};
-
+...
 export function loadData(....) {
-    ....
-    ....
-    ....
+    ...
     return {
-      httpStatusCode: data.httpStatusCode,
-      pageType: data.pageType,
-      data,
-      config: {...config.asJson(), ...{ publisherAttributes }}
+      ...,
+      config: {...config, metype: config.metype || {}},
     };
 }
 
 export function loadErrorData(....) {
-   return Promise.resolve({
-    data ,
-    config: {...config, ...{ publisherAttributes }},
-    });
+  return Promise.resolve({
+    ...,
+    config: {...config, metype: config.metype || {}},
+  });
 };
-
 ```
 
-Once the `publisherAttributes` are set into the config, it can be fed to the `MetypeWrapper` component and the respective iframe will get generated.
+### Adding the component onto the story page.
 
+Finally, we add the component onto the story page. Let's add this to the end of the story page. Here, we append to the *BlankStory* component, found in *app/isomorphic/components/story-templates/blank.js*.
 
+```javascript
+...
+import MetypeComments from '../metype-comments";
 
+...
+function BlankStory(props) {
+  return (
+    <div className="story-grid">
+      <BlankStoryTemplate story={props.story} />
+      <MetypeComments story={props.story}/>
+    </div>
+  );
+}
+...
+```
+
+### Seeing it live
+
+FIXME: Please add a screenshot
+
+## Integrating the Feed Widget
+
+FIXME: Please add content
