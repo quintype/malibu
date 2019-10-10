@@ -4,6 +4,10 @@ parent: Malibu Tutorial
 nav_order: 02
 ---
 
+# {{page.title}}
+
+*This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan)*
+
 In this tutorial, we will create a new page for an author. With this example, we will demonstrate how a custom page can have its own logic of fetching respective data, and how to render a separate UI.
 
 If you would like to know how this works in more detail, consider reading the [Server Side Architecture]({{"/isomorphic-rendering/server-side-architecture" | absolute_url}}) document.
@@ -152,3 +156,5 @@ export { AuthorPage } from "../components/pages/author";
 Head over to [http://localhost:3000/author/2038](http://localhost:3000/author/2038), and you should see something like the following
 
 ![Author Page]({{"images/author-page.png" | absolute_url}})
+
+You may now proceed to [Deploying With Black Knight]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

@@ -6,6 +6,8 @@ nav_order: 01
 
 # {{page.title}}
 
+*This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar)*
+
 Welcome to Quintype :-).
 
 In this post we will cover how to get started, building a Quintype publisher app with React, Node and the Malibu framework.
@@ -132,4 +134,4 @@ By default, Malibu points to https://quintype-demo.quintype.io as it's API endpo
 
 Hooray, you now have a running instance of a simple quintype publisher!
 
-You may now proceed to [Creating a Page]({{"/tutorial/creating-a-page" | absolute_url}}) or jump to a recipe from the [Home Page]({{"/" | absolute_url}}).
+You may now proceed to [Creating a Page]({{"/tutorial/creating-a-page" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

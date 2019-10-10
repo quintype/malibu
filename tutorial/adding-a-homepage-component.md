@@ -1,10 +1,12 @@
 ---
 title: Adding a new component to your home page
-nav_order: 03
+nav_order: 04
 parent: Malibu Tutorial
 ---
 
 # WIP: {{page.title}}
+
+*This tutorial was contributed by [Athira MR](https://twitter.com/saiicharan)*
 
 In this chapter, we will add a new component to your home page, and configure this component from the editor.
 
@@ -171,7 +173,7 @@ Open a browser, and navigate over to http://localhost:3000. You should see somet
 ![Malibu Running]({{"images/two-col-grid.png" | absolute_url}})
 
 ### Add to template options
-```config/template-options.yml``` is a config file which is responsible for showing the various collection templates on the editor. 
+```config/template-options.yml``` is a config file which is responsible for showing the various collection templates on the editor.
 
 ```
 collection-layouts:
@@ -181,7 +183,7 @@ collection-layouts:
 ```
 
 ### Deploy the app with [black knight]({{"/" | absolute_url}})
- 
+
 Go to [black knight]({{"/" | absolute_url}}) and deploy the latest build to the server. Please make sure that you are able to see the template options in the front end route (domain-name/template-options.json)
 
 ![Malibu Running]({{"images/template-options.gif" | absolute_url}})
