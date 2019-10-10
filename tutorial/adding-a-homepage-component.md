@@ -6,7 +6,7 @@ parent: Malibu Tutorial
 
 # WIP: {{page.title}}
 
-*This tutorial was contributed by [Athira MR](https://twitter.com/saiicharan)*
+*This tutorial was contributed by [Athira MR](https://twitter.com/AthiraMRaju)*
 
 In this chapter, we will add a new component to your home page, and configure this component from the editor.
 
