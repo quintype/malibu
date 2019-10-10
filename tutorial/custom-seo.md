@@ -1,6 +1,5 @@
 ---
 title: Custom SEO
-parent: Malibu Tutorial
 nav_exclude: true
 ---
 

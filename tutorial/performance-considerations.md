@@ -1,6 +1,5 @@
 ---
 title: Performance Considerations
-parent: Malibu Tutorial
 nav_exclude: true
 ---
 
