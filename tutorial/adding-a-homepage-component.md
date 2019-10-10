@@ -150,8 +150,8 @@ After creating the *TwoColGrid* component, import the component in *coll
 
 ```javascript
 import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
-import { FourColGrid } from "../four-col-grid";
-import { TwoColGrid } from "../two-col-grid"
+import { FourColGrid } from "./four-col-grid";
+import { TwoColGrid } from "./two-col-grid"
 import React from "react";
 
 ...
