@@ -138,6 +138,4 @@ Please see [Chapter 3 - Deploying With Black Knight]({{"/tutorial/deploying-with
 
 Hooray, you now have a running instance of a simple quintype publisher!
 
-
-
 You may now proceed to [Creating a Page]({{"/tutorial/creating-a-page" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

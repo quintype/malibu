@@ -1,7 +1,7 @@
 ---
-title: Custom SEO
+title: Implementing Custom SEO
 parent: Malibu Tutorial
-nav_order: 06
+nav_order: 07
 ---
 
 # {{page.title}}

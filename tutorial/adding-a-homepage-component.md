@@ -212,4 +212,4 @@ Your template will now be available for configuration on the CMS.
 
 Congratulations, you have now created a new component which can be used across any collection pages, including the Home and Section pages.
 
-You may now proceed to [Organizing into atoms, molecules and rows]({{"/tutorial/organizing-into-atoms-molecules-and-rows" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Implementing a Design System]({{"/tutorial/implementing-a-design-system" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

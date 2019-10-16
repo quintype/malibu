@@ -108,6 +108,8 @@ function BlankStory(props) {
 
 ### Seeing it live
 
+Navigate over to any story page, and you should see a commenting widget like the one below.
+
 ![Metype Comments Widget]({{"images/metype-comments-widget.png" | absolute_url}})
 
 ## Integrating the Feed Widget
