@@ -1,4 +1,4 @@
-remote_theme: pmarsceill/just-the-docs
+remote_theme: quintype/just-the-docs
 title: Malibu
 description: Documentation for building Quintype publisher apps on the Malibu framework
 logo: https://images.assettype.com/quintype-website/2018-10/013e8cbe-92b4-435f-bbbb-3e101efbc99a/quintype_logo.png
@@ -12,3 +12,14 @@ plugins:
 - jekyll-seo-tag
 - jekyll-sitemap
 - jekyll-redirect-from
+external_navigation:
+  - url: https://developers.quintype.com/quintype-node-framework
+    title: "@quintype/framework"
+  - url: https://developers.quintype.com/quintype-node-components
+    title: "@quintype/components"
+  - url: https://developers.quintype.com/quintype-node-seo
+    title: "@quintype/seo"
+  - url: https://developers.quintype.com/quintype-node-backend
+    title: "@quintype/backend"
+  - url: https://developers.quintype.com/quintype-node-build
+    title: "@quintype/build"
