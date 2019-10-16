@@ -113,3 +113,5 @@ FIXME: Please add a screenshot
 ## Integrating the Feed Widget
 
 FIXME: Please add content
+
+You may now proceed to [Implementing Custom SEO]({{"/tutorial/custom-seo" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
