@@ -22,3 +22,13 @@ has_toc: false
     <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
   {% endfor %}
 </ul>
+
+### Topics under construction
+
+Check back soon for the following topics
+* Performance Considerations for Images
+* Loading a custom font
+* Implementing a login
+* Implementing a paywall with AccessType
+* Integrating with analytics (Google Analytics and QT Analytics are already integrated by default)
+* Customising the header
