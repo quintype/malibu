@@ -13,6 +13,7 @@ RUN npm install --no-optional
 
 COPY . /app/
 RUN git log -n1 --pretty="Commit Date: %aD%nBuild Date: `date --rfc-2822`%n%h %an%n%s%n" > public/round-table.txt && \
+    npm config set unsafe-perm true && \
     ./node_modules/.bin/quintype-build
 
 FROM node:10.15-alpine
