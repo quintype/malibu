@@ -1,6 +1,7 @@
 ---
 title: Metype Integration
 parent: Third Party Integrations
+grand_parent: Malibu Tutorial
 nav_order: 01
 ---
 
