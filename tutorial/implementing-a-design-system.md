@@ -1,10 +1,12 @@
 ---
-title: Structuring Components
+title: Implementing a design system
 parent: Malibu Tutorial
-nav_order: 07
+nav_order: 05
 ---
 
 # {{page.title}}
+
+*This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan)*
 
 In Malibu, we use the idea of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) as a part of building a web page.
 
@@ -164,3 +166,5 @@ The above component with respective styling should look something like this.
 ![Card Row]({{"images/card-row.png" | absolute_url}})
 
 Hooray! Now we have built an entire row starting from atoms. :)
+
+You may now proceed to [Integrating Metype]({{"/tutorial/metype-integration" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
