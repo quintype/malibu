@@ -167,4 +167,4 @@ The above component with respective styling should look something like this.
 
 Hooray! Now we have built an entire row starting from atoms. :)
 
-You may now proceed to [Implementing Custom SEO]({{"/tutorial/custom-seo" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Implementing custom SEO logic]({{"/tutorial/custom-seo" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

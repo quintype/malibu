@@ -1,7 +1,7 @@
 ---
-title: Implementing Custom SEO
+title: Implementing custom SEO logic
 parent: Malibu Tutorial
-nav_order: 07
+nav_order: 06
 ---
 
 # {{page.title}}
