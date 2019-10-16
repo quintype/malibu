@@ -1,7 +1,7 @@
 ---
 title: Metype Integration
-parent: Malibu Tutorial
-nav_order: 06
+parent: Third Party Integrations
+nav_order: 01
 ---
 
 # {{page.title}}
@@ -115,3 +115,5 @@ Navigate over to any story page, and you should see a commenting widget like the
 ## Integrating the Feed Widget
 
 FIXME: Please add content
+
+You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
