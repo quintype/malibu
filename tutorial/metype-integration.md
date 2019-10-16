@@ -1,7 +1,7 @@
 ---
 title: Metype Integration
-parent: Third Party Integrations
-nav_order: 01
+parent: Malibu Tutorial
+nav_order: 06
 ---
 
 # {{page.title}}
@@ -108,10 +108,10 @@ function BlankStory(props) {
 
 ### Seeing it live
 
-FIXME: Please add a screenshot
+Navigate over to any story page, and you should see a commenting widget like the one below.
+
+![Metype Comments Widget]({{"images/metype-comments-widget.png" | absolute_url}})
 
 ## Integrating the Feed Widget
 
 FIXME: Please add content
-
-You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
