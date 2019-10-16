@@ -107,7 +107,7 @@ Open a browser, and navigate over to [http://localhost:3000](http://localhost:30
 
 ## Checking that hot reloading works
 
-Keep your development server and browser running, and use your editor to open `app/isomorphic/components/header/index.js`.
+Keep your development server and browser running, and use your editor to open *app/isomorphic/components/header/index.js*.
 
 Find the line that looks like this
 
@@ -128,7 +128,7 @@ If the browser didn't immediately reload, try refreshing your browser.
 
 ## Switching to a different API end point
 
-By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit `config/publisher.yml`, and update the `sketches_host` to `https://<your-name>.quintype.io`.
+By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit *config/publisher.yml*, and update the `sketches_host` to `https://<your-name>.quintype.io`.
 
 ## Pushing to a staging environment
 

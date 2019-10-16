@@ -75,7 +75,7 @@ The above file is a partial file, which includes the oneSignal script along with
 
 The above file then has to be included in the main *layout.ejs* file.
 
-In `views/pages/layout.ejs`,
+In *views/pages/layout.ejs*,
 
 ```html
 <!DOCTYPE html>

@@ -51,8 +51,6 @@ export default MetypeComments;
 
 We need the wrapper component in order to get the metype configuration (including the *metypeHost* and *metypeAccountId*). These values come from *config/publisher.yml*.
 
-`config/publisher.yml` should look something like this.
-
 ```yaml
 publisher :
   metype:
@@ -64,9 +62,9 @@ The above file can be edited and updated in black knight's respective publisher'
 
 ### Passing the new configuration to MetypeComments
 
-The publisher config value can be fetched from quintype/framework's [publisher-config](https://developers.quintype.com/quintype-node-framework/module-publisher-config.html). Once the value is fetched, we need to add it to the config in `app/server/load-data.js`.
+The publisher config value can be fetched from quintype/framework's [publisher-config](https://developers.quintype.com/quintype-node-framework/module-publisher-config.html). Once the value is fetched, we need to add it to the config in *app/server/load-data.js*.
 
-Our `app/server/load-data.js`'s `loadData` will get amended to look something like this.
+Our *app/server/load-data.js* *loadData* will get amended to look something like this.
 
 ```javascript
 import config from "@quintype/framework/server/publisher-config";

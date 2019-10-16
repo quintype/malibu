@@ -16,7 +16,7 @@ If you would like to know how this works in more detail, consider reading the [S
 
 The first step of any new page is to create a *pageType* for the page to be rendered.
 
-In `app/isomorphic/constants.js`, we add the new constant
+In *app/isomorphic/constants.js*, we add the new constant
 
 ```javascript
 export const PAGE_TYPE = Object.freeze({
@@ -28,9 +28,9 @@ export const PAGE_TYPE = Object.freeze({
 
 ## Building a custom page
 
-We first need to add a respective route for it in `app/server/routes.js`. Since the author page is not a static page, we put it under `ISOMORPHIC_ROUTES`, which is later exported by `generateRoutes`.
+We first need to add a respective route for it in *app/server/routes.js*. Since the author page is not a static page, we put it under *ISOMORPHIC_ROUTES*, which is later exported by *generateRoutes*.
 
-In `app/server/routes.js`, we add the following line:
+In *app/server/routes.js*, we add the following line:
 
 ```javascript
 const ISOMORPHIC_ROUTES = [
@@ -44,11 +44,11 @@ On the route `/author/:authorId`, the *pageType* will be set to *PAGE_TYPE.AUTHO
 
 ### Loading the data
 
-We next set up the data required for our page. We do this in `app/server/load-data.js`.
+We next set up the data required for our page. We do this in *app/server/load-data.js*.
 
-In `app/server/load-data.js`, we modify the *loadData* function to add the case which invokes the particular function call depending on the page.
+In *app/server/load-data.js*, we modify the *loadData* function to add the case which invokes the particular function call depending on the page.
 
-Example, in `app/server/load-data.js`, we add the following
+Example, in *app/server/load-data.js*, we add the following
 
 ```javascript
 import { loadAuthorPageData } from "./data-loaders/author-page-data";
@@ -64,7 +64,7 @@ export function loadData(pageType, params, config, client, { host, next }) {
   }
 ```
 
-We need to add a file in `app/server/data-loaders` called `author-page-data.js` where we make an api call to get the respective author data.
+We need to add a file in *app/server/data-loaders* called **author-page-data.js* where we make an api call to get the respective author data.
 
 ```javascript
 import { Author } from "@quintype/framework/server/api-client";
@@ -120,9 +120,9 @@ const { pickComponent, getChunkName } = pickComponentHelper(
 export { pickComponent, getChunkName };
 ```
 
-A new file has to be created `app/isomorphic/components/pages/author.js` where it contains the `AuthorPage` component exported.
+A new file has to be created *app/isomorphic/components/pages/author.js* where it contains the *AuthorPage* component exported.
 
-The file, `app/isomorphic/components/pages/author.js` is where we have the component to render the AuthorPage.
+The file, *app/isomorphic/components/pages/author.js* is where we have the component to render the AuthorPage.
 
 ```javascript
 import React from "react";
@@ -143,7 +143,7 @@ export function AuthorPage({ data }) {
 
 ```
 
-And finally, we add the new component to `app/isomorphic/component-bundles/list.js` to be exported.
+And finally, we add the new component to *app/isomorphic/component-bundles/list.js* to be exported.
 
 ```javascript
 ...

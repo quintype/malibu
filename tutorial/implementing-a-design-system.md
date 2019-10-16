@@ -33,7 +33,7 @@ We are going to organize our respective files and folders as follows
 
 ## Building an atom
 
-Let's start by building an atom. An atom can be a basic building block. Each atom should be responsible for a single functionality. For example, a `CardImage` atom should just contain a image. It should not have any text. Let's have a simple `CardImage` atom component, which can be used in the future by other components.
+Let's start by building an atom. An atom can be a basic building block. Each atom should be responsible for a single functionality. For example, a *CardImage* atom should just contain a image. It should not have any text. Let's build a simple *CardImage* atom component, which can be used in the future by other components.
 
 ```javascript
 import React from "react";
@@ -56,7 +56,7 @@ This looks something like this,
 
 ![Card Atom]({{"images/atom-card.png" | absolute_url}})
 
-Let's also create an another atom component called `Headline` that can be used while creating molecules.
+Let's also create an another atom component called *Headline* that can be used while creating molecules.
 
 ```javascript
 import React from "react";
@@ -77,7 +77,7 @@ The above atom component just renders a text as a headline.
 
 ## Combining multiple atoms - Forming a molecule
 
-Now let's combine the above two atom components to make a molecule. A combination of `CardImage` and `Headline` can form a `Card`.
+Now let's combine the above two atom components to make a molecule. A combination of *CardImage* and *Headline* can form a *Card*.
 
 ```javascript
 import React from "react";
@@ -100,7 +100,7 @@ const CardMolecule = ({ story }) => {
 export default CardMolecule;
 ```
 
-The above Molecule should look something like this
+The above molecule should look something like this
 
 ![Card Molecule]({{"images/card-molecule.png" | absolute_url}})
 

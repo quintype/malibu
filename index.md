@@ -16,3 +16,11 @@ You might want to check out the following topics, before jumping right in to the
 
 We also have a few more advanced topics
 * [How does Isomorphic Rendering Work?]({{"/isomorphic-rendering" | absolute_url}})
+* [Swagger Documentation](https://developers.quintype.com/swagger/)
+
+Malibu is build on top of the following libraries from quintype. You can find links to the relevant JSDocs below.
+* [@quintype/framework](https://developers.quintype.com/quintype-node-framework) - The framework that powers malibu
+* [@quintype/components](https://developers.quintype.com/quintype-node-components) - Viewless components to handle common logic
+* [@quintype/seo](https://developers.quintype.com/quintype-node-seo) - SEO plugin for malibu
+* [@quintype/backend](https://developers.quintype.com/quintype-node-backend) - Node API client
+* [@quintype/build](https://developers.quintype.com/quintype-node-build) - Build Scripts for dockerizing your build
