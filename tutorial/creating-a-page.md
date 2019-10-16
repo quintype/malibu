@@ -6,7 +6,7 @@ nav_order: 02
 
 # {{page.title}}
 
-*This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan)*
+*This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan) and [Tejas Dinkar](https://twitter.com/tdinkar)*
 
 In this tutorial, we will create a new page for an author. With this example, we will demonstrate how a custom page can have its own logic of fetching respective data, and how to render a separate UI.
 

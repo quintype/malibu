@@ -1,7 +1,7 @@
 ---
 title: Metype Integration
-parent: Malibu Tutorial
-nav_order: 06
+parent: Third Party Integrations
+nav_order: 01
 ---
 
 # {{page.title}}
@@ -114,4 +114,4 @@ FIXME: Please add a screenshot
 
 FIXME: Please add content
 
-You may now proceed to [Implementing Custom SEO]({{"/tutorial/custom-seo" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
