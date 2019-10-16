@@ -43,7 +43,7 @@ import "./card-image.m.css";
 
 const CardImage = (props) => {
   return (
-    <figure className="foo-bar>
+    <figure className="foo-bar">
       <ResponsiveImage ...{props} />
     </figure>
   );
@@ -153,7 +153,7 @@ const CardRow = ({ collection }) => {
   return (
       <div className="card-row">
         <CardOrganism collection={collections[0]} />
-        <CardOrganism collection    ={collections[1]} />
+        <CardOrganism collection={collections[1]} />
       </div>
     </Link>
   );
