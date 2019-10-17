@@ -86,7 +86,7 @@ Here we can see two chunks created, *list* and *story*. Depending on the *pageTy
 
 ## render
 
-Rendering in malibu happens with the help of [IsomorphicComponent](https://developers.quintype.com/quintype-node-framework/IsomorphicComponent.html). *IsomorphicComponent* recieves the data loaded by *loadData*, wrapped inside a redux store. This store is then passed to the component that was returned by *pickComponent*. If the data in the store changes (either within the page or due to a navigation to another page), then *IsomorphicComponent* ensures that the underlying component updates correctly.
+Rendering in malibu happens with the help of [IsomorphicComponent](https://developers.quintype.com/quintype-node-framework/module-IsomorphicComponent.html). *IsomorphicComponent* recieves the data loaded by *loadData*, wrapped inside a redux store. This store is then passed to the component that was returned by *pickComponent*. If the data in the store changes (either within the page or due to a navigation to another page), then *IsomorphicComponent* ensures that the underlying component updates correctly.
 
 ## renderLayout
 
