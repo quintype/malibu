@@ -183,3 +183,43 @@ export default {
 
 Hooray, now we loaded a custom font into the malibu app.
 
+### Loading a Google font
+
+Let us now see how to add a Google font into the malibu app. For example, let us add `Montserrat` font.
+
+In the main template `views/pages/layout.ejs`, all we need to do is to execute the curl command mentioned and replace it to respective font name, in our case `Montserrat`. The default Malibu app has Lato and Roboto with respective weights added to it,
+
+Default curl command in `views/pages/layout.ejs`,
+```
+curl -vH "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0" 'https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,700' | curl -X POST -s --data-urlencode 'input@-' https://cssminifier.com/raw
+```
+
+Adding `Montserrat`, to the existing curl command.
+
+```
+curl -vH "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0" 'https://fonts.googleapis.com/css?family=Montserrat:400,700' | curl -X POST -s --data-urlencode 'input@-' https://cssminifier.com/raw
+```
+
+Once we execute the above `curl` command, the following code gets generated.
+
+```
+@font-face{font-family:Montserrat;font-style:normal;font-weight:400;src:local('Montserrat Regular'),local('Montserrat-Regular'),url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WlhzQ.woff) format('woff')}@font-face{font-family:Montserrat;font-style:normal;font-weight:700;src:local('Montserrat Bold'),local('Montserrat-Bold'),url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD-A.woff) format('woff')}
+```
+
+We then need to add this into the `<head>` part in `views/pages/layout.ejs`.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+    ...
+    ...
+    <style>
+      @font-face{font-family:Montserrat;font-style:normal;font-weight:400;src:local('Montserrat Regular'),local('Montserrat-Regular'),url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WlhzQ.woff) format('woff')}@font-face{font-family:Montserrat;font-style:normal;font-weight:700;src:local('Montserrat Bold'),local('Montserrat-Bold'),url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD-A.woff) format('woff')}
+      ....
+      ....
+    </style>
+  </head>
+</html>
+```
