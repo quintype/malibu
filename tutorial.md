@@ -26,7 +26,6 @@ has_toc: false
 ### Topics under construction
 
 Check back soon for the following topics
-* Loading a custom font
 * Implementing a login
 * Implementing a paywall with AccessType
 * Integrating with analytics (Google Analytics and QT Analytics are already integrated by default)
