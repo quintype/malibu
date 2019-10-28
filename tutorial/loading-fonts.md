@@ -1,13 +1,16 @@
 ---
-title: Loading a Custom font
+title: Loading Fonts
 parent: Malibu Tutorial
 nav_order: 07
 ---
 
-Each publisher will have their own set of fonts, since Malibu is a common framework for building apps, we might have to add custom fonts based on the publisher's requirement.
+# {{page.title}}
 
-This tutorial, will teach you how to load a custom font of your own choice.
-Before we load a custom font, lets see how fonts are being added currently in malibu.
+*This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan) and [Tejas Dinkar](https://twitter.com/tdinkar)*
+
+Fonts are a very important part of a site's branding. Loading fonts in the correct way is an important part of ensuring your site renders quickly. In this tutorial we will cover two different ways to load fonts into malibu.
+
+You can jump to [Loading a Google Font](#loading-a-google-font) if you are using Google Fonts, or continue below for custom fonts.
 
 In Malibu, we do this in two places, in the `Server` and in the `Client`.
 
@@ -99,7 +102,7 @@ The main loading of fonts happen in the template `views/pages/layout.ejs`.
 </html>
 ```
 
-From the above code snippet, First we load the `fontJsContent`  and call the `window.loadFonts` with the data present `app/server/font.js`. In our case, it will be a font with different weights. 
+From the above code snippet, First we load the `fontJsContent`  and call the `window.loadFonts` with the data present `app/server/font.js`. In our case, it will be a font with different weights.
 
 ```html
     <script type="text/javascript">
