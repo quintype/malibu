@@ -8,15 +8,44 @@ nav_order: 07
 
 *This tutorial was contributed by [Sai Charan](https://twitter.com/saiicharan) and [Tejas Dinkar](https://twitter.com/tdinkar)*
 
-Fonts are a very important part of a site's branding. Loading fonts in the correct way is an important part of ensuring your site renders quickly. In this tutorial we will cover two different ways to load fonts into malibu.
+Fonts are a very important part of a site's branding. Loading fonts in the correct way is an important part of ensuring your site renders quickly.
 
-You can jump to [Loading a Google Font](#loading-a-google-font) if you are using Google Fonts, or continue below for custom fonts.
+Malibu comes pre-loaded with two fonts, primarily as an integration example. In this tutorial, we will remove these two fonts and replace them with a custom font, or a google font.
 
-In Malibu, we do this in two places, in the `Server` and in the `Client`.
+## Font Architecture
 
-### The Server
+The method we use to load fonts follows two important characteristics
+* Text is still visible, even if the font is loading. The fonts follow a *"Flash of Unstyled Text"* rather than a *"Flash of Invisible Text"*.
+* The page should rerender exactly once, after all fonts are loaded. This is as opposed to multiple rerenders as each font loads, which is slow.
 
-The specific fonts that are to be loaded are seen in `app/server/font.js`.
+In order to achieve the above goals, we use [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) to load fonts in Malibu. This works as follows.
+* We define all fonts as css variables. By default, they are set to the fallback font, and the variables change to the loaded fonts when the *"fonts-loaded"* class is set on body
+* *FontFaceObserver* waits for all the fonts to be loaded, and then sets the *"fonts-loaded"* class on the body, causing the page to rerender.
+* Font families are defined by google fonts or other font hosting, in the usual way.
+
+Your CSS might look something like this
+```css
+:root {
+  --title-font: sans-serif;
+}
+
+body.fonts-loaded {
+  --title-font: Lato, sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--title-font);
+}
+```
+
+Don't worry about writing the above CSS by hand. We'll auto generate that for you.
+
+
+## Listing the fonts used
+
+The list of fonts used by the application can be found in *app/server/font.js*.
+
+In the below snippet, we can see that two fonts are loaded, *Lato* and *Roboto*, with two weights each.
 
 ```javascript
 const DEFAULT_FONT_CONFIG = Object.freeze({
@@ -32,197 +61,91 @@ export default {
     { fontName: "Roboto", data: { weight: 700 } }
   ],
   fontSettings: Object.assign({}, DEFAULT_FONT_CONFIG, {
-    "title-font": "Lato, sans-serif",
-    "content-font": "Roboto, sans-serif"
+    "title-font": { value: "Lato, sans-serif", fallback: "sans-serif" },
+    "content-font": { value: "Roboto, sans-serif", fallback: "sans-serif" }
   })
 };
 ```
 
-In the above case, we are preloading a set of fonts along with their respective weights in the server. These are the fonts that we use throughout the app and assign it to variables that can be assigned across CSS `font-family`s. The above preloadedFonts are then fed to the `loadFonts` in `app/client/font.js` for further loading.
+These four font-weight combinations (the *preloadFonts* key) will be preloaded by *FontFaceObserver* in the next section.
 
-### The Client
+We will also be using the fonts defined in the *fontSettings* to define two font variables: *--title-font* and *--content-font*.
 
- In the client side, we load fonts using [FontFaceObserver](https://github.com/bramstein/fontfaceobserver). Basically, `FontFaceObserver` takes in a `font-family` and returns a new Promise that resolves when the font is loaded and rejected when the font fails to load.
+## Ensuring the layout loads the fonts
 
-In malibu, we do this in the `app/client/font.js`.
+Please ensure that *layout.ejs* contains the following snippets. Though these are present in the default malibu template, they tend to get erased when building the layout.
 
-```javascript
-import FontFaceObserver from "fontfaceobserver";
-
-function loadFonts(fontFamilies, classToAddToBody) {
-  const loadFontFamilies = fontFamilies.map(({ fontName, data }) => new FontFaceObserver(fontName, data).load());
-
-  Promise.all(loadFontFamilies)
-    .then(() => {
-      console.log(`font's loaded`);
-      document.body.classList.add(classToAddToBody);
-    })
-    .catch(err => {
-      console.warn(`Some critical font are not available: ${err} `);
-    });
-}
-
-global.loadFonts = loadFonts;
-```
-
-The above `loadFonts` function takes `fontFamilies` argument, runs it through `FontFaceObserver` and adds a class(.fonts-loaded) to the `<body>` when the fonts are loaded successfully. This function is called in `views/pages/layout.ejs` which we will see in a bit. Once the class is added, it acts as an indication that the font has been successfully loaded and the rendering of the font happens in the webpage. This way the fonts are loaded in a more performant way.
-
-### Layout.ejs
-
-The main loading of fonts happen in the template `views/pages/layout.ejs`.
+The first snippet defines all the font related CSS variables. Do note this snippet was updated in Oct 2019.
 
 ```html
-<!DOCTYPE html>
-<html>
-  <head>
-    ...
-    ...
-    ...
-    <style>
-      @font-face{font-display:swap;font-family:Lato;font-style:normal;font-weight:400;src:local('Lato Regular'),local('Lato-Regular'),url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wWA.woff) format('woff')}
-      ....
-      ....
-    </style>
-    <style>
-      body.fonts-loaded { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, value]) => { _%> --<%= cssVar %>: <%- value _%>;<%_ }) _%> }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      ...
-      ...
-    <script type="text/javascript">
-      <%- fontJsContent %>
-      window.loadFonts(<%- JSON.stringify(fontFace.preloadFonts) %>, 'fonts-loaded');
-    </script>
-    ...
-    ...
-    ...
-   </body>
-</html>
+<style>
+  :root { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, {fallback}]) => { _%> --<%= cssVar %>: <%- fallback _%>;<%_ }) _%> }
+  body.fonts-loaded { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, {value}]) => { _%> --<%= cssVar %>: <%- value _%>;<%_ }) _%> }
+</style>
 ```
 
-From the above code snippet, First we load the `fontJsContent`  and call the `window.loadFonts` with the data present `app/server/font.js`. In our case, it will be a font with different weights.
+The next snippet embeds *FontFaceObserver* in the page, and loads all the fonts (and finally adds the *"fonts-loaded"* class to body).
 
 ```html
-    <script type="text/javascript">
-      <%- fontJsContent %>
-      window.loadFonts(<%- JSON.stringify(fontFace.preloadFonts) %>, 'fonts-loaded');
-    </script>
+<script type="text/javascript">
+  <%- fontJsContent %>
+  window.loadFonts(<%- JSON.stringify(fontFace.preloadFonts) %>, 'fonts-loaded');
+</script>
 ```
 
-The respective fonts are loaded by `@font-face`, where we mention the source of the font to load.
+## Adding the font-family CSS
+
+The final step required is to ensure that all CSS for the fonts we want to load are present in the CSS. By default, you should see something that looks like this in your *layout.ejs*. In the below snippet, we see CSS required for loading Lato and Roboto.
 
 ```html
-    <style>
-      @font-face{font-display:swap;font-family:Lato;font-style:normal;font-weight:400;src:local('Lato Regular'),local('Lato-Regular'),url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wWA.woff) format('woff')}
-      ....
-      ....
-    </style>
+<style>
+  @font-face{font-display:swap;font-family:Lato;font-style:normal;font-weight:400;src:local('Lato Regular'),local('Lato-Regular'),url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wWA.woff) format('woff')}@font-face{font-display:swap;font-family:Lato;font-style:normal;font-weight:700;src:local('Lato Bold'),local('Lato-Bold'),url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh6UVSwiPHw.woff) format('woff')}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxM.woff) format('woff')}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:700;src:local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc-.woff) format('woff')}
+</style>
 ```
 
-The `window.loadFonts` on successful loading of the font, adds a class `fonts-loaded` to the `body` tag. Once, the class it added the respective fonts mentioned in the `body.fonts-loaded` will get added and hence the respective font gets loaded for the web page.
+How this CSS is generated depends on where this font is hosted.
+
+### Self Hosted Font
+
+For most self hosted fonts, you will just need to replace the CSS for the *@font-face* with hand written CSS. This might look like the below snippet.
 
 ```html
-    <style>
-      body.fonts-loaded { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, value]) => { _%> --<%= cssVar %>: <%- value _%>;<%_ }) _%> }
-    </style>
+<style>
+  @font-face {
+    font-family: "Foo";
+    font-display: swap;
+    font-weight: 400;
+    src: url("/path/to/foo.woff") format('woff');
+  }
+</style>
 ```
 
-Phew! That was too much of theory. Let's try adding a custom font with an example.
+Remember to add the new font *Foo* to *app/server/font.js*. Both to the *preloadFonts* list, as well as to the *fontSettings* list as a new variable.
 
-## Example
+### Using Google Fonts
 
-Let's add a custom font called 'foo.ttf'. Below are the steps to follow to load a custom font `foo.ttf` to malibu app.
+Google Fonts is a repository of popular fonts. While google fonts recommends that you link to their styesheet, it is possible to obtain the CSS to their font files to be embedded in the CSS.
 
-* We need to add the font file `foo.ttf`, in `public` folder.
+Let's pull the css for the 'Montserrat' font using curl. We choose a user agent that supports *woff* in order to get a font that the majority of browsers support. We can use a different user agent to get *woff2* or *ttf*.
 
-* In the existing `app/server.font.js` file, we add the `Foo` font and make it as the `title-font`. This can be done as follows.
-
-```javascript
-const DEFAULT_FONT_CONFIG = Object.freeze({
-  "title-font": "Foo, sans-serif",
-  "content-font": "Roboto, sans-serif"
-});
-
-export default {
-  preloadFonts: [
-    { fontName: "Foo", data: { weight: 400 } },
-    { fontName: "Foo", data: { weight: 700 } },
-    { fontName: "Roboto", data: { weight: 400 } },
-    { fontName: "Roboto", data: { weight: 700 } }
-  ],
-  fontSettings: Object.assign({}, DEFAULT_FONT_CONFIG, {
-    "title-font": "Foo, sans-serif",
-    "content-font": "Roboto, sans-serif"
-  })
-};
-```
-
-* Since, `app/client/font.js` has a generic `loadFonts` method, which takes in a font family and adds a class to the body on successfull loading of the font, we need not make any changes to this file.
-
-* In the main template `views/pages/layout.ejs`, all we need to do is to load our font to the app using `@font-face`.
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    ...
-    ...
-    ...
-    <style>
-      @font-face {
-        font-family: "Foo";
-        font-display: swap;
-        font-weight: 400;
-        src: url("/foo.ttf") format('truetype');
-      }
-      ....
-      ....
-    </style>
-  </head>
-</html>
-```
-
-Hooray, now we loaded a custom font into the malibu app.
-
-### Loading a Google font
-
-Let us now see how to add a Google font into the malibu app. For example, let us add `Montserrat` font.
-
-In the main template `views/pages/layout.ejs`, all we need to do is to execute the curl command mentioned and replace it to respective font name, in our case `Montserrat`. The default Malibu app has Lato and Roboto with respective weights added to it,
-
-Default curl command in `views/pages/layout.ejs`,
-```
-curl -vH "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0" 'https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,700' | curl -X POST -s --data-urlencode 'input@-' https://cssminifier.com/raw
-```
-
-Adding `Montserrat`, to the existing curl command.
-
-```
+```shell
 curl -vH "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0" 'https://fonts.googleapis.com/css?family=Montserrat:400,700' | curl -X POST -s --data-urlencode 'input@-' https://cssminifier.com/raw
 ```
 
-Once we execute the above `curl` command, the following code gets generated.
+The above command should output the following
 
-```
+```css
 @font-face{font-family:Montserrat;font-style:normal;font-weight:400;src:local('Montserrat Regular'),local('Montserrat-Regular'),url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WlhzQ.woff) format('woff')}@font-face{font-family:Montserrat;font-style:normal;font-weight:700;src:local('Montserrat Bold'),local('Montserrat-Bold'),url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD-A.woff) format('woff')}
 ```
 
-We then need to add this into the `<head>` part in `views/pages/layout.ejs`.
+We can now put this into our *layout.ejs*.
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    ...
-    ...
-    ...
-    <style>
-      @font-face{font-family:Montserrat;font-style:normal;font-weight:400;src:local('Montserrat Regular'),local('Montserrat-Regular'),url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WlhzQ.woff) format('woff')}@font-face{font-family:Montserrat;font-style:normal;font-weight:700;src:local('Montserrat Bold'),local('Montserrat-Bold'),url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD-A.woff) format('woff')}
-      ....
-      ....
-    </style>
-  </head>
-</html>
-```
+Remember to add the new font *Montserrat* to *app/server/font.js*. Both to the *preloadFonts* list, as well as to the *fontSettings* list as a new variable.
+
+The google fonts API supports ways to add multiple fonts into a single curl command, such as the following: `https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,700|Montserrat:400,700`
+
+## Wrapping Up
+
+Now that you have an understanding of how font loading works, it should be possible to add as many fonts as is needed. Keep in mind that limiting to as few fonts as possible will help reduce the weight of your page.
+
+You may now jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
