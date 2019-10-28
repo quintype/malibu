@@ -26,7 +26,6 @@ has_toc: false
 ### Topics under construction
 
 Check back soon for the following topics
-* Performance Considerations for Images
 * Loading a custom font
 * Implementing a login
 * Implementing a paywall with AccessType
