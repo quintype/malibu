@@ -113,6 +113,94 @@ Navigate over to any story page, and you should see a commenting widget like the
 
 ## Integrating the Feed Widget
 
-FIXME: Please add content
+The Metype feed is a widget that gives a list of updates that are happening on the metype commenting widget across the publisher.
+
+Since the feed has to be across all the pages in the website, it is rendered as a part of [preRenderApplication](https://developers.quintype.com/malibu/isomorphic-rendering/client-side-architecture.html#prerenderapplication) alongside `Header`, `Footer` and `BreakingNews` components.
+
+In our *app/isomorphic/components* we create *metype-feed/index.js*, that exports the metype feed widget.
+
+```javascript
+import React from "react";
+import { MetypeFeedWidget } from "@metype/components";
+import { connect } from "react-redux";
+import get from "lodash/get";
+
+function MetypeFeedBase({ config = {} }) {
+  return (
+    <div className="metype-feed">
+      <MetypeFeedWidget
+        host={config["metypeHost"]}
+        accountId={config["metypeAccountId"]}
+        primaryColor={config["primaryColor"]}
+        className={config["className"]}
+        secondaryColor={config["secondaryColor"]}
+        publisher={config["publisher"]}
+      />
+    </div>
+  );
+}
+
+function mapStateToProps(state) {
+  return {
+    config: get(state, ["qt", "config", "publisher-attributes"])
+  };
+}
+
+export const MetypeFeed = connect(
+  mapStateToProps,
+  null
+)(MetypeFeedBase);
+```
+
+The respective config data can be fetched like mentioned [above](https://developers.quintype.com/malibu/tutorial/metype-integration.html#why-do-we-need-the-wrapper-component)
+
+### Adding the component across the publisher.
+
+Since the feed widget is rendered on the server side, we add it as a part of [preRenderApplication](https://developers.quintype.com/malibu/isomorphic-rendering/client-side-architecture.html#prerenderapplication) in `app/client/render.js`.
+
+```javascript
+...
+...
+import { MetypeFeed } from "../isomorphic/components/metype-feed";
+
+export function preRenderApplication(store) {
+  ...
+  renderComponent(MetypeFeed, "metype-feed", store);
+  ...
+}
+```
+
+Since we have given `metype-feed` as the target container, we need to add this `<div>` in `views/pages/layout.ejs`
+
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+    ...
+    ...
+  </head>
+
+  <body>
+    ...
+    ...
+    <div id="metype-feed"></div>
+    ...
+    ...
+  </body>
+</html>
+```
+### Seeing the feed widget live
+
+Navigate over to any page, and you should see a feed widget like the one below.
+
+On the right side of the page, you can see a small logo indicating the feed,
+
+![Metype Feed Icon]({{"images/feed-icon.png" | absolute_url}})
+
+Once clicking the feed icon, you can see the list of updates as the feed,
+
+![Metype Feed List]({{"images/feed-list.png" | absolute_url}})
 
 You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
