@@ -6,11 +6,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --title-font: sans-serif;
-  --content-font: sans-serif;
-}
-
 html {
   font-family: var(--content-font);
   -ms-text-size-adjust: 100%;

@@ -11,7 +11,7 @@ export default {
     { fontName: "Roboto", data: { weight: 700 } }
   ],
   fontSettings: Object.assign({}, DEFAULT_FONT_CONFIG, {
-    "title-font": "Lato, sans-serif",
-    "content-font": "Roboto, sans-serif"
+    "title-font": { value: "Lato, sans-serif", fallback: "sans-serif" },
+    "content-font": { value: "Roboto, sans-serif", fallback: "sans-serif" }
   })
 };

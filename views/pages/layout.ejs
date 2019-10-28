@@ -15,7 +15,8 @@
       @font-face{font-display:swap;font-family:Lato;font-style:normal;font-weight:400;src:local('Lato Regular'),local('Lato-Regular'),url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wWA.woff) format('woff')}@font-face{font-display:swap;font-family:Lato;font-style:normal;font-weight:700;src:local('Lato Bold'),local('Lato-Bold'),url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh6UVSwiPHw.woff) format('woff')}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxM.woff) format('woff')}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:700;src:local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc-.woff) format('woff')}
     </style>
     <style>
-      body.fonts-loaded { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, value]) => { _%> --<%= cssVar %>: <%- value _%>;<%_ }) _%> }
+      :root { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, {fallback}]) => { _%> --<%= cssVar %>: <%- fallback _%>;<%_ }) _%> }
+      body.fonts-loaded { <%_ Object.entries(fontFace.fontSettings).map(([cssVar, {value}]) => { _%> --<%= cssVar %>: <%- value _%>;<%_ }) _%> }
     </style>
 
     <style>
