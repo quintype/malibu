@@ -48,9 +48,9 @@ The list of fonts used by the application can be found in *app/server/font.js*.
 In the below snippet, we can see that two fonts are loaded, *Lato* and *Roboto*, with two weights each.
 
 ```javascript
-const DEFAULT_FONT_CONFIG = Object.freeze({
-  "title-font": "Lato, sans-serif",
-  "content-font": "Roboto, sans-serif"
+const FONTS = Object.freeze({
+  "title-font": { value: "Lato, sans-serif", fallback: "sans-serif" },
+  "content-font": { value: "Roboto, sans-serif", fallback: "sans-serif" }
 });
 
 export default {
@@ -60,10 +60,7 @@ export default {
     { fontName: "Roboto", data: { weight: 400 } },
     { fontName: "Roboto", data: { weight: 700 } }
   ],
-  fontSettings: Object.assign({}, DEFAULT_FONT_CONFIG, {
-    "title-font": { value: "Lato, sans-serif", fallback: "sans-serif" },
-    "content-font": { value: "Roboto, sans-serif", fallback: "sans-serif" }
-  })
+  fontSettings: FONTS
 };
 ```
 
