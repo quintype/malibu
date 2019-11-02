@@ -39,7 +39,7 @@
     "jest": "^24.7.1",
     "lint-staged": "^8.0.2",
     "mocha": "^4.0.1",
-    "nodemon": "^1.18.7",
+    "nodemon": "^1.19.4",
     "postcss": "^7.0.14",
     "prettier": "1.14.3",
     "react-test-renderer": "^16.3.2",
