@@ -18,3 +18,5 @@ FourColGrid.propTypes = {
   collection: object,
   stories: array
 };
+
+FourColGrid.storyLimit = 8;
