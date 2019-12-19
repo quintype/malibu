@@ -33,7 +33,68 @@
   </head>
 
   <body>
+    <script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script type="text/javascript">
+      (function() {
+        window.googletag = window.googletag || { cmd: [] };
+
+        const observer = new MutationObserver(callback);
+        observer.observe(window.document.body, {
+          subtree: true,
+          childList: true
+        });
+
+        function callback(mutations) {
+          const affectedNodes = [];
+
+          // Ugly ES5 way for compatibility and performance
+          for(const {type, target, addedNodes} of mutations) {
+            if(type === "childList") {
+              for(const node of addedNodes) {
+                if(node.tagName === "DIV" && node.getAttribute("data-dfp")) {
+                  affectedNodes.push(node);
+                }
+              }
+            }
+          }
+
+          enableDfp(affectedNodes);
+        }
+
+        function enableDfp(nodes) {
+          if(!nodes.length) {
+            return;
+          }
+
+          googletag.cmd.push(function() {
+            const slots = [];
+
+            for (const node of nodes) {
+              if (node.id) {
+                continue;
+              }
+
+              const nodeId = `dfp-ad-${Math.random().toString(36).replace(/[^a-zA-Z0-9]/g, '').substr(0, 7)}`;
+              node.id = nodeId;
+
+              const slot = googletag.defineSlot(node.getAttribute("data-dfp"), JSON.parse(node.getAttribute("data-dfp-size")), nodeId);
+              slot.addService(googletag.pubads());
+
+              slots.push(slot);
+            }
+
+            googletag.pubads().enableSingleRequest()
+            googletag.enableServices();
+
+            for (const slot of slots) {
+              googletag.display(slot);
+            }
+          })
+        }
+      })();
+    </script>
     <div class="container">
+      <div data-dfp="3849069/Large_Leaderboard" data-dfp-size="[[970,90],[728,90],[320, 100],[320, 50]]" style="width: 970px; height: 90px; text-align: center;"></div>
       <header id="header"><%- navbar %></header>
       <div id='breaking-news-container'><%- breakingNews -%></div>
       <div id="container"><%_ if(contentTemplate) { _%><%- include(contentTemplate) -%><%_ }else { _%><%- content %><%_ } _%></div>
