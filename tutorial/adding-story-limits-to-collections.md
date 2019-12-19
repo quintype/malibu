@@ -58,7 +58,7 @@ export async function loadHomePageData(client, config, slug) {
 
 ```javascript
 function FourColGrid(props) {
-
+...
 }
 ...
 FourColGrid.storyLimit = 8;
