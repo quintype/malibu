@@ -20,7 +20,7 @@ We noticed that */route-data.json* was massive for many publishers (nearly 2mb f
 
 * First Ensure that *@quintype/backend*, *@quintype/components* and *@quintype/framework* are at the latest version
 
-* Add the following to *app/isomorphic/components/collection-templates/index.js*
+* Add the following to *app/isomorphic/components/get-collection-template.js*
 
 ```javascript
 export function getCollectionTemplate(...) {
@@ -64,7 +64,7 @@ function FourColGrid(props) {
 FourColGrid.storyLimit = 8;
 ```
 
-* In case you are wrapping components in a function, such as *wrapEager*, then add the following to the relevant function (in this case in *app/isomorphic/components/collection-templates/index.js*)
+* In case you are wrapping components in a function, such as *wrapEager*, then add the following to the relevant function (in this case in *app/isomorphic/components/get-collection-template.js*)
 
 ```javascript
 function wrapEager(f) {
