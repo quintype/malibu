@@ -18,16 +18,16 @@ CSS class names are a large part of the final generated CSS file. By default, `r
 
 ## Steps to implement
 
-* First Ensure that *@quintype/backend*, *@quintype/components* and *@quintype/framework* are at the latest version
+* First Ensure that *@quintype/build* is at the latest version
 
 * Add the following to *Dockerfile* (on the line below `RUN npm install --no-optional`)
-```Dockerfile
+```docker
 ENV MINIFY_CSS_CLASSNAMES true
 ```
 
 ## Rolling back for debugging purposes
 
 Remove the following line from your dockerfile
-```Dockerfile
+```docker
 ENV MINIFY_CSS_CLASSNAMES true
 ```
