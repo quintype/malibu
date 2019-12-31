@@ -9,6 +9,9 @@ WORKDIR /app
 COPY package.json package-lock.json /app/
 RUN npm install --no-optional
 
+# Environment variables for compile phase here
+ENV MINIFY_CSS_CLASSNAMES true
+
 # Everything above should be cached by docker. The below should run on every build
 
 COPY . /app/
