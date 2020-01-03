@@ -36,14 +36,9 @@
     <script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <%- include fastads.html %>
     <div class="container">
-      <div data-dfp="3849069/Large_Leaderboard"
-            data-dfp-size="[[970,90],[728,90],[320, 100],[320, 50]]"
-            data-dfp-sizemapping="<%= JSON.stringify([
-              { viewport: [980, 0], sizes: [[970, 90], [728, 90]] },
-              { viewport: [500, 0], sizes: [[320, 100], [320, 50]] },
-              { viewport: [0, 0], sizes: [[320, 100], [320, 50]] }
-            ].map(({viewport, sizes}) => [viewport, sizes])) %>"
-            style="width: 970px; height: 90px; text-align: center;"></div>
+      <div data-dfp="/5463099287/malibu-ad-placeholder"
+           data-dfp-size="[728,90]"
+           style="height: 90px; text-align: center;"></div>
       <header id="header"><%- navbar %></header>
       <div id='breaking-news-container'><%- breakingNews -%></div>
       <div id="container"><%_ if(contentTemplate) { _%><%- include(contentTemplate) -%><%_ }else { _%><%- content %><%_ } _%></div>
