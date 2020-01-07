@@ -19,7 +19,8 @@ export function loadErrorData(error, config) {
       navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
     config: pick(config, WHITELIST_CONFIG_KEYS),
-    pageType: errorComponents[error.httpStatusCode]
+    pageType: errorComponents[error.httpStatusCode],
+    httpStatusCode: error.httpStatusCode || 500
   });
 }
 
