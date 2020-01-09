@@ -37,7 +37,7 @@ export function StoryPage(props) {
       render={StoryPageBase}
       loadItems={storyPageLoadItems}
       onInitialItemFocus={item =>
-        app.registerPageView({ pageType: "story-page", data: { story: item.story } }, `/${item.story.slug}`)
+        app.registerPageView({ pageType: "story-page", data: { story: item.story } }, `${item.story.url}`)
       }
       onItemFocus={item => console.log(`Story In View: ${item.story.headline}`)}
     />
