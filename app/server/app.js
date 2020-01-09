@@ -1,11 +1,7 @@
 /* eslint-disable no-console, no-unused-vars, import/extensions, object-shorthand, global-require */
 import createApp from "@quintype/framework/server/create-app";
 import logger from "@quintype/framework/server/logger";
-import {
-  upstreamQuintypeRoutes,
-  isomorphicRoutes,
-  staticRoutes
-} from "@quintype/framework/server/routes";
+import { upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes } from "@quintype/framework/server/routes";
 import { generateRoutes, STATIC_ROUTES } from "./routes";
 import { renderLayout } from "./handlers/render-layout";
 import { loadData, loadErrorData } from "./load-data";
@@ -61,6 +57,5 @@ isomorphicRoutes(app, {
     enableNews: true,
     structuredData: STRUCTURED_DATA
   }),
-  preloadJs: true,
-  preloadRouteData: true
+  preloadJs: true
 });
