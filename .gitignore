@@ -68,3 +68,4 @@ typings/
 /asset-manifest.json
 
 .DS_Store
+/_site
