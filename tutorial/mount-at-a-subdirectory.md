@@ -43,3 +43,9 @@ You can use the following script to correct links on OSX (bash4 or zsh)
 ```bash
 sed -i "" 's/\/\(.*\)story\.slug/\1story.url/g' app/**/*.js
 ```
+
+## Known Caveats
+
+Subdirectory support has not been tested with the following features
+* Multi Domain Support
+* Authentication and Login
