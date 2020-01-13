@@ -31,6 +31,14 @@ has_toc: false
   {% endfor %}
 </ul>
 
+### Advanced Topics
+<ul>
+  {% assign tutorials = site.pages | where: "parent", "Advanced Topics" | sort: "nav_order" %}
+  {% for page in tutorials %}
+    <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
+
 ### Topics under construction
 
 Check back soon for the following topics
