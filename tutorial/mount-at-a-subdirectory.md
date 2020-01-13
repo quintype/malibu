@@ -30,6 +30,22 @@ export const app = createApp({mountAt: "/foo"});
 <script type="text/javascript">window.qtMountAt = '/foo';</script>
 ```
 
+* Add the mountpoint to the following points in the service-worker.ejs
+
+```javascript
+const REQUIRED_ASSETS = [
+  ...
+  {url: '/foo/shell.html?revision=<%= assetHash("app.js") %>'}
+];
+...
+const workbox = initializeQServiceWorker(self, {
+  ...,
+  mountAt: '/foo'
+});
+...
+workbox.router.registerRoute('/foo/route-data.json', workbox.strategies.networkFirst());
+```
+
 * Contact [Quintype Support](support@quintype.com) to have the subdirectory updated in our database records. This is a manual step currently.
 
 That's it. You should now see `http://localhost:3000` returning a 404, and your home page having shifted to `http://localhost:3000/foo`.
