@@ -20,6 +20,7 @@ isomorphicRoutes(app, {
     enableTwitterCards: true,
     enableOgTags: true,
     enableNews: true,
+    structuredDataTags: ["section-page", "tag-page"],
     structuredData: {...}
   })
 });
