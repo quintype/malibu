@@ -11,7 +11,7 @@ _This tutorial was contributed by [Ramsharan Gorur Jayaraman and Nandakishore Pr
 
 Quintype supports multiple content delivery networks. The favoured partner of Quintype is Cloudflare. If you have create a project of malibu, the cloudflare integration is supported by default.
 
-## Configuring the Quintype APIs to use Akamai
+## Configuring the cache purges on Quintype APIs using Akamai
 
 Please configure the Quintype APIs to point to akamai. You can contact support [support@quintype.com](mailto:support@quintype.com) to get this done.
 
