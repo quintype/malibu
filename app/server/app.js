@@ -10,9 +10,9 @@ import { SEO } from "@quintype/seo";
 
 export const app = createApp();
 
-upstreamQuintypeRoutes(app, { forwardAmp: false });
-
 ampRoutes(app, {});
+
+upstreamQuintypeRoutes(app, { forwardAmp: false });
 
 const STATIC_TAGS = {
   "twitter:site": "Quintype",
