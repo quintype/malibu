@@ -1,15 +1,14 @@
 /* eslint-disable jsx-a11y/img-redundant-alt, import/extensions */
-import React from "react";
+import { LazyCollection, LazyLoadImages, replaceAllStoriesInCollection, WithPreview } from "@quintype/components";
 import assetify from "@quintype/framework/assetify";
 import { object, shape } from "prop-types";
-
-import { getCollectionTemplate } from "../get-collection-template";
+import React from "react";
 import img from "../../../assets/images/pw_maze_white.png";
-import { LazyCollection, WithPreview, replaceAllStoriesInCollection, LazyLoadImages } from "@quintype/components";
+import { getCollectionTemplate } from "../get-collection-template";
 
 export const HomePage = props => (
   <div>
-    <h1>Home</h1>
+    <h1>Home Page</h1>
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
     </LazyLoadImages>
