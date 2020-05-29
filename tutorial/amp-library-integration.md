@@ -1,5 +1,3 @@
-## Integration Guide
-
 ---
 title: Amp Library Integration
 parent: Malibu Tutorial
