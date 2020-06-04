@@ -5,7 +5,7 @@ nav_order: 08
 ---
 # {{page.title}}
 
-The amp library is shipped as a part of [@quintype/framework](https://www.npmjs.com/package/@quintype/framework). Integration basically involves telling framework not to route amp requests upstream, instead use the amp library routes.
+The [amp library](https://developers.quintype.com/quintype-amp) is shipped as a part of [@quintype/framework](https://www.npmjs.com/package/@quintype/framework). Integration basically involves telling framework not to route amp requests upstream, instead use the amp library routes.
 
 To get the amp library, update the framework (At the time of writing, amp library is part of following version of framework >> `3.25.0-amp-library-integration.37`)
 
