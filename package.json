@@ -40,7 +40,7 @@
     "husky": "^4.0.0",
     "jest": "^26.0.1",
     "lint-staged": "^10.0.0",
-    "mocha": "^7.0.0",
+    "mocha": "^8.0.1",
     "nodemon": "^2.0.2",
     "postcss": "^7.0.14",
     "prettier": "1.19.1",
