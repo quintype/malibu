@@ -17,11 +17,15 @@ To get the amp library, update the framework (At the time of writing, amp librar
 ### opts
 
 opts object is used to pass customizations and config for the library. As of writing, it takes following properties
-  - `seo` similar to `isomorphicRoutes`, used to generate seo for amp pages 
-  - `templates` used to pass custom templates to the library 
-  - `slots` used to pass config for slots 
-  - `headerCardConfig` used to provide config to re-order components in story headerCard
-  - `relatedStoriesRender` used to override related stories in story page
+
+| Opts key | Details |
+| ------ | ------ |
+| seo | similar to `isomorphicRoutes`, used to generate seo for amp pages |
+| templates | used to pass custom templates to the library  |
+| slots | used to pass config for slots  |
+| headerCardRender | used to override headerCard in story page |
+| relatedStoriesRender | used to override related stories in story page |
+| infiniteScrollRender | used to override infinite scroll in story page |
 
 ### Sample integration
 
