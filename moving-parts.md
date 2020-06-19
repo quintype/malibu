@@ -59,6 +59,10 @@ The Quintype build plugin handles the ease of developement of Quintype plugins. 
 
 For more information, please see [@quintype/build on github](https://github.com/quintype/quintype-node-build) or [the documentation](https://developers.quintype.com/quintype-node-build)
 
+## @quintype/amp
+
+A library that handles amp pages. For more information, please see [@quintype/amp on github](https://github.com/quintype/quintype-amp) or [the documentation](https://developers.quintype.com/quintype-amp)
+
 ## Metype
 
 Metype is Quintype's engagement product. It provides a number of useful widgets such as a commenting widget, a trending content feed, page reactions, and many more.
