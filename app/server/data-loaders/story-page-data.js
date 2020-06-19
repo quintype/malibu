@@ -9,7 +9,7 @@ export function loadStoryPageData(client, params, config, next) {
     };
   }
 
-  return Story.getStoryBySlug(client, params.storySlug).then(
+  return Story.getStoryBySlug(client, decodeURIComponent(params.storySlug)).then(
     story => (story ? returnStoryData(story) : next())
   );
 }
