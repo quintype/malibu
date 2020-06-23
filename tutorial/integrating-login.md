@@ -1,5 +1,5 @@
 ---
-title: Frontend App Login Integration
+title: Implementing Logins
 nav_order: 12
 parent: Malibu Tutorial
 ---
