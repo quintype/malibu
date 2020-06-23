@@ -1,13 +1,13 @@
 ---
 title: Amp Library Integration
 parent: Malibu Tutorial
-nav_order: 08
+nav_order: 8
 ---
 # {{page.title}}
 
 The [amp library](https://developers.quintype.com/quintype-amp) is shipped as a part of [@quintype/framework](https://www.npmjs.com/package/@quintype/framework). Integration basically involves telling framework not to route amp requests upstream, instead use the amp library routes.
 
-To get the amp library, update the framework (At the time of writing, amp library is part of following version of framework >> `3.25.0-amp-library-integration.37`).
+To get the amp library, update the framework (At the time of writing, amp library is part of following version of framework >> `3.25.0-amp-library-integration.37`)
 
 1.  In the frontend app's `app.js`, import function `ampRoutes` from `@quintype/framework/server/routes`
 2.  if `forwardAmp: true` in `upstreamQuintypeRoutes`, either set it to false or remove it altogether
