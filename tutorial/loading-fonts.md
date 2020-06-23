@@ -21,7 +21,7 @@ The method we use to load fonts follows two important characteristics
 In order to achieve the above goals, we use [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) to load fonts in Malibu. This works as follows.
 * We define all fonts as css variables. By default, they are set to the fallback font, and the variables change to the loaded fonts when the *"fonts-loaded"* class is set on body
 * *FontFaceObserver* waits for all the fonts to be loaded, and then sets the *"fonts-loaded"* class on the body, causing the page to rerender.
-* Font families are defined by google fonts or other font hosting, in the usual way
+* Font families are defined by google fonts or other font hosting, in the usual way.
 
 Your CSS might look something like this
 ```css
