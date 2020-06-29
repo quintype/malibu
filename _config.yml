@@ -23,3 +23,5 @@ external_navigation:
     title: "@quintype/backend"
   - url: https://developers.quintype.com/quintype-node-build
     title: "@quintype/build"
+  - url: https://developers.quintype.com/quintype-amp
+  title: "@quintype/amp"
