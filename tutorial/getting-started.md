@@ -6,7 +6,7 @@ nav_order: 01
 
 # {{page.title}}
 
-_This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar)_
+_This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar) and [Ramsharan Gorur Jayaraman](https://github.com/sharangj)_
 
 Welcome to Quintype :-).
 
