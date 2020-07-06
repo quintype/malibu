@@ -6,7 +6,7 @@ nav_order: 01
 
 # {{page.title}}
 
-*This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar)*
+_This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar)_
 
 Welcome to Quintype :-).
 
@@ -15,14 +15,16 @@ In this post we will cover how to get started, building a Quintype publisher app
 ## Prerequisites
 
 Before starting, please ensure the following is installed on your development machine
-* [Node LTS](https://nodejs.org) (10.15 at the time of writing), and npm
-* Either [Supervisor](http://supervisord.org) or [Docker](https://www.docker.com) for running the development server
-* git or the [GitHub App](https://desktop.github.com)
+
+- [Node LTS](https://nodejs.org) (10.15 at the time of writing), and npm
+- Either [Supervisor](http://supervisord.org) or [Docker](https://www.docker.com) for running the development server
+- git or the [GitHub App](https://desktop.github.com)
 
 It is also strongly recommended that you have a working knowledge of the following before you get started
-* How to use [React](https://reactjs.org) to build a front end application
-* ES6 functionalily, including concepts like [promises](https://developers.google.com/web/fundamentals/primers/promises) and [async/await](https://developers.google.com/web/fundamentals/primers/async-functions)
-* Git and Version Control
+
+- How to use [React](https://reactjs.org) to build a front end application
+- ES6 functionalily, including concepts like [promises](https://developers.google.com/web/fundamentals/primers/promises) and [async/await](https://developers.google.com/web/fundamentals/primers/async-functions)
+- Git and Version Control
 
 In many of these examples, we will be using [VS Code](https://code.visualstudio.com) for development. It's fine if you use another editor, but some of the keyboard shortcuts and intellisense may not work.
 
@@ -63,11 +65,19 @@ Example app listening on port 3000!
 Example app listening on port 3000!
 ```
 
+### Instructions for Windows
+
+Open the project in file finder, you will find 2 files.
+
+- `run-assets.bat`. Click on this to run the assets server and rerun this whenever a new asset is added.
+- `run-backend-server.bat`. Click on this to run the backend server and reurn this whenever a change is made.
+
 **Running without Supervisor**
 
 In case you would like to run this without supervisor, you may start the asset server in one terminal, then the node server in another terminal.
 
 In a terminal, run
+
 ```shell
 $ cd path/to/app
 $ npm install
@@ -75,6 +85,7 @@ $ npm run asset-server
 ```
 
 And in another terminal, run
+
 ```shell
 $ cd path/to/app
 $ npm run dev-server
@@ -107,7 +118,7 @@ Open a browser, and navigate over to [http://localhost:3000](http://localhost:30
 
 ## Checking that hot reloading works
 
-Keep your development server and browser running, and use your editor to open *app/isomorphic/components/header/index.js*.
+Keep your development server and browser running, and use your editor to open _app/isomorphic/components/header/index.js_.
 
 Find the line that looks like this
 
@@ -116,6 +127,7 @@ Find the line that looks like this
 ```
 
 and change it to this
+
 ```javascript
 <div styleName="container blue">
 ```
@@ -128,7 +140,7 @@ If the browser didn't immediately reload, try refreshing your browser.
 
 ## Switching to a different API end point
 
-By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit *config/publisher.yml*, and update the `sketches_host` to `https://<your-name>.quintype.io`.
+By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit _config/publisher.yml_, and update the `sketches_host` to `https://<your-name>.quintype.io`.
 
 ## Pushing to a staging environment
 
