@@ -10,13 +10,13 @@ nav_exclude: true
 
 *This tutorial was contributed by [Ramsharan Gorur Jayaraman](https://github.com/sharangj)*
 
-Malibu supports rendering amp pages as story pages only on mobile
+Malibu supports rendering amp pages as story pages only on mobile.
 
 ## Steps to implement
 
 * First Ensure that *@quintype/framework* is at the latest version
 
-* In *app/server/app.js*, pass the *lightPages* prop to the *isomorphicRoutes* function. This ensures that a response header called *X-QT-Light-Pages-Url* is set.
+* In *app/server/app.js*, pass the *lightPages* prop to the *isomorphicRoutes* function. This ensures that a response header called `X-QT-Light-Pages-Url` is set.
 
 ```javascript
 isomorphicRoutes(app, {
