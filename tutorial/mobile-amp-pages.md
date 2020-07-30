@@ -10,7 +10,7 @@ nav_exclude: true
 
 *This tutorial was contributed by [Ramsharan Gorur Jayaraman](https://github.com/sharangj)*
 
-Malibu supports rendering amp pages as story pages only on mobile.
+Malibu supports rendering amp pages as story pages only on mobile
 
 ## Steps to implement
 
