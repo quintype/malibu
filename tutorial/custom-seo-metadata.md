@@ -1,5 +1,5 @@
 ---
-title: Implementing custom Metadata SEO logic
+title: Overriding Individual Meta Properties
 parent: Malibu Tutorial
 nav_order: 08
 ---
