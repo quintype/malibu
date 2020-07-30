@@ -8,15 +8,15 @@ nav_exclude: true
 
 # {{page.title}}
 
-*This tutorial was contributed by [Ramsharan Gorur Jayaraman](https://github.com/sharangj)*
+_This tutorial was contributed by [Ramsharan Gorur Jayaraman](https://github.com/sharangj)_
 
 Malibu supports rendering amp pages as story pages only on mobile.
 
 ## Steps to implement
 
-* First Ensure that *@quintype/framework* is at the latest version
+- First Ensure that _@quintype/framework_ is at the latest version
 
-* In *app/server/app.js*, pass the *lightPages* prop to the *isomorphicRoutes* function. This ensures that a response header called `X-QT-Light-Pages-Url` is set.
+- In _app/server/app.js_, pass the _lightPages_ prop to the _isomorphicRoutes_ function. This ensures that a response header called `X-QT-Light-Pages-Url` is set.
 
 ```javascript
 isomorphicRoutes(app, {
@@ -29,7 +29,7 @@ isomorphicRoutes(app, {
 });
 ```
 
-* Disable Ajax navigation in *app/server/handler/render-layout.js*
+- Disable Ajax navigation in _app/server/handler/render-layout.js_
 
 ```javascript
 export function renderLayout(res, params) {
@@ -48,9 +48,8 @@ export function renderLayout(res, params) {
 }
 ```
 
-
-You should now see all the story pages rendering an amp page on mobile only. 
+You should now see all the story pages rendering an amp page on mobile only.
 
 ## Known Caveats
 
-This feature is available only if you are using the Cloudflare CDN. 
+This feature is available only if you are using the Cloudflare CDN.
