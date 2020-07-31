@@ -61,4 +61,4 @@ isomorphicRoutes(app, {
 
 Opening up any story page, you should see the tag taking the new value.
 
-You may now proceed to [Loading Fonts]({{"/tutorial/loading-fonts" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Custom seo metadata]({{"/tutorial/custom-seo/custom-seo-metadata" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
