@@ -14,7 +14,7 @@ Most common requirements for SEO optimization are handled by [@quintype/seo](htt
 
 ## Adding custom metadata
 
-The custom metadata SEO logic can be added by passing the _"customSeo"_ object in load-data.js file.
+The custom metadata SEO logic can be added by passing the _customSeo_ object in load-data.js file.
 
 ```javascript
 return _loadData().then((data) => {
@@ -33,7 +33,7 @@ return _loadData().then((data) => {
 });
 ```
 
-The above customSeo object will overwrite all the metadata which you will pass in the object. For infinite story page you need to add _"customSeo"_ in _"storyPageLoadItems"_ function of _"<InfiniteStoryBase />"_.
+The above customSeo object will overwrite all the metadata which you will pass in this object using getCustomSeoMetadata(). getCustomSeoMetadata() function is to override the logic of metadata, or you can choose function name as per your wish. For infinite story page you need to add _customSeo_ in _storyPageLoadItems_ function of _<InfiniteStoryBase />_.
 
 ## Before customSeo
 
@@ -137,6 +137,6 @@ function getCustomSeoMetadata(data, pageType) {
 
 Each of the items returned by the getCustomSeoMetadata will return a tag that gets converted to HTML tag.
 
-Let's now call this getCustomSeoMetadata function to our load-data.js file like _"customSeo: getCustomSeoMetadata(data, pageType)"_
+Let's now call this getCustomSeoMetadata function to our load-data.js file like _customSeo: getCustomSeoMetadata(data, pageType)_
 
 You may now proceed to [Loading Fonts]({{"/tutorial/loading-fonts" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
