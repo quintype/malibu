@@ -3,6 +3,7 @@ title: Custom SEO
 parent: Malibu Tutorial
 nav_order: 06
 has_children: true
+nav_exclude: true
 ---
 
 # {{page.title}}

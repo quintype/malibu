@@ -1,7 +1,9 @@
 ---
 title: Overriding Individual Meta Properties
 parent: Custom SEO
+grand_parent: Malibu Tutorial
 nav_order: 02
+nav_exclude: true
 ---
 
 # {{page.title}}
