@@ -15,7 +15,7 @@ If you dont want your users to install the PWA, please disable only the PWA and 
 
 ## Disabling Progressive Web App
 
-In _views/js/service-worker.ejs_, You can comment or remove the following lines:
+In _views/js/service-worker.ejs_, You can comment or remove lines as shown below:
 
 ```javascript
 <%- serviceWorkerHelper %>;
