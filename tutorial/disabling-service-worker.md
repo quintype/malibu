@@ -13,7 +13,7 @@ _This tutorial was contributed by [Ramsharan Gorur Jayaraman](https://github.com
 You can disable the Service Worker and the Progressive Web App (PWA) in Malibu if you are not interested in sharing your content offline and allowing users to cache your assets on their browser.
 If you dont want your users to install the PWA, please disable only the PWA and keep the service worker running. We dont recommend disabling PWA as it does not take traffic away from your main resources and does not drain SEO. All the bots do not access the PWA because they make a request directly to our servers and they dont look at the cached shell that is created by the PWA.
 
-## Disabling Progressive Web App
+## Disabling Service Worker
 
 In _views/js/service-worker.ejs_, You can comment or remove lines as shown below:
 
