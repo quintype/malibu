@@ -52,9 +52,13 @@
     </script>
     <script type="text/javascript">
       <%- fontJsContent %>
-      window.loadFonts(<%- JSON.stringify(fontFace.preloadFonts) %>, 'fonts-loaded');
+      window.loadFonts(<%- serialize(fontFace.preloadFonts, {isJSON: true}) %>, 'fonts-loaded');
     </script>
-    <script type="application/json" id="initial-page"><%- JSON.stringify({config: store.getState().qt.config}) -%></script>
+    <% if (shell) { %>
+      <script type="application/json" id="initial-page"><%- serialize({config: store.getState().qt.config}, {isJSON: true}) -%></script>
+      <% } else { %>
+      <script type="application/json" id="static-page"><%- serialize(store.getState(), {isJSON: true}) -%></script>
+      <% } %>
     <script type="text/javascript" src="<%= assetPath("app.js") %>" id="app-js" async></script>
    </body>
 </html>
