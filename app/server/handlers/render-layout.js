@@ -6,6 +6,7 @@ import { Header } from "../../isomorphic/components/header";
 import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
+import serialize from "serialize-javascript";
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
@@ -34,7 +35,9 @@ export function renderLayout(res, params) {
         disableAjaxNavigation: false,
         metaTags: params.seoTags ? params.seoTags.toString() : "",
         pageChunk: chunk,
-        store: params.store
+        store: params.store,
+        shell: params.shell,
+        serialize
       },
       params
     )
