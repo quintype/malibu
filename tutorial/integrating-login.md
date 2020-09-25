@@ -108,3 +108,6 @@ The user forgot password is done with email verification link
 ### Logout workflow:
 
 1. On clicking of the logout button, [/api/auth/v1/logout](https://developers.quintype.com/bridgekeeper/swagger) api call is made which kills the current session.
+
+
+You may now proceed to [Prerender]({{"/tutorial/pre-render" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
