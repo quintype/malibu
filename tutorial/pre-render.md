@@ -16,12 +16,20 @@ If you would like to know more about it, consider reading the [Prerender.io]({{"
 
 ## Setup prerender for your app
 
-It's very easy to setup prereder to your app. you just need to pass *{prerender:true}* from app while creating it, bydefault prerender will be false.
+It's very easy to setup prereder to your app. you just need to pass prerenderServiceUrl from isomorphicRoutes *prerenderServiceUrl: "https://prerender.quintype.io/https://www.prabhatkhabar.com"*.
 
 In *app/server/app.js*
 
 ```javascript
-export const app = createApp({ prerender: true });
+isomorphicRoutes(app, {
+  generateRoutes: generateRoutes,
+  loadData: loadData,
+  pickComponent: pickComponent,
+  .
+  .
+  .
+  prerenderServiceUrl: "https://prerender.quintype.io/https://www.prabhatkhabar.com"
+});
 ```
 
 You may now proceed to [Deploying With Black Knight]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
