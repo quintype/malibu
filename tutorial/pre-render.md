@@ -32,4 +32,4 @@ isomorphicRoutes(app, {
 });
 ```
 
-You may now proceed to [Deploying With Black Knight]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
