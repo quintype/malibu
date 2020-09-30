@@ -28,7 +28,7 @@ isomorphicRoutes(app, {
   .
   .
   .
-  prerenderServiceUrl: "https://prerender.quintype.io/https://www.prabhatkhabar.com"
+  prerenderServiceUrl: "https://prerender.quintype.io"
 });
 ```
 
