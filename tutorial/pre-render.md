@@ -12,11 +12,11 @@ Currently, it's difficult to process JavaScript and not all search engine crawle
 
 The Prerender.io middleware will check each request to see if it's a request from a crawler. If it is a request from a crawler, the middleware will send a request to Prerender.io for the static HTML of that page. If not, the request will continue on to your normal server routes. The crawler never knows that you are using Prerender.io since the response always goes through your server.
 
-If you would like to know more about it, consider reading the [Prerender.io]({{"https://prerender.io/documentation"}}) document.
+If you would like to know more about it, consider reading the [Prerender.io]({{"https://prerender.io/documentation"}}) documentation.
 
 ## Setup prerender for your app
 
-It's very easy to setup prereder to your app. you just need to pass prerenderServiceUrl from isomorphicRoutes *prerenderServiceUrl: "https://prerender.quintype.io/https://www.prabhatkhabar.com"*.
+It's very easy to setup prereder to your app. you just need to pass prerenderServiceUrl from isomorphicRoutes.
 
 In *app/server/app.js*
 
