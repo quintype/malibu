@@ -14,7 +14,7 @@ _This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-ku
 
 - The first thing as you need to do is create a subdomain , Contact [Quintype Support](support@quintype.com) for creating a list of subdomain.
 
-- Configure list of subdomains in secret-mode of *Bold*. EX - https://ace.staging.quintype.com/admin/secret-mode/domain-manager and fill all the necessary fields like submain , section mapping, menu group and home collection etc as shown in below. 
+- Configure list of subdomains in secret-mode of #### Bold. EX - *https://ace.staging.quintype.com/admin/secret-mode/domain-manager* and fill all the necessary fields like submain , section mapping, menu group and home collection etc as shown in below. 
 
 ![Bold Secret mode]({{"images/bold-secret-mode.png" | absolute_url}})
 
@@ -121,5 +121,3 @@ export function renderLayout(res, params) {
 </head>
 
 ```
-
-You should now see all pages with the server side rendered code in the `View Page Source` tab in Chrome.
