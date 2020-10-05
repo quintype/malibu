@@ -18,7 +18,7 @@ If you would like to know more about it, consider reading the [Prerender.io]({{"
 
 There are few steps you need to follow in order to setup your Prerender app
 
-1. The first thing as you need to update framewor library  `@quintype/framework` to the beta version (`4.2.5-pre-render.2`) (Note: currently we have not publised a major version of it.)
+1. The first thing as you need to update framework library  `@quintype/framework` to the beta version (`4.2.5-pre-render.2`) (Note: currently we have not publised a major version of it.)
 
 2. The second step is to whitelist the list of urls in Cloudflare, for that you may [contact support](mailto:support@quintype.com) for it.
 
