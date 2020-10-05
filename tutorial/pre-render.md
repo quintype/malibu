@@ -16,11 +16,13 @@ If you would like to know more about it, consider reading the [Prerender.io]({{"
 
 ## Setup prerender for your app
 
-There are two steps you need to follow in order to setup your Prerender app
+There are few steps you need to follow in order to setup your Prerender app
 
-1. The first step to setup your prerender app is you need to whitelist the list of urls in Cloudflare frontend worker, for that you may [contact support](mailto:support@quintype.com) for it.
+1. The first thing as you need to update framewor library  `@quintype/framework` to the beta version (`4.2.5-pre-render.2`) (Note: currently we have not publised a major version of it.)
 
-2. Once your list of urls are whitelisted in Cloudflare frontend worker then you just need to pass prerenderServiceUrl in isomorphicRoutes from your app. 
+2. The second step is to whitelist the list of urls in Cloudflare, for that you may [contact support](mailto:support@quintype.com) for it.
+
+2. Once your list of urls are whitelisted in Cloudflare then you just need to pass prerenderServiceUrl in isomorphicRoutes from your app. 
 
 In *app/server/app.js*
 
