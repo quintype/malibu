@@ -1,5 +1,5 @@
 ---
-title: Prerender webpages
+title: Prerender Webpages
 parent: Malibu Tutorial
 nav_order: 13
 ---
@@ -38,4 +38,4 @@ isomorphicRoutes(app, {
 });
 ```
 
-You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Redirect Urls]({{"/tutorial/redirect-url.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
