@@ -12,12 +12,10 @@ In this tutorial, we will see the list of urls redirect to some different urls w
 
 ## Basic Terminology
 
-There are few steps you need to follow in order to setup your Prerender app
-
 To get the redirect url feature, update @quintype/framework to the latest version (4.2.2 or greater)
 
 
-1. The first thing as you need to setup list of urls <br />
+The first thing as you need to setup list of redirect urls <br />
 
 ``` javascript
 export const REDIRECT_URLS = [
@@ -61,12 +59,12 @@ function redirectUrls() {
 
 
 ```
-* The `sourceUrl` represent the url which needs to be redirect
-* The `destinationUrl` represent the url on which the sourceUrl need to be redirect
-* The `statusCode` represent wether the redirection should be 301 (means that a new page has taken over permanently) or 302 (the page moved temporarily)
+* The `sourceUrl` represents the url which needs to be redirect
+* The `destinationUrl` represents the url on which the sourceUrl need to be redirect
+* The `statusCode` represents wether the redirection should be status code 301 (means that a new page has taken over permanently) or 302 (the page moved temporarily)
 
-2. Then you need to pass `REDIRECT_URLS` to the `isomorphicRoutes` function from your app. **Note:** the 
-`REDIRECT_URLS` could be a list of objects in array or it could be a function which return list of objects in array
+Then you need to pass `REDIRECT_URLS` to the `isomorphicRoutes` function from your app. **Note:** the 
+`REDIRECT_URLS` could be a list of objects in an array or it could be a function which return list of objects in an array
 
 Open *app/server/app.js*.
 
