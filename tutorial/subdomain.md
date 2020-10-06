@@ -55,7 +55,7 @@ return _loadData().then(data => {
 
 ```
 
-2. No goto &render-layout.js* and pass *domainSlug: get(params.store.getState().qt, ["config", "domainSlug"], "")* from state so that you can access domainSlug into layout.ejs for font changes.
+2. Now goto *render-layout.js* file and pass *domainSlug: get(params.store.getState().qt, ["config", "domainSlug"], "")* from state so that you can access domainSlug into layout.ejs for font changes.
 
 *Open app/server/handlers/render-layout.js*
 
@@ -84,7 +84,7 @@ export function renderLayout(res, params) {
 
 ```
 
-3. Now the last step is to change your layout on basis of domainSlug, for that you need to open layout.ejs file and add domainSlug check in head of the page to render different types of font.
+3. Now the last step is to change your font on basis of domainSlug, for that you need to open layout.ejs file and add domainSlug check in head of the page to render different types of font.
 
 *Open views/pages/layout.ejs*
 
