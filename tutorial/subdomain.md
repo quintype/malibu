@@ -55,7 +55,7 @@ return _loadData().then(data => {
 
 ```
 
-2. Now goto *render-layout.js* file and pass *domainSlug: get(params.store.getState().qt, ["config", "domainSlug"], "")* from state so that you can access domainSlug into layout.ejs for font changes.
+2. Now goto *render-layout.js* file and pass *domainSlug* from state so that you can access domainSlug into layout.ejs for font changes.
 
 *Open app/server/handlers/render-layout.js*
 
