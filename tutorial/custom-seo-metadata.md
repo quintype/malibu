@@ -14,9 +14,10 @@ Most common requirements for SEO optimization are handled by [@quintype/seo](htt
 
 ## Adding custom metadata
 
-The custom metadata SEO logic can be added by passing the _customSeo_ object in load-data.js file.
+The custom metadata SEO logic can be added by passing the `customSeo` object in `data` of in `_loadData()` function in load-data.js file.
 
 ```javascript
+
 return _loadData().then((data) => {
   return {
     httpStatusCode: data.httpStatusCode || 200,
@@ -31,9 +32,27 @@ return _loadData().then((data) => {
     config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
   };
 });
-```
 
-The above customSeo object will overwrite all the metadata which you will pass in this object using getCustomSeoMetadata(). getCustomSeoMetadata() function is to override the logic of metadata, or you can choose function name as per your wish. For infinite story page you need to add _customSeo_ in _storyPageLoadItems_ function of _<InfiniteStoryBase />_.
+```
+Where getCustomSeoMetadata(data, pageType) function which will take 2 args `data` and `pageType` and will return the list all custome seo related fields like `title`, `description`, `page-title`, `keywords`, `canonicalUrl`, `ogUrl`, `ogTitle` etc.
+
+ex - Let's i wanted to override page title for `section page` with `|| My Journal` in the end of title. 
+
+```javascript
+function getCustomSeoMetadata(data, pageType) {
+  switch (pageType) {
+    case "section-page":
+      return {
+        title: data.collection.name + " || My Journal "
+      };
+    default:
+      break;
+  }
+}
+```
+If you want to override for other pages, you just need to add one swith case and return your custom seo data in form of object. 
+ 
+ For infinite story page you need to add `customSeo` in `storyPageLoadItems()` function of `<InfiniteStoryBase />`.
 
 ## Before customSeo
 
@@ -118,25 +137,5 @@ export function StoryPage(props) {
   );
 }
 ```
-
-Lets say we want to override page-title on section page. By default, this meta tag will have default value of metadata or section name coming from the api , but let's set it to the name of the publication after section name for page title.
-
-Let's first create the getCustomSeoMetadata function.
-
-```javascript
-function getCustomSeoMetadata(data, pageType) {
-  if (pageType === "section-page") {
-    return {
-      title: (data.collection.name || data.section.name) + " || My Journal",
-    };
-  } else {
-    return {};
-  }
-}
-```
-
-Each of the items returned by the getCustomSeoMetadata will return a tag that gets converted to HTML tag.
-
-Let's now call this getCustomSeoMetadata function to our load-data.js file like _customSeo: getCustomSeoMetadata(data, pageType)_
 
 You may now proceed to [Loading Fonts]({{"/tutorial/loading-fonts" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
