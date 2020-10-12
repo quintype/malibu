@@ -57,10 +57,10 @@ If you are using malibu then you don't need to do anything the preview feature i
 
 But if you are not using malibu then you need to do the following steps:-
 
-## Adding a route
-The first step of any new page is to create a routes for story page or home page preview.
+## Add routes for Home page preview and Story page preview
+The first step of any new pages is to create a route for that. create routes for home page preview and story page preview.
 
-In *routes.js*, we add the following line:
+Ex:- In *routes.js*, we add the following lines for adding routes:
 
 ```javascript
 export const STATIC_ROUTES = [
@@ -68,10 +68,16 @@ export const STATIC_ROUTES = [
   {
     path: "/preview/story",
     pageType: PAGE_TYPE.STORY_PREVIEW,
+    exact: true,
+    renderParams: { contentTemplate: "./story-preview" },
+    disableIsomorphicComponent: false
   },
   {
-    path: "/preview/story",
-    pageType: PAGE_TYPE.STORY_PREVIEW,
+    path: "/preview/home",
+    pageType: PAGE_TYPE.HOME_PREVIEW,
+    exact: true,
+    renderParams: { contentTemplate: "./story-preview" },
+    disableIsomorphicComponent: false
   }
 ];
 ```
@@ -118,8 +124,6 @@ Ex:-  Story page component */pages/story.js*
   }
 ```
 
-
-
 Ex:- For story page preview component */pages/story-preview.js*.
 
 ```javascript
@@ -163,6 +167,9 @@ class StoryPagePreview extends React.Component {
 export { StoryPagePreview };
 
 ```
+
+In the above example for story page preview, i have add **addEventListener()** to catch any kind of message sent by postMessage() method and take the neccessory data from event and return back to the iframe from where it's being called.
+
 That's it for story page preview, now you should able to see the story preview in your editor.
 
 ### Rendering Home Page Preview
@@ -211,6 +218,7 @@ class HomePagePreview extends React.Component {
 
 export { HomePagePreview };
 ```
-In the above example for home page preview, we are calling _replaceAllStoriesInCollection()_ to convert all stories into collection to render on home page.
+
+In the above example we are replacing all the stories to a respecting collection for rendering on home page.
 
 You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
