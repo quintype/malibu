@@ -12,31 +12,31 @@ In this tutorial, We will see how preview works in bold and steps to implement t
 
 ## How preview works in Bold
 
-Before publishing a story in bold you may be interested to see how it will be look like in website while creating the story.
+Before publishing a story in Bold you may be interested to see how it will be look like in website while creating the story.
 
-#### Steps to see preview in bold:
+**Steps to see preview in Bold:**
 
-1. Click on any story which you have already published or add new story
+Click on any story which you have already published or add new story
 
 ![Story]({{"images/edit-story.png" | absolute_url}})
 
-2. Once your story is edit mode you should be able to see the preview icon in top right of header (4th from right and 2nd from left). 
+Once your story is in edit mode you should be able to see the preview icon in top right of header.
 
 ![story preview icon]({{"images/story-preview-icon.png" | absolute_url}})
 
-3. Click on preview icon, after clicking on preview icon you should able to see a small window open in right side of editor. the default preview will story preview for mobile size.
+Click on preview icon, after clicking on preview icon you should able to see a small window open in right side of editor. the default preview will be story page preview mobile size.
 
 ![Story preview]({{"images/story-preview.png" | absolute_url}})
 
-4. You can change the preview to *desktop story preview*, *mobile homepage preview* and *desktop homepage preview* by clicking on **Others Preview** dropdown shoing on top of small window.
+You can change the preview to *desktop story preview*, *mobile homepage preview* and *desktop homepage preview* by clicking on **Others Preview** dropdown shoing on top of small window.
 
 ![Preview options]({{"images/preview-options.png" | absolute_url}})
 
 ## How it's worked
 
-When ever you clicked on any preview button from bold, the */preview/story* API for story pages and */preview/home* for home page API gets called using postMessage() method. internally in the app has event listner which will listen the post massage and return back to the same iframe with the component where it's being called, in our case it will return back to bold.
+When ever you clicked on any preview button from the editor (Bold), the *_/preview/story_* API for story pages and *_/preview/home_* for home page API gets called with postMessage() method. internally in the app has event listner which will listen the post massage and return back to the same iframe with the respective component from where it's being called, in our case it will return back to bold.
 
-Here is an example of event listener which will all the postMessage() call
+Here is an example of event listener for postMessage() call.
 
 ```javascript
   global.addEventListener("message", event => {
@@ -49,6 +49,7 @@ Here is an example of event listener which will all the postMessage() call
       }
     });
 ```
+In the above example i have added event listener to listen any message passed by postMessage() method during preview call and taking the data, storing it to state.
 
 ## Steps to implement the feature
 
@@ -159,11 +160,6 @@ class StoryPagePreview extends React.Component {
   }
 }
 
-StoryPagePreview.propTypes = {
-  config: PropTypes.object,
-  renderStoryPageContent: PropTypes.func
-};
-
 export { StoryPagePreview };
 
 ```
@@ -215,5 +211,6 @@ class HomePagePreview extends React.Component {
 
 export { HomePagePreview };
 ```
+In the above example for home page preview, we are calling _replaceAllStoriesInCollection()_ to convert all stories into collection to render on home page.
 
 You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
