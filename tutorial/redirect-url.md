@@ -77,4 +77,4 @@ isomorphicRoutes(app, {
 
 ```
 
-You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Implementing Story page and Home Page Preview]({{"/tutorial/preview" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
