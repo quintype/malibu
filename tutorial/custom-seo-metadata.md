@@ -17,16 +17,14 @@ Most common requirements for SEO optimization are handled by [@quintype/seo](htt
 The custom metadata SEO logic can be added by passing the `customSeo` object in `data` of in `_loadData()` function in load-data.js file.
 
 ```javascript
+import { getCustomSeoMetadata } from "../../../../server/data-loaders/custom-seo";
 
 return _loadData().then((data) => {
   return {
     httpStatusCode: data.httpStatusCode || 200,
     pageType: data.pageType || pageType,
     data: Object.assign({}, data, {
-      navigationMenu: getNavigationMenuArray(
-        config.layout.menu,
-        config.sections
-      ),
+      navigationMenu: getNavigationMenuArray(config.layout.menu),
       customSeo: getCustomSeoMetadata(data, pageType),
     }),
     config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
@@ -34,25 +32,29 @@ return _loadData().then((data) => {
 });
 
 ```
-Where getCustomSeoMetadata(data, pageType) function which will take 2 args `data` and `pageType` and will return the list all custome seo related fields like `title`, `description`, `page-title`, `keywords`, `canonicalUrl`, `ogUrl`, `ogTitle` etc.
+Where getCustomSeoMetadata(data, pageType) function which will take 2 args `data` and `pageType` and will return the list all custome seo related fields like `title`, `description`, `page-title`, `keywords`, `canonicalUrl`, `ogUrl`, `ogTitle`, `ogDescription`, `twitterTitle`, `twitterDescription`, `keywords` (keywords should be in form of string with comma separated. ex- 'opinion, sports, videos, myjournal') etc.
 
-ex - Let's i wanted to override page title for `section page` with `|| My Journal` in the end of title. 
+ex - Let's see the example of overriding section page SEO data.
 
 ```javascript
 function getCustomSeoMetadata(data, pageType) {
   switch (pageType) {
     case "section-page":
       return {
-        title: data.collection.name + " || My Journal "
+        title: data.collection.name + " || My Journal ",
+        description: "Custom description",
+        ogTitle: "og custom title",
+        ogDescription: "og custom description",
+        keywords: 'opinion, sports, videos, myjournal'
       };
     default:
       break;
   }
 }
 ```
-If you want to override for other pages, you just need to add one swith case and return your custom seo data in form of object. 
+The above function will override section page custom SEO data with title, description, ogTilte, ogDescription, and keywords. if you want to override the seo for other pages then, you have to add switch case in the above function return yours over custom SEO data.
  
- For infinite story page you need to add `customSeo` in `storyPageLoadItems()` function of `<InfiniteStoryBase />`.
+ For an infinite story page, you need to add `customSeo` in `storyPageLoadItems()` function of `<InfiniteStoryBase />` to update the custom SEO for all the stories appearing in the infinite scroll.
 
 ## Before customSeo
 
