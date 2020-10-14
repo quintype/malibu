@@ -32,7 +32,7 @@ return _loadData().then((data) => {
 });
 
 ```
-Where getCustomSeoMetadata(data, pageType) function which will take 2 args `data` and `pageType` and will return the list all custome seo related fields like `title`, `description`, `page-title`, `keywords`, `canonicalUrl`, `ogUrl`, `ogTitle`, `ogDescription`, `twitterTitle`, `twitterDescription`, `keywords`. Make sure that the keywords should be in form of string with comma separated. ex- 'opinion, sports, videos, myjournal'.
+Where getCustomSeoMetadata(data, pageType) function which will take 2 args `data` and `pageType` and will return the list of all custom SEO related fields like `title`, `description`, `page-title`, `keywords`, `canonicalUrl`, `ogUrl`, `ogTitle`, `ogDescription`, `twitterTitle`, `twitterDescription`, `keywords`. Make sure that the keywords should be in form of string with comma separated. ex- 'opinion, sports, videos, myjournal'.
 
 ex - Let's see the example of overriding section page SEO data.
 
