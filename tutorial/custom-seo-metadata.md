@@ -52,7 +52,7 @@ function getCustomSeoMetadata(data, pageType) {
   }
 }
 ```
-The above function will override section page custom SEO data with title, description, ogTilte, ogDescription, and keywords. if you want to override the seo for other pages then, you have to add switch case in the above function return yours over custom SEO data.
+The above function will override section page custom SEO data with title, description, ogTilte, ogDescription, and keywords. if you want to override the SEO for other pages then, you have to add a switch case in the above function return custom SEO data in form of object.
  
  For an infinite story page, you need to add `customSeo` in `storyPageLoadItems()` function of `<InfiniteStoryBase />` to update the custom SEO for all the stories appearing in the infinite scroll.
 
