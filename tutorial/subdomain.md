@@ -14,15 +14,15 @@ _This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-ku
 
 - The first thing as you need to do is create a subdomain , Contact [Quintype Support](support@quintype.com) for creating a list of subdomain.
 
-- Configure list of subdomains in secret-mode of **Bold** and fill all the necessary fields like submain , section mapping, menu group and home collection etc as shown in below picture. you may contact [Quintype Support](support@quintype.com) team if you don't have access.
+- Configure list of subdomains in secret-mode of **Bold** and fill all the necessary fields like name, domain url , section mapping, menu group, and home collection, etc. Shown in the below picture. You may contact [Quintype Support](support@quintype.com) team if you don't have access.
 
 ![Bold Secret mode]({{"images/bold-secret-mode.png" | absolute_url}})
 
-- As soon as you will configure subdomain in bold you should able to see the subdomain slug in config API of skectches. ex - https://ace-web.qtstage.io/api/v1/config
+- As soon as you configure the subdomain in Bold, you should able to see the subdomain slug in the config API of sketches. ex - https://ace-web.qtstage.io/api/v1/config
 
-- Now the last step is to map your subdomains with the app, go to *publisher.yml* file and change *subdomain* with your actual subdomain url.
+- Now the last step is to map your subdomains with the app, go to *publisher.yml* file, and change *subdomain* with your actual subdomain URL.
 
-In our *config/publisher.yml* we have domain_mapping field, you need to change it with actual subdomain name
+In our *config/publisher.yml* we have a domain_mapping field you need to change it with the actual subdomain name
 
 ```javascript
 
@@ -30,7 +30,7 @@ domain_mapping:
   hindi.lvh.me: ace-hindi
 
 ```
-That's it. now your subdomain is ready and you should able to see the subdomain pages.
+That's it. Now your subdomain is ready and, you should able to see the subdomain pages.
 
 ## Render different fonts for subdomains
 
@@ -55,7 +55,7 @@ return _loadData().then(data => {
 
 ```
 
-2. Now goto *render-layout.js* file and pass *domainSlug* from state so that you can access domainSlug into layout.ejs for font changes.
+2.  Now goto *render-layout.js* file and pass *domainSlug* from the state so that you can access domainSlug into the layout.ejs for font changes.
 
 *Open app/server/handlers/render-layout.js*
 
@@ -84,7 +84,7 @@ export function renderLayout(res, params) {
 
 ```
 
-3. Now the last step is to change your font on basis of domainSlug, for that you need to open layout.ejs file and add domainSlug check in head of the page to render different types of font.
+3. Now the last step is to change your font on basis of domainSlug, for that you need to open the layout.ejs file and add domainSlug check-in head of the page to render different types of font.
 
 *Open views/pages/layout.ejs*
 
