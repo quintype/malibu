@@ -1,5 +1,5 @@
 ---
-title: Implementing the Story page and Home Page Preview
+title: Implementing the story page and home page preview
 parent: Malibu Tutorial
 nav_order: 15
 ---
@@ -14,7 +14,7 @@ In this tutorial, We will see how preview works in bold and steps to implement t
 
 Before publishing a story in Bold, you may be interested to see how it will look like on the website while creating the story.
 
-**Steps to see preview in Bold:**
+**Steps to see the preview in Bold:**
 
 Click on any story which you have already published or add a new story.
 
@@ -24,17 +24,17 @@ Once your story is in edit mode, you should be able to see the preview icon in t
 
 ![story preview icon]({{"images/story-preview-icon.png" | absolute_url}})
 
-Click on the preview icon. After clicking on the preview icon,  you should be able to see a small window open on the right side of the editor. The default preview will be story page preview mobile size.
+Click on the preview icon. After clicking on the preview icon, you should be able to see a small window open on the right side of the editor. The default preview will be story page preview mobile size.
 
 ![Story preview]({{"images/story-preview.png" | absolute_url}})
 
-You can change the preview to *desktop story preview*, *mobile homepage preview* and *desktop homepage preview* by clicking on **Others Preview** dropdown shoing on top of small window.
+You can change the preview to desktop story preview, mobile homepage preview, and desktop homepage preview by clicking on **Others Preview** dropdown showing on top of the small window.
 
 ![Preview options]({{"images/preview-options.png" | absolute_url}})
 
 ## How it's worked
 
-Whenever you clicked on any one of the preview buttons from the editor, the **/preview/story** API for story pages and **/preview/home** for home page API will get called with the postMessage() method. internally in the app has an event listener which will listen to the post-massage and return to the same iframe with the respective component from where it's being called, in our case, it will return to bold.
+Whenever you clicked on any one of the preview buttons from the editor, the **/preview/story** API for story pages and **/preview/home** for home page will get called with the postMessage() method. internally in the app has an event listener which will listen to the post-massage and return to the same iframe with the respective component from where it's being called, in our case, it will return to bold.
 
 Here is an example of an event listener for postMessage() call.
 
@@ -49,7 +49,7 @@ Here is an example of an event listener for postMessage() call.
       }
     });
 ```
-In the above example, I have added an event listener to listen to any message passed by the postMessage() method during preview call and taking the data, storing it to state.
+In the above example, I have added an event listener to listen to message passed by the postMessage() method during preview call and taking the data, storing it to state.
 
 ## Steps to implement the feature
 
@@ -57,7 +57,7 @@ If you are using Malibu, then you don't need to do anything. The preview feature
 
 But if you are not using malibu, then you need to do the following steps:-
 
-## Add routes for Home page preview and Story page preview
+## Add routes for home page preview and story page preview
 
 The first step of any new page is to create a route for it.
 
@@ -103,7 +103,7 @@ export function loadData(pageType, params, config, client, { host, next }) {
   }
 ```
 
-### Rendering Story Page Preview
+### Rendering story page preview
 
 Once your data is loaded, then you need to create a story page component in the new file, and then you can call the story page component inside the story-preview.js to render the story page preview.
 
@@ -169,7 +169,7 @@ export { StoryPagePreview };
 
 ```
 
-In the above example for story page preview, I have add **addEventListener()** to catch any kind of message sent by the postMessage() method and take the necessary data from the event and return to the iframe from where it's being called.
+In the above example for story page preview, I have added **addEventListener()** to catch any kind of message sent by the postMessage() method and take the necessary data from the event and return it back to the iframe from where it's being called.
 
 That's it for story page preview, now you should able to see the story preview in your editor.
 
