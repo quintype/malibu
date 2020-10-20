@@ -18,48 +18,39 @@ To get the redirect url feature, update @quintype/framework to the latest versio
 The first thing as you need to setup list of redirect urls <br />
 
 ``` javascript
-export const REDIRECT_URLS = [
-  {
-    sourceUrl: "/tag/:slug",
-    destinationUrl: "/topic/:slug",
-    statusCode: 302,
-  },
-  {
-     sourceUrl: "/india/:someslug",
+export const REDIRECT_URLS = {
+    "/tag/:slug": {
+      destinationUrl: "/topic/:slug",
+      statusCode: 302,
+    },
+    "/india/:someslug": {
      destinationUrl: "/news/:someslug",
      statusCode: 302,
-   },
-   {
-     sourceUrl: "/bangladesh/news/210015/BNP-demands-withdrawal-of-decision-to-hike",
+    },
+    "/bangladesh/news/210015/BNP-demands-withdrawal-of-decision-to-hike": {
      destinationUrl: "/bangladesh/bnp-demands-withdrawal-of-decision-to-hike-power-tariff",
      statusCode: 301,
    }
-]
-
+ }
 ```
 
 or 
 
 ```javascript
-
 function redirectUrls() {
-   return  [
-     {
-       sourceUrl: "/tag/:slug",
+   return  {
+    "/tag/:slug": {
        destinationUrl: "/topic/:slug",
        statusCode: 302,
      },
-     {
-      sourceUrl: "/india/:someslug",
+     "/india/:someslug": {
       destinationUrl: "/news/:someslug",
       statusCode: 301,
     },
-   ]
-}
-
-
+   }
+ }
 ```
-* The `sourceUrl` represents the url which needs to be redirect
+* The key is the source url to which needs to be matched.
 * The `destinationUrl` represents the url on which the sourceUrl need to be redirect
 * The `statusCode` represents wether the redirection should be status code 301 (means that a new page has taken over permanently) or 302 (the page moved temporarily)
 
