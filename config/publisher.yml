@@ -7,3 +7,8 @@ host_to_automatic_api_host:
   - ".malibu"
 domain_mapping:
   subdomain.lvh.me: subdomain
+publisher :
+  onesignal:
+    app_id: "77c3162a-6beb-4ae4-accd-ff5f79c19c72"
+    safari_web_id: ""
+    tag_name: "publisher-breaking-news"

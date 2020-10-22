@@ -1,4 +1,5 @@
 /* eslint-disable object-shorthand */
+import get from "lodash/get";
 import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/asset-helper";
 import { getChunkName } from "../../isomorphic/pick-component";
 import { renderReduxComponent } from "@quintype/framework/server/render";
@@ -7,6 +8,8 @@ import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
 import serialize from "serialize-javascript";
+
+const getOnesignalConfig = state => get(state, ["qt", "config", "publisher-attributes", "onesignal"], {});
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
@@ -37,7 +40,8 @@ export function renderLayout(res, params) {
         pageChunk: chunk,
         store: params.store,
         shell: params.shell,
-        serialize
+        serialize,
+        oneSignalConfig: getOnesignalConfig(params.store)
       },
       params
     )

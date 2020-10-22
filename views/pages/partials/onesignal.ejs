@@ -1,0 +1,20 @@
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "77c3162a-6beb-4ae4-accd-ff5f79c19c72",
+      welcomeNotification: {
+        disable: false,
+        title: "Welcome",
+        message: "This is a welcome notification"
+      },
+      autoRegister: false,
+      notifyButton: {
+        enable: true /* Set to false to hide */
+      },
+      safari_web_id: "<%= oneSignalConfig.safari_web_id %>"
+    });
+  });
+  OneSignal.push(["sendTag", "<%= oneSignalConfig.tag_name %>", "true"]);
+</script>

@@ -22,6 +22,7 @@
     <style>
       <%- cssContent %>
     </style>
+    <%- include ./partials/onesignal -%>
     <%_ if(pageChunk) { _%>
     <%_ pageChunk.cssFiles.map(cssFile => {_%>
       <style data-href="<%= cssFile.path %>"><%- cssFile.content %></style>

@@ -1,5 +1,7 @@
 <%- serviceWorkerHelper %>;
 
+importScripts('https://cdn.onesignal.com/sdks/OneSignalSDK.js')
+
 const REQUIRED_ASSETS = [
   <%_ getFilesForChunks("app", "list", "story").map(x => { _%>
   "<%= x %>",

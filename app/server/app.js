@@ -57,5 +57,6 @@ isomorphicRoutes(app, {
     enableNews: true,
     structuredData: STRUCTURED_DATA
   }),
-  preloadJs: true
+  preloadJs: true,
+  serviceWorkerPaths: ["/service-worker.js", "/OneSignalSDKWorker.js", "/OneSignalSDKUpdaterWorker.js"]
 });
