@@ -18,7 +18,7 @@ If you would like to know more about it, consider reading the [Prerender.io]({{"
 
 There are few steps you need to follow in order to setup your Prerender app
 
-1. The first thing as you need to update framework library  `@quintype/framework` to the beta version (`4.2.5-pre-render.2`) (Note: currently we have not publised a major version of it.)
+1. The first thing as you need to update framework library  `@quintype/framework` to the beta version (`4.3.1-prerender-webpages.0`) (Note: currently we have not publised a major version of it.)
 
 2. The second step is to whitelist the list of urls in Cloudflare, for that you may [contact support](mailto:support@quintype.com) for it.
 
@@ -37,5 +37,7 @@ isomorphicRoutes(app, {
   prerenderServiceUrl: "https://prerender.quintype.io"
 });
 ```
+
+That's it, now your webpages should serve through prerender, and if you check your website pages [here]({{"https://search.google.com/test/mobile-friendly"}}), you should not see any script file executing in the HTML tab.
 
 You may now proceed to [Redirect Urls]({{"/tutorial/redirect-url.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

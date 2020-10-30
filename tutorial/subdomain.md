@@ -14,7 +14,7 @@ _This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-ku
 
 - The first thing as you need to do is create a subdomain , Contact [Quintype Support](support@quintype.com) for creating a list of subdomain.
 
-- Configure list of subdomains in secret-mode of **Bold** and fill all the necessary fields like name, domain url , section mapping, menu group, and home collection, etc. Shown in the below picture. You may contact [Quintype Support](support@quintype.com) team if you don't have access.
+- Configure list of subdomains in in **Bold** and fill all the necessary fields like name, domain url , section mapping, menu group, and home collection, etc. Shown in the below picture. You may contact [Quintype Support](support@quintype.com) team to setup if you don't have access.
 
 ![Bold Secret mode]({{"images/bold-secret-mode.png" | absolute_url}})
 
