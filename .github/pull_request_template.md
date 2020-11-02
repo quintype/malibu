@@ -1,8 +1,12 @@
 # Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+Please include the summary of the change made. Please include the required context here. Please include the issue reference for the fix and the dependencies reference for the change.
 
 Fixes # (issue-reference)
+
+Dependencies # (dependency-issue-reference)
+
+Documentation # (link to the corresponding documentation changes)
 
 ## Type of change
 
