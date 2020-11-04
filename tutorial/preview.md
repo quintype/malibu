@@ -12,19 +12,19 @@ Before publishing a story via Bold, you might be interested to preview it in you
 
 ## How to preview the story in Bold
 
-1. Open the story that you want to preview.
+- Open the story that you want to preview.
 
 ![Story]({{"images/edit-story.png" | absolute_url}})
 
-2. You should be able to see the preview button in the top right corner of the page, in the header.
+- You should be able to see the preview button in the top right corner of the page, in the header.
 
 ![story preview icon]({{"images/story-preview-icon.png" | absolute_url}})
 
-3. Clicking the preview button will open a window on the right side of your editor. This will preview the story page in mobile view by default.
+- Clicking the preview button will open a window on the right side of your editor. This will preview the story page in mobile view by default.
 
 ![Story preview]({{"images/story-preview.png" | absolute_url}})
 
-4. You can toggle between *mobile homepage*, *desktop story* and *desktop homepage* previews by clicking on *Other Previews* dropdown.
+- You can toggle between *mobile homepage*, *desktop story* and *desktop homepage* previews by clicking on *Other Previews* dropdown.
 
 ![Preview options]({{"images/preview-options.png" | absolute_url}})
 
