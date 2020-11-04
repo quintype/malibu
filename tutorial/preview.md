@@ -6,37 +6,33 @@ nav_order: 15
 
 # {{page.title}}
 
-*This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-kumar)*
+*Author [Deo Kumar](https://www.linkedin.com/in/deo-kumar)*
 
-In this tutorial, We will see how preview works in bold and steps to implement the feature in any frontend app.
+Before publishing a story via Bold, you might be interested to preview it in your frontend. In this tutorial, we will walk through how previewing works in Bold and the steps that are required to implement the feature in your frontend application. 
 
-## How preview works in Bold
+## How to preview the story in Bold
 
-Before publishing a story in Bold, you may be interested to see how it will look like on the website while creating the story.
-
-**Steps to see the preview in Bold:**
-
-Click on any story which you have already published or add a new story.
+1. Open the story that you want to preview.
 
 ![Story]({{"images/edit-story.png" | absolute_url}})
 
-Once your story is in edit mode, you should be able to see the preview icon in the top right of the header.
+2. You should be able to see the preview button in the top right corner of the page, in the header.
 
 ![story preview icon]({{"images/story-preview-icon.png" | absolute_url}})
 
-Click on the preview icon. After clicking on the preview icon, you should be able to see a small window open on the right side of the editor. The default preview will be story page preview mobile size.
+3. Clicking the preview button will open a window on the right side of your editor. This will preview the story page in mobile view by default.
 
 ![Story preview]({{"images/story-preview.png" | absolute_url}})
 
-You can change the preview to desktop story preview, mobile homepage preview, and desktop homepage preview by clicking on **Others Preview** dropdown showing on top of the small window.
+4. You can toggle between *mobile homepage*, *desktop story* and *desktop homepage* previews by clicking on *Other Previews* dropdown.
 
 ![Preview options]({{"images/preview-options.png" | absolute_url}})
 
-## How it's worked
+## How it works
 
-Whenever you clicked on any one of the preview buttons from the editor, the **/preview/story** API for story pages and **/preview/home** for home page will get called with the postMessage() method. internally in the app has an event listener which will listen to the post-massage and return to the same iframe with the respective component from where it's being called, in our case, it will return to bold.
+When you click on any of the preview options from the editor, the `/preview/story` route for story pages and `/preview/home` route for the home page will be called with the story data sent to it via the `postMessage` window method. The frontend app has an event listener on the `message` event which will receive the message that it received from `postMessage`. The receiving frontend page is an `iframe` inside Bold in case of the embedded preview or a new window in case of the desktop previews.
 
-Here is an example of an event listener for postMessage() call.
+Example of an event listener for receiving the messages sent via the `postMessage` call.
 
 ```javascript
   global.addEventListener("message", event => {
@@ -49,7 +45,8 @@ Here is an example of an event listener for postMessage() call.
       }
     });
 ```
-In the above example, I have added an event listener to listen to message passed by the postMessage() method during preview call and taking the data, storing it to state.
+
+The event handler grabs the `story` data from the `event` and updates the state.
 
 ## Steps to implement the feature
 
