@@ -37,7 +37,8 @@ const STRUCTURED_DATA = {
       "https://plus.google.com/+quintype",
       "https://www.youtube.com/user/Quintype"
     ]
-  }
+  },
+  enableLiveBlog: true
 };
 
 isomorphicRoutes(app, {
