@@ -185,3 +185,67 @@ h1 span {
   float: right;
   font-family: var(--content-font);
 }
+
+.story-element-youtube-video {
+  display: block;
+  min-height: 360px;
+  text-align: center;
+
+  .thumbnail-wrapper {
+    position: relative;
+    text-align: center;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+
+    .youtube-iframe-wrapper {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .youtube-playBtn {
+      background: #282828;
+      border-radius: 50%/10%;
+      font-size: 1em;
+      height: 3em;
+      padding: 0;
+      width: 4em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: none;
+      opacity: 0.8;
+      cursor: pointer;
+      z-index: 1;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .youtube-playBtn:hover {
+      background: red;
+    }
+
+    .youtube-playBtn::before {
+      background: inherit;
+      border-radius: 5%/50%;
+      bottom: 9%;
+      content: "";
+      left: -5%;
+      position: absolute;
+      right: -5%;
+      top: 9%;
+    }
+
+    .youtube-playBtn::after {
+      border-style: solid;
+      border-width: 1em 0 1em 1.732em;
+      border-color: transparent transparent transparent hsla(0, 0%, 100%, 0.75);
+      content: " ";
+      font-size: 0.75em;
+      height: 0;
+      margin: -1em 0 0 -0.75em;
+      top: 50%;
+      position: absolute;
+      width: 0;
+    }
+  }
+}
