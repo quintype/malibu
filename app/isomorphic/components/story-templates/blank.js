@@ -1,6 +1,7 @@
 import React from "react";
-
+import get from "lodash/get";
 import { ResponsiveImage, StoryElement } from "@quintype/components";
+import { AmazonPolly } from "../amazon-polly/amazon-polly";
 
 function StoryCard(props) {
   return (
@@ -13,6 +14,8 @@ function StoryCard(props) {
 }
 
 function BlankStoryTemplate(props) {
+  const caption = get(props, ["story", "headline"], "Press play to listen to this story");
+
   return (
     <div className="blank-story">
       <figure className="blank-story-image qt-image-16x9">
@@ -26,6 +29,7 @@ function BlankStoryTemplate(props) {
         />
       </figure>
       <h1>{props.story.headline}</h1>
+      <AmazonPolly caption={caption} story={props.story} config={props.config} />
       <span className="blank-story-author">{props.story["author-name"]}</span>
       {props.story.cards.map(card => (
         <StoryCard key={card.id} card={card} story={props.story} />
