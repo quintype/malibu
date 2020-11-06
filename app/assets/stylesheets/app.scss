@@ -198,6 +198,11 @@ h1 span {
     display: flex;
     justify-content: center;
 
+    .youtube-iframe-wrapper {
+      position: absolute;
+      z-index: 2;
+    }
+
     .youtube-playBtn {
       background: #282828;
       border-radius: 50%/10%;
