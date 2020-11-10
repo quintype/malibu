@@ -6,6 +6,7 @@ import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loader
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
+import { loadFormPageData } from "./data-loaders/form-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
@@ -46,6 +47,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         return Promise.resolve({ cacheKeys: ["static"] });
       case PAGE_TYPE.SEARCH_PAGE:
         return loadSearchPageData(client, params.q, config);
+      case PAGE_TYPE.FORM_PAGE:
+        return loadFormPageData(client, params.formSlug, config);
       default:
         return Promise.resolve({ error: { message: "No Loader" } });
     }
