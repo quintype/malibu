@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
+import { Headline, HeroImage, SectionTag, StoryCard } from "@quintype/arrow";
 import PT from "prop-types";
 import "./story-grid.m.css";
 
@@ -30,7 +31,8 @@ const storyPropType = PT.shape({
   "hero-image-s3-key": PT.string,
   "hero-image-metadata": PT.object,
   headline: PT.string,
-  "author-name": PT.string
+  "author-name": PT.string,
+  url: PT.string
 });
 
 StoryGridStoryItem.propTypes = {
@@ -42,12 +44,40 @@ export function StoryGrid(props) {
   return (
     <div className="story-grid">
       {props.stories.map((story, index) => (
-        <StoryGridStoryItem story={story} key={`${index}-${story.id}`} position={index} />
+        <StoryCard
+          story={story}
+          headerLevel="2"
+          aspectRatio={[
+            [16, 9],
+            [16, 9]
+          ]}
+          key={story.id}
+        >
+          <HeroImage
+            story={story}
+            aspectRatio={[
+              [16, 9],
+              [16, 9]
+            ]}
+          />
+          <div className="card-content">
+            <SectionTag story={story} />
+            <Headline story={story} headerLevel="2" />
+          </div>
+        </StoryCard>
       ))}
     </div>
   );
 }
 
 StoryGrid.propTypes = {
-  stories: PT.arrayOf(storyPropType)
+  story: PT.shape({
+    id: PT.string,
+    slug: PT.string,
+    "hero-image-s3-key": PT.string,
+    "hero-image-metadata": PT.object,
+    headline: PT.string,
+    "author-name": PT.string
+  }),
+  stories: PT.array
 };
