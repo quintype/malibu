@@ -10,7 +10,7 @@
     "@quintype/arrow": "^0.3.44",
     "@quintype/backend": "^1.21.0",
     "@quintype/components": "^2.15.2",
-    "@quintype/framework": "^4.5.1-build-update-with-arrow.0",
+    "@quintype/framework": "^4.5.0",
     "@quintype/seo": "^1.38.25",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.15",
@@ -21,6 +21,11 @@
     "superagent": "^3.8.3",
     "superagent-promise": "^1.1.0",
     "wretch": "^1.4.1"
+  },
+  "sass": {
+    "includePaths": [
+      "./node_modules"
+    ]
   },
   "devDependencies": {
     "@quintype/build": "^3.10.0",

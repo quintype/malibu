@@ -9,7 +9,9 @@ export function FourColGrid({ collection, stories }) {
   return (
     <div>
       <h3 styleName="heading">{collection.name}</h3>
-      <StoryGrid stories={stories} />
+      <div className="story-grid">
+        <StoryGrid stories={stories} />
+      </div>
     </div>
   );
 }

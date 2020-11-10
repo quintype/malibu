@@ -44,27 +44,28 @@ export function StoryGrid(props) {
   return (
     <div className="story-grid">
       {props.stories.map((story, index) => (
-        <StoryCard
-          story={story}
-          headerLevel="2"
-          aspectRatio={[
-            [16, 9],
-            [16, 9]
-          ]}
-          key={story.id}
-        >
-          <HeroImage
+        <div key={story.id} className="story-grid-item">
+          <StoryCard
             story={story}
+            headerLevel="1"
             aspectRatio={[
               [16, 9],
               [16, 9]
             ]}
-          />
-          <div className="card-content">
-            <SectionTag story={story} />
-            <Headline story={story} headerLevel="2" />
-          </div>
-        </StoryCard>
+          >
+            <HeroImage
+              story={story}
+              aspectRatio={[
+                [16, 9],
+                [16, 9]
+              ]}
+            />
+            <div className="card-content">
+              <SectionTag story={story} />
+              <Headline story={story} headerLevel="2" />
+            </div>
+          </StoryCard>
+        </div>
       ))}
     </div>
   );
