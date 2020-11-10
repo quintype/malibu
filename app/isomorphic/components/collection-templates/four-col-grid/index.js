@@ -2,15 +2,31 @@
 
 import React from "react";
 import { array, object } from "prop-types";
-import { StoryGrid } from "../../story-grid";
+// import { StoryGrid } from "../../story-grid";
+import { FourColGrid as FourColGridArrow } from "@quintype/arrow";
+
 import "./four-col-grid.m.css";
 
 export function FourColGrid({ collection, stories }) {
+  const contextConfig = {
+    theme: "#ffffff",
+    border: "",
+    collectionNameTemplate: "default",
+    sectionTagTemplate: "default",
+    showSection: true,
+    showAuthor: true,
+    showTime: true,
+    slotConfig: [{ type: "story", component: () => null }],
+    showRowTitle: true,
+    showFooterButton: true,
+    buttonText: "Load More",
+    footerSlotConfig: { footerSlot: () => null }
+  };
   return (
     <div>
       <h3 styleName="heading">{collection.name}</h3>
       <div className="story-grid">
-        <StoryGrid stories={stories} />
+        <FourColGridArrow collection={collection} config={contextConfig} />
       </div>
     </div>
   );
