@@ -23,11 +23,8 @@ export function FourColGrid({ collection, stories }) {
     footerSlotConfig: { footerSlot: () => null }
   };
   return (
-    <div>
-      <h3 styleName="heading">{collection.name}</h3>
-      <div className="story-grid">
-        <FourColGridArrow collection={collection} config={contextConfig} />
-      </div>
+    <div className="story-grid">
+      <FourColGridArrow collection={collection} config={contextConfig} />
     </div>
   );
 }
