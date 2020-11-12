@@ -48,7 +48,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       case PAGE_TYPE.SEARCH_PAGE:
         return loadSearchPageData(client, params.q, config);
       case PAGE_TYPE.FORM_PAGE:
-        return loadFormPageData(client, params.formSlug, config);
+        return loadFormPageData(client, params.formSlug, next);
       default:
         return Promise.resolve({ error: { message: "No Loader" } });
     }
