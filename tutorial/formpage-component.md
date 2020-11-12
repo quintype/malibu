@@ -6,7 +6,7 @@ parent: Malibu Tutorial
 
 # {{page.title}}
 
-*This tutorial was contributed by [Sinu](https://twitter.com/sinujhn) and Deo*
+*This tutorial was contributed by [Sinu](https://twitter.com/sinu_jhn) and Deo*
 
 Quintype forms are powered by [Formio](https://www.form.io/). To enable it contact support@quintype.com.
 
