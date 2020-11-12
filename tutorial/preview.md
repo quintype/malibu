@@ -220,4 +220,4 @@ export { HomePagePreview };
 
 In the above example, we are replacing all the stories with a respected collection for rendering on the home page.
 
-You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Form Page]({{"/tutorial/form-page.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
