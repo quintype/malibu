@@ -9,7 +9,7 @@
   "dependencies": {
     "@quintype/backend": "^1.23.2",
     "@quintype/components": "^2.23.0-youtube-render.3",
-    "@quintype/framework": "^4.5.3",
+    "@quintype/framework": "^4.5.4",
     "@quintype/seo": "^1.38.25",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.15",
