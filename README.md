@@ -1,6 +1,6 @@
 # malibu
 
-This is a node sample application, build with the quintype node framework.
+This is a node sample application, build with the quintype node framework.   
 
 ## toddy-libs
 
