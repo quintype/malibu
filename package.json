@@ -8,9 +8,9 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/arrow": "^0.3.44",
-    "@quintype/backend": "^1.21.0",
-    "@quintype/components": "^2.15.2",
-    "@quintype/framework": "^4.5.5-ssr-css-arrow.1",
+    "@quintype/backend": "^1.23.2",
+    "@quintype/components": "^2.23.0-youtube-render.3",
+    "@quintype/framework": "^4.5.4",
     "@quintype/seo": "^1.38.25",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.15",
@@ -23,7 +23,7 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
-    "@quintype/build": "^3.10.3-ssr-arrow-build.2",
+    "@quintype/build": "^3.10.0",
     "babel-eslint": "^10.0.3",
     "cosmiconfig": "^7.0.0",
     "eslint": "^6.8.0",
