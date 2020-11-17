@@ -27,8 +27,8 @@
     ]
   },
   "devDependencies": {
-    "@quintype/build": "^3.10.3-server-side-css.0",
-    "@quintype/framework": "^4.5.5-server-side-css.0",
+    "@quintype/build": "^3.10.3-server-side-css.1",
+    "@quintype/framework": "^4.5.5-server-side-css.1",
     "babel-eslint": "^10.0.3",
     "cosmiconfig": "^7.0.0",
     "eslint": "^6.8.0",
