@@ -1,4 +1,5 @@
 import React from "react";
+import PT from "prop-types";
 
 import { ResponsiveImage, StoryElement } from "@quintype/components";
 
@@ -6,11 +7,16 @@ function StoryCard(props) {
   return (
     <div>
       {props.card["story-elements"].map(element => (
-        <StoryElement element={element} key={element.id} story={props.story} />
+        <StoryElement element={element} key={element.id} story={props.story} loadIframeOnClick />
       ))}
     </div>
   );
 }
+
+StoryCard.propTypes = {
+  card: PT.object,
+  story: PT.object
+};
 
 function BlankStoryTemplate(props) {
   return (
@@ -35,6 +41,11 @@ function BlankStoryTemplate(props) {
   );
 }
 
+BlankStoryTemplate.propTypes = {
+  card: PT.object,
+  story: PT.object
+};
+
 function BlankStory(props) {
   return (
     <div className="story-grid">
@@ -42,5 +53,9 @@ function BlankStory(props) {
     </div>
   );
 }
+
+BlankStory.propTypes = {
+  story: PT.object
+};
 
 export { BlankStory };
