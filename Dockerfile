@@ -1,4 +1,4 @@
-FROM node:12-alpine AS build
+FROM quay.io/quintype/public-base:node-12.18.2-alpine AS build
 
 RUN apk update && \
     apk add git
