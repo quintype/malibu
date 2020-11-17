@@ -10,7 +10,7 @@
     "@quintype/arrow": "^0.3.44",
     "@quintype/backend": "^1.21.0",
     "@quintype/components": "^2.15.2",
-    "@quintype/framework": "^4.5.1-build-update-with-arrow.2",
+    "@quintype/framework": "^4.5.5-ssr-css-arrow.1",
     "@quintype/seo": "^1.38.25",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.15",
@@ -22,13 +22,8 @@
     "superagent-promise": "^1.1.0",
     "wretch": "^1.4.1"
   },
-  "sass": {
-    "includePaths": [
-      "./node_modules"
-    ]
-  },
   "devDependencies": {
-    "@quintype/build": "^3.10.3-webpack-arrow.2",
+    "@quintype/build": "^3.10.3-ssr-arrow-build.2",
     "babel-eslint": "^10.0.3",
     "cosmiconfig": "^7.0.0",
     "eslint": "^6.8.0",
