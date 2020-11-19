@@ -4,11 +4,14 @@ import { shape, string } from "prop-types";
 import { Form } from "../form";
 
 const FormPage = props => {
+  const { headline, subheadline, status, "formio-url": formioUrl } = props.data.form;
+  const isClosed = status === "closed";
   return (
     <div>
-      <h1>{props.data.form.headline}</h1>
-      <h2>{props.data.form.subheadline}</h2>
-      <Form formioUrl={props.data.form["formio-url"]} />
+      <h1>{headline}</h1>
+      <h2>{subheadline}</h2>
+      {isClosed && <p>The form is closed for submissions.</p>}
+      <Form formioUrl={formioUrl} disabled={isClosed} />
     </div>
   );
 };
@@ -18,7 +21,8 @@ FormPage.propTypes = {
     form: {
       "formio-url": string,
       headline: string,
-      subheadline: string
+      subheadline: string,
+      status: string
     }
   })
 };
