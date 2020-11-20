@@ -1,4 +1,50 @@
-.heading {
-  display: block;
-  margin: 5px auto;
+@custom-media --viewport-medium (width >= 768px);
+.four-col-grid {
+  padding: var(--arrow-spacing-s);
+  @media (--viewport-medium) {
+    padding: 0;
+  }
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: var(--arrow-spacing-xs) 0;
+  @media (--viewport-medium) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: var(--arrow-spacing-l);
+    margin: var(--arrow-spacing-m) 0;
+  }
+}
+.story-card-wrapper {
+  margin-bottom: var(--arrow-spacing-m);
+  @media (--viewport-medium) {
+    margin-bottom: 0;
+  }
+}
+.wrapper > :first-child,
+.ad {
+  order: -1;
+  @media (--viewport-medium) {
+    order: 0;
+  }
+}
+.ad {
+  margin-bottom: 16px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 70%;
+  @media (--viewport-medium) {
+    flex-basis: 100%;
+  }
+}
+
+.four-col-grid :global(.arr--story-card .arr--hero-image) {
+  flex-basis: 40%;
+}
+.four-col-grid :global(.arr--story-card .arr--content-wrapper) {
+  flex-basis: 60%;
 }
