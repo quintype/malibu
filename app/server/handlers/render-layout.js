@@ -1,12 +1,12 @@
 /* eslint-disable object-shorthand */
-import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/asset-helper";
-import { getChunkName } from "../../isomorphic/pick-component";
+import { assetPath, getAllChunks, readAsset } from "@quintype/framework/server/asset-helper";
 import { renderReduxComponent } from "@quintype/framework/server/render";
+import serialize from "serialize-javascript";
+import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
 import { Header } from "../../isomorphic/components/header";
 import { Footer } from "../../isomorphic/components/layouts/footer";
+import { getChunkName } from "../../isomorphic/pick-component";
 import fontFace from "../font";
-import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
-import serialize from "serialize-javascript";
 
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
@@ -14,7 +14,6 @@ const allChunks = getAllChunks("list", "story");
 
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-
   res.render(
     "pages/layout",
     Object.assign(

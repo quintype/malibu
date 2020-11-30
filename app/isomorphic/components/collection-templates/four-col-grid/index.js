@@ -1,10 +1,9 @@
 // Implement more logic here
 
-import React from "react";
-import { array, object } from "prop-types";
 // import { StoryGrid } from "../../story-grid";
 import { FourColGrid as FourColGridArrow } from "@quintype/arrow";
-
+import { array, object } from "prop-types";
+import React from "react";
 import "./four-col-grid.m.css";
 
 export function FourColGrid({ collection, stories }) {

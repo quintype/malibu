@@ -1,6 +1,6 @@
-import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
-import { FourColGrid } from "./four-col-grid";
+import { EagerLoadImages, wrapCollectionLayout } from "@quintype/components";
 import React from "react";
+import { FourColGrid } from "./four-col-grid";
 
 // This should not be needed anymore as we are using Gumlet
 function wrapEager(f) {
