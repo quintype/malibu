@@ -1,0 +1,23 @@
+@custom-media --viewport-medium (width >= 768px);
+
+:global(.arrow-component.arr--collection-name) h3 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  @media (--viewport-medium) {
+    font-size: 2.125rem;
+  }
+}
+/* Need to remove these styles once we move to PB */
+:global {
+  .arrow-component.arr--collection-name {
+    .arr-collection-name-border-left {
+      font-size: 1.625rem !important; /* Border left needs to be updated based on the font-size */
+      margin-left: -4px;
+      min-width: 8px;
+      width: 8px;
+      @media (--viewport-medium) {
+        font-size: 2.125rem !important;
+      }
+    }
+  }
+}

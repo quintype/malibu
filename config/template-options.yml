@@ -1,4 +1,43 @@
 collection-layouts:
-- name: FourColGrid
-  display: Default Malibu Widget
-  options: []
+  - name: ArrowFourColGrid
+    display: ArrowFourColGrid
+    options: []
+  - name: ArrowCollectionFilter
+    display: ArrowCollectionFilter
+    options: []
+  - name: ArrowThreeColGrid
+    display: ArrowThreeColGrid
+    options: []
+  - name: ArrowOneColStoryList
+    display: ArrowOneColStoryList
+    options: []
+  - name: ArrowThreeColSixStories
+    display: ArrowThreeColSixStories
+    options: []
+  - name: ArrowTwoColThreeStories
+    display: ArrowTwoColThreeStories
+    options: []
+  - name: ArrowElevenStories
+    display: ArrowElevenStories
+    options: []
+  - name: ArrowTwoColFourStories
+    display: ArrowTwoColFourStories
+    options: []
+  - name: ArrowHalfScreenSlider
+    display: ArrowHalfScreenSlider
+    options: []
+  - name: ArrowFullScreenSlider
+    display: ArrowFullScreenSlider
+    options: []
+  - name: ArrowFourStorySlider
+    display: ArrowFourStorySlider
+    options: []
+  - name: ArrowThreeColSevenStory
+    display: ArrowThreeColSevenStory
+    options: []
+  - name: ArrowFourColTwelveStories
+    display: ArrowFourColTwelveStories
+    options: []
+  - name: ArrowThreeColFourteenStories
+    display: ArrowThreeColFourteenStories
+    options: []
