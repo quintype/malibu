@@ -1,4 +1,4 @@
-import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
+// import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
 // import { FourColGrid } from "./four-col-grid";
 import React from "react";
 import { shallowEqual, useSelector } from "react-redux";
