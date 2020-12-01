@@ -110,5 +110,5 @@ export default {
   ArrowThreeColSevenStory: arrowWrapper(ThreeColSevenStory),
   ArrowFourColTwelveStories: arrowWrapper(FourColTwelveStories),
   ArrowThreeColFourteenStories: arrowWrapper(ThreeColFourteenStories),
-  defaultTemplate: arrowWrapper(CollectionFilter)
+  defaultTemplate: arrowWrapper(FourColGrid)
 };
