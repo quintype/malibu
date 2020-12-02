@@ -3,7 +3,7 @@
 import React from "react";
 import { array, object } from "prop-types";
 // import { StoryGrid } from "../../story-grid";
-import { FourColGrid as FourColGridArrow } from "@quintype/arrow/dist/cjs/src/index";
+import { FourColGrid as FourColGridArrow } from "@quintype/arrow";
 
 import "./four-col-grid.m.css";
 
