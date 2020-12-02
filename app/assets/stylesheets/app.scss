@@ -1,5 +1,5 @@
 @import "images";
-
+@import "~@quintype/arrow/dist/app.scss";
 *,
 *::after,
 *::before {
@@ -248,4 +248,7 @@ h1 span {
       width: 0;
     }
   }
+}
+html[dir="rtl"] .story-element-youtube-video {
+  display: flex;
 }

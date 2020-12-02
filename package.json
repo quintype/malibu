@@ -7,6 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
+    "@quintype/arrow": "^0.3.45-rtl-story-elements.5",
     "@quintype/backend": "^1.23.2",
     "@quintype/components": "^2.23.0-youtube-render.3",
     "@quintype/framework": "^4.5.4",
