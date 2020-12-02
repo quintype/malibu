@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
-import { Headline, HeroImage, SectionTag, StoryCard } from "@quintype/arrow";
+import { Headline, HeroImage, SectionTag, StoryCard } from "@quintype/arrow/dist/cjs/src/index";
 import PT from "prop-types";
 import "./story-grid.m.css";
 
