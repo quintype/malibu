@@ -42,7 +42,8 @@ const ISOMORPHIC_ROUTES = [
     pageType: PAGE_TYPE.TAG_PAGE,
     exact: true
   },
-  { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true }
+  { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true },
+  { path: "/authors", pageType: PAGE_TYPE.AUTHORS_PAGE, exact: true, skipPWA: true }
 ];
 
 export function generateRoutes(config, domainSlug = undefined) {

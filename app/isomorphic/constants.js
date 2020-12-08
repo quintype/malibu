@@ -8,6 +8,7 @@ export const PAGE_TYPE = Object.freeze({
   STORY_PUBLIC_PREVIEW_PAGE: "story-public-preview-page",
   STORY_PREVIEW: "story-preview",
   HOME_PREVIEW: "home-preview",
-  STATIC_PAGE: "static-page"
+  STATIC_PAGE: "static-page",
+  AUTHORS_PAGE: "authors-page"
 });
 export const TAG_PAGE_URL_PREFIX = "/topic/";
