@@ -125,7 +125,7 @@ StoryPageBase.propTypes = {
 };
 
 const FIELDS =
-  "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,cards,read-time";
+  "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,cards,read-time,updated-at";
 function storyPageLoadItems(pageNumber) {
   return global
     .wretch("/api/v1/stories")
