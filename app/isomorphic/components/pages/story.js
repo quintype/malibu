@@ -11,7 +11,6 @@ import {
 } from "@quintype/arrow";
 // import pho
 function StoryPageBase({ index, story, otherProp, trending }) {
-  console.log("here trending", trending);
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
   const templateConfigcommon = {
     theme: "#ffffff",
