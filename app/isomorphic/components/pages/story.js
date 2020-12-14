@@ -76,41 +76,27 @@ function StoryPageBase({ index, story, otherProp, trending }) {
   switch (story["story-template"]) {
     case "live-blog":
       return (
-        <div className="full-width-with-padding separator">
-          <LiveBlogStoryTemplate
-            story={story}
-            config={templateConfigLiveBlog}
-            storyElementsConfig={storyElementsConfig}
-          />
-        </div>
+        <LiveBlogStoryTemplate
+          story={story}
+          config={templateConfigLiveBlog}
+          storyElementsConfig={storyElementsConfig}
+        />
       );
     case "listicle":
       return (
-        <div className="full-width-with-padding separator">
-          <ListicleStoryTemplate
-            story={story}
-            config={templateConfigcommon}
-            storyElementsConfig={storyElementsConfig}
-          />
-        </div>
+        <ListicleStoryTemplate story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
       );
     case "video":
       return (
-        <div className="full-width-with-padding separator">
-          <VideoStoryTemplate story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
-        </div>
+        <VideoStoryTemplate story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
       );
     case "photo":
       return (
-        <div className="full-width-with-padding separator">
-          <PhotoStoryTemplates story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
-        </div>
+        <PhotoStoryTemplates story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
       );
     default:
       return (
-        <div className="full-width-with-padding separator">
-          <TextStoryTemplate story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
-        </div>
+        <TextStoryTemplate story={story} config={templateConfigcommon} storyElementsConfig={storyElementsConfig} />
       );
   }
 }
