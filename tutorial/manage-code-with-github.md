@@ -32,3 +32,5 @@ Once you are done with your local changes now time to push your changes to Githu
 2. Add individual files  - `git add file_path` or you can check all the chages using - `git add -p` or add all the files that are updated using `git add .` .
 3. Once you have added file to origin now time to commit your changes with message - `git commit -m "your changed message"`
 4. Now time to push your changes to Github - `git push origin test`.
+
+You may now proceed to [Quay]({{"/tutorial/quay.html" | absolute_url}}) to checkup docker build or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
