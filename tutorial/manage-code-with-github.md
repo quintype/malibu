@@ -20,7 +20,7 @@ In this tutorial we will see how we can take the repository in local system from
 
 ## Update files locally in Malibu
 1. Once you cloned the repository go to `malibu` folder using `cd malibu`.
-2. Create `test` branch - `git checkout -b test`.
+2. Create `test` branch - `git checkout -b test` or you can swithc to different branch using - `git checkout branch_name`.
 2. Let's edit `story.js` file and add one console there.
 
 ## Pushing code back to Github
