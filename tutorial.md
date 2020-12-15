@@ -23,6 +23,14 @@ has_toc: false
   {% endfor %}
 </ul>
 
+### Deployment and Release management
+<ul>
+  {% assign tutorials = site.pages | where: "parent", "Deployment and Release management" | sort: "nav_order" %}
+  {% for page in tutorials %}
+    <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
+
 ### Upgrading from Earlier Versions of Malibu
 <ul>
   {% assign tutorials = site.pages | where: "parent", "Upgrading from Earlier Versions of Malibu" | sort: "nav_order" %}
