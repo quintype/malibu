@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
-    "@quintype/arrow": "^0.3.48-rtl-story-elements.0",
+    "@quintype/arrow": "^0.3.48-rtl-story-elements.1",
     "@quintype/backend": "^1.23.2",
     "@quintype/components": "^2.23.0-youtube-render.3",
     "@quintype/framework": "^4.5.4",
