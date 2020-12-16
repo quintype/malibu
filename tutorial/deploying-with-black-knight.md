@@ -1,12 +1,12 @@
 ---
-title: Deploying With Black Knight
-parent: Malibu Tutorial
-nav_order: 03
+title: Black Night
+parent: Deployment and Release management
+grand_parent: Malibu Tutorial
+nav_order: 02
 ---
-
 # {{page.title}}
 
-*This tutorial was contributed by [Sanjeev Kumar G](https://twitter.com/sanju296)*
+*This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar),  [Sanjeev Kumar G](https://twitter.com/sanju296) and [Deo Kumar](https://www.linkedin.com/in/deo-kumar)*
 
 Now that we've learned how to create a new page, let's deploy our changes to a staging environment to understand how Quintype's deployment architecture works.
 
@@ -72,6 +72,8 @@ asset_host: fea.assettype.com
 ### Logs
 The Logs tab allows you to see logs from *stdout* or *error.log* from the running container.
 
+![Black night logs]({{"images/bk-logs.png" | absolute_url}})
+
 ### Dispose
 The Dispose tab can be used to start and stop the environment. This is applicable only for staging as the servers can be started/stopped as needed.
 
@@ -117,4 +119,4 @@ We all make mistakes when building software, and sometimes it's necessary to rol
 
 Going to the environment page, and you will see a list of deployments. Clicking on any deployment will open the deployment page. Click the *Redeploy* button, and re enter the id as confirmation. This will trigger a rollback to that deployment.
 
-You may now proceed to [Adding a Homepage Component]({{"/tutorial/adding-a-homepage-component" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Black-night]({{"/tutorial/black-night.html" | absolute_url}}) to deploy your branch on cloud or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

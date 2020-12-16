@@ -13,10 +13,15 @@ Quay is used to provide a scalable and secure container registry platform on top
 
 For more details about quay you can go through the [quay documentation](https://docs.quay.io/solution/getting-started.html).
 
-After pushing your changes to GitHub you need to wait till the docker build finished, you check your docker build in the quay.
+After pushing your changes to GitHub you need to wait till the docker build finished, you can check your docker build in the quay.
 
 1. Login to [quay](https://quay.io).
 2. Once you logged in you will see all the repository list inside the quay - internally the docker file will run.
 3. Click on the required repository, in our case click on `malibu`.
 
-You may now proceed to [Black-night]({{"/tutorial/quay.html" | absolute_url}}) to deploy your branch on cloud or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+![Building on Quay]({{"images/bk-quay-build.jpg" | absolute_url}})
+
+
+Once the build is done you should see the green tick befor befor build id.
+
+You may now proceed to [Deploying With Black Knight]({{"/tutorial/deploying-with-black-knight.html" | absolute_url}}) to deploy your branch on cloud or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

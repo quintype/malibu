@@ -157,4 +157,4 @@ Head over to [http://localhost:3000/author/2038](http://localhost:3000/author/20
 
 ![Author Page]({{"images/author-page.png" | absolute_url}})
 
-You may now proceed to [Deploying With Black Knight]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Adding a Homepage Component]({{"/tutorial/adding-a-homepage-component" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
