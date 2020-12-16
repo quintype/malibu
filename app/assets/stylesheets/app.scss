@@ -265,3 +265,9 @@ html[dir="rtl"] {
     }
   }
 }
+
+html[dir=rtl] {
+  .story-element-youtube-video {
+    text-align: right;
+  }
+}

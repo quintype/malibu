@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
-    "@quintype/arrow": "^0.3.46-rtl-story-elements.2",
+    "@quintype/arrow": "^0.3.48-rtl-story-elements.0",
     "@quintype/backend": "^1.23.2",
     "@quintype/components": "^2.23.0-youtube-render.3",
     "@quintype/framework": "^4.5.4",
@@ -42,7 +42,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "gumlet.js": "^2.0.0",
     "history": "^5.0.0",
-    "husky": "^4.0.0",
+    "husky": "^5.0.4",
     "jest": "^26.0.1",
     "lint-staged": "^10.0.0",
     "mocha": "^8.0.1",
