@@ -33,4 +33,4 @@ Once you are done with your local changes now time to push your changes to Githu
 3. Once you have added file to origin now time to commit your changes with message - `git commit -m "your changed message"`
 4. Now time to push your changes to Github - `git push origin test`.
 
-You may now proceed to [Docker]({{"/tutorial/quay.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Docker]({{"/tutorial/docker.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
