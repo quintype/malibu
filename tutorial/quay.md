@@ -2,7 +2,7 @@
 title: Quay
 parent: Deployment and Release management
 grand_parent: Malibu Tutorial
-nav_order: 02
+nav_order: 03
 ---
 
 # {{page.title}}
