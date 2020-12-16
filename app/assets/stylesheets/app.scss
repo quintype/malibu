@@ -2,6 +2,7 @@
 @import "~@quintype/arrow/dist/app.scss";
 @import "~@glidejs/glide/dist/css/glide.core.min.css";
 @import "~@glidejs/glide/src/assets/sass/glide.theme";
+@import "~react-image-lightbox/style.css";
 
 *,
 *::after,
@@ -262,5 +263,11 @@ html[dir="rtl"] {
       position: absolute;
       width: 0;
     }
+  }
+}
+
+html[dir=rtl] {
+  .story-element-youtube-video {
+    text-align: right;
   }
 }
