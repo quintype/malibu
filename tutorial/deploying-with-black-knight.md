@@ -119,4 +119,4 @@ We all make mistakes when building software, and sometimes it's necessary to rol
 
 Going to the environment page, and you will see a list of deployments. Clicking on any deployment will open the deployment page. Click the *Redeploy* button, and re enter the id as confirmation. This will trigger a rollback to that deployment.
 
-You may now proceed to [Docker]({{"/tutorial/docker.html" | absolute_url}}) to deploy your branch on cloud or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Round Table]({{"/tutorial/round-table.html" | absolute_url}}) to deploy your branch on cloud or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
