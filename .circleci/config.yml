@@ -15,27 +15,34 @@ jobs:
           root: /tmp/workspace
           paths:
             - docker-tag.txt
-    test:
-      docker:
-        - image: circleci/node:12.13.0
-      steps:
-        - checkout
-        - run: npm install
-        - run: npm test
-  # lint_js:
-  #   docker:
-  #     - image: circleci/node:8.11
-  #   steps:
-  #     - checkout
-  #     - run: npm install
-  #     - run: npm run lint:js:ci
-  # lint_css:
-  #   docker:
-  #     - image: circleci/node:8.11
-  #   steps:
-  #     - checkout
-  #     - run: npm install
-  #     - run: npm run lint:css:ci
+
+  deploy_task: &deploy_task
+    machine: true
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy $BK_ENVIRONMENT deployment $(cat /tmp/workspace/docker-tag.txt)
+
+  deploy_staging:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: staging 1474
+
+  lint_js:
+    docker:
+      - image: circleci/node:8.11
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run lint:js:ci
+  lint_css:
+    docker:
+      - image: circleci/node:8.11
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run lint:css:ci
 
   # stg_lighthouse_task:
   #   docker:
@@ -50,9 +57,23 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - test
+      - lint_js
+      - lint_css
       - build:
           context: quay-login
-      # - lint_js
-      # - lint_css
+      - hold_staging:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - lhi-circleci
+      - deploy_staging:
+          context: quay-login
+          requires:
+            - hold_staging
+
+
       # - stg_lighthouse_task
