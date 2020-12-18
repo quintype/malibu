@@ -74,4 +74,7 @@ workflows:
           context: quay-login
           requires:
             - hold_staging
-      - stg_lighthouse_task
+      - stg_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_staging
