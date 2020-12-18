@@ -29,6 +29,11 @@ jobs:
     environment:
       BK_ENVIRONMENT: staging 1474
 
+  deploy_production:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: production 134
+
   lint_js:
     docker:
       - image: circleci/node:8.11
@@ -53,6 +58,15 @@ jobs:
           export LHCI_SITES="[\"https://malibu-web.qtstage.io\"]"
           npx @lhci/cli@0.4.x autorun
 
+  prod_lighthouse_task:
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - run: |
+          export LHCI_SITES="[\"https://malibu-web.quintype.io\"]"
+          npx @lhci/cli@0.4.x autorun
+
 workflows:
   version: 2
   build_and_test:
@@ -65,16 +79,31 @@ workflows:
           type: approval
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
-                - lhi-circleci
       - deploy_staging:
           context: quay-login
           requires:
             - hold_staging
+      - hold_production:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+      - deploy_production:
+          context: quay-login
+          requires:
+            - hold_production
+          filters:
+              branches:
+                only:
+                  - master
       - stg_lighthouse_task:
           context: quay-login
           requires:
             - deploy_staging
+      - prod_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_production
