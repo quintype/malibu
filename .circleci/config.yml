@@ -79,10 +79,6 @@ workflows:
           type: approval
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
       - deploy_staging:
           context: quay-login
           requires:
