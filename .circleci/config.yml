@@ -73,6 +73,9 @@ workflows:
     jobs:
       - lint_js
       - lint_css
+
+  lighthouse_test:
+    jobs:
       - build:
           context: quay-login
       - hold_staging:

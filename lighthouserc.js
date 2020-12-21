@@ -2,11 +2,14 @@ const url = `https://${process.env.LH_USER}:${process.env.LH_PASSWORD}@lighthous
 const lhciConfig = {
   ci: {
     collect: {
-      url: JSON.parse(process.env.LHCI_SITES)
+      url: JSON.parse(process.env.LHCI_SITES),
+      settings: {
+        emulatedFormFactor: "mobile"
+      }
     },
-    "assert": {
-      "assertions": {
-        "categories:performance": ["error", {"minScore": 1}],
+    assert: {
+      assertions: {
+        "categories:performance": ["error", { minScore: 0.9 }]
       }
     },
     upload: {
