@@ -6,7 +6,7 @@ const lhciConfig = {
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", {"minScore": 1}],
+        "categories:performance": ["error", {"minScore": 9.0}],
       }
     },
     upload: {
