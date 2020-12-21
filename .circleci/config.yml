@@ -73,10 +73,11 @@ workflows:
     jobs:
       - lint_js
       - lint_css
-      - build:
-          context: quay-login
+
   lighthouse_test:
     jobs:
+      - build:
+          context: quay-login
       - hold_staging:
           type: approval
           requires:
