@@ -24,6 +24,11 @@ jobs:
       - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
       - run: docker run --rm --name bk quay.io/quintype/bk-deploy $BK_ENVIRONMENT deployment $(cat /tmp/workspace/docker-tag.txt)
 
+  deploy_qa_staging:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: staging 1475
+
   deploy_staging:
     <<: *deploy_task
     environment:
@@ -48,6 +53,16 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint:css:ci
+
+  qa_stg_lighthouse_task:
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - run: |
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
+          npx @lhci/cli@0.4.x autorun
+
 
   stg_lighthouse_task:
     docker:
@@ -78,6 +93,18 @@ workflows:
     jobs:
       - build:
           context: quay-login
+      - hold_qa_staging:
+          type: approval
+          requires:
+            - build
+      - deploy_qa_staging:
+          context: quay-login
+          requires:
+            - hold_qa_staging
+      - qa_stg_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_qa_staging
       - hold_staging:
           type: approval
           requires:
@@ -86,6 +113,10 @@ workflows:
           context: quay-login
           requires:
             - hold_staging
+      - stg_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_staging
       - hold_production:
           type: approval
           requires:
@@ -102,10 +133,6 @@ workflows:
               branches:
                 only:
                   - master
-      - stg_lighthouse_task:
-          context: quay-login
-          requires:
-            - deploy_staging
       - prod_lighthouse_task:
           context: quay-login
           requires:
