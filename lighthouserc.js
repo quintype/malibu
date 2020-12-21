@@ -4,12 +4,12 @@ const lhciConfig = {
     collect: {
       url: JSON.parse(process.env.LHCI_SITES),
       settings: {
-        emulatedFormFactor: 'mobile'
+        emulatedFormFactor: "mobile"
       }
     },
-    "assert": {
-      "assertions": {
-        "categories:performance": ["error", {"minScore": 0.9}],
+    assert: {
+      assertions: {
+        "categories:performance": ["error", { minScore: 0.9 }],
       }
     },
     upload: {
