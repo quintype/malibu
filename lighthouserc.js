@@ -4,6 +4,11 @@ const lhciConfig = {
     collect: {
       url: JSON.parse(process.env.LHCI_SITES)
     },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", {"minScore": 1}],
+      }
+    },
     upload: {
       target: "lhci",
       serverBaseUrl: url,
