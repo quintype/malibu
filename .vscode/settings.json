@@ -8,5 +8,8 @@
   "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
   "files.associations": {
     "*.css": "scss"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }

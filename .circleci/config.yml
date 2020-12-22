@@ -1,5 +1,44 @@
 version: 2
 jobs:
+  build:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: mkdir -p /tmp/workspace && echo $CIRCLE_BRANCH-$CIRCLE_BUILD_NUM > /tmp/workspace/docker-tag.txt
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker build -t quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt) .
+      - run: docker push quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt)
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - docker-tag.txt
+
+  deploy_task: &deploy_task
+    machine: true
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy $BK_ENVIRONMENT deployment $(cat /tmp/workspace/docker-tag.txt)
+
+  deploy_qa_staging:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: staging 1475
+
+  deploy_staging:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: staging 1474
+
+  deploy_production:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: production 134
+
   lint_js:
     docker:
       - image: circleci/node:8.11
@@ -14,9 +53,88 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint:css:ci
+
+  qa_stg_lighthouse_task:
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - run: |
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
+          npx @lhci/cli@0.4.x autorun
+
+
+  stg_lighthouse_task:
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - run: |
+          export LHCI_SITES="[\"https://malibu-web.qtstage.io\"]"
+          npx @lhci/cli@0.4.x autorun
+
+  prod_lighthouse_task:
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - run: |
+          export LHCI_SITES="[\"https://malibu-web.quintype.io\"]"
+          npx @lhci/cli@0.4.x autorun
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - lint_js
       - lint_css
+
+  lighthouse_test:
+    jobs:
+      - build:
+          context: quay-login
+      - hold_qa_staging:
+          type: approval
+          requires:
+            - build
+      - deploy_qa_staging:
+          context: quay-login
+          requires:
+            - hold_qa_staging
+      - qa_stg_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_qa_staging
+      - hold_staging:
+          type: approval
+          requires:
+            - build
+      - deploy_staging:
+          context: quay-login
+          requires:
+            - hold_staging
+      - stg_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_staging
+      - hold_production:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - pn-test-publisher
+      - deploy_production:
+          context: quay-login
+          requires:
+            - hold_production
+          filters:
+              branches:
+                only:
+                  - master
+      - prod_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_production
