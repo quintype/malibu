@@ -83,7 +83,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
       config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
-        "publisher-attributes": publisherAttributes
+        "publisher-attributes": publisherAttributes,
+        "image-cdn-format": "gumlet"
       })
     };
   });
