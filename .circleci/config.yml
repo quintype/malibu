@@ -34,6 +34,11 @@ jobs:
     environment:
       BK_ENVIRONMENT: staging 1474
 
+  deploy_perf:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: production 204
+
   deploy_production:
     <<: *deploy_task
     environment:
@@ -61,6 +66,15 @@ jobs:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
+          npx @lhci/cli@0.4.x autorun
+
+  perf_lighthouse_task:
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - run: |
+          export LHCI_SITES="[\"https://malibu-perf.quintype.io/\"]"
           npx @lhci/cli@0.4.x autorun
 
 
@@ -105,6 +119,20 @@ workflows:
           context: quay-login
           requires:
             - deploy_qa_staging
+
+      - hold_perf:
+          type: approval
+          requires:
+            - build
+      - deploy_perf:
+          context: quay-login
+          requires:
+            - hold_perf
+      - perf_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_perf
+
       - hold_staging:
           type: approval
           requires:
