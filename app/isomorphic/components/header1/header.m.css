@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.blue {
+  background: blue;
+}

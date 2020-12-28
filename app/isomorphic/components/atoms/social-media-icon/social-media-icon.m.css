@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  :last-child {
+    margin-right: 0;
+  }
+}
+
+.share-item {
+  margin-right: 24px;
+  position: relative;
+  ::after {
+    content: "";
+    position: absolute;
+    border-right: 1px solid #ccc;
+    top: 50%;
+    height: 10px;
+    right: -12px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.share-item:last-child {
+  margin-right: 0;
+  ::after {
+    border: none;
+  }
+}

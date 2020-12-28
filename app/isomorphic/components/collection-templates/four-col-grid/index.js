@@ -7,7 +7,7 @@ import "./four-col-grid.m.css";
 
 export function FourColGrid({ collection, stories }) {
   return (
-    <div>
+    <div className="container">
       <h3 styleName="heading">{collection.name}</h3>
       <StoryGrid stories={stories} />
     </div>

@@ -1,0 +1,35 @@
+.hamburger {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  margin-right: 4px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+.line {
+  background-color: var(--arrow-c-brand2);
+  display: block;
+  margin-bottom: 3px;
+  height: 3px;
+  width: 16px;
+  transition: all 0.1s ease-in;
+  border-radius: 2px;
+}
+
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}

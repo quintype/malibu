@@ -20,7 +20,7 @@ StoryCard.propTypes = {
 
 function BlankStoryTemplate(props) {
   return (
-    <div className="blank-story">
+    <div className="blank-story container">
       <figure className="blank-story-image qt-image-16x9">
         <ResponsiveImage
           slug={props.story["hero-image-s3-key"]}
