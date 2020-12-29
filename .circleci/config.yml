@@ -74,7 +74,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-perf.quintype.io/\"]"
+          export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
           npx @lhci/cli@0.4.x autorun
 
 
