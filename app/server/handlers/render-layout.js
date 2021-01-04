@@ -7,7 +7,6 @@ import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
 import serialize from "serialize-javascript";
-
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
 const allChunks = getAllChunks("list", "story");
@@ -37,7 +36,9 @@ export function renderLayout(res, params) {
         pageChunk: chunk,
         store: params.store,
         shell: params.shell,
-        serialize
+        serialize,
+        oneSignalAppId: "19d534f1-3f5d-4258-a5f4-9f322b6f54ba",
+        appName: "Malibu"
       },
       params
     )
