@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle, no-undef, no-unused-vars, object-shorthand, arrow-body-style  */
 import pick from "lodash/pick";
+import get from "lodash/get";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
@@ -9,9 +10,18 @@ import { loadSearchPageData } from "./data-loaders/search-page-data";
 import { loadFormPageData } from "./data-loaders/form-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
+import publisher from "@quintype/framework/server/publisher-config";
 import { PAGE_TYPE } from "../isomorphic/constants";
 
-const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout", "sections", "social-links", "publisher-name"];
+const WHITELIST_CONFIG_KEYS = [
+  "cdn-image",
+  "polltype-host",
+  "layout",
+  "sections",
+  "social-links",
+  "publisher-name",
+  "public-integrations"
+];
 
 export function loadErrorData(error, config) {
   const errorComponents = { 404: "not-found" };
@@ -19,7 +29,9 @@ export function loadErrorData(error, config) {
     data: {
       navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
-    config: pick(config, WHITELIST_CONFIG_KEYS),
+    config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
+      publisher
+    }),
     pageType: errorComponents[error.httpStatusCode],
     httpStatusCode: error.httpStatusCode || 500
   });
@@ -61,7 +73,9 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       data: Object.assign({}, data, {
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
-      config: pick(config.asJson(), WHITELIST_CONFIG_KEYS)
+      config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
+        publisher
+      })
     };
   });
 }

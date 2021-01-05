@@ -7,13 +7,22 @@ import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
 import serialize from "serialize-javascript";
+import get from "lodash/get";
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
 const allChunks = getAllChunks("list", "story");
 
+const getOneSignalConfig = state => {
+  return {
+    oneSignalAppId: get(state, ["public-integrations", "one-signal", "app-id"], {}),
+    isEnableOnesignal: get(state, ["qt", "config", "publisher", "push_notification", "is_enable_onesignal"], false)
+  };
+};
+
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
 
+  const oneSignal = getOneSignalConfig(params.store.getState()) || {};
   res.render(
     "pages/layout",
     Object.assign(
@@ -37,8 +46,7 @@ export function renderLayout(res, params) {
         store: params.store,
         shell: params.shell,
         serialize,
-        oneSignalAppId: "19d534f1-3f5d-4258-a5f4-9f322b6f54ba",
-        appName: "Malibu"
+        oneSignal
       },
       params
     )

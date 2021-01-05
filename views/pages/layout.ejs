@@ -30,7 +30,9 @@
       <link rel="preload" href="<%= jsPath %>" as="script">
     <%_ }) _%>
     <%_ } _%>
-    <%- include ./partials/notification-header-partial.ejs -%>
+    <% if (oneSignal.isEnableOnesignal && oneSignal.oneSignalAppId) { %>
+      <%- include ./partials/onesignal.ejs -%>
+    <% } %>
   </head>
 
   <body>
