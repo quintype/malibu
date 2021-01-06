@@ -8,7 +8,7 @@ import ReactDOMServer from "react-dom/server";
 import { Provider } from "react-redux";
 import serialize from "serialize-javascript";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
-import { Header } from "../../isomorphic/components/header";
+import { Header } from "../../isomorphic/components/header1";
 import { Footer } from "../../isomorphic/components/layouts/footer";
 import { getChunkName } from "../../isomorphic/pick-component";
 import fontFace from "../font";
@@ -21,15 +21,14 @@ const allChunks = getAllChunks("list", "story");
 function renderLoadableReduxComponent(Component, store, extractor, props) {
   const comp = extractor.collectChunks(React.createElement(Provider, { store }, React.createElement(Component, props)));
   const string = ReactDOMServer.renderToString(comp);
-  console.log(extractor.getStyleElements());
   return string;
 }
 
-export function renderLayout(res, params) {
-  const extractor = new ChunkExtractor({ statsFile });
+export async function renderLayout(res, params) {
+  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["header"] });
   const header = renderLoadableReduxComponent(Header, params.store, extractor);
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-
+  const criticalCss = await extractor.getCssString();
   res.render(
     "pages/layout",
     Object.assign(
@@ -37,11 +36,12 @@ export function renderLayout(res, params) {
         assetPath: assetPath,
         content: "",
         cssContent: cssContent,
+        criticalCss,
         fontJsContent: fontJsContent,
         fontFace: fontFace,
         contentTemplate: null,
         title: params.title,
-        navbar: renderReduxComponent(Header, params.store),
+        navbar: header,
         footer: renderReduxComponent(Footer, params.store),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],

@@ -1,8 +1,8 @@
-import { renderIsomorphicComponent, renderComponent, renderBreakingNews } from "@quintype/framework/client/start";
-import { pickComponent } from "../isomorphic/pick-component";
+import { renderBreakingNews, renderComponent, renderIsomorphicComponent } from "@quintype/framework/client/start";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 // import { Header } from "../isomorphic/components/header";
 import { Footer } from "../isomorphic/components/layouts/footer";
+import { pickComponent } from "../isomorphic/pick-component";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };

@@ -1,5 +1,5 @@
-import { PAGE_TYPE } from "./constants";
 import { pickComponentHelper } from "@quintype/framework/server/pick-component-helper";
+import { PAGE_TYPE } from "./constants";
 
 const { pickComponent, getChunkName } = pickComponentHelper(
   {
@@ -21,4 +21,6 @@ const { pickComponent, getChunkName } = pickComponentHelper(
   }
 );
 
-export { pickComponent, getChunkName };
+const headerComponent = import(/* webpackChunkName: "header" */ "../isomorphic/components/header1");
+
+export { pickComponent, getChunkName, headerComponent };
