@@ -10,6 +10,7 @@ import { loadFormPageData } from "./data-loaders/form-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
+import publisher from "@quintype/framework/server/publisher-config";
 
 const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout", "sections", "social-links", "publisher-name"];
 
