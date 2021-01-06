@@ -26,11 +26,12 @@ function renderLoadableReduxComponent(Component, store, extractor, props) {
 }
 
 export async function renderLayout(res, params) {
-  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["headercss"] });
+  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["headercss", "footercss"] });
   const header = renderLoadableReduxComponent(Header, params.store, extractor);
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const criticalCss = await extractor.getCssString();
-  console.log("criticalCss------------", criticalCss);
+  console.log("criticalCss-------------", criticalCss)
+
   res.render(
     "pages/layout",
     Object.assign(

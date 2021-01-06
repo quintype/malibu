@@ -8,7 +8,7 @@ export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
   // renderComponent(Header, "header", store, hydrate);
   renderBreakingNews("breaking-news-container", store, BreakingNewsView, hydrate);
-  renderComponent(Footer, "footer", store, hydrate);
+  // renderComponent(Footer, "footer", store, hydrate);
 }
 
 // This is a separate file as everything from here on is hot reloaded when the app changes
