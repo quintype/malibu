@@ -55,13 +55,19 @@ export function loadData(pageType, params, config, client, { host, next, domainS
   }
 
   return _loadData().then(data => {
+    let fcmMessageSenderId = null;
+
+    if (publisher.fcm && publisher.fcm.message_sender_id) {
+      fcmMessageSenderId = publisher.fcm.message_sender_id;
+    }
     return {
       httpStatusCode: data.httpStatusCode || 200,
       pageType: data.pageType || pageType,
       data: Object.assign({}, data, {
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
-      config: pick(config.asJson(), WHITELIST_CONFIG_KEYS)
+      config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
+      fcmMessageSenderId
     };
   });
 }

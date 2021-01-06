@@ -1,0 +1,32 @@
+/* eslint-disable */
+importScripts("https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/6.2.0/firebase-messaging.js");
+
+firebase.initializeApp({
+  messagingSenderId: "246938023912"
+});
+
+self.addEventListener('notificationclick', function(event) {
+  let url = event.notification.data.url;
+  if(url) {
+    clients.openWindow(url);
+  }
+  clients.openWindow('https://malibu-web.quintype.io');
+}, false);
+
+const messaging = firebase.messaging();
+function messageHandler(payload) {
+  const data = payload["data"];
+  let notificationTitle = data.title;
+  let notificationOptions = {
+      body: data.body,
+      icon: data["hero_image_s3_url"],
+      image: data["hero_image_s3_url"],
+      data: {
+        url: data["click_action"],
+      }
+  };
+  return self.registration.showNotification(notificationTitle, notificationOptions);
+}
+
+messaging.setBackgroundMessageHandler(messageHandler);
