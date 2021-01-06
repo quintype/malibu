@@ -6,7 +6,7 @@ module.exports = {
   modifyWebpackConfig: function({ defaultConfig }) {
     const config = produce(defaultConfig, function(draft) {
       draft.node = { Buffer: false };
-      draft.entry["font"] = "./app/client/font.js";
+      draft.entry.font = "./app/client/font.js";
       if (process.env.ANALYZE_STATS === "true") {
         draft.plugins.push(
           new BundleAnalyzerPlugin({
@@ -17,9 +17,13 @@ module.exports = {
         );
       }
     });
+
     return {
       ...config,
-      plugins: config.plugins.concat([new LoadablePlugin({ writeToDisk: true, filename: path.resolve("stats.json") })])
+      plugins: config.plugins.concat([new LoadablePlugin({ writeToDisk: true, filename: path.resolve("stats.json") })]),
+      entry: Object.assign({}, config.entry, {
+        headercss: "./app/isomorphic/components/header/index.js"
+      })
     };
   },
   modifyBabelConfig: function({ defaultConfig, babelTarget, env }) {

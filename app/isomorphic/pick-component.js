@@ -21,6 +21,4 @@ const { pickComponent, getChunkName } = pickComponentHelper(
   }
 );
 
-const headerComponent = import(/* webpackChunkName: "header" */ "../isomorphic/components/header1");
-
-export { pickComponent, getChunkName, headerComponent };
+export { pickComponent, getChunkName };
