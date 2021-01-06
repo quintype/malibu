@@ -25,9 +25,9 @@ exports.getNavigationMenuArray = function(menuList, sectionList) {
     .filter(item => item["parent-id"] == null)
     .value();
   return {
-    bigFooterLinks: menu.filter(item => item["menu-group-slug"].toLowerCase() === "default"),
-    footerStaticMenuLinks: menu.filter(item => item["menu-group-slug"].toLowerCase() === "default"),
-    headerMenuLinks: menu.filter(item => item["menu-group-slug"].toLowerCase() === "default"),
+    bigFooterLinks: menu.filter(item => item["menu-group-slug"].toLowerCase() === "footermenulinks"),
+    footerStaticMenuLinks: menu.filter(item => item["menu-group-slug"].toLowerCase() === "footerstaticmenulinks"),
+    headerMenuLinks: menu.filter(item => item["menu-group-slug"].toLowerCase() === "headermenulinks"),
     default: menu.filter(item => item["menu-group-slug"] === "default"),
     menuItems: menu
   };
