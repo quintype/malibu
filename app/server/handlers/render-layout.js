@@ -30,7 +30,6 @@ export async function renderLayout(res, params) {
   const header = renderLoadableReduxComponent(Header, params.store, extractor);
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const criticalCss = await extractor.getCssString();
-  console.log("criticalCss-------------", criticalCss)
 
   res.render(
     "pages/layout",
