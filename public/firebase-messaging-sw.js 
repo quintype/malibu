@@ -2,9 +2,18 @@
 importScripts("https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/6.2.0/firebase-messaging.js");
 
-firebase.initializeApp({
-  messagingSenderId: "246938023912"
-});
+var firebaseConfig = {
+    apiKey: "AIzaSyCCy4NFZ7tmb88dJXZ4QTNpTVTx_LEvoq0",
+    authDomain: "malibu-staging.firebaseapp.com",
+    databaseURL: "https://malibu-staging.firebaseio.com",
+    projectId: "malibu-staging",
+    storageBucket: "malibu-staging.appspot.com",
+    messagingSenderId: "246938023912",
+    appId: "1:246938023912:web:b27873f1f1a4dd259e965d",
+    measurementId: "G-4T8EDMFTRW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
 self.addEventListener('notificationclick', function(event) {
   var url = event.notification.data.url;
