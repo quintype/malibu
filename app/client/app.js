@@ -15,8 +15,8 @@ const CUSTOM_REDUCERS = {};
 global.wretch = wretch;
 
 startApp(renderApplication, CUSTOM_REDUCERS, {
+  enableFCM: true,
   enableServiceWorker: process.env.NODE_ENV === "production",
   appVersion: require("../isomorphic/app-version"),
-  preRenderApplication,
-  enableFCM: true
+  preRenderApplication
 }).then(enableHotReload);
