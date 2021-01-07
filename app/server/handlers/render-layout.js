@@ -14,8 +14,9 @@ const allChunks = getAllChunks("list", "story");
 
 const getOneSignalConfig = state => {
   return {
-    oneSignalAppId: get(state, ["public-integrations", "one-signal", "app-id"], {}),
-    isEnableOnesignal: get(state, ["qt", "config", "publisher", "push_notification", "is_enable_onesignal"], false)
+    oneSignalAppId: get(state, ["qt", "config", "publisher", "onesignal", "app_id"], false),
+    oneSignalSafariId: get(state, ["qt", "config", "publisher", "onesignal", "safari_web_id"], false),
+    isEnable: get(state, ["qt", "config", "publisher", "onesignal", "is_enable"], false)
   };
 };
 

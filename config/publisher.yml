@@ -7,5 +7,7 @@ host_to_automatic_api_host:
   - ".malibu"
 domain_mapping:
   subdomain.lvh.me: subdomain
-push_notification:
-  is_enable_onesignal: true
+onesignal:
+  app_id: "19d534f1-3f5d-4258-a5f4-9f322b6f54ba"
+  safari_web_id: "web.onesignal.auto.37a647a2-1bdc-46a8-a505-4f4cc6400a46"
+  is_enable: true
