@@ -58,7 +58,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
   return _loadData().then(data => {
     let fcmMessageSenderId = null;
 
-    if (publisher.fcm && publisher.fcm.message_sender_id) {
+    if (publisher.fcm && publisher.fcm.is_enable && publisher.fcm.message_sender_id) {
       fcmMessageSenderId = publisher.fcm.message_sender_id;
     }
     return {

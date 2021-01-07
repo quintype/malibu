@@ -10,3 +10,4 @@ domain_mapping:
 fcm:
   message_sender_id: "246938023912"
   serverKey: "AAAAOX6nN-g:APA91bGJXM-FJXbnmfT250E088wmMUi0bzUmgfWcx618tWgagzqgMGThXwe6BfSx3xHWa83Uubik6ma0U92vjPt2II69_wv0E8xyAqKex9cobpqCVp0zkYbqG5b8fySp1kV0RQx04sf6"
+  is_enable: true
