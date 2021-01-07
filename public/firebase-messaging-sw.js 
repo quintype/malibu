@@ -2,33 +2,23 @@
 importScripts("https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/6.2.0/firebase-messaging.js");
 
-var firebaseConfig = {
-    apiKey: "AIzaSyCCy4NFZ7tmb88dJXZ4QTNpTVTx_LEvoq0",
-    authDomain: "malibu-staging.firebaseapp.com",
-    databaseURL: "https://malibu-staging.firebaseio.com",
-    projectId: "malibu-staging",
-    storageBucket: "malibu-staging.appspot.com",
-    messagingSenderId: "246938023912",
-    appId: "1:246938023912:web:b27873f1f1a4dd259e965d",
-    measurementId: "G-4T8EDMFTRW"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+firebase.initializeApp({
+  messagingSenderId: "246938023912"
+});
 
 self.addEventListener('notificationclick', function(event) {
-  let url = event.notification.data.url;
+  var url = event.notification.data.url;
   if(url) {
     clients.openWindow(url);
   }
-  clients.openWindow('https://malibu-web.quintype.io');
+  event.notification.close();
 }, false);
 
 const messaging = firebase.messaging();
 function messageHandler(payload) {
   const data = payload["data"];
-  let notificationTitle = data.title;
-  let notificationOptions = {
+  var notificationTitle = data.title;
+  var notificationOptions = {
       body: data.body,
       icon: data["hero_image_s3_url"],
       image: data["hero_image_s3_url"],
