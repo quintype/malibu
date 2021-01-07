@@ -24,13 +24,13 @@ const WHITELIST_CONFIG_KEYS = [
   "publisher-settings"
 ];
 
-export function getPublisherAttributes(config, publisherYml = publisher) {
+export function getPublisherAttributes(publisherYml = publisher) {
   const publisherAttributes = get(publisherYml, ["publisher"], {});
   return publisherAttributes;
 }
 
 export function loadErrorData(error, config) {
-  const publisherAttributes = getPublisherAttributes(config);
+  const publisherAttributes = getPublisherAttributes();
   const errorComponents = { 404: "not-found" };
   return Promise.resolve({
     data: {
@@ -73,7 +73,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
     }
   }
 
-  const publisherAttributes = getPublisherAttributes(config);
+  const publisherAttributes = getPublisherAttributes();
 
   return _loadData().then(data => {
     return {
