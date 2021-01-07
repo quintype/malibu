@@ -29,6 +29,7 @@ function BlankStoryTemplate(props) {
           defaultWidth={480}
           widths={[250, 480, 640]}
           imgParams={{ auto: ["format", "compress"] }}
+          alt={props.story.headline}
         />
       </figure>
       <h1>{props.story.headline}</h1>
