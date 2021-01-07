@@ -1,0 +1,32 @@
+import React from "react";
+import { func, object, bool } from "prop-types";
+import ReactModal from "react-modal";
+import { CloseIcon } from "../../icons/CloseIcon";
+
+import "./modal.m.css";
+
+const Modal = ({ onBackdropClick, children, hideCloseIcon }) => {
+  return (
+    <ReactModal
+      className="malibu-modal"
+      overlayClassName="modal-backdrop"
+      isOpen={true}
+      onRequestClose={onBackdropClick}
+    >
+      <div className="modal-content">
+        {children}
+        {!hideCloseIcon && (
+          <button styleName="close-button" onClick={onBackdropClick}>
+            <CloseIcon />
+          </button>
+        )}
+      </div>
+    </ReactModal>
+  );
+};
+
+Modal.propTypes = {
+  onBackdropClick: func,
+  children: object,
+  hideCloseIcon: bool
+};
