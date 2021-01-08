@@ -7,3 +7,9 @@ host_to_automatic_api_host:
   - ".malibu"
 domain_mapping:
   subdomain.lvh.me: subdomain
+
+publisher:
+  google_tag_manager:
+    id: "GTM-M2JPDF4"
+  google_analytics:
+    id: "UA-139937241-1"
