@@ -226,7 +226,8 @@ class MenuBarBase extends React.Component {
 const mapStateToProps = state => {
   return {
     pageType : get(state, ["qt", "pageType"], ""),
-    currentPath: get(state, ["qt", "currentPath"], "")
+    currentPath: get(state, ["qt", "currentPath"], ""),
+    menuItems: get(state, ["qt", "data", "navigationMenu", "headerMenuLinks"], []),
   };
 };
 const MenuBar = connect(mapStateToProps)(MenuBarBase);

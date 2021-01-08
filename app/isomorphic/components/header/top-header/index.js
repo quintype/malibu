@@ -29,8 +29,7 @@ const TopHeader = ({ pageType }) => {
         </div>
         <div>
           {/* <img styleName="icon-bell" src={`${assetify(Bell)}`} alt="notification" /> */}
-          <div styleName="search">
-            <Search />
+          <div styleName="search" id="searchId">
           </div>
         </div>
       </div>

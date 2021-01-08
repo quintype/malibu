@@ -16,7 +16,8 @@ class HeaderBase extends React.Component {
     return (
       <div>
         <TopHeader pageType={pageType}></TopHeader>
-        <MenuBar menuItems={this.props.menu} />
+        <div id="menuBar"></div>
+        {/* <MenuBar menuItems={this.props.menu} /> */}
       </div>
     );
   }
