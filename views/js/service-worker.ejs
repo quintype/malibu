@@ -15,5 +15,6 @@ const workbox = initializeQServiceWorker(self, {
 });
 
 workbox.router.registerRoute('/route-data.json', workbox.strategies.networkFirst());
-console.log("here come config", config)
-importScripts('https://cdn.onesignal.com/sdks/OneSignalSDK.js')
+<!-- console.log("here come config", config) -->
+importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');
+
