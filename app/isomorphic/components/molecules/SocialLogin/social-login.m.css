@@ -25,7 +25,6 @@
     padding: 10px 0;
     @media screen and (min-width: 767px) {
       margin-right: 15px;
-      padding: inherit;
     }
     &:last-child {
       margin-right: 0;

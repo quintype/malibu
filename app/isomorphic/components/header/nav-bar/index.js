@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import get from "lodash/get";
 import { func } from "prop-types";
 
@@ -10,6 +10,7 @@ import AccountModal from "../../login/AccountModal";
 import "./styles.m.css";
 
 const NavBar = props => {
+  const [showAccountModal, setShowAccountModal] = useState(false);
   return (
     <React.Fragment>
       <AppLogo />
@@ -22,8 +23,10 @@ const NavBar = props => {
           );
         })}
         <li>
-          <button>Login</button>
-          <AccountModal onBackdropClick={() => {}} checkForMemberUpdated={{}} />
+          <button onClick={() => setShowAccountModal(true)}>Login</button>
+          {showAccountModal && (
+            <AccountModal onBackdropClick={() => setShowAccountModal(false)} checkForMemberUpdated={{}} />
+          )}
           {/* checkForMemberUpdated from
           withmember of qt components library and also add onBackdropClick which is used for closing popup */}
         </li>

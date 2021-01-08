@@ -14,7 +14,6 @@
   .tabs {
     display: flex;
     list-style: none;
-    justify-content: space-around;
     margin-bottom: 30px;
     cursor: pointer;
   }
