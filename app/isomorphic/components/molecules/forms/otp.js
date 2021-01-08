@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { InputField } from "../../atoms/InputField";
 // import { verifyEmailOTP, verifyEmail } from "../../helper/api";
-import { IS_OPEN_LOGIN_FORM } from "../../helper/actions";
+// import { IS_OPEN_LOGIN_FORM } from "../../helper/actions";
 import "./forms.m.css";
 
 const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
@@ -84,7 +84,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => ({
   manageLoginForm: function(payload) {
     dispatch({
-      type: IS_OPEN_LOGIN_FORM,
+      // type: IS_OPEN_LOGIN_FORM,
       payload: payload
     });
   }

@@ -4,7 +4,7 @@ import { Modal } from "../modal";
 import { Login } from "../../molecules/forms/login";
 import { SignUp } from "../../molecules/forms/sign-up";
 import { OTP } from "../../molecules/forms/otp";
-// import { ForgotPassword } from "../../molecules/forms/forgot-password";
+import { ForgotPassword } from "../../molecules/forms/forgot-password";
 import "./account-modal.m.css";
 
 const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
@@ -40,8 +40,8 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
         return <SignUp onSignup={member => onSuccess(member)} />;
       case "otp":
         return <OTP id={otpToken} member={member} checkForMemberUpdated={checkForMemberUpdated} />;
-      // case "forgot-password":
-      //   return <ForgotPassword onBackdropClick={onBackdropClick} />;
+      case "forgot-password":
+        return <ForgotPassword onBackdropClick={onBackdropClick} />;
       default:
         return null;
     }
@@ -51,21 +51,31 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
   //   console.log(error);
   // }
 
+  const getActiveTabHeading = () => {
+    if (activeTab === "forgot-password")
+      return (
+        <ul styleName="tabs">
+          <li styleName={`tab-item active`}>Forgot Password</li>
+        </ul>
+      );
+
+    return (
+      <ul styleName="tabs">
+        <li onClick={() => setActiveTab("login")} styleName={`tab-item ${activeTab === "login" ? "active" : ""}`}>
+          Login
+        </li>
+        <li onClick={() => setActiveTab("register")} styleName={`tab-item ${activeTab === "register" ? "active" : ""}`}>
+          Register
+        </li>
+      </ul>
+    );
+  };
+
   return (
     <Modal onBackdropClick={onBackdropClick}>
       <div styleName="account-modal">
         <div styleName="form-wrapper">
-          <ul styleName="tabs">
-            <li onClick={() => setActiveTab("login")} styleName={`tab-item ${activeTab === "login" ? "active" : ""}`}>
-              Login
-            </li>
-            <li
-              onClick={() => setActiveTab("register")}
-              styleName={`tab-item ${activeTab === "register" ? "active" : ""}`}
-            >
-              Register
-            </li>
-          </ul>
+          {getActiveTabHeading()}
           <div className="forms">{getScreen()}</div>
         </div>
       </div>

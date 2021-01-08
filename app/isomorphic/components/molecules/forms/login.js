@@ -8,7 +8,7 @@ import { InputField } from "../../atoms/InputField";
 
 import "./forms.m.css";
 
-const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPasswor, manageLoginForm }) => {
+const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPassword, manageLoginForm }) => {
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -65,7 +65,7 @@ const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPasswor, manageLoginF
         <InputField name="Password" id="password" type="password" required onChange={setData} />
         {error && <p styleName="error">{error.message}</p>}
         <div styleName="actions">
-          <div styleName="malibu-link malibu-text" onClick={forgotPasswor}>
+          <div styleName="malibu-link malibu-text" onClick={forgotPassword}>
             Forgot Password?
           </div>
           <button onClick={loginHandler} className="malibu-btn-large">
@@ -81,7 +81,7 @@ const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPasswor, manageLoginF
 LoginBase.propTypes = {
   checkForMemberUpdated: func,
   onLogin: func,
-  forgotPasswor: func,
+  forgotPassword: func,
   manageLoginForm: func,
   isLoginOpen: bool
 };
