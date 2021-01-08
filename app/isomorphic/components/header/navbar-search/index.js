@@ -3,8 +3,8 @@ import { SearchBox } from "@quintype/components";
 
 import "./styles.m.css";
 
-import { Search } from "../../basic/icons/search";
-import { CloseIcon } from "../../basic/icons/close-icon";
+import { Search } from "../../atoms/icons/search";
+import { CloseIcon } from "../../atoms/icons/close-icon";
 
 function DrawForm({ children }) {
   return [

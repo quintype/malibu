@@ -1,29 +1,27 @@
-// import React, { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 import get from "lodash/get";
 import { connect } from "react-redux";
 import { func, bool } from "prop-types";
-// import { SocialLogin } from "../social-login";
-// import { Button } from "../../atoms/button";
-// import { InputField } from "../../atoms/input-field";
-import { IS_OPEN_LOGIN_FORM } from "../../helper/actions";
+import { SocialLogin } from "../SocialLogin";
+import { InputField } from "../../atoms/InputField";
+// import { IS_OPEN_LOGIN_FORM } from "../../helper/actions";
 
 import "./forms.m.css";
 
 const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPasswor, manageLoginForm }) => {
-  // const [user, setUser] = useState({
-  //   email: "",
-  //   password: ""
-  // });
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
 
-  // const [error, setError] = useState({});
+  const [error, setError] = useState({});
 
-  // const setData = e => {
-  //   const userObj = { ...user };
-  //   const fieldName = e.target.id;
-  //   userObj[fieldName] = e.target.value;
-  //   setUser(userObj);
-  // };
+  const setData = e => {
+    const userObj = { ...user };
+    const fieldName = e.target.id;
+    userObj[fieldName] = e.target.value;
+    setUser(userObj);
+  };
 
   const loginHandler = async e => {
     e.preventDefault();
@@ -34,10 +32,10 @@ const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPasswor, manageLoginF
     //   password: user.password
     // };
 
-    // if (user.email.length < 1 || user.password.length < 1) {
-    //   setError({ message: "Please provide username and password" });
-    //   return null;
-    // }
+    if (user.email.length < 1 || user.password.length < 1) {
+      setError({ message: "Please provide username and password" });
+      return null;
+    }
 
     console.log("need to implement logic flow through BK library");
 
@@ -59,22 +57,23 @@ const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPasswor, manageLoginF
     //   })
     //   .catch(error => setError(error));
   };
+
   return (
     <React.Fragment>
       <form styleName="malibu-form" onSubmit={loginHandler}>
-        {/* <InputField name="Email" id="email" type="email" required onChange={setData} />
-        <InputField name="Password" id="password" type="password" required onChange={setData} /> */}
-        {/* {error && <p styleName="error">{error.message}</p>} */}
+        <InputField name="Email" id="email" type="email" required onChange={setData} />
+        <InputField name="Password" id="password" type="password" required onChange={setData} />
+        {error && <p styleName="error">{error.message}</p>}
         <div styleName="actions">
           <div styleName="malibu-link malibu-text" onClick={forgotPasswor}>
             Forgot Password?
           </div>
-          {/* <Button onClick={loginHandler} className="malibu-btn-large">
+          <button onClick={loginHandler} className="malibu-btn-large">
             Login
-          </Button> */}
+          </button>
         </div>
       </form>
-      {/* <SocialLogin checkForMemberUpdated={checkForMemberUpdated} /> */}
+      <SocialLogin checkForMemberUpdated={checkForMemberUpdated} />
     </React.Fragment>
   );
 };
@@ -94,7 +93,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   manageLoginForm: function(payload) {
     dispatch({
-      type: IS_OPEN_LOGIN_FORM,
+      // type: IS_OPEN_LOGIN_FORM,
       payload: payload
     });
   }

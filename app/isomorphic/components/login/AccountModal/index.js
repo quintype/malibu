@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
-import { Modal } from "../../molecules/modal";
+import { Modal } from "../modal";
 import { Login } from "../../molecules/forms/login";
 // import { SignUp } from "../../molecules/forms/sign-up";
 // import { OTP } from "../../molecules/forms/otp";
