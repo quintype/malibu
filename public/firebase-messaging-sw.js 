@@ -11,7 +11,7 @@ self.addEventListener('notificationclick', function(event) {
   if(url) {
     clients.openWindow(url);
   }
-  event.notification.close();
+  clients.openWindow('https://malibu-web.qtstage.io/');
 }, false);
 
 const messaging = firebase.messaging();
