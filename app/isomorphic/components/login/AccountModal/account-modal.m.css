@@ -5,8 +5,8 @@
   }
   .form-wrapper {
     padding: 40px 20px 30px;
-    flex-basis: 63%;
     background: var(--nl-gray24);
+    width: 320px;
     @media screen and (min-width: 767px) {
       padding: 40px 40px 30px;
     }
@@ -20,16 +20,15 @@
   .tab-item {
     padding: 10px;
     text-transform: uppercase;
-    color: var(--primary-color);
+    color: var(--malibu-gray9);
     font-family: var(--primary-font);
     font-size: 16px;
     font-weight: var(--bold);
-    flex-basis: 40%;
     line-height: 1.63;
     letter-spacing: 1.8px;
     text-align: center;
   }
   .active {
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--malibu-gray9);
   }
 }

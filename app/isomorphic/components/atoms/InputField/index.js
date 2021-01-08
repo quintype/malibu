@@ -5,7 +5,7 @@ import "./input.m.css";
 
 export const InputField = ({ name, placeholder, type = "text", value, required, ...props }) => (
   <React.Fragment>
-    <label htmlFor={name} className="sr-only">
+    <label htmlFor={name} styleName="label" className="sr-only">
       {name}
     </label>
     <input
