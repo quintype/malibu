@@ -77,9 +77,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
   return _loadData().then(data => {
     let fcmMessageSenderId = null;
 
-    if (publisherAttributes.fcm && publisherAttributes.fcm.is_enable && publisherAttributes.fcm.message_sender_id) {
-      console.log("here come", publisherAttributes.fcm.message_sender_id);
-      fcmMessageSenderId = publisherAttributes.fcm.message_sender_id;
+    if (publisher.fcm && publisher.fcm.is_enable && publisher.fcm.message_sender_id) {
+      fcmMessageSenderId = publisher.fcm.message_sender_id;
     }
     return {
       httpStatusCode: data.httpStatusCode || 200,
