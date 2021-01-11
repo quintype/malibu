@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense } from "react";
 import get from "lodash/get";
-import { func } from "prop-types";
+import { object } from "prop-types";
 
 import { NavbarSearch } from "../navbar-search";
 import { MenuItem } from "../helper-components";
@@ -17,7 +17,7 @@ const NavBar = props => {
       <ul styleName="navbar">
         {get(props, ["menu", "default"], []).map((item, index) => {
           return (
-            <li key={`${item.id}${index}`} onClick={props.closeMenu} styleName="menu-item desktop-view">
+            <li key={`${item.id}${index}`} styleName="menu-item desktop-view">
               <MenuItem item={item} />
             </li>
           );
@@ -33,13 +33,13 @@ const NavBar = props => {
           withmember of qt components library and also add onBackdropClick which is used for closing popup */}
         </li>
       </ul>
-      <NavbarSearch {...props} />
+      <NavbarSearch />
     </React.Fragment>
   );
 };
 
 NavBar.propTypes = {
-  closeMenu: func
+  menu: object
 };
 
 export { NavBar };
