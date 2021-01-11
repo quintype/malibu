@@ -13,3 +13,4 @@ publisher:
     id: "GTM-M2JPDF4"
   google_analytics:
     id: "UA-139937241-1"
+  enableLogin: true
