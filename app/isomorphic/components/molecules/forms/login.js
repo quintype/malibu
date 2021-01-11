@@ -65,7 +65,7 @@ const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPassword, manageLogin
         <InputField name="Password" id="password" type="password" required onChange={setData} />
         {error && <p styleName="error">{error.message}</p>}
         <div styleName="actions">
-          <div styleName="malibu-link malibu-text" onClick={forgotPassword}>
+          <div styleName="malibu-link" onClick={forgotPassword}>
             Forgot Password?
           </div>
           <button onClick={loginHandler} className="malibu-btn-large">

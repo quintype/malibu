@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
+
 import { Modal } from "../modal";
 import { Login } from "../../molecules/forms/login";
 import { SignUp } from "../../molecules/forms/sign-up";
 import { OTP } from "../../molecules/forms/otp";
 import { ForgotPassword } from "../../molecules/forms/forgot-password";
+
 import "./account-modal.m.css";
 
 const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {

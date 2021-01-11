@@ -99,7 +99,7 @@ export function ForgotPassword({ onBackdropClick }) {
             required
             onChange={setData}
           />
-          {/* {successMsg && <p styleName="success-msg">{successMsg}</p>} */}
+          {/* {successMsg && <p>{successMsg}</p>} */}
           {error && <p styleName="error">{error.message}</p>}
           <div styleName="actions">
             <button onClick={changePassword} className="malibu-btn-large">
