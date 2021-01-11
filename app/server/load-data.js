@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle, no-undef, no-unused-vars, object-shorthand, arrow-body-style  */
 import pick from "lodash/pick";
+import get from "lodash/get";
 
+import publisher from "@quintype/framework/server/publisher-config";
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
@@ -10,17 +12,33 @@ import { loadFormPageData } from "./data-loaders/form-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
-import publisher from "@quintype/framework/server/publisher-config";
 
-const WHITELIST_CONFIG_KEYS = ["cdn-image", "polltype-host", "layout", "sections", "social-links", "publisher-name"];
+const WHITELIST_CONFIG_KEYS = [
+  "cdn-image",
+  "polltype-host",
+  "layout",
+  "sections",
+  "social-links",
+  "publisher-name",
+  "sketches-host",
+  "publisher-settings"
+];
+
+export function getPublisherAttributes(publisherYml = publisher) {
+  const publisherAttributes = get(publisherYml, ["publisher"], {});
+  return publisherAttributes;
+}
 
 export function loadErrorData(error, config) {
+  const publisherAttributes = getPublisherAttributes();
   const errorComponents = { 404: "not-found" };
   return Promise.resolve({
     data: {
       navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
-    config: pick(config, WHITELIST_CONFIG_KEYS),
+    config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
+      "publisher-attributes": publisherAttributes
+    }),
     pageType: errorComponents[error.httpStatusCode],
     httpStatusCode: error.httpStatusCode || 500
   });
@@ -55,11 +73,13 @@ export function loadData(pageType, params, config, client, { host, next, domainS
     }
   }
 
+  const publisherAttributes = getPublisherAttributes();
   return _loadData().then(data => {
     let fcmMessageSenderId = null;
 
-    if (publisher.fcm && publisher.fcm.is_enable && publisher.fcm.message_sender_id) {
-      fcmMessageSenderId = publisher.fcm.message_sender_id;
+    if (publisherAttributes.fcm && publisherAttributes.fcm.is_enable && publisherAttributes.fcm.message_sender_id) {
+      console.log("here come", publisherAttributes.fcm.message_sender_id);
+      fcmMessageSenderId = publisherAttributes.fcm.message_sender_id;
     }
     return {
       httpStatusCode: data.httpStatusCode || 200,
@@ -67,7 +87,11 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       data: Object.assign({}, data, {
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
-      config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), { fcmMessageSenderId: fcmMessageSenderId })
+      config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
+        "publisher-attributes": publisherAttributes,
+        "image-cdn-format": "gumlet",
+        fcmMessageSenderId
+      })
     };
   });
 }
