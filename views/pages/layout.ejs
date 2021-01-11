@@ -30,7 +30,7 @@
       <link rel="preload" href="<%= jsPath %>" as="script">
     <%_ }) _%>
     <%_ } _%>
-    <% if (oneSignal.isEnable && oneSignal.oneSignalAppId) { %>
+    <% if (oneSignalConfig.isEnable && oneSignalConfig.oneSignalAppId) { %>
       <%- include ./partials/onesignal.ejs -%>
     <% } %>
   </head>

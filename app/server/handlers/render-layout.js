@@ -23,7 +23,7 @@ const getOneSignalConfig = state => {
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
 
-  const oneSignal = getOneSignalConfig(params.store.getState()) || {};
+  const oneSignalConfig = getOneSignalConfig(params.store.getState()) || {};
   res.render(
     "pages/layout",
     Object.assign(
@@ -47,7 +47,7 @@ export function renderLayout(res, params) {
         store: params.store,
         shell: params.shell,
         serialize,
-        oneSignal
+        oneSignalConfig
       },
       params
     )
