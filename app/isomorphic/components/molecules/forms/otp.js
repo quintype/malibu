@@ -52,7 +52,7 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
       <form styleName="malibu-form" onSubmit={otpHandler}>
         <InputField name="Enter OTP" id="otp" type="text" required onChange={setData} />
         {/* {error && <p styleName="error">Invalid OTP</p>} */}
-        {/* {successMsg && <p styleName="success-msg">{successMsg}</p>} */}
+        {/* {successMsg && <p>{successMsg}</p>} */}
         <div styleName="actions">
           <button onClick={otpHandler} className="malibu-btn-large">
             Verify OTP

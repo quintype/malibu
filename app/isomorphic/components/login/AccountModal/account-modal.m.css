@@ -1,11 +1,6 @@
 .account-modal {
-  @media screen and (min-width: 767px) {
-    display: flex;
-    max-width: 770px;
-  }
   .form-wrapper {
     padding: 40px 20px 30px;
-    background: var(--nl-gray24);
     width: 320px;
     @media screen and (min-width: 767px) {
       padding: 40px 40px 30px;
@@ -13,7 +8,6 @@
   }
   .tabs {
     display: flex;
-    list-style: none;
     margin-bottom: 30px;
     cursor: pointer;
   }
@@ -21,12 +15,8 @@
     padding: 10px;
     text-transform: uppercase;
     color: var(--malibu-gray9);
-    font-family: var(--primary-font);
-    font-size: 16px;
-    font-weight: var(--bold);
     line-height: 1.63;
     letter-spacing: 1.8px;
-    text-align: center;
   }
   .active {
     border-bottom: 2px solid var(--malibu-gray9);

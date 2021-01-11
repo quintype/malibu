@@ -1,6 +1,7 @@
 import React from "react";
 import { func, object, bool } from "prop-types";
 import ReactModal from "react-modal";
+
 import { CloseIcon } from "../../icons/CloseIcon";
 
 import "./modal.m.css";
