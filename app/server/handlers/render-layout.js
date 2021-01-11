@@ -1,6 +1,7 @@
 /* eslint-disable object-shorthand */
 import { ChunkExtractor } from "@loadable/server";
 import { assetPath, getAllChunks, readAsset } from "@quintype/framework/server/asset-helper";
+import get from "lodash/get";
 import { renderReduxComponent } from "@quintype/framework/server/render";
 import path from "path";
 import React from "react";
@@ -25,10 +26,19 @@ function renderLoadableReduxComponent(Component, store, extractor, props) {
   return string;
 }
 
+const getConfig = state => {
+  return {
+    gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
+    gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
+    cdnImage: get(state, ["qt", "config", "cdn-image"], "")
+  };
+};
+
 export async function renderLayout(res, params) {
+  const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
+  const { gtmId, gaId, cdnImage } = getConfig(params.store.getState());
   const extractor = new ChunkExtractor({ statsFile, entrypoints: ["headercss", "footercss"] });
   const header = renderLoadableReduxComponent(Header, params.store, extractor);
-  const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const criticalCss = await extractor.getCssString();
 
   res.render(
@@ -50,6 +60,9 @@ export async function renderLayout(res, params) {
           breakingNewsLoaded: false
         }),
         disableAjaxNavigation: false,
+        gtmId,
+        gaId,
+        cdnImage,
         metaTags: params.seoTags ? params.seoTags.toString() : "",
         pageChunk: chunk,
         store: params.store,

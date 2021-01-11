@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { string, bool } from "prop-types";
 
-import styles from "./styles.m.css";
-
 const Form = ({ formioUrl, disabled }) => {
   const [Formio, setFormComponent] = useState({});
   useEffect(() => {
@@ -15,11 +13,11 @@ const Form = ({ formioUrl, disabled }) => {
   }, []);
 
   return (
-    <div className={`bootstrap ${styles["form-container"]}`}>
+    <div className={`bootstrap`}>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       <link
         rel="stylesheet"
-        href="https://toert.github.io/Isolated-Bootstrap/versions/4.0.0-beta/iso_bootstrap4.0.0min.css"
+        href="https://toert.github.io/Isolated-Bootstrap/versions/4.1.0/iso_bootstrap4.1.0min.css"
       />
       <link rel="stylesheet" href="https://unpkg.com/formiojs@latest/dist/formio.full.min.css" />
       {Formio.component && <Formio.component src={formioUrl} options={{ readOnly: disabled }} />}
