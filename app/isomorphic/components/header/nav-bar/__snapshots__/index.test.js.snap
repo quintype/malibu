@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar renders the NewsHeading component with linked-story-slug 1`] = `
+<React.Fragment>
+  <AppLogo />
+  <ul
+    className="styles-m__navbar__1m8_H"
+  >
+    <li>
+      <button
+        onClick={[Function]}
+      >
+        Login
+      </button>
+    </li>
+  </ul>
+  <NavbarSearch />
+</React.Fragment>
+`;
