@@ -2,6 +2,7 @@
 import pick from "lodash/pick";
 import get from "lodash/get";
 
+import publisher from "@quintype/framework/server/publisher-config";
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
@@ -10,7 +11,6 @@ import { loadSearchPageData } from "./data-loaders/search-page-data";
 import { loadFormPageData } from "./data-loaders/form-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
-import publisher from "@quintype/framework/server/publisher-config";
 import { PAGE_TYPE } from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = [
@@ -20,17 +20,25 @@ const WHITELIST_CONFIG_KEYS = [
   "sections",
   "social-links",
   "publisher-name",
-  "public-integrations"
+  "public-integrations",
+  "sketches-host",
+  "publisher-settings"
 ];
 
+export function getPublisherAttributes(publisherYml = publisher) {
+  const publisherAttributes = get(publisherYml, ["publisher"], {});
+  return publisherAttributes;
+}
+
 export function loadErrorData(error, config) {
+  const publisherAttributes = getPublisherAttributes();
   const errorComponents = { 404: "not-found" };
   return Promise.resolve({
     data: {
       navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
     config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
-      publisher
+      "publisher-attributes": publisherAttributes
     }),
     pageType: errorComponents[error.httpStatusCode],
     httpStatusCode: error.httpStatusCode || 500
@@ -66,6 +74,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
     }
   }
 
+  const publisherAttributes = getPublisherAttributes();
+
   return _loadData().then(data => {
     return {
       httpStatusCode: data.httpStatusCode || 200,
@@ -74,7 +84,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
       }),
       config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
-        publisher
+        "publisher-attributes": publisherAttributes,
+        "image-cdn-format": "gumlet"
       })
     };
   });
