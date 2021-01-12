@@ -54,6 +54,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         return loadHomePageData(client, config);
       case PAGE_TYPE.SECTION_PAGE:
         return loadSectionPageData(client, params.sectionId, config);
+      case PAGE_TYPE.COLLECTION_PAGE:
+        return loadSectionPageData(client, params.sectionId, config);
       case PAGE_TYPE.TAG_PAGE:
         return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:

@@ -5,6 +5,7 @@ const { pickComponent, getChunkName } = pickComponentHelper(
   {
     [PAGE_TYPE.HOME_PAGE]: { chunk: "list", component: "HomePage" },
     [PAGE_TYPE.SECTION_PAGE]: { chunk: "list", component: "SectionPage" },
+    [PAGE_TYPE.COLLECTION_PAGE]: { chunk: "list", component: "SectionPage" },
     [PAGE_TYPE.TAG_PAGE]: { chunk: "list", component: "TagPage" },
     [PAGE_TYPE.SEARCH_PAGE]: { chunk: "list", component: "SearchPage" },
     [PAGE_TYPE.FORM_PAGE]: { chunk: "list", component: "FormPage" },
