@@ -5,7 +5,7 @@ export function loadSectionPageData(client, sectionId, config) {
   const section = config.sections.find(section => section.id === sectionId);
   const sectionSlug = section.collection === null ? null : section.collection.slug;
   if (sectionSlug) {
-    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 50 }, { depth: 3 }).then(collection => {
+    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 20 }, { depth: 3 }).then(collection => {
       return {
         section: section,
         collection: collection.asJson(),
@@ -15,23 +15,25 @@ export function loadSectionPageData(client, sectionId, config) {
   } else {
     const storyFields =
       "headline,subheadline,summary,sections,tags,author-name,author-id,authors,updated-at,last-published-at,published-at,updated-at,first-published-at,hero-image-metadata,hero-image-s3-key,story-content-id,slug,id,seo,story-template,metadata,url";
-    return Story.getStories(client, "top", { "section-id": section.id, fields: storyFields }).then(stories => {
-      const allStories = stories.map(story => story.asJson());
+    return Story.getStories(client, "top", { "section-id": section.id, fields: storyFields, limit: 20 }).then(
+      stories => {
+        const allStories = stories.map(story => story.asJson());
 
-      const collection = {
-        items: [],
-        name: section["display-name"] || section.name,
-        slug: section.slug
-      };
+        const collection = {
+          items: [],
+          name: section["display-name"] || section.name,
+          slug: section.slug
+        };
 
-      collection.items = allStories.map(story => story);
-      return {
-        section: section,
-        collection: collection,
-        cacheKeys: [sorterToCacheKey(config["publisher-id"], "top", sectionId)].concat(
-          stories.map(story => storyToCacheKey(config["publisher-id"], story))
-        )
-      };
-    });
+        collection.items = allStories.map(story => story);
+        return {
+          section: section,
+          collection: collection,
+          cacheKeys: [sorterToCacheKey(config["publisher-id"], "top", sectionId)].concat(
+            stories.map(story => storyToCacheKey(config["publisher-id"], story))
+          )
+        };
+      }
+    );
   }
 }

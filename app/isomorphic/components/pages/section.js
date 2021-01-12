@@ -1,5 +1,5 @@
-import { collectionToStories } from "@quintype/components";
 import React from "react";
+import { collectionToStories } from "@quintype/components";
 import PT from "prop-types";
 import { StoryGrid } from "../story-grid";
 
