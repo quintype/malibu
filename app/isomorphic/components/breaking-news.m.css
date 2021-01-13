@@ -1,5 +1,94 @@
-.link {
-  display: block;
-  text-align: center;
-  min-height: 1.5em;
+.base {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding: 18px 12px;
+  @media screen and (min-width: 1280px) {
+    padding: 8px 0;
+  }
+  .container {
+    display: flex;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d1d1d1;
+    align-items: flex-start;
+    overflow: hidden;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+    }
+    .orange-box {
+      font-size: 16px;
+      background-color: white;
+      display: inline-flex;
+      justify-content: center;
+      padding: 4px;
+      align-items: center;
+      margin-right: 14px;
+      font-weight: bold;
+      flex-shrink: 0;
+      @media screen and (min-width: 768px) {
+        font-size: 16px;
+        padding: 4px 16px;
+      }
+    }
+
+    .item {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-weight: 500;
+      line-height: normal;
+
+      @media screen and (min-width: 768px) {
+        font-size: var(--arrow-fs-m);
+        padding: 0 12px;
+      }
+      &::before {
+        position: relative;
+        padding-right: 5px;
+        content: "\25C9 ";
+        bottom: -1px;
+        line-height: 12px;
+        font-size: 8px;
+      }
+    }
+
+    @keyframes marquee {
+      0%,
+      5% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    .marquee-container {
+      display: flex;
+      animation: marquee var(--animation-speed) linear infinite;
+      animation-delay: var(--animation-delay);
+
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+
+    .marquee-wrapper {
+      --animation-speed: calc(var(--items) * 8s);
+      --animation-delay: 2s;
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+      @media (min-width: 992px) {
+        &:hover {
+          .marquee-container {
+            animation-play-state: paused;
+          }
+        }
+      }
+      @media (min-width: 992px) {
+        --animation-speed: calc(var(--items) * 8s);
+      }
+    }
+  }
 }

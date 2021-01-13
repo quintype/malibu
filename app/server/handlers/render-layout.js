@@ -17,14 +17,14 @@ const getConfig = state => {
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
-    cdnImage: get(state, ["qt", "config", "cdn-image"], "")
+    cdnImage: get(state, ["qt", "config", "cdn-image"], ""),
+    breakingNewsConfig: get(state, ["qt", "config", "publisher-attributes", "breaking_news"], {})
   };
 };
 
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-  const { gtmId, gaId, cdnImage } = getConfig(params.store.getState());
-
+  const { gtmId, gaId, cdnImage, breakingNewsConfig } = getConfig(params.store.getState());
   res.render(
     "pages/layout",
     Object.assign(
@@ -40,7 +40,8 @@ export function renderLayout(res, params) {
         footer: renderReduxComponent(Footer, params.store),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],
-          breakingNewsLoaded: false
+          breakingNewsLoaded: false,
+          breakingNewsConfig
         }),
         disableAjaxNavigation: false,
         gtmId,

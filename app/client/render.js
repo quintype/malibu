@@ -3,11 +3,19 @@ import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { Header } from "../isomorphic/components/header";
 import { Footer } from "../isomorphic/components/layouts/footer";
+import get from "lodash/get";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
+  const breakingNewsConfig = get(store.getState(), ["qt", "config", "publisher-attributes", "breaking_news"], {});
+  const interval = breakingNewsConfig.interval && breakingNewsConfig.interval <= 60 ? 60 : breakingNewsConfig.interval;
+  const breakingNewsbaseProps = {
+    hydrate,
+    updateInterval: interval * 1000
+  };
   renderComponent(Header, "header", store, hydrate);
-  renderBreakingNews("breaking-news-container", store, BreakingNewsView, hydrate);
+  breakingNewsConfig.is_enable &&
+    renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
   renderComponent(Footer, "footer", store, hydrate);
 }
 

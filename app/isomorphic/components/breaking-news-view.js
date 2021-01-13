@@ -1,40 +1,59 @@
 import React from "react";
-import { bool, array } from "prop-types";
+import { bool, array, object } from "prop-types";
+import { Link } from "@quintype/components";
+import get from "lodash/get";
 import "./breaking-news.m.css";
 
-export class BreakingNewsView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { item: 0 };
-  }
-
-  componentDidMount() {
-    this.interval = global.setInterval(() => this.setState({ item: this.state.item + 1 }), 2000);
-  }
-
-  componentWillUnmount() {
-    global.clearInterval(this.interval);
-  }
-
-  render() {
-    const { breakingNewsLoaded, breakingNews } = this.props;
-
-    if (breakingNewsLoaded && breakingNews.length === 0) {
-      return <span />;
+const OrangeBox = _ => <div styleName="orange-box">BREAKING NEWS</div>;
+const renderBreakingNewsMarquee = breakingNews => {
+  const items = breakingNews.map(story => {
+    const linkedStorySlug = get(story, ["metadata", "linked-story-slug"], false) || false;
+    if (linkedStorySlug) {
+      return (
+        <Link
+          aria-label={`"Read full story: " ${story.headline}`}
+          key={story.id}
+          styleName="item"
+          href={`/${linkedStorySlug}`}
+        >
+          {story.headline}
+        </Link>
+      );
     }
 
-    const content =
-      breakingNews.length === 0 ? { headline: " ", metadata: {} } : breakingNews[this.state.item % breakingNews.length];
-
     return (
-      <a href={"/" + (content.metadata["linked-story-slug"] || "")} styleName="link">
-        {content.headline}
-      </a>
+      <div key={story.id} styleName="item">
+        {story.headline}
+      </div>
     );
+  });
+
+  return (
+    <div styleName="marquee-wrapper" style={{ "--items": breakingNews.length }}>
+      <div styleName="marquee-container">{items}</div>
+    </div>
+  );
+};
+export const BreakingNewsView = ({ breakingNews = [], breakingNewsConfig = {} }) => {
+  if (!breakingNews.length || breakingNews.length === 0) {
+    return <div className="empty-div-margin-bottom"></div>;
   }
-}
+  const breakingNewsItem = breakingNewsConfig.item_display
+    ? breakingNews.slice(0, breakingNewsConfig.item_display)
+    : breakingNews;
+  console.log("here come breaking news view", breakingNewsItem);
+  return (
+    <div styleName="base">
+      <div styleName="container">
+        <OrangeBox />
+        {renderBreakingNewsMarquee(breakingNewsItem)}
+      </div>
+    </div>
+  );
+};
 
 BreakingNewsView.propTypes = {
   breakingNewsLoaded: bool,
-  breakingNews: array
+  breakingNews: array,
+  breakingNewsConfig: object
 };
