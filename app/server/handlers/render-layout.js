@@ -13,6 +13,7 @@ const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
 const allChunks = getAllChunks("list", "story");
 
 const getConfig = state => {
+  // get onesignal config
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
