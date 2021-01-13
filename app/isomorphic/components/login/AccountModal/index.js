@@ -49,10 +49,6 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
     }
   };
 
-  // if (error) {
-  //   console.log(error);
-  // }
-
   const getActiveTabHeading = () => {
     if (activeTab === "forgot-password")
       return (

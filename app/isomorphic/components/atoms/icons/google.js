@@ -1,7 +1,7 @@
 import React from "react";
-import PT from "prop-types";
+import { number } from "prop-types";
 
-export const Google = ({ color = "#d0021b", width = 13, height = 13 }) => {
+export const Google = ({ width = 13, height = 13 }) => {
   return (
     <svg viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg" width={width} height={height}>
       <path
@@ -25,7 +25,6 @@ export const Google = ({ color = "#d0021b", width = 13, height = 13 }) => {
 };
 
 Google.propTypes = {
-  color: PT.string,
-  width: PT.number,
-  height: PT.number
+  width: number,
+  height: number
 };
