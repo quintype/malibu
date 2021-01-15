@@ -66,7 +66,7 @@ jobs:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
-          npx @lhci/cli@0.4.x autorun
+          npx @lhci/cli@0.6.x autorun
 
   perf_lighthouse_task:
     docker:
@@ -75,7 +75,7 @@ jobs:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
-          npx @lhci/cli@0.4.x autorun
+          npx @lhci/cli@0.6.x autorun
 
 
   stg_lighthouse_task:
@@ -85,7 +85,7 @@ jobs:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-web.qtstage.io\"]"
-          npx @lhci/cli@0.4.x autorun
+          npx @lhci/cli@0.6.x autorun
 
   prod_lighthouse_task:
     docker:
@@ -94,7 +94,7 @@ jobs:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-web.quintype.io\"]"
-          npx @lhci/cli@0.4.x autorun
+          npx @lhci/cli@0.6.x autorun
 
 workflows:
   version: 2
