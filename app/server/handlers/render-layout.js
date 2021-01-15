@@ -17,13 +17,17 @@ const getConfig = state => {
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
-    cdnImage: get(state, ["qt", "config", "cdn-image"], "")
+    cdnImage: get(state, ["qt", "config", "cdn-image"], ""),
+    breakingNewsConfig: get(state, ["qt", "config", "publisher-attributes", "breaking_news"], {})
   };
 };
 
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-  const { gtmId, gaId, cdnImage } = getConfig(params.store.getState());
+  const pageType = get(params.store.getState(), ["qt", "pageType"], null);
+  const { gtmId, gaId, cdnImage, breakingNewsConfig } = getConfig(params.store.getState());
+  const shouldBreakingNewsRender = breakingNewsConfig.is_enable && breakingNewsConfig.pages.includes(pageType);
+
   res.render(
     "pages/layout",
     Object.assign(
@@ -49,7 +53,8 @@ export function renderLayout(res, params) {
         pageChunk: chunk,
         store: params.store,
         shell: params.shell,
-        serialize
+        serialize,
+        shouldBreakingNewsRender
       },
       params
     )
