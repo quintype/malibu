@@ -18,3 +18,4 @@ publisher:
     interval: 120
     item_display: 1
     open_in_new_tab: false
+    pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]

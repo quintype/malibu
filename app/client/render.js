@@ -7,14 +7,16 @@ import get from "lodash/get";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
+  const pageType = get(store.getState(), ["qt", "pageType"], null);
   const breakingNewsConfig = get(store.getState(), ["qt", "config", "publisher-attributes", "breaking_news"], {});
+  const shouldBreakingNewsRender = breakingNewsConfig.is_enable && breakingNewsConfig.pages.includes(pageType);
   const interval = breakingNewsConfig.interval && breakingNewsConfig.interval <= 60 ? 60 : breakingNewsConfig.interval;
   const breakingNewsbaseProps = {
     hydrate,
     updateInterval: interval * 1000
   };
   renderComponent(Header, "header", store, hydrate);
-  breakingNewsConfig.is_enable &&
+  shouldBreakingNewsRender &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
   renderComponent(Footer, "footer", store, hydrate);
 }
