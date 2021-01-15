@@ -13,8 +13,10 @@ export function preRenderApplication(store) {
   const interval = breakingNewsConfig.interval && breakingNewsConfig.interval <= 60 ? 60 : breakingNewsConfig.interval;
   const breakingNewsbaseProps = {
     hydrate,
-    updateInterval: interval * 1000
+    updateInterval: interval * 1000,
+    breakingNewsConfig
   };
+
   renderComponent(Header, "header", store, hydrate);
   shouldBreakingNewsRender &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);

@@ -5,7 +5,7 @@ import get from "lodash/get";
 import "./breaking-news.m.css";
 
 const OrangeBox = _ => <div styleName="orange-box">BREAKING NEWS</div>;
-const renderBreakingNewsMarquee = breakingNews => {
+const renderBreakingNewsMarquee = (breakingNews, breakingNewsConfig) => {
   const items = breakingNews.map(story => {
     const linkedStorySlug = get(story, ["metadata", "linked-story-slug"], false) || false;
     if (linkedStorySlug) {
@@ -15,6 +15,7 @@ const renderBreakingNewsMarquee = breakingNews => {
           key={story.id}
           styleName="item"
           href={`/${linkedStorySlug}`}
+          target={`${breakingNewsConfig.open_in_new_tab} ? "_blank": ""`}
         >
           {story.headline}
         </Link>
@@ -41,12 +42,12 @@ export const BreakingNewsView = ({ breakingNews = [], breakingNewsConfig = {} })
   const breakingNewsItem = breakingNewsConfig.item_display
     ? breakingNews.slice(0, breakingNewsConfig.item_display)
     : breakingNews;
-  console.log("here come breaking news view", breakingNewsItem);
+
   return (
     <div styleName="base">
       <div styleName="container">
         <OrangeBox />
-        {renderBreakingNewsMarquee(breakingNewsItem)}
+        {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)}
       </div>
     </div>
   );
