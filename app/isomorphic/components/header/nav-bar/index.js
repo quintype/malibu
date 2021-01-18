@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
+import { WithMember } from "@quintype/components";
 
 import { NavbarSearch } from "../navbar-search";
 import { MenuItem } from "../helper-components";
@@ -23,16 +24,23 @@ const NavBar = ({ menu, enableLogin }) => {
           );
         })}
         {enableLogin && (
-          <li>
-            <button onClick={() => setShowAccountModal(true)}>Login</button>
-            {showAccountModal && (
-              <Suspense fallback={<div></div>}>
-                <AccountModal onBackdropClick={() => setShowAccountModal(false)} checkForMemberUpdated={{}} />
-              </Suspense>
-            )}
-            {/* checkForMemberUpdated from
+          <WithMember>
+            {({ member, logout, checkForMemberUpdated, isLoading }) => (
+              <li>
+                <button onClick={() => setShowAccountModal(true)}>Login</button>
+                {showAccountModal && (
+                  <Suspense fallback={<div></div>}>
+                    <AccountModal
+                      onBackdropClick={() => setShowAccountModal(false)}
+                      checkForMemberUpdated={checkForMemberUpdated}
+                    />
+                  </Suspense>
+                )}
+                {/* checkForMemberUpdated from
           withmember of qt components library and also add onBackdropClick which is used for closing popup */}
-          </li>
+              </li>
+            )}
+          </WithMember>
         )}
       </ul>
       <NavbarSearch />
