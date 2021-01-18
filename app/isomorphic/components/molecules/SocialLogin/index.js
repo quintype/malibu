@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PT from "prop-types";
 // import get from "lodash/get";
-import { WithFacebookLogin, Link /* WithGoogleLogin, WithTwitterLogin */ } from "@quintype/components";
+import { WithFacebookLogin, Link, WithGoogleLogin /* WithTwitterLogin */ } from "@quintype/components";
 // import { Button } from "../../atoms/button";
 import { FbIcon } from "../../atoms/icons/fb-icon";
 // import { TwitterIcon } from "../../atoms/icons/twitter-icon";
@@ -74,9 +74,9 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
       }); // Can also make an API call to /api/v1/members/me
   };
 
-  // const googleOnClick = (e, serverSideLoginPath) => {
-  //   window.location.href = serverSideLoginPath;
-  // };
+  const googleOnClick = (e, serverSideLoginPath) => {
+    window.location.href = serverSideLoginPath;
+  };
 
   console.log("error", error);
 
@@ -97,22 +97,27 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
           </WithFacebookLogin>
         </li>
         <li styleName="button">
-          {/* <WithGoogleLogin clientId={googleClientId} scope="email" emailMandatory isBridgekeeperLogin={true}>
-          {({ login, serverSideLoginPath }) => (
-            <Button
-              color="#dd4b39"
-              flat
-              href={serverSideLoginPath}
-              onClick={e => googleOnClick(e, serverSideLoginPath)}
-              socialButton
-            > */}
-          <span styleName="icon">
-            <Google />
-          </span>{" "}
-          Google
-          {/* </Button>
-          )}
-        </WithGoogleLogin> */}
+          <WithGoogleLogin
+            clientId="163120650123-m2rj93thcgkfs7js80cop6frppemfo1c.apps.googleusercontent.com"
+            scope="email"
+            emailMandatory
+            isBridgekeeperLogin={true}
+          >
+            {({ login, serverSideLoginPath }) => (
+              <Button
+                color="#dd4b39"
+                flat
+                href={serverSideLoginPath}
+                onClick={e => googleOnClick(e, serverSideLoginPath)}
+                socialButton
+              >
+                <span styleName="icon">
+                  <Google />
+                </span>{" "}
+                Google
+              </Button>
+            )}
+          </WithGoogleLogin>
         </li>
         {/* <li styleName="button">
         <WithTwitterLogin apiKey={twitterKey} emailMandatory>
