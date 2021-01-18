@@ -85,7 +85,7 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
       <h3 styleName="title">Or login with</h3>
       <ul styleName="buttons">
         <li styleName="button">
-          <WithFacebookLogin appId="248865019954260" scope="email" emailMandatory>
+          <WithFacebookLogin appId="248865019954260" scope="email" emailMandatory isBridgekeeperLogin>
             {({ login, serverSideLoginPath }) => (
               <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
                 <span styleName="icon">
