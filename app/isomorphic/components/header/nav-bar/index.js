@@ -25,21 +25,30 @@ const NavBar = ({ menu, enableLogin }) => {
         })}
         {enableLogin && (
           <WithMember>
-            {({ member, logout, checkForMemberUpdated, isLoading }) => (
-              <li>
-                <button onClick={() => setShowAccountModal(true)}>Login</button>
-                {showAccountModal && (
-                  <Suspense fallback={<div></div>}>
-                    <AccountModal
-                      onBackdropClick={() => setShowAccountModal(false)}
-                      checkForMemberUpdated={checkForMemberUpdated}
-                    />
-                  </Suspense>
-                )}
-                {/* checkForMemberUpdated from
-          withmember of qt components library and also add onBackdropClick which is used for closing popup */}
-              </li>
-            )}
+            {({ member, logout, checkForMemberUpdated, isLoading }) =>
+              !isLoading && (
+                <li>
+                  {member ? (
+                    <>
+                      <button>Logut</button>
+                      <p>{`Username: ${get(member, ["name"], "")}`}</p>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={() => setShowAccountModal(true)}>Login</button>
+                      {showAccountModal && (
+                        <Suspense fallback={<div></div>}>
+                          <AccountModal
+                            onBackdropClick={() => setShowAccountModal(false)}
+                            checkForMemberUpdated={checkForMemberUpdated}
+                          />
+                        </Suspense>
+                      )}
+                    </>
+                  )}
+                </li>
+              )
+            }
           </WithMember>
         )}
       </ul>
