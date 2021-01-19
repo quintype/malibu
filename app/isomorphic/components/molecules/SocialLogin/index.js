@@ -1,54 +1,15 @@
 import React, { useState } from "react";
-import PT from "prop-types";
-// import get from "lodash/get";
-import { WithFacebookLogin, Link, WithGoogleLogin /* WithTwitterLogin */ } from "@quintype/components";
-// import { Button } from "../../atoms/button";
+import { func } from "prop-types";
+import { WithFacebookLogin, WithGoogleLogin } from "@quintype/components";
+
 import { FbIcon } from "../../atoms/icons/fb-icon";
-// import { TwitterIcon } from "../../atoms/icons/twitter-icon";
 import { Google } from "../../atoms/icons/google";
-// import IntegrationData from "../../../../../config/integrations.js";
+import Button from "../../atoms/Button";
+
 import "./social-login.m.css";
-
-function Button({ href, children, className = "", color, flat, socialButton = false, ...props }) {
-  const classNames = `${className}`;
-  const inlineStyle = {
-    borderColor: color,
-    backgroundColor: flat && "transparent",
-    color: color
-  };
-  if (socialButton) {
-    return (
-      <a href={href} styleName={classNames} style={inlineStyle} {...props}>
-        {children}
-      </a>
-    );
-  }
-  return href ? (
-    <Link href={href} styleName={classNames} style={inlineStyle}>
-      {children}
-    </Link>
-  ) : (
-    <button styleName={classNames} style={inlineStyle} {...props}>
-      {children}
-    </button>
-  );
-}
-
-Button.propTypes = {
-  href: PT.string,
-  className: PT.string,
-  children: PT.any,
-  color: PT.string,
-  flat: PT.bool,
-  socialButton: PT.bool
-};
 
 export const SocialLogin = ({ checkForMemberUpdated }) => {
   const [error, setError] = useState("");
-  // const { appKeys } = IntegrationData();
-  // const facebookKey = get(appKeys, ["facebookAppkey"], "");
-  // const googleClientId = get(appKeys, ["googleClientId"], "");
-  // const twitterKey = get(appKeys, ["twitterAppkey"], "");
 
   const socialLogin = (e, login) => {
     e.preventDefault();
@@ -77,8 +38,6 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   const googleOnClick = (e, serverSideLoginPath) => {
     window.location.href = serverSideLoginPath;
   };
-
-  console.log("error", error);
 
   return (
     <div styleName="social-login">
@@ -119,24 +78,12 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
             )}
           </WithGoogleLogin>
         </li>
-        {/* <li styleName="button">
-        <WithTwitterLogin apiKey={twitterKey} emailMandatory>
-          {({ login, serverSideLoginPath }) => (
-            <Button color="#1da1f2" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
-              <span styleName="icon">
-                <TwitterIcon color="#1da1f2" width={16} height={12} />
-              </span>{" "}
-              Twitter
-            </Button>
-          )}
-        </WithTwitterLogin>
-      </li> */}
       </ul>
-      {/* <p styleName="error">{error}</p> */}
+      <p styleName="error">{error}</p>
     </div>
   );
 };
 
 SocialLogin.propTypes = {
-  checkForMemberUpdated: PT.func
+  checkForMemberUpdated: func
 };
