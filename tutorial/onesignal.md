@@ -25,6 +25,7 @@ publisher :
     app_id: "some_uuid"
     safari_web_id: ""
     tag_name: "publisher-breaking-news"
+    is_enable: true
 ```
 
 Now that we have the onesignal details in publisher the config file, we need to get it into our app.
@@ -118,5 +119,13 @@ isomorphicRoutes(app, {
 ```
 
 Congratulations, we are all done. The next time a user comes to your app, they should get a prompt asking if they'd like to receive push notifications.
+
+You can disable onesignal push notification by setting *is_enable:false* in the *config/publisher.yml* config file and remove the **app-id** from bold onesignal config.
+
+```yaml
+publisher :
+  onesignal:
+    is_enable: false
+```
 
 You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
