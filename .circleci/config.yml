@@ -153,6 +153,7 @@ workflows:
             branches:
               only:
                 - master
+                - master-clone
       - deploy_production:
           context: quay-login
           requires:
@@ -161,6 +162,7 @@ workflows:
               branches:
                 only:
                   - master
+                  - master-clone
       - prod_lighthouse_task:
           context: quay-login
           requires:
