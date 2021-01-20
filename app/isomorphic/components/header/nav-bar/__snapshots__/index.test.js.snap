@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar renders the navbar when menu.default is a valid array 1`] = `
+<React.Fragment>
+  <AppLogo />
+  <ul
+    className="styles-m__navbar__1m8_H"
+  >
+    <li
+      className="styles-m__menu-item__1szXn styles-m__desktop-view__1ts3k"
+    >
+      <MenuItem
+        item={
+          Object {
+            "children": "[]",
+            "completeUrl": "/for-developers",
+            "created-at": 1544609755177,
+            "data": "{color: \\"#000000\\"}",
+            "entity-name": null,
+            "entity-properties": null,
+            "entity-slug": null,
+            "id": 2243,
+            "item-id": 23224,
+            "item-type": "section",
+            "menu-group-id": 95,
+            "menu-group-slug": "default",
+            "parent-id": null,
+            "publisher-id": 15,
+            "rank": 38,
+            "section-name": "For Developers",
+            "section-slug": "for-developers",
+            "tag-name": null,
+            "tag-slug": null,
+            "title": "For Developers",
+            "updated-at": 1604300936817,
+            "url": "https://madrid-old.quintype.io/for-developers",
+          }
+        }
+      />
+    </li>
+    <li
+      className="styles-m__menu-item__1szXn styles-m__desktop-view__1ts3k"
+    >
+      <MenuItem
+        item={
+          Object {
+            "children": "[{…}, {…}]",
+            "completeUrl": "/tech/mobile",
+            "created-at": 1544608844876,
+            "data": "{color: \\"#000000\\"}",
+            "entity-name": null,
+            "entity-properties": null,
+            "entity-slug": null,
+            "id": 2240,
+            "item-id": 6392,
+            "item-type": "section",
+            "menu-group-id": 95,
+            "menu-group-slug": "default",
+            "parent-id": null,
+            "publisher-id": 15,
+            "rank": 39,
+            "section-name": "Mobile",
+            "section-slug": "mobile",
+            "tag-name": null,
+            "tag-slug": null,
+            "title": "Product",
+            "updated-at": 1604300936818,
+            "url": "https://madrid-old.quintype.io/tech/mobile",
+          }
+        }
+      />
+    </li>
+    <li>
+      <button
+        onClick={[Function]}
+      >
+        Login
+      </button>
+    </li>
+  </ul>
+  <NavbarSearch />
+</React.Fragment>
+`;
+
+exports[`Navbar renders the navbar when menu.default is empty array 1`] = `
+<React.Fragment>
+  <AppLogo />
+  <ul
+    className="styles-m__navbar__1m8_H"
+  >
+    <li>
+      <button
+        onClick={[Function]}
+      >
+        Login
+      </button>
+    </li>
+  </ul>
+  <NavbarSearch />
+</React.Fragment>
+`;
+
+exports[`Navbar renders the navbar with default vaules 1`] = `
+<React.Fragment>
+  <AppLogo />
+  <ul
+    className="styles-m__navbar__1m8_H"
+  >
+    <li>
+      <button
+        onClick={[Function]}
+      >
+        Login
+      </button>
+    </li>
+  </ul>
+  <NavbarSearch />
+</React.Fragment>
+`;
