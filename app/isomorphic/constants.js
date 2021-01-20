@@ -10,6 +10,7 @@ export const PAGE_TYPE = Object.freeze({
   STORY_PREVIEW: "story-preview",
   HOME_PREVIEW: "home-preview",
   STATIC_PAGE: "static-page",
-  FORM_PAGE: "form-page"
+  FORM_PAGE: "form-page",
+  AUTHOR_PAGE: "author-page"
 });
 export const TAG_PAGE_URL_PREFIX = "/topic/";

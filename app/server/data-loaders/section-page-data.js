@@ -2,10 +2,10 @@ import { Story, Collection } from "@quintype/framework/server/api-client";
 import { sorterToCacheKey, storyToCacheKey } from "@quintype/framework/server/caching";
 
 export function loadSectionPageData(client, sectionId, config) {
-  const section = config.sections.find(section => section.id === sectionId);
+  const section = config.sections.find(section => section.id === sectionId) || {};
   const sectionSlug = section.collection === null ? null : section.collection.slug;
   if (sectionSlug) {
-    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 20 }, { depth: 3 }).then(collection => {
+    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 20 }, { depth: 2 }).then(collection => {
       return {
         section: section,
         collection: collection.asJson(),

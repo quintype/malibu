@@ -12,6 +12,8 @@ import { loadFormPageData } from "./data-loaders/form-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
 import { PAGE_TYPE } from "../isomorphic/constants";
+import { loadCollectionPageData } from "./data-loaders/collection-page-data";
+import { loadAuthorPageData } from "./data-loaders/author-page-data";
 
 const WHITELIST_CONFIG_KEYS = [
   "cdn-image",
@@ -55,7 +57,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       case PAGE_TYPE.SECTION_PAGE:
         return loadSectionPageData(client, params.sectionId, config);
       case PAGE_TYPE.COLLECTION_PAGE:
-        return loadSectionPageData(client, params.sectionId, config);
+        return loadCollectionPageData(client, params.collectionSlug, config);
       case PAGE_TYPE.TAG_PAGE:
         return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:
@@ -70,6 +72,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         return loadSearchPageData(client, params.q, config);
       case PAGE_TYPE.FORM_PAGE:
         return loadFormPageData(client, params.formSlug, next);
+      case PAGE_TYPE.AUTHOR_PAGE:
+        return loadAuthorPageData(client, params.authorSlug, config, next);
       default:
         return Promise.resolve({ error: { message: "No Loader" } });
     }
