@@ -10,7 +10,8 @@ domain_mapping:
 
 publisher:
   google_tag_manager:
-    id: "GTM-M2JPDF4"
+    id: "GTM-TP6JMSJ"
   google_analytics:
     id: "UA-139937241-1"
   should_use_collection: true
+  enableLogin: true
