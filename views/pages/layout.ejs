@@ -40,9 +40,6 @@
       <link rel="preload" href="<%= jsPath %>" as="script">
     <%_ }) _%>
     <%_ } _%>
-    <% if (isOnesignalEnable && oneSignalAppId) { %>
-      <%- include ./partials/onesignal.ejs -%>
-    <% } %>
   </head>
 
   <body>
@@ -74,5 +71,8 @@
       <script type="application/json" id="static-page"><%- serialize(store.getState(), {isJSON: true}) -%></script>
       <% } %>
     <script type="text/javascript" src="<%= assetPath("app.js") %>" id="app-js" async></script>
+    <% if (isOnesignalEnable && oneSignalAppId) { %>
+      <%- include ./partials/onesignal.ejs -%>
+    <% } %>
    </body>
 </html>
