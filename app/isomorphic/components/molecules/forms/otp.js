@@ -54,7 +54,7 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
         {/* {error && <p styleName="error">Invalid OTP</p>} */}
         {/* {successMsg && <p>{successMsg}</p>} */}
         <div styleName="actions">
-          <button onClick={otpHandler} className="malibu-btn-large">
+          <button aria-label="verify-otp-button" onClick={otpHandler} className="malibu-btn-large">
             Verify OTP
           </button>
           <p styleName="resend-otp" onClick={resendOTP}>

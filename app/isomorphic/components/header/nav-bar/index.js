@@ -24,7 +24,9 @@ const NavBar = ({ menu, enableLogin }) => {
         })}
         {enableLogin && (
           <li>
-            <button onClick={() => setShowAccountModal(true)}>Login</button>
+            <button aria-label="login-button" onClick={() => setShowAccountModal(true)}>
+              Login
+            </button>
             {showAccountModal && (
               <Suspense fallback={<div></div>}>
                 <AccountModal onBackdropClick={() => setShowAccountModal(false)} checkForMemberUpdated={{}} />
