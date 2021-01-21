@@ -15,7 +15,7 @@ const renderBreakingNewsMarquee = (breakingNews, breakingNewsConfig) => {
           key={story.id}
           styleName="item"
           href={`/${linkedStorySlug}`}
-          target={`${breakingNewsConfig.open_in_new_tab} ? "_blank": ""`}
+          externalLink={breakingNewsConfig.open_in_new_tab ? `/${linkedStorySlug}` : false}
         >
           {story.headline}
         </Link>
