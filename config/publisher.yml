@@ -13,5 +13,8 @@ publisher:
     id: "GTM-TP6JMSJ"
   google_analytics:
     id: "UA-139937241-1"
-  should_use_collection: true
+  onesignal:
+    safari_web_id: "web.onesignal.auto.37a647a2-1bdc-46a8-a505-4f4cc6400a46"
+    is_enable: true
   enableLogin: true
+  should_use_collection: true

@@ -61,13 +61,8 @@ function createTemplateClass(template, updateTemplateAttribute) {
                 styleName="numberInput"
                 type="number"
                 placeholder={`${option.default}`}
-                value={
-                  this.props.collection["associated-metadata"][option.name] ||
-                  ""
-                }
-                onChange={e =>
-                  updateTemplateAttribute(option.name, Number(e.target.value))
-                }
+                value={this.props.collection["associated-metadata"][option.name] || ""}
+                onChange={e => updateTemplateAttribute(option.name, Number(e.target.value))}
               />
             </div>
           );
@@ -77,13 +72,8 @@ function createTemplateClass(template, updateTemplateAttribute) {
               <input
                 styleName="checkboxInput"
                 type="checkbox"
-                checked={
-                  this.props.collection["associated-metadata"][option.name] ||
-                  false
-                }
-                onChange={e =>
-                  updateTemplateAttribute(option.name, e.target.checked)
-                }
+                checked={this.props.collection["associated-metadata"][option.name] || false}
+                onChange={e => updateTemplateAttribute(option.name, e.target.checked)}
               />
               <span>{option.name}</span>
             </div>
@@ -95,13 +85,8 @@ function createTemplateClass(template, updateTemplateAttribute) {
               <input
                 type="text"
                 placeholder={`${option.default}`}
-                value={
-                  this.props.collection["associated-metadata"][option.name] ||
-                  ""
-                }
-                onChange={e =>
-                  updateTemplateAttribute(option.name, e.target.value)
-                }
+                value={this.props.collection["associated-metadata"][option.name] || ""}
+                onChange={e => updateTemplateAttribute(option.name, e.target.value)}
               />
             </div>
           );
@@ -114,9 +99,7 @@ function createTemplateClass(template, updateTemplateAttribute) {
           <div styleName="widget-header" className="component-wrapper">
             <div>
               <h3>{template}</h3>
-              <p styleName="widget-description">
-                {this.props.collection.templatePageDisplay}
-              </p>
+              <p styleName="widget-description">{this.props.collection.templatePageDisplay}</p>
             </div>
             <div styleName="widget-options">
               {this.props.collection.options.length !== 0 && (
@@ -126,13 +109,8 @@ function createTemplateClass(template, updateTemplateAttribute) {
                   </button>
                   {this.state.isDropdownOpen && (
                     <div styleName="dropdownBox">
-                      {this.props.collection.options.map(option =>
-                        this.optionToFormField(option)
-                      )}
-                      <button
-                        styleName="configureBtn"
-                        onClick={this.configureData}
-                      >
+                      {this.props.collection.options.map(option => this.optionToFormField(option))}
+                      <button styleName="configureBtn" onClick={this.configureData}>
                         Configure
                       </button>
                     </div>
@@ -170,10 +148,7 @@ export class CatalogPage extends React.Component {
     const templates = {};
     this.templatePicker = template => {
       if (!templates[template]) {
-        templates[template] = createTemplateClass(
-          template,
-          this.updateComponentAttribute.bind(this, template)
-        );
+        templates[template] = createTemplateClass(template, this.updateComponentAttribute.bind(this, template));
       }
       return templates[template];
     };
@@ -195,11 +170,7 @@ export class CatalogPage extends React.Component {
       slug: "/",
       template: "default",
       items: this.props.data.templateOptions["collection-layouts"].map(c =>
-        layoutToCollection(
-          c,
-          this.props.data.stories,
-          this.state.componentToOptions[c.name]
-        )
+        layoutToCollection(c, this.props.data.stories, this.state.componentToOptions[c.name])
       )
     };
   }
@@ -207,10 +178,7 @@ export class CatalogPage extends React.Component {
   render() {
     return (
       <div>
-        <Collection
-          collection={this.buildHomeCollection()}
-          collectionTemplates={this.templatePicker}
-        />
+        <Collection collection={this.buildHomeCollection()} collectionTemplates={this.templatePicker} />
       </div>
     );
   }

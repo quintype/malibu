@@ -68,7 +68,7 @@ const LoginBase = ({ onLogin, checkForMemberUpdated, forgotPassword, manageLogin
           <div styleName="malibu-link" onClick={forgotPassword}>
             Forgot Password?
           </div>
-          <button onClick={loginHandler} className="malibu-btn-large">
+          <button aria-label="login-button" onClick={loginHandler} className="malibu-btn-large">
             Login
           </button>
         </div>

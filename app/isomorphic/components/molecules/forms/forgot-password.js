@@ -72,7 +72,7 @@ export function ForgotPassword({ onBackdropClick }) {
         <form styleName="malibu-form" onSubmit={emailHandler}>
           <InputField name="Email" id="email" type="email" required onChange={setEmailData} />
           <div styleName="actions">
-            <button onClick={emailHandler} className="malibu-btn-large">
+            <button aria-label="forgot-password-submit" onClick={emailHandler} className="malibu-btn-large">
               Submit
             </button>
           </div>
@@ -102,7 +102,7 @@ export function ForgotPassword({ onBackdropClick }) {
           {/* {successMsg && <p>{successMsg}</p>} */}
           {error && <p styleName="error">{error.message}</p>}
           <div styleName="actions">
-            <button onClick={changePassword} className="malibu-btn-large">
+            <button aria-label="change-password-button" onClick={changePassword} className="malibu-btn-large">
               Verify OTP
             </button>
           </div>
