@@ -47,7 +47,8 @@ export function loadErrorData(error, config) {
 }
 
 // FIXME: Convert this to async/await
-export function loadData(pageType, params, config, client, { host, next, domainSlug }) {
+export function loadData(pageType, params, config, client, { res, req, host, next, domainSlug }) {
+  const publisherAttributes = getPublisherAttributes();
   function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE:
@@ -55,9 +56,9 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       case PAGE_TYPE.HOME_PREVIEW:
         return loadHomePageData(client, config);
       case PAGE_TYPE.SECTION_PAGE:
-        return loadSectionPageData(client, params.sectionId, config);
+        return loadSectionPageData(client, params.sectionId, config, publisherAttributes);
       case PAGE_TYPE.COLLECTION_PAGE:
-        return loadCollectionPageData(client, params.collectionSlug, config);
+        return loadCollectionPageData(client, params.collectionSlug, config, res, req);
       case PAGE_TYPE.TAG_PAGE:
         return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:
@@ -78,8 +79,6 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         return Promise.resolve({ error: { message: "No Loader" } });
     }
   }
-
-  const publisherAttributes = getPublisherAttributes();
 
   return _loadData().then(data => {
     return {
