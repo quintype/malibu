@@ -2,7 +2,6 @@ import React from "react";
 import PT from "prop-types";
 import { StoryGrid } from "../../story-grid";
 const AuthorPage = props => {
-  console.log("here author page", props);
   const stories = props.data.stories.map(({ story }) => story) || props.data.stories;
   return (
     <React.Fragment>

@@ -9,7 +9,7 @@
   "dependencies": {
     "@quintype/backend": "^1.23.2",
     "@quintype/components": "^2.23.0-youtube-render.3",
-    "@quintype/framework": "^4.5.4",
+    "@quintype/framework": "^4.5.12-passing-req-res-to-load-data.1",
     "@quintype/seo": "^1.38.25",
     "fontfaceobserver": "^2.1.0",
     "formiojs": "^4.12.0",
