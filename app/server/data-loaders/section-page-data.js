@@ -17,7 +17,9 @@ export function loadSectionPageData(client, sectionId, config, publisherAttribut
       "headline,subheadline,summary,sections,tags,author-name,author-id,authors,updated-at,last-published-at,published-at,updated-at,first-published-at,hero-image-metadata,hero-image-s3-key,story-content-id,slug,id,seo,story-template,metadata,url";
     return Story.getStories(client, "top", { "section-id": section.id, fields: storyFields, limit: 20 }).then(
       stories => {
-        const allStories = stories.map(story => story.asJson());
+        const allStories = stories.map(story => {
+          return { story: story.asJson(), type: "story" };
+        });
 
         const collection = {
           items: [],
