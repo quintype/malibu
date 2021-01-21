@@ -1,7 +1,8 @@
 import React from "react";
-import { bool, array, object } from "prop-types";
+import { bool, array, object, string } from "prop-types";
 import { Link } from "@quintype/components";
 import get from "lodash/get";
+import { connect } from "react-redux";
 import "./breaking-news.m.css";
 
 const OrangeBox = _ => <div styleName="orange-box">BREAKING NEWS</div>;
@@ -35,8 +36,8 @@ const renderBreakingNewsMarquee = (breakingNews, breakingNewsConfig) => {
     </div>
   );
 };
-export const BreakingNewsView = ({ breakingNews = [], breakingNewsConfig = {} }) => {
-  if (!breakingNews.length || breakingNews.length === 0) {
+export const BreakingNewsViewBase = ({ breakingNews = [], breakingNewsConfig = {}, pageType }) => {
+  if (!breakingNews.length || breakingNews.length === 0 || !breakingNewsConfig.pages.includes(pageType)) {
     return <div className="empty-div-margin-bottom"></div>;
   }
   const breakingNewsItem = breakingNewsConfig.item_display
@@ -53,8 +54,18 @@ export const BreakingNewsView = ({ breakingNews = [], breakingNewsConfig = {} })
   );
 };
 
-BreakingNewsView.propTypes = {
+BreakingNewsViewBase.propTypes = {
   breakingNewsLoaded: bool,
   breakingNews: array,
-  breakingNewsConfig: object
+  breakingNewsConfig: object,
+  pageType: string
 };
+
+function mapStateToProps(state) {
+  return {
+    pageType: get(state, ["qt", "pageType"], null),
+    breakingNewsConfig: get(state, ["qt", "config", "publisher-attributes", "breaking_news"], {})
+  };
+}
+
+export const BreakingNewsView = connect(mapStateToProps, () => ({}))(BreakingNewsViewBase);
