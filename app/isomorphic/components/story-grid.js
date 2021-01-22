@@ -40,10 +40,10 @@ StoryGridStoryItem.propTypes = {
   position: PT.integer
 };
 
-export function StoryGrid(props) {
+export function StoryGrid({ stories = [] }) {
   return (
     <div className="story-grid">
-      {props.stories.map((story, index) => (
+      {stories.map((story, index) => (
         <StoryGridStoryItem story={story} key={`${index}-${story.id}`} position={index} />
       ))}
     </div>
