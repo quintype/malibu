@@ -48,7 +48,12 @@ const STRUCTURED_DATA = {
 
 const redirectCollectionHandler = () => async (req, res, next, { client }) => {
   const response = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 20 }, { depth: 2 });
-  const collection = response.collection || {};
+  const collection = (response && response.collection) || {};
+
+  if (collection) {
+    next();
+  }
+
   if (collection.template === "section") {
     res.redirect(301, `/${req.params.collectionSlug}`);
   }

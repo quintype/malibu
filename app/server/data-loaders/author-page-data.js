@@ -1,6 +1,7 @@
 import { Author } from "@quintype/framework/server/api-client";
-import { storyFields } from "../../isomorphic/constants";
 import get from "lodash/get";
+
+import { storyFields } from "../../isomorphic/constants";
 
 export function loadAuthorPageData(client, authorSlug, config) {
   let authorDetails = {};
