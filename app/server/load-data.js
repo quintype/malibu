@@ -48,7 +48,7 @@ export function loadErrorData(error, config) {
 }
 
 // FIXME: Convert this to async/await
-export function loadData(pageType, params, config, client, { res, host, next, domainSlug }) {
+export function loadData(pageType, params, config, client, { host, next, domainSlug }) {
   const publisherAttributes = getPublisherAttributes();
   function _loadData() {
     switch (pageType) {
@@ -59,7 +59,7 @@ export function loadData(pageType, params, config, client, { res, host, next, do
       case PAGE_TYPE.SECTION_PAGE:
         return loadSectionPageData(client, params.sectionId, config, publisherAttributes);
       case PAGE_TYPE.COLLECTION_PAGE:
-        return loadCollectionPageData(client, params.collectionSlug, config, res);
+        return loadCollectionPageData(client, params.collectionSlug, config);
       case PAGE_TYPE.TAG_PAGE:
         return loadTagPageData(client, params.tagSlug, config);
       case PAGE_TYPE.STORY_PAGE:
