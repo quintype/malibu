@@ -47,13 +47,14 @@ const STRUCTURED_DATA = {
 };
 
 const redirectCollectionHandler = () => async (req, res, next, { client }) => {
-  const resp = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 24 }, { depth: 2 });
-  if (resp.collection.template === "section") {
-    res.redirect(301, `/${req.params.collectionSlug}`);
+  const response = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 24 }, { depth: 2 });
+  const collection = response.collection || {};
+  if (collection.template === "section") {
+    res.redirect(302, `/${req.params.collectionSlug}`);
   }
 
-  if (resp.collection.template === "author") {
-    res.redirect(301, `/author/${req.params.collectionSlug}`);
+  if (collection.template === "author") {
+    res.redirect(302, `/author/${req.params.collectionSlug}`);
   }
 
   next();
