@@ -50,11 +50,11 @@ const redirectCollectionHandler = () => async (req, res, next, { client }) => {
   const response = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 20 }, { depth: 2 });
   const collection = response.collection || {};
   if (collection.template === "section") {
-    res.redirect(302, `/${req.params.collectionSlug}`);
+    res.redirect(301, `/${req.params.collectionSlug}`);
   }
 
   if (collection.template === "author") {
-    res.redirect(302, `/author/${req.params.collectionSlug}`);
+    res.redirect(301, `/author/${req.params.collectionSlug}`);
   }
 
   next();
