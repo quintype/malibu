@@ -8,7 +8,7 @@ import { getCollectionTemplate } from "../get-collection-template";
 
 const SectionPage = props => {
   const stories = collectionToStories(props.data.collection) || [];
-  const childCollections = get(props, ["data", "collection", "items"], []).filter(
+  const childCollections = (get(props, ["data", "collection", "items"]) || []).filter(
     item => item.type === "collection" && item.items.length > 0
   );
   const pageTitle =
