@@ -24,9 +24,7 @@ const getConfig = state => {
 
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-  const pageType = get(params.store.getState(), ["qt", "pageType"], null);
-  const { gtmId, gaId, cdnImage, breakingNewsConfig } = getConfig(params.store.getState());
-  const shouldBreakingNewsRender = breakingNewsConfig.is_enable && breakingNewsConfig.pages.includes(pageType);
+  const { gtmId, gaId, cdnImage } = getConfig(params.store.getState());
 
   res.render(
     "pages/layout",
@@ -53,8 +51,7 @@ export function renderLayout(res, params) {
         pageChunk: chunk,
         store: params.store,
         shell: params.shell,
-        serialize,
-        shouldBreakingNewsRender
+        serialize
       },
       params
     )

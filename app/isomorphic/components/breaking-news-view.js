@@ -5,10 +5,10 @@ import get from "lodash/get";
 import { connect } from "react-redux";
 import "./breaking-news.m.css";
 
-const OrangeBox = _ => <div styleName="orange-box">BREAKING NEWS</div>;
+const BreakingNewsLabel = _ => <div styleName="breaking-news-label">BREAKING NEWS</div>;
 const renderBreakingNewsMarquee = (breakingNews, breakingNewsConfig) => {
   const items = breakingNews.map(story => {
-    const linkedStorySlug = get(story, ["metadata", "linked-story-slug"], false) || false;
+    const linkedStorySlug = get(story, ["metadata", "linked-story-slug"], false);
     if (linkedStorySlug) {
       return (
         <Link
@@ -47,7 +47,7 @@ export const BreakingNewsViewBase = ({ breakingNews = [], breakingNewsConfig = {
   return (
     <div styleName="base">
       <div styleName="container">
-        <OrangeBox />
+        <BreakingNewsLabel />
         {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)}
       </div>
     </div>
