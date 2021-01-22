@@ -15,8 +15,7 @@ export function preRenderApplication(store) {
   };
 
   renderComponent(Header, "header", store, hydrate);
-  breakingNewsConfig.is_enable &&
-    renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
+  renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
   renderComponent(Footer, "footer", store, hydrate);
 }
 
