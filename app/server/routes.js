@@ -48,8 +48,8 @@ const ISOMORPHIC_ROUTES = [
     pageType: PAGE_TYPE.FORM_PAGE,
     exact: true
   },
-  { path: "/collection/:collectionSlug", pageType: "collection-page", exact: true },
-  { path: "/author/:authorSlug", pageType: "author-page", exact: true }
+  { path: "/collection/:collectionSlug", pageType: PAGE_TYPE.COLLECTION_PAGE, exact: true },
+  { path: "/author/:authorSlug", pageType: PAGE_TYPE.AUTHOR_PAGE, exact: true }
 ];
 
 export function generateRoutes(config, domainSlug = undefined) {
