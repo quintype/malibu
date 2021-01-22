@@ -75,7 +75,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       case PAGE_TYPE.FORM_PAGE:
         return loadFormPageData(client, params.formSlug, next);
       case PAGE_TYPE.AUTHOR_PAGE:
-        return loadAuthorPageData(client, params.authorSlug, config, next);
+        return loadAuthorPageData(client, params.authorSlug, config);
       default:
         return Promise.resolve({ error: { message: "No Loader" } });
     }
