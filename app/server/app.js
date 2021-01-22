@@ -1,13 +1,18 @@
 /* eslint-disable no-console, no-unused-vars, import/extensions, object-shorthand, global-require */
 import createApp from "@quintype/framework/server/create-app";
 import logger from "@quintype/framework/server/logger";
-import { upstreamQuintypeRoutes, isomorphicRoutes, staticRoutes } from "@quintype/framework/server/routes";
+import {
+  upstreamQuintypeRoutes,
+  isomorphicRoutes,
+  staticRoutes,
+  getWithConfig
+} from "@quintype/framework/server/routes";
 import { generateRoutes, STATIC_ROUTES } from "./routes";
 import { renderLayout } from "./handlers/render-layout";
 import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
 import { SEO } from "@quintype/seo";
-
+import { Collection } from "@quintype/framework/server/api-client";
 export const app = createApp();
 
 upstreamQuintypeRoutes(app, { forwardAmp: true });
@@ -40,6 +45,24 @@ const STRUCTURED_DATA = {
   },
   enableLiveBlog: true
 };
+
+const redirectCollectionHandler = () => async (req, res, next, { client }) => {
+  const resp = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 24 }, { depth: 2 });
+  if (resp.collection.template === "section") {
+    res.redirect(301, `/${req.params.collectionSlug}`);
+  }
+
+  if (resp.collection.template === "author") {
+    res.redirect(301, `/author/${req.params.collectionSlug}`);
+  }
+
+  next();
+};
+
+const logError = error => logger.error(error);
+getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
+  logError
+});
 
 isomorphicRoutes(app, {
   appVersion: require("../isomorphic/app-version"),
