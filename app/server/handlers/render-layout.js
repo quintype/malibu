@@ -17,8 +17,7 @@ const getConfig = state => {
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
-    cdnImage: get(state, ["qt", "config", "cdn-image"], ""),
-    breakingNewsConfig: get(state, ["qt", "config", "publisher-attributes", "breaking_news"], {})
+    cdnImage: get(state, ["qt", "config", "cdn-image"], "")
   };
 };
 

@@ -1,17 +1,19 @@
 import { renderIsomorphicComponent, renderComponent, renderBreakingNews } from "@quintype/framework/client/start";
+import get from "lodash/get";
+
 import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { Header } from "../isomorphic/components/header";
 import { Footer } from "../isomorphic/components/layouts/footer";
-import get from "lodash/get";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
   const breakingNewsConfig = get(store.getState(), ["qt", "config", "publisher-attributes", "breaking_news"], {});
-  const interval = breakingNewsConfig.interval && breakingNewsConfig.interval <= 60 ? 60 : breakingNewsConfig.interval;
+  const breakingNewsInterval =
+    breakingNewsConfig.interval && breakingNewsConfig.interval <= 60 ? 60 : breakingNewsConfig.interval;
   const breakingNewsbaseProps = {
     hydrate,
-    updateInterval: interval * 1000
+    updateInterval: breakingNewsInterval * 1000
   };
 
   renderComponent(Header, "header", store, hydrate);
