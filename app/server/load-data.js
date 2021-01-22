@@ -1,19 +1,19 @@
 /* eslint-disable no-underscore-dangle, no-undef, no-unused-vars, object-shorthand, arrow-body-style  */
 import pick from "lodash/pick";
 import get from "lodash/get";
-
 import publisher from "@quintype/framework/server/publisher-config";
+import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
+
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
 import { loadFormPageData } from "./data-loaders/form-page-data";
-import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
-import { PAGE_TYPE } from "../isomorphic/constants";
 import { loadCollectionPageData } from "./data-loaders/collection-page-data";
 import { loadAuthorPageData } from "./data-loaders/author-page-data";
+import { PAGE_TYPE } from "../isomorphic/constants";
 
 const WHITELIST_CONFIG_KEYS = [
   "cdn-image",

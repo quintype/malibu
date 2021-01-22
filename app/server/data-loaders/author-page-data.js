@@ -1,11 +1,10 @@
 import { Author } from "@quintype/framework/server/api-client";
+import { storyFields } from "../../isomorphic/constants";
 import get from "lodash/get";
 
 export function loadAuthorPageData(client, authorSlug, config) {
   let authorDetails = {};
-  const storyFields =
-    "alternative,slug,metadata,story-template,story-content-id,id,headline,hero-image-s3-key,hero-image-metadata,sections,tags,author-name,author-id,authors,created-at,first-published-at,published-at,last-published-at,url";
-  const params = { author: authorSlug, sort: "published-at", fields: storyFields, limit: 100 };
+  const params = { author: authorSlug, sort: "published-at", fields: storyFields, limit: 20 };
 
   return Author.getAuthor(client, authorSlug)
     .then(authorData => {

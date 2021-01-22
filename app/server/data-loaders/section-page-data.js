@@ -1,20 +1,27 @@
-import { Story, Collection } from "@quintype/framework/server/api-client";
+import { Story } from "@quintype/framework/server/api-client";
 import { sorterToCacheKey, storyToCacheKey } from "@quintype/framework/server/caching";
 
-export function loadSectionPageData(client, sectionId, config, publisherAttributes) {
+import { storyFields } from "../../isomorphic/constants";
+import { loadCommonCollectionData } from "./load-common-collection-data";
+
+export async function loadSectionPageData(client, sectionId, config, publisherAttributes) {
   const section = config.sections.find(section => section.id === sectionId) || {};
   const sectionSlug = section.collection === null ? null : section.collection.slug;
-  if (sectionSlug && publisherAttributes.should_use_collection) {
-    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 20 }, { depth: 2 }).then(collection => {
-      return {
-        section: section,
-        collection: collection.asJson(),
-        cacheKeys: collection.cacheKeys(config["publisher-id"])
-      };
-    });
+  const shouldUseCollection = sectionSlug && publisherAttributes.should_use_collection;
+
+  if (shouldUseCollection) {
+    const params = {
+      client,
+      config,
+      slug: sectionSlug,
+      collectionParams: { limit: 20 },
+      depthParams: { depth: 2 }
+    };
+    const collection = await loadCommonCollectionData(params);
+    const newObj = Object.assign({}, collection);
+    newObj.section = section;
+    return newObj;
   } else {
-    const storyFields =
-      "headline,subheadline,summary,sections,tags,author-name,author-id,authors,updated-at,last-published-at,published-at,updated-at,first-published-at,hero-image-metadata,hero-image-s3-key,story-content-id,slug,id,seo,story-template,metadata,url";
     return Story.getStories(client, "top", { "section-id": section.id, fields: storyFields, limit: 20 }).then(
       stories => {
         const allStories = stories.map(story => {

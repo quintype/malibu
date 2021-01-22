@@ -14,3 +14,5 @@ export const PAGE_TYPE = Object.freeze({
   AUTHOR_PAGE: "author-page"
 });
 export const TAG_PAGE_URL_PREFIX = "/topic/";
+export const storyFields =
+  "headline,subheadline,sections,author-name,authors,hero-image-metadata,hero-image-s3-key,slug,id";

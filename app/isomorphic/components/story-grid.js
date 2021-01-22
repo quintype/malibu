@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
-import PT from "prop-types";
+import { shape, string, object, integer, arrayOf } from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
   return (
-    <Link href={`${props.story.url}`} className="story-grid-item">
+    <Link href={`${props.story.slug}`} className="story-grid-item">
       <figure className="qt-image-16x9" styleName="story-grid-item-image">
         <ResponsiveImage
           slug={props.story["hero-image-s3-key"]}
@@ -25,22 +25,25 @@ function StoryGridStoryItem(props) {
   );
 }
 
-const storyPropType = PT.shape({
-  id: PT.string,
-  slug: PT.string,
-  "hero-image-s3-key": PT.string,
-  "hero-image-metadata": PT.object,
-  headline: PT.string,
-  "author-name": PT.string,
-  url: PT.string
+const storyPropType = shape({
+  id: string,
+  slug: string,
+  "hero-image-s3-key": string,
+  "hero-image-metadata": object,
+  headline: string,
+  "author-name": string
 });
 
 StoryGridStoryItem.propTypes = {
   story: storyPropType,
-  position: PT.integer
+  position: integer
 };
 
 export function StoryGrid({ stories = [] }) {
+  if (stories.length === 0) {
+    return null;
+  }
+
   return (
     <div className="story-grid">
       {stories.map((story, index) => (
@@ -51,5 +54,5 @@ export function StoryGrid({ stories = [] }) {
 }
 
 StoryGrid.propTypes = {
-  stories: PT.arrayOf(storyPropType)
+  stories: arrayOf(storyPropType)
 };

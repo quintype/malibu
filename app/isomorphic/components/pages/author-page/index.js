@@ -1,8 +1,10 @@
 import React from "react";
-import PT from "prop-types";
+import { object, array, shape } from "prop-types";
+
 import { StoryGrid } from "../../story-grid";
+
 const AuthorPage = props => {
-  const stories = props.data.stories.map(({ story }) => story) || props.data.stories;
+  const stories = props.data.stories.map(({ story }) => story);
   return (
     <React.Fragment>
       <h1>{`Author - ${props.data.author.name}`}</h1>
@@ -12,9 +14,9 @@ const AuthorPage = props => {
 };
 
 AuthorPage.propTypes = {
-  data: PT.shape({
-    author: PT.object,
-    stories: PT.array
+  data: shape({
+    author: object,
+    stories: array
   })
 };
 
