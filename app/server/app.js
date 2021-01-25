@@ -46,21 +46,22 @@ const STRUCTURED_DATA = {
   enableLiveBlog: true
 };
 
-const redirectCollectionHandler = () => async (req, res, next, { client }) => {
+const redirectCollectionHandler = () => async (req, res, next, { client, config }) => {
   const response = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 20 }, { depth: 2 });
   if (!response) {
     return next();
   }
   const collection = response && response.collection;
-  res.header("Cache-Control", "public,max-age=10,s-maxage=300, stale-while-revalidate=1500,stale-if-error=28800");
   if (collection.template === "section") {
-    res.redirect(301, `/${req.params.collectionSlug}`);
-    return res;
+    const sectionId = collection.metadata.section[0].id;
+    const section = config.sections.find(section => section.id === sectionId) || {};
+    res.redirect(301, `${section["section-url"]}`);
+    return;
   }
 
   if (collection.template === "author") {
     res.redirect(301, `/author/${req.params.collectionSlug}`);
-    return res;
+    return;
   }
   next();
 };
