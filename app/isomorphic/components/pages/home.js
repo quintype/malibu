@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt, import/extensions */
 import { LazyCollection, LazyLoadImages, replaceAllStoriesInCollection, WithPreview } from "@quintype/components";
 import assetify from "@quintype/framework/assetify";
 import { object, shape } from "prop-types";
@@ -12,7 +11,7 @@ export const HomePage = props => (
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
     </LazyLoadImages>
-    <img src={assetify(img)} />
+    <img src={assetify(img)} alt="bg-tile" />
   </div>
 );
 

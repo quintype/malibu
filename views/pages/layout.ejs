@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <%- include ./partials/gtm -%>
     <%- include ./partials/ga -%>
@@ -40,7 +40,9 @@
       <link rel="preload" href="<%= jsPath %>" as="script">
     <%_ }) _%>
     <%_ } _%>
-    <script async src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+    <% if (isOnesignalEnable && oneSignalAppId) { %>
+      <%- include ./partials/onesignal.ejs -%>
+    <% } %>
   </head>
 
   <body>
