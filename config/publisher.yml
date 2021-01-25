@@ -1,5 +1,5 @@
 asset_host: http://localhost:8080
-sketches_host: https://quintype-demo.quintype.io
+sketches_host: https://malibu-web.qtstage.io
 host_to_api_host:
   help.lvh.me: https://user-documentation.quintype.io
 host_to_automatic_api_host:
@@ -10,9 +10,13 @@ domain_mapping:
 
 publisher:
   google_tag_manager:
-    id: "GTM-M2JPDF4"
+    id: "GTM-TP6JMSJ"
   google_analytics:
     id: "UA-139937241-1"
+  onesignal:
+    safari_web_id: "web.onesignal.auto.37a647a2-1bdc-46a8-a505-4f4cc6400a46"
+    is_enable: true
+  enableLogin: true
 fcm:
   message_sender_id: "246938023912"
   serverKey: "AAAAOX6nN-g:APA91bGJXM-FJXbnmfT250E088wmMUi0bzUmgfWcx618tWgagzqgMGThXwe6BfSx3xHWa83Uubik6ma0U92vjPt2II69_wv0E8xyAqKex9cobpqCVp0zkYbqG5b8fySp1kV0RQx04sf6"
