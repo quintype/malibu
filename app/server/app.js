@@ -57,6 +57,7 @@ const redirectCollectionHandler = () => async (req, res, next, { client }) => {
   if (collection.template === "author") {
     res.redirect(301, `/author/${req.params.collectionSlug}`);
   }
+  next();
 };
 
 const logError = error => logger.error(error);
