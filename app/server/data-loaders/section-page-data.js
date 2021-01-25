@@ -1,26 +1,19 @@
-import { Story } from "@quintype/framework/server/api-client";
+import { Story, Collection } from "@quintype/framework/server/api-client";
 import { sorterToCacheKey, storyToCacheKey } from "@quintype/framework/server/caching";
 
 import { storyFields } from "../../isomorphic/constants";
-import { loadCommonCollectionData } from "./load-common-collection-data";
 
-export async function loadSectionPageData(client, sectionId, config, publisherAttributes) {
+export function loadSectionPageData(client, sectionId, config, publisherAttributes) {
   const section = config.sections.find(section => section.id === sectionId) || {};
   const sectionSlug = section.collection === null ? null : section.collection.slug;
-  const shouldUseCollection = sectionSlug && publisherAttributes.should_use_collection;
-
-  if (shouldUseCollection) {
-    const params = {
-      client,
-      config,
-      slug: sectionSlug,
-      collectionParams: { limit: 20 },
-      depthParams: { depth: 2 }
-    };
-    const collection = await loadCommonCollectionData(params);
-    const newObj = Object.assign({}, collection);
-    newObj.section = section;
-    return newObj;
+  if (sectionSlug && publisherAttributes.should_use_collection) {
+    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 20 }, { depth: 2 }).then(collection => {
+      return {
+        section: section,
+        collection: collection.asJson(),
+        cacheKeys: collection.cacheKeys(config["publisher-id"])
+      };
+    });
   } else {
     return Story.getStories(client, "top", { "section-id": section.id, fields: storyFields, limit: 20 }).then(
       stories => {

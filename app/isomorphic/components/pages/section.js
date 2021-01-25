@@ -7,7 +7,7 @@ import { StoryGrid } from "../story-grid";
 import { getCollectionTemplate } from "../get-collection-template";
 
 const SectionPage = props => {
-  const stories = collectionToStories(props.data.collection) || [];
+  const stories = (props.data.collection.items && collectionToStories(props.data.collection)) || [];
   const childCollections = (get(props, ["data", "collection", "items"]) || []).filter(
     item => item.type === "collection" && item.items.length > 0
   );
@@ -15,6 +15,11 @@ const SectionPage = props => {
     props.pageType === "collection-page"
       ? props.data.collection.name
       : `Section - ${props.data.section["display-name"] || props.data.section.name}`;
+  const noStoriesFound =
+    props.pageType === "collection-page" ? "No Collection Stories Found" : "No Section Stories Found";
+  if (stories.length === 0) {
+    return <h1>{noStoriesFound}</h1>;
+  }
   return (
     <div>
       <h1>{pageTitle}</h1>

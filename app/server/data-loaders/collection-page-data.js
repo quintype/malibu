@@ -1,12 +1,10 @@
-import { loadCommonCollectionData } from "./load-common-collection-data";
+import { Collection } from "@quintype/framework/server/api-client";
 
-export async function loadCollectionPageData(client, collectionSlug, config) {
-  const params = {
-    client,
-    config,
-    slug: collectionSlug,
-    collectionParams: { limit: 20 },
-    depthParams: { depth: 2 }
-  };
-  return await loadCommonCollectionData(params);
+export function loadCollectionPageData(client, collectionSlug, config) {
+  return Collection.getCollectionBySlug(client, collectionSlug, { limit: 20 }, { depth: 2 }).then(collection => {
+    return {
+      collection: (collection && collection.asJson()) || {},
+      cacheKeys: collection && collection.cacheKeys(config["publisher-id"])
+    };
+  });
 }
