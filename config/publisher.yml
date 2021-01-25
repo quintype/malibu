@@ -19,5 +19,5 @@ publisher:
   enableLogin: true
 fcm:
   message_sender_id: "246938023912"
-  serverKey: "AAAAOX6nN-g:APA91bGJXM-FJXbnmfT250E088wmMUi0bzUmgfWcx618tWgagzqgMGThXwe6BfSx3xHWa83Uubik6ma0U92vjPt2II69_wv0E8xyAqKex9cobpqCVp0zkYbqG5b8fySp1kV0RQx04sf6"
+  serverKey: "AAAAOX6nN-g:APA91bFs_L_NGjqZmCc7ZTyOteh5iMrwTaBkZ3xbM6R-JGmhTyM4czqQoB_D8olxFh1Hy_8g-1BRhaB5g7d-x6v2V-FvgAQh8z8N6I0RKRWse4hFW8CksNYQAB_8Jlv8KXfjXUXGmqr8"
   is_enable: true
