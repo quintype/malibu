@@ -52,13 +52,15 @@ const redirectCollectionHandler = () => async (req, res, next, { client }) => {
     return next();
   }
   const collection = response && response.collection;
-
+  res.header("Cache-Control", "public,max-age=10,s-maxage=300, stale-while-revalidate=1500,stale-if-error=28800");
   if (collection.template === "section") {
     res.redirect(301, `/${req.params.collectionSlug}`);
+    return res;
   }
 
   if (collection.template === "author") {
     res.redirect(301, `/author/${req.params.collectionSlug}`);
+    return res;
   }
   next();
 };
