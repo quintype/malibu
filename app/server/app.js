@@ -53,7 +53,6 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   }
   const collection = response && response.collection;
   if (collection.template === "section") {
-    res.header("Cache-Control", "public,max-age=0,s-maxage=0,stale-while-revalidate=120,stale-if-error=3600");
     const sectionId = collection.metadata.section[0].id;
     const section = config.sections.find(section => section.id === sectionId) || {};
     res.redirect(301, `${section["section-url"]}`);
@@ -61,7 +60,6 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   }
 
   if (collection.template === "author") {
-    res.header("Cache-Control", "public,max-age=0,s-maxage=0,stale-while-revalidate=120,stale-if-error=3600");
     res.redirect(301, `/author/${req.params.collectionSlug}`);
     return;
   }
