@@ -47,7 +47,7 @@ const STRUCTURED_DATA = {
 };
 
 const redirectCollectionHandler = () => async (req, res, next, { client, config }) => {
-  const response = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 20 }, { depth: 2 });
+  const response = await Collection.getCollectionBySlug(client, req.params["0"], { limit: 20 }, { depth: 2 });
   if (!response) {
     return next();
   }
@@ -58,16 +58,15 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
     res.redirect(301, `${section["section-url"]}`);
     return;
   }
-
   if (collection.template === "author") {
-    res.redirect(301, `/author/${req.params.collectionSlug}`);
+    res.redirect(301, `/author/${req.params["0"]}`);
     return;
   }
-  next();
+  return next();
 };
 
 const logError = error => logger.error(error);
-getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
+getWithConfig(app, "/collection/*", redirectCollectionHandler(), {
   logError
 });
 

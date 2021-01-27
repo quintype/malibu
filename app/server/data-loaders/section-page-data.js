@@ -5,10 +5,10 @@ import { storyFields } from "../../isomorphic/constants";
 
 export function loadSectionPageData(client, sectionId, config, publisherAttributes) {
   const section = config.sections.find(section => section.id === sectionId) || {};
-  const sectionSlug = section.collection === null ? null : section.collection.slug;
-  const shouldUseCollection = sectionSlug && publisherAttributes.should_use_collection;
+  const collectionSlug = section.collection === null ? null : section.collection.slug;
+  const shouldUseCollection = collectionSlug && publisherAttributes.should_use_collection;
   if (shouldUseCollection) {
-    return Collection.getCollectionBySlug(client, sectionSlug, { limit: 20 }, { depth: 2 }).then(collection => {
+    return Collection.getCollectionBySlug(client, collectionSlug, { limit: 20 }, { depth: 2 }).then(collection => {
       return {
         section: section,
         collection: collection.asJson(),
