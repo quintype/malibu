@@ -20,6 +20,7 @@ const WHITELIST_CONFIG_KEYS = [
   "sections",
   "social-links",
   "publisher-name",
+  "public-integrations",
   "sketches-host",
   "publisher-settings"
 ];

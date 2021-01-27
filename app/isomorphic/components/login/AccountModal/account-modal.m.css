@@ -1,0 +1,26 @@
+.account-modal {
+  .form-wrapper {
+    padding: 40px 20px 30px;
+    width: 320px;
+    margin: 0 auto;
+    @media screen and (min-width: 767px) {
+      padding: 40px 40px 30px;
+    }
+  }
+  .tabs {
+    display: flex;
+    margin-bottom: 30px;
+    cursor: pointer;
+    justify-content: center;
+  }
+  .tab-item {
+    padding: 10px;
+    text-transform: uppercase;
+    color: var(--malibu-gray9);
+    line-height: 1.63;
+    letter-spacing: 1.8px;
+  }
+  .active {
+    border-bottom: 2px solid var(--malibu-gray9);
+  }
+}

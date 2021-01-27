@@ -3,12 +3,7 @@ import PT from "prop-types";
 
 export function Search({ color = "#d0021b", width = 16, height = 16 }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
-      viewBox="0 0 16 16"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 16 16">
       <g fill="none" fillRule="evenodd">
         <path d="M-6.286-7h28.9v28.929h-28.9z" />
         <path

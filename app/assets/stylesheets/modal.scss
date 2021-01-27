@@ -1,0 +1,42 @@
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+}
+
+.malibu-modal {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--modal);
+  background: rgba(var(--rgbBlack), 0.5);
+}
+
+.modal-content {
+  max-height: 95vh;
+  overflow-y: auto;
+
+  background: var(--white);
+  transform: translateY(-3vh);
+  z-index: var(--modal);
+  width: 90%;
+  position: relative;
+  @media screen and (min-width: 767px) {
+    width: auto;
+    .close-button {
+      top: 20px;
+      right: 20px;
+    }
+  }
+}
+
+.modal-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.4);
+}

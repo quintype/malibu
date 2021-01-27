@@ -3,22 +3,12 @@ import PT from "prop-types";
 
 export function CloseIcon({ color = "#fff", width = 21, height = 21 }) {
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 21 21"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width={width} height={height} viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" fillRule="evenodd">
         <g transform="translate(-168 -859)" fillRule="nonzero">
           <g id="Group-12-Copy" transform="translate(168 859)">
             <g id="Group-16">
-              <rect
-                id="Rectangle-14"
-                fill="transparent"
-                width="24"
-                height="24"
-              />
+              <rect id="Rectangle-14" fill="transparent" width="24" height="24" />
               <g
                 id="Group-36"
                 transform="rotate(45 1.257 16.243)"
