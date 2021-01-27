@@ -10,11 +10,17 @@ domain_mapping:
 
 publisher:
   google_tag_manager:
-    id: "GTM-TP6JMSJ"
+    id: "gtm-id"
   google_analytics:
-    id: "UA-139937241-1"
+    id: "ga-id"
+  breaking_news:
+    is_enable: true
+    interval: 120
+    item_display: 1
+    open_in_new_tab: false
+    pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]
   onesignal:
-    safari_web_id: "web.onesignal.auto.37a647a2-1bdc-46a8-a505-4f4cc6400a46"
+    safari_web_id: "safari-web-id"
     is_enable: true
   enableLogin: true
   should_use_collection: true
