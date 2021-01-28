@@ -1,6 +1,6 @@
 {
   "name": "quintype-malibu",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Quintype Starter PWA",
   "main": "start.js",
   "bin": "bin/quintype-malibu",
