@@ -12,7 +12,7 @@ function DrawForm({ children }) {
       {children}
     </label>,
     <button aria-label="search-button" type="submit" styleName="search__form-submit" key="2">
-      <Search width="16" height="16" />
+      <Search width={16} height={16} />
     </button>
   ];
 }

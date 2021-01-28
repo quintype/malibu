@@ -23,3 +23,4 @@ publisher:
     safari_web_id: "safari-web-id"
     is_enable: true
   enableLogin: true
+  should_use_collection: true

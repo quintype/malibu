@@ -47,7 +47,9 @@ const ISOMORPHIC_ROUTES = [
     path: "/forms/:formSlug",
     pageType: PAGE_TYPE.FORM_PAGE,
     exact: true
-  }
+  },
+  { path: "/collection/:collectionSlug", pageType: PAGE_TYPE.COLLECTION_PAGE, exact: true, skipPWA: true },
+  { path: "/author/:authorSlug", pageType: PAGE_TYPE.AUTHOR_PAGE, exact: true }
 ];
 
 export function generateRoutes(config, domainSlug = undefined) {
