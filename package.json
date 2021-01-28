@@ -70,7 +70,7 @@
   },
   "scripts": {
     "analyze-stats": "NODE_ENV=production ANALYZE_STATS=true BABEL_TARGET=browser webpack --profile --mode=production -p",
-    "prepublishOnly": "npm install && git diff --quiet && npx standard-version",
+    "prepublishOnly": "npm install && git diff --quiet && npx standard-version && git push --follow-tags origin",
     "asset-server": "BABEL_TARGET=browser webpack-dev-server --hot",
     "compile": "BABEL_TARGET=browser webpack",
     "windows-asset-server": "webpack-dev-server --hot",

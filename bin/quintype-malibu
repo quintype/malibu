@@ -1,0 +1,23 @@
+#! /bin/sh -e
+
+DEST="$(pwd)/$1"
+
+EXEC_PATH="$0"
+CODE_PATH="$(cd ..; pwd)"
+cp -r "$CODE_PATH" "$DEST"
+
+cd "$DEST"
+
+git init
+
+# # npm pack skips .gitignore and package-lock.json, so doing some hacks
+# cat > .gitignore <<EOF
+# /dist
+# /node_modules
+# EOF
+
+npm install
+git add .
+git commit -nam "Initial Commit"
+
+echo "Created $1!"
