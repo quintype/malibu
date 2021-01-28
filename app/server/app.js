@@ -66,7 +66,7 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
 
 const logError = error => logger.error(error);
 
-getWithConfig(app, "/collection/*", redirectCollectionHandler(), {
+getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
   logError
 });
 
