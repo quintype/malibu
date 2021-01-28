@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/backend": "^1.23.2",
-    "@quintype/bridgekeeper-js": "^1.0.0-beta.3",
+    "@quintype/bridgekeeper-js": "^1.0.0-beta.4",
     "@quintype/components": "^2.25.3",
     "@quintype/framework": "^4.5.4",
     "@quintype/seo": "^1.38.25",
