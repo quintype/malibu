@@ -1,8 +1,9 @@
 {
   "name": "quintype-malibu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Quintype Starter PWA",
   "main": "start.js",
+  "bin": "bin/quintype-malibu",
   "repository": "git@github.com:quintype/malibu.git",
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
@@ -48,6 +49,7 @@
     "postcss": "^8.0.2",
     "prettier": "1.19.1",
     "react-test-renderer": "^16.3.2",
+    "standard-version": "^9.1.0",
     "stylelint": "^13.0.0",
     "stylelint-config-css-modules": "^2.1.0",
     "stylelint-config-recommended-scss": "^4.1.0",
@@ -68,6 +70,7 @@
   },
   "scripts": {
     "analyze-stats": "NODE_ENV=production ANALYZE_STATS=true BABEL_TARGET=browser webpack --profile --mode=production -p",
+    "prepublishOnly": "npm install && git diff --quiet && npx standard-version",
     "asset-server": "BABEL_TARGET=browser webpack-dev-server --hot",
     "compile": "BABEL_TARGET=browser webpack",
     "windows-asset-server": "webpack-dev-server --hot",
