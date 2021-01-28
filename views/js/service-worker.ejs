@@ -8,13 +8,8 @@ const REQUIRED_ASSETS = [
   {url: '/shell.html', revision: '<%= assetHash("app.js") %>'}
 ];
 
-const allRoutes = routes.map(route => {
-  console.log("here route for testing purpose", route)
-  return route;
-})
-
 const workbox = initializeQServiceWorker(self, {
-  routes: <%- JSON.stringify(allRoutes) %>,
+  routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
   hostname: <%- JSON.stringify(hostname) %>
 });
