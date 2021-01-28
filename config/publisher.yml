@@ -19,7 +19,4 @@ publisher:
     item_display: 1
     open_in_new_tab: false
     pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]
-  onesignal:
-    safari_web_id: "safari-web-id"
-    is_enable: true
   enableLogin: true
