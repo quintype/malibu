@@ -28,19 +28,11 @@ It is also strongly recommended that you have a working knowledge of the followi
 
 In many of these examples, we will be using [VS Code](https://code.visualstudio.com) for development. It's fine if you use another editor, but some of the keyboard shortcuts and intellisense may not work.
 
-## Generating a new repository
+## Creating a new Malibu app
 
-The first step is to [Create a new repository from malibu](https://github.com/quintype/malibu/generate).
+1. You can create a new malibu app using this [npm package](https://www.npmjs.com/package/@quintype/create-malibu-app).
 
-You can save the repository in your own organization, or you can ask the Quintype team to set up this repository under the quintype organization (by emailing support@quintype.com).
-
-You may now clone this repository using the git command line or the [GitHub app](https://desktop.github.com).
-
-```shell
-$ git clone git@github.com:<your-org>/<your-repo>.git
-```
-
-If you plan to use docker on windows, then please ensure that the repository has been cloned within your user's home directory.
+2. You can create a git repository in any tool you like or you can ask the Quintype team to set up this repository under the quintype organization (by emailing support@quintype.com). If you plan to use docker on windows, then please ensure that the git repository has been cloned within your user's home directory.
 
 ## Running the app locally
 
