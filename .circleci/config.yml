@@ -27,22 +27,22 @@ jobs:
   deploy_qa_staging:
     <<: *deploy_task
     environment:
-      BK_ENVIRONMENT: staging 1475
+      BK_ENVIRONMENT: staging $BK_QA_STG_ID
 
   deploy_staging:
     <<: *deploy_task
     environment:
-      BK_ENVIRONMENT: staging 1474
+      BK_ENVIRONMENT: staging $BK_STG_ID
 
   deploy_perf:
     <<: *deploy_task
     environment:
-      BK_ENVIRONMENT: production 204
+      BK_ENVIRONMENT: production $BK_PERF_ID
 
   deploy_production:
     <<: *deploy_task
     environment:
-      BK_ENVIRONMENT: production 134
+      BK_ENVIRONMENT: production $BK_PROD_ID
 
   lint_js:
     docker:
@@ -65,7 +65,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
+          export LHCI_SITES=$LHCI_QA_STG_SITE
           npx @lhci/cli@0.6.x autorun
 
   perf_lighthouse_task:
@@ -74,7 +74,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
+          export LHCI_SITES=$LHCI_PERF_SITE
           npx @lhci/cli@0.6.x autorun
 
 
@@ -84,7 +84,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-web.qtstage.io\"]"
+          export LHCI_SITES=$LHCI_STG_SITE
           npx @lhci/cli@0.6.x autorun
 
   prod_lighthouse_task:
@@ -93,7 +93,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-web.quintype.io\"]"
+          export LHCI_SITES=$LHCI_PROD_SITE
           npx @lhci/cli@0.6.x autorun
 
 workflows:
