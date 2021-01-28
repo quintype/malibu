@@ -16,33 +16,41 @@ jobs:
           paths:
             - docker-tag.txt
 
-  deploy_task: &deploy_task
+  deploy_qa_staging:
+    deploy_task: &deploy_task
     machine: true
     steps:
       - attach_workspace:
           at: /tmp/workspace
       - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
-      - run: docker run --rm --name bk quay.io/quintype/bk-deploy $BK_ENVIRONMENT deployment $(cat /tmp/workspace/docker-tag.txt)
-
-  deploy_qa_staging:
-    <<: *deploy_task
-    environment:
-      BK_ENVIRONMENT: staging $BK_QA_STG_ID
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy staging $BK_QA_STG_ID deployment $(cat /tmp/workspace/docker-tag.txt)
 
   deploy_staging:
-    <<: *deploy_task
-    environment:
-      BK_ENVIRONMENT: staging $BK_STG_ID
+    deploy_task: &deploy_task
+    machine: true
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy staging $BK_STG_ID deployment $(cat /tmp/workspace/docker-tag.txt)
 
   deploy_perf:
-    <<: *deploy_task
-    environment:
-      BK_ENVIRONMENT: production $BK_PERF_ID
+    deploy_task: &deploy_task
+    machine: true
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy production $BK_PERF_ID deployment $(cat /tmp/workspace/docker-tag.txt)
 
   deploy_production:
-    <<: *deploy_task
-    environment:
-      BK_ENVIRONMENT: production $BK_PROD_ID
+    deploy_task: &deploy_task
+    machine: true
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy production $BK_PROD_ID deployment $(cat /tmp/workspace/docker-tag.txt)
 
   lint_js:
     docker:
