@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
-import { WithFacebookLogin, WithGoogleLogin } from "@quintype/bridgekeeper-js";
+import { withFacebookLogin, withGoogleLogin } from "@quintype/bridgekeeper-js";
 
 import { FbIcon } from "../../atoms/icons/fb-icon";
 import { Google } from "../../atoms/icons/google";
@@ -39,43 +39,49 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
     window.location.href = serverSideLoginPath;
   };
 
+  const FaceBookLogin = () => {
+    const { login, serverSideLoginPath } = withFacebookLogin("248865019954260", "email", true);
+    return (
+      <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
+        <span styleName="icon">
+          <FbIcon color="#3b5998" width={9} height={15} />
+        </span>{" "}
+        Facebook
+      </Button>
+    );
+  };
+
+  const GoogleLogin = () => {
+    const { serverSideLoginPath } = withGoogleLogin(
+      "163120650123-m2rj93thcgkfs7js80cop6frppemfo1c.apps.googleusercontent.com",
+      "email",
+      true
+    );
+    return (
+      <Button
+        color="#dd4b39"
+        flat
+        href={serverSideLoginPath}
+        onClick={e => googleOnClick(e, serverSideLoginPath)}
+        socialButton
+      >
+        <span styleName="icon">
+          <Google />
+        </span>{" "}
+        Google
+      </Button>
+    );
+  };
+
   return (
     <div styleName="social-login">
       <h3 styleName="title">Or login with</h3>
       <ul styleName="buttons">
         <li styleName="button">
-          <WithFacebookLogin appId="248865019954260" scope="email" emailMandatory>
-            {({ login, serverSideLoginPath }) => (
-              <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
-                <span styleName="icon">
-                  <FbIcon color="#3b5998" width={9} height={15} />
-                </span>{" "}
-                Facebook
-              </Button>
-            )}
-          </WithFacebookLogin>
+          <FaceBookLogin />
         </li>
         <li styleName="button">
-          <WithGoogleLogin
-            clientId="163120650123-m2rj93thcgkfs7js80cop6frppemfo1c.apps.googleusercontent.com"
-            scope="email"
-            emailMandatory
-          >
-            {({ login, serverSideLoginPath }) => (
-              <Button
-                color="#dd4b39"
-                flat
-                href={serverSideLoginPath}
-                onClick={e => googleOnClick(e, serverSideLoginPath)}
-                socialButton
-              >
-                <span styleName="icon">
-                  <Google />
-                </span>{" "}
-                Google
-              </Button>
-            )}
-          </WithGoogleLogin>
+          <GoogleLogin />
         </li>
       </ul>
       <p styleName="error">{error}</p>
