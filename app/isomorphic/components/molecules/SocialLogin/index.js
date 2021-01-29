@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
-import bk from "@quintype/bridgekeeper-js";
+import { withFacebookLogin, withGoogleLogin } from "@quintype/bridgekeeper-js";
 
 import { FbIcon } from "../../atoms/icons/fb-icon";
 import { Google } from "../../atoms/icons/google";
@@ -10,7 +10,6 @@ import "./social-login.m.css";
 
 export const SocialLogin = ({ checkForMemberUpdated }) => {
   const [error, setError] = useState("");
-  const { withFacebookLogin, withGoogleLogin } = bk;
 
   const socialLogin = (e, login) => {
     e.preventDefault();
