@@ -10,10 +10,10 @@ domain_mapping:
 
 publisher:
   google_tag_manager:
-    id: "GTM-M2JPDF4"
+    id: "gtm-id"
     is_enable: true
   google_analytics:
-    id: "UA-139937241-1"
+    id: "ga-id"
     is_enable: true
   breaking_news:
     is_enable: true
