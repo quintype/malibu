@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include ./partials/gtm -%>
-    <%- include ./partials/ga -%>
+    <% if (isGtmEnable) { %>
+      <%- include ./partials/gtm -%>
+    <% } %>
+    <% if (isGaEnable) { %>
+      <%- include ./partials/ga -%>
+    <% } %>
     <%- metaTags -%>
     <link href="/manifest.json" rel="manifest">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=5.0,minimum-scale=1.0">
@@ -46,7 +50,9 @@
   </head>
 
   <body>
-    <%- include ./partials/noscriptgtm -%>
+    <% if (isGtmEnable) { %>
+      <%- include ./partials/noscriptgtm -%>
+    <% } %>
     <div class="container">
       <header id="header"><%- navbar %></header>
       <div id='breaking-news-container'><%- breakingNews -%></div>

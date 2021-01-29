@@ -10,9 +10,11 @@ domain_mapping:
 
 publisher:
   google_tag_manager:
-    id: "gtm-id"
+    id: "GTM-M2JPDF4"
+    is_enable: true
   google_analytics:
-    id: "ga-id"
+    id: "UA-139937241-1"
+    is_enable: true
   breaking_news:
     is_enable: true
     interval: 120
