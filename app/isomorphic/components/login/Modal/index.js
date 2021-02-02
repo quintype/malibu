@@ -17,7 +17,7 @@ export const Modal = ({ onBackdropClick, children, hideCloseIcon }) => {
       <div className="modal-content">
         {children}
         {!hideCloseIcon && (
-          <button styleName="close-button" onClick={onBackdropClick}>
+          <button aria-label="close-button" styleName="close-button" onClick={onBackdropClick}>
             <CloseIcon />
           </button>
         )}

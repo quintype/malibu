@@ -73,7 +73,7 @@ export const SignUp = ({ onSignup }) => {
       <InputField name="Email" type="email" id="email" onChange={setData} required />
       <InputField name="Password" type="password" id="password" onChange={setData} required />
       {/* {errorMsg && <p styleName="error">{errorMsg}</p>} */}
-      <button onClick={signUpHandler} className="malibu-btn-large malibu-btn-right">
+      <button aria-label="signup-button" onClick={signUpHandler} className="malibu-btn-large malibu-btn-right">
         Sign up
       </button>
     </form>

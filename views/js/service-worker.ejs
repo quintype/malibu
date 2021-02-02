@@ -15,3 +15,7 @@ const workbox = initializeQServiceWorker(self, {
 });
 
 workbox.router.registerRoute('/route-data.json', workbox.strategies.networkFirst());
+
+if("<%= config["public-integrations"]["one-signal"] &&  config["public-integrations"]["one-signal"]["app-id"] %>") {
+  importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');
+}

@@ -1,5 +1,5 @@
 asset_host: http://localhost:8080
-sketches_host: https://quintype-demo.quintype.io
+sketches_host: https://malibu-web.qtstage.io
 host_to_api_host:
   help.lvh.me: https://user-documentation.quintype.io
 host_to_automatic_api_host:
@@ -10,7 +10,17 @@ domain_mapping:
 
 publisher:
   google_tag_manager:
-    id: "GTM-TP6JMSJ"
+    id: "gtm-id"
   google_analytics:
-    id: "UA-139937241-1"
+    id: "ga-id"
+  breaking_news:
+    is_enable: true
+    interval: 120
+    item_display: 1
+    open_in_new_tab: false
+    pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]
+  onesignal:
+    safari_web_id: "safari-web-id"
+    is_enable: true
   enableLogin: true
+  should_use_collection: true
