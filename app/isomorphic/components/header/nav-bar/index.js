@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React from "react";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
@@ -8,9 +8,7 @@ import { AppLogo } from "../app-logo";
 
 import "./styles.m.css";
 
-const NavBar = ({ menu, enableLogin }) => {
-  const AccountModal = lazy(() => import("../../login/AccountModal"));
-  const [showAccountModal, setShowAccountModal] = useState(false);
+const NavBar = ({ menu }) => {
   return (
     <React.Fragment>
       <AppLogo />
@@ -22,20 +20,6 @@ const NavBar = ({ menu, enableLogin }) => {
             </li>
           );
         })}
-        {enableLogin && (
-          <li>
-            <button aria-label="login-button" onClick={() => setShowAccountModal(true)}>
-              Login
-            </button>
-            {showAccountModal && (
-              <Suspense fallback={<div></div>}>
-                <AccountModal onBackdropClick={() => setShowAccountModal(false)} checkForMemberUpdated={{}} />
-              </Suspense>
-            )}
-            {/* checkForMemberUpdated from
-          withmember of qt components library and also add onBackdropClick which is used for closing popup */}
-          </li>
-        )}
       </ul>
       <NavbarSearch />
     </React.Fragment>
