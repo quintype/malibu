@@ -1,7 +1,7 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense, useEffect } from "react";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
-import { WithMember } from "@quintype/components";
+import { Logout, getMember } from "@quintype/bridgekeeper-js";
 
 import { NavbarSearch } from "../navbar-search";
 import { MenuItem } from "../helper-components";
@@ -12,6 +12,18 @@ import "./styles.m.css";
 const NavBar = ({ menu, enableLogin }) => {
   const AccountModal = lazy(() => import("../../login/AccountModal"));
   const [showAccountModal, setShowAccountModal] = useState(false);
+  const [member, setMember] = useState(null);
+
+  useEffect(() => {
+    const member = getMember().then(data => data.user);
+    setMember(member);
+  });
+  const logoutHandler = () => {
+    Logout().then(() => {
+      setMember(null);
+    });
+  };
+
   return (
     <React.Fragment>
       <AppLogo />
@@ -24,32 +36,26 @@ const NavBar = ({ menu, enableLogin }) => {
           );
         })}
         {enableLogin && (
-          <WithMember>
-            {({ member, logout, checkForMemberUpdated, isLoading }) =>
-              !isLoading && (
-                <li>
-                  {member ? (
-                    <>
-                      <button>Logut</button>
-                      <p>{`Username: ${get(member, ["name"], "")}`}</p>
-                    </>
-                  ) : (
-                    <>
-                      <button onClick={() => setShowAccountModal(true)}>Login</button>
-                      {showAccountModal && (
-                        <Suspense fallback={<div></div>}>
-                          <AccountModal
-                            onBackdropClick={() => setShowAccountModal(false)}
-                            checkForMemberUpdated={checkForMemberUpdated}
-                          />
-                        </Suspense>
-                      )}
-                    </>
-                  )}
-                </li>
-              )
-            }
-          </WithMember>
+          <li>
+            {member ? (
+              <>
+                <button onClick={logoutHandler}>Logout</button>
+                <p>{`Username: ${get(member, ["name"], "")}`}</p>
+              </>
+            ) : (
+              <>
+                <button onClick={() => setShowAccountModal(true)}>Login</button>
+                {showAccountModal && (
+                  <Suspense fallback={<div></div>}>
+                    <AccountModal
+                      onBackdropClick={() => setShowAccountModal(false)}
+                      checkForMemberUpdated={getMember}
+                    />
+                  </Suspense>
+                )}
+              </>
+            )}
+          </li>
         )}
       </ul>
       <NavbarSearch />
