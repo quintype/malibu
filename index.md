@@ -26,3 +26,4 @@ Malibu is build on top of the following libraries from quintype. You can find li
 * [@quintype/backend](https://developers.quintype.com/quintype-node-backend) - Node API client
 * [@quintype/build](https://developers.quintype.com/quintype-node-build) - Build Scripts for dockerizing your build
 * [@quintype/amp](https://developers.quintype.com/quintype-amp) - Library powering AMP pages
+* [@quintype/bridgekeeper-js](https://developers.quintype.com/bridgekeeper-js) - Login/Register apis powered by bridgekeeper
