@@ -18,7 +18,6 @@ class HeaderBase extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state--------------------", state);
   return {
     menu: get(state, ["qt", "data", "navigationMenu"], []),
     enableLogin: get(state, ["qt", "config", "publisher-attributes", "enableLogin"], false)
