@@ -16,7 +16,6 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
 
     login()
       .then(() => {
-        checkForMemberUpdated();
         checkForMemberUpdated().then(res => {
           console.log("successfully login");
         });
