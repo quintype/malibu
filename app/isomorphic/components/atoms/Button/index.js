@@ -7,12 +7,9 @@ import "./button.m.css";
 const Button = ({ href, children, color, flat, socialButton = false, onClick, ...props }) => {
   if (socialButton) {
     return (
-      // <a href={href} styleName="btn" {...props}>
-      //   {children}
-      // </a>
-      <span styleName="btn" onClick={onClick}>
+      <a href={href} styleName="btn">
         {children}
-      </span>
+      </a>
     );
   }
   return href ? (
