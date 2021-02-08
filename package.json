@@ -7,7 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/bridgekeeper-js": "^1.0.0-logout.2",
+    "@quintype/bridgekeeper-js": "file:../bridgekeeper-js/quintype-bridgekeeper-js-1.0.0-beta.21.tgz",
     "@quintype/components": "^2.25.3",
     "@quintype/framework": "^4.5.4",
     "@quintype/seo": "^1.38.25",
