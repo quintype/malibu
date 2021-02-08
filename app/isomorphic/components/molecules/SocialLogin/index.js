@@ -39,9 +39,9 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   };
 
   const FaceBookLogin = () => {
-    const { login, serverSideLoginPath } = withFacebookLogin("248865019954260", "email", true);
+    const { login } = withFacebookLogin("248865019954260", "email", true);
     return (
-      <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
+      <Button color="#3b5998" flat /* href={serverSideLoginPath} */ onClick={e => socialLogin(e, login)} socialButton>
         <span styleName="icon">
           <FbIcon color="#3b5998" width={9} height={15} />
         </span>{" "}
@@ -60,7 +60,7 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
       <Button
         color="#dd4b39"
         flat
-        href={serverSideLoginPath}
+        // href={serverSideLoginPath}
         onClick={e => googleOnClick(e, serverSideLoginPath)}
         socialButton
       >
