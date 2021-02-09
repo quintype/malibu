@@ -2,8 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
-import { WithMember } from "@quintype/components";
-import { getMember, logout } from "@quintype/bridgekeeper-js"
+import { getMember, logout } from "@quintype/bridgekeeper-js";
 
 import { MEMBER_UPDATED } from "../../store/actions";
 import { NavbarSearch } from "../navbar-search";
@@ -16,10 +15,10 @@ const NavBar = ({ menu, enableLogin }) => {
   const AccountModal = lazy(() => import("../../login/AccountModal"));
   const [showAccountModal, setShowAccountModal] = useState(false);
   const dispatch = useDispatch();
-  useEffect (async ()=> {
+  useEffect(async () => {
     const member = await getMember();
-    dispatch({ type: MEMBER_UPDATED, member: member.user});
-  }, [])
+    dispatch({ type: MEMBER_UPDATED, member: member.user });
+  }, []);
 
   const logoutHandler = () => {
     logout().then(() => {
@@ -44,7 +43,7 @@ const NavBar = ({ menu, enableLogin }) => {
           );
         })}
         {enableLogin && (
-            <li>
+          <li>
             {member ? (
               <>
                 <button onClick={logoutHandler}>Logout</button>
@@ -55,9 +54,7 @@ const NavBar = ({ menu, enableLogin }) => {
                 <button onClick={() => setShowAccountModal(true)}>Login</button>
                 {showAccountModal && (
                   <Suspense fallback={<div></div>}>
-                    <AccountModal
-                      onBackdropClick={() => setShowAccountModal(false)}
-                    />
+                    <AccountModal onBackdropClick={() => setShowAccountModal(false)} />
                   </Suspense>
                 )}
               </>
