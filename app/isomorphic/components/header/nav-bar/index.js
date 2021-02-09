@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
-import { getMember, logout } from "@quintype/bridgekeeper-js";
+import { currentUser, logout } from "@quintype/bridgekeeper-js";
 
 import { MEMBER_UPDATED } from "../../store/actions";
 import { NavbarSearch } from "../navbar-search";
@@ -16,7 +16,7 @@ const NavBar = ({ menu, enableLogin }) => {
   const [showAccountModal, setShowAccountModal] = useState(false);
   const dispatch = useDispatch();
   useEffect(async () => {
-    const member = await getMember();
+    const member = await currentUser();
     dispatch({ type: MEMBER_UPDATED, member: member.user });
   }, []);
 
