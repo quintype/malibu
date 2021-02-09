@@ -30,7 +30,6 @@ const NavBar = ({ menu, enableLogin }) => {
     });
   };
 
-  useSelector(state => console.log("state--------------", state));
   const member = useSelector(state => get(state, ["member"], null));
 
   return (
@@ -48,7 +47,7 @@ const NavBar = ({ menu, enableLogin }) => {
             <li>
             {member ? (
               <>
-                <button onClick={logoutHandler}>Logut</button>
+                <button onClick={logoutHandler}>Logout</button>
                 <p>{`Username: ${get(member, ["name"], "")}`}</p>
               </>
             ) : (
