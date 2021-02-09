@@ -16,8 +16,9 @@ const NavBar = ({ menu, enableLogin }) => {
   const AccountModal = lazy(() => import("../../login/AccountModal"));
   const [showAccountModal, setShowAccountModal] = useState(false);
   const dispatch = useDispatch();
-  useEffect (()=> {
-    getMember().then(data => dispatch({ type: MEMBER_UPDATED, member: data.user}) )
+  useEffect (async ()=> {
+    const member = await getMember();
+    dispatch({ type: MEMBER_UPDATED, member: member.user});
   }, [])
 
   const logoutHandler = () => {
