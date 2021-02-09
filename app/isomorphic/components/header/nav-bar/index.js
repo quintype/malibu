@@ -17,7 +17,7 @@ const NavBar = ({ menu, enableLogin }) => {
   const dispatch = useDispatch();
   useEffect(async () => {
     const member = await currentUser();
-    dispatch({ type: MEMBER_UPDATED, member: member.user });
+    dispatch({ type: MEMBER_UPDATED, member: get(member, ["user"], null) });
   }, []);
 
   const logoutHandler = () => {
