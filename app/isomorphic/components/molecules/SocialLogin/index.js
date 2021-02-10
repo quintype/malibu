@@ -59,7 +59,8 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
     const { serverSideLoginPath } = withGoogleLogin(
       "163120650123-m2rj93thcgkfs7js80cop6frppemfo1c.apps.googleusercontent.com",
       "email",
-      true
+      true,
+      "https://malibu-web.qtstage.io/technology/automobiles/lamborghini-the-ferrari-killer"
     );
     return (
       <Button
