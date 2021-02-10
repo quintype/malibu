@@ -16,7 +16,6 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
 
     login()
       .then(() => {
-        checkForMemberUpdated();
         checkForMemberUpdated().then(res => {
           console.log("successfully login");
         });
@@ -40,7 +39,12 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   };
 
   const FaceBookLogin = () => {
-    const { login, serverSideLoginPath } = withFacebookLogin("248865019954260", "email", true);
+    const { login, serverSideLoginPath } = withFacebookLogin(
+      "248865019954260",
+      "email",
+      true,
+      "https://malibu-web.qtstage.io/technology/automobiles/lamborghini-the-ferrari-killer"
+    );
     return (
       <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
         <span styleName="icon">

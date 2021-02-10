@@ -1,10 +1,10 @@
 import React from "react";
-import { string, any, bool } from "prop-types";
+import { string, any, bool, func } from "prop-types";
 import { Link } from "@quintype/components";
 
 import "./button.m.css";
 
-const Button = ({ href, children, color, flat, socialButton = false, ...props }) => {
+const Button = ({ href, children, color, flat, socialButton = false, onClick, ...props }) => {
   if (socialButton) {
     return (
       <a href={href} styleName="btn">
@@ -27,7 +27,8 @@ Button.propTypes = {
   children: any,
   color: string,
   flat: bool,
-  socialButton: bool
+  socialButton: bool,
+  onClick: func
 };
 
 export default Button;
