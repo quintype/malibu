@@ -15,9 +15,17 @@ const NavBar = ({ menu, enableLogin }) => {
   const AccountModal = lazy(() => import("../../login/AccountModal"));
   const [showAccountModal, setShowAccountModal] = useState(false);
   const dispatch = useDispatch();
-  useEffect(async () => {
-    const member = await currentUser();
-    dispatch({ type: MEMBER_UPDATED, member: get(member, ["user"], null) });
+
+  const getCurrentUser = async ()=>{
+   try {
+    const currentUserResp = await currentUser();
+    dispatch({ type: MEMBER_UPDATED, member: get(currentUserResp, ["user"], null) });
+   }
+   catch (err) {console.log("error--------", err)}
+  }
+
+  useEffect( () => {
+    getCurrentUser();
   }, []);
 
   const logoutHandler = () => {
