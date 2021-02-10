@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
+import wretch from "wretch";
 
 import { Modal } from "../Modal";
 import { Login } from "../../molecules/forms/login";
@@ -9,23 +10,33 @@ import { ForgotPassword } from "../../molecules/forms/forgot-password";
 
 import "./account-modal.m.css";
 
+function verifyEmail(email) {
+  console.log("## inside verify email");
+  return wretch()
+    .options({ credentials: "same-origin" })
+    .url("/api/auth/v1/users/send-otp")
+    .post({ email: email })
+    .json(res => Promise.resolve(res))
+    .catch(ex => Promise.reject(ex));
+}
+
 const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
   const [activeTab, setActiveTab] = useState("login");
   const [member, setMember] = useState(null);
   const [otpToken, setOtpToken] = useState(null);
-  // const [error, setError] = useState({});
+  const [error, setError] = useState({});
 
   const otpHandler = (member, otpDetails) => {
+    console.log("## inside otp handler");
     setMember(member);
     setOtpToken(otpDetails["email-token"]);
     setActiveTab("otp");
   };
 
   const onSuccess = member => {
-    console.log("need to get the verify email api from BK library");
-    // verifyEmail(member.email)
-    //   .then(res => otpHandler(member, res))
-    //   .catch(error => setError(error));
+    verifyEmail(member.email)
+      .then(res => otpHandler(member, res))
+      .catch(error => setError(error));
   };
 
   const getScreen = () => {
@@ -68,6 +79,8 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
       </ul>
     );
   };
+
+  console.log("## error=", error);
 
   return (
     <Modal onBackdropClick={onBackdropClick}>

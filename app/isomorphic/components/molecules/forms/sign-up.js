@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import PT from "prop-types";
-// import wretch from "wretch";
+import wretch from "wretch";
 
 import { InputField } from "../../atoms/InputField";
-// import { register, checkForMemberInFirebase } from "../../helper/api";
 
 import "./forms.m.css";
 
@@ -14,7 +13,7 @@ export const SignUp = ({ onSignup }) => {
     password: "",
     mobile: ""
   });
-  // const [errorMsg, setError] = useState("");
+  const [errorMsg, setError] = useState("");
 
   // const sendEmail = user => {
   //   const data = {
@@ -25,30 +24,43 @@ export const SignUp = ({ onSignup }) => {
   //   wretch("/send-email").post(data);
   // };
 
+  function register(body) {
+    return wretch()
+      .options({ credentials: "same-origin" })
+      .url("/api/auth/v1/signup")
+      .post(body)
+      .json(res => Promise.resolve(res))
+      .catch(ex => Promise.reject(ex));
+  }
+
   const signUpHandler = async e => {
     e.preventDefault();
     e.stopPropagation();
-    // const userObj = {
-    //   name: userInfo.name,
-    //   email: userInfo.email,
-    //   username: userInfo.email,
-    //   password: userInfo.password,
-    //   "dont-login": false,
-    // };
+    console.log("## inside signUpHandler");
+    const userObj = {
+      name: userInfo.name,
+      email: userInfo.email,
+      username: userInfo.email,
+      password: userInfo.password,
+      "dont-login": false
+    };
 
-    // register(userObj)
-    //   .then(({ user }) => {
-    //     onSignup(user);
-    //     sendEmail(user);
-    //     checkForMemberInFirebase(user);
-    //   })
-    //   .catch(err => {
-    //     if (err.status === 409) {
-    //       setError(`The email '${userObj.email}' already exists`);
-    //     } else {
-    //       setError("Oops! Something went wrong");
-    //     }
-    //   });
+    console.log("## userObj=", userObj);
+
+    register(userObj)
+      .then(({ user }) => {
+        console.log("## user", user);
+        onSignup(user);
+        // sendEmail(user);
+      })
+      .catch(err => {
+        console.log("## error", err);
+        if (err.status === 409) {
+          setError(`The email '${userObj.email}' already exists`);
+        } else {
+          setError("Oops! Something went wrong");
+        }
+      });
   };
 
   const setData = e => {
@@ -72,7 +84,7 @@ export const SignUp = ({ onSignup }) => {
       /> */}
       <InputField name="Email" type="email" id="email" onChange={setData} required />
       <InputField name="Password" type="password" id="password" onChange={setData} required />
-      {/* {errorMsg && <p styleName="error">{errorMsg}</p>} */}
+      {errorMsg && <p styleName="error">{errorMsg}</p>}
       <button aria-label="signup-button" onClick={signUpHandler} className="malibu-btn-large malibu-btn-right">
         Sign up
       </button>
