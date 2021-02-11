@@ -16,15 +16,16 @@ const NavBar = ({ menu, enableLogin }) => {
   const [showAccountModal, setShowAccountModal] = useState(false);
   const dispatch = useDispatch();
 
-  const getCurrentUser = async ()=>{
-   try {
-    const currentUserResp = await currentUser();
-    dispatch({ type: MEMBER_UPDATED, member: get(currentUserResp, ["user"], null) });
-   }
-   catch (err) {console.log("error--------", err)}
-  }
+  const getCurrentUser = async () => {
+    try {
+      const currentUserResp = await currentUser();
+      dispatch({ type: MEMBER_UPDATED, member: get(currentUserResp, ["user"], null) });
+    } catch (err) {
+      console.log("error--------", err);
+    }
+  };
 
-  useEffect( () => {
+  useEffect(() => {
     getCurrentUser();
   }, []);
 
