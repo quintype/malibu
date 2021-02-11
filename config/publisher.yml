@@ -24,3 +24,5 @@ publisher:
     is_enable: true
   enableLogin: true
   should_use_collection: true
+  google_app_id: ""
+  facebook_app_id: ""
