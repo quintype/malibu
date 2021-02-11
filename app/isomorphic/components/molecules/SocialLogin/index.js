@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { func } from "prop-types";
 import { withFacebookLogin, withGoogleLogin } from "@quintype/bridgekeeper-js";
 
@@ -10,6 +10,12 @@ import "./social-login.m.css";
 
 export const SocialLogin = ({ checkForMemberUpdated }) => {
   const [error, setError] = useState("");
+  const [currentLocation, setCurrentLocation] = useState("/");
+
+  useEffect(() => {
+    const location = window.location.href;
+    location && setCurrentLocation(location);
+  }, []);
 
   const socialLogin = (e, login) => {
     e.preventDefault();
@@ -39,12 +45,7 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   };
 
   const FaceBookLogin = () => {
-    const { login, serverSideLoginPath } = withFacebookLogin(
-      "248865019954260",
-      "email",
-      true,
-      "https://malibu-web.qtstage.io/technology/automobiles/lamborghini-the-ferrari-killer"
-    );
+    const { login, serverSideLoginPath } = withFacebookLogin("248865019954260", "email", true, currentLocation);
     return (
       <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
         <span styleName="icon">
@@ -60,7 +61,7 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
       "163120650123-m2rj93thcgkfs7js80cop6frppemfo1c.apps.googleusercontent.com",
       "email",
       true,
-      "https://malibu-web.qtstage.io/technology/automobiles/lamborghini-the-ferrari-killer"
+      currentLocation
     );
     return (
       <Button

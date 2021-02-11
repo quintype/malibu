@@ -7,7 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/bridgekeeper-js": "^2.0.8-social-redirect.3",
+    "@quintype/bridgekeeper-js": "^2.0.8-social-redirect.4",
     "@quintype/components": "^2.25.3",
     "@quintype/framework": "^4.5.4",
     "@quintype/seo": "^1.38.25",
