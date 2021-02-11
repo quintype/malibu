@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { func } from "prop-types";
+import { func, string } from "prop-types";
 import { withFacebookLogin, withGoogleLogin } from "@quintype/bridgekeeper-js";
+import { connect } from "react-redux";
+import get from "lodash/get";
 
 import { FbIcon } from "../../atoms/icons/fb-icon";
 import { Google } from "../../atoms/icons/google";
@@ -8,7 +10,7 @@ import Button from "../../atoms/Button";
 
 import "./social-login.m.css";
 
-export const SocialLogin = ({ checkForMemberUpdated }) => {
+export const SocialLoginBase = ({ checkForMemberUpdated, googleAppId, facebookAppId }) => {
   const [error, setError] = useState("");
   const [currentLocation, setCurrentLocation] = useState("/");
 
@@ -45,7 +47,7 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   };
 
   const FaceBookLogin = () => {
-    const { login, serverSideLoginPath } = withFacebookLogin("248865019954260", "email", true, currentLocation);
+    const { login, serverSideLoginPath } = withFacebookLogin(facebookAppId, "email", true, currentLocation);
     return (
       <Button color="#3b5998" flat href={serverSideLoginPath} onClick={e => socialLogin(e, login)} socialButton>
         <span styleName="icon">
@@ -57,12 +59,7 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   };
 
   const GoogleLogin = () => {
-    const { serverSideLoginPath } = withGoogleLogin(
-      "163120650123-m2rj93thcgkfs7js80cop6frppemfo1c.apps.googleusercontent.com",
-      "email",
-      true,
-      currentLocation
-    );
+    const { serverSideLoginPath } = withGoogleLogin(googleAppId, "email", true, currentLocation);
     return (
       <Button
         color="#dd4b39"
@@ -95,6 +92,15 @@ export const SocialLogin = ({ checkForMemberUpdated }) => {
   );
 };
 
-SocialLogin.propTypes = {
-  checkForMemberUpdated: func
+SocialLoginBase.propTypes = {
+  checkForMemberUpdated: func,
+  googleAppId: string,
+  facebookAppId: string
 };
+
+const mapStateToProps = state => ({
+  googleAppId: get(state, ["qt", "config", "publisher-attributes", "google_app_id"], ""),
+  facebookAppId: get(state, ["qt", "config", "publisher-attributes", "facebook_app_id"], "")
+});
+
+export const SocialLogin = connect(mapStateToProps, null)(SocialLoginBase);
