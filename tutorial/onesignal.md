@@ -13,7 +13,9 @@ In this tutorial, we will learn how to intergrate [OneSignal](https://onesignal.
 
 OneSignal is a popular push notification service for websites and mobile apps. Commonly, publishers use OneSignal to send notifications of breaking news to the consumers of the website.
 
-We first start by adding the respective details about OneSignal in the publisher config that will be needed by the OneSignal script and also will add one toggle which will enable or disable OneSignal from the app.
+First Ensure that _@quintype/framework_ is at the *4.8.1* or latest version
+
+Then We start adding the respective details about OneSignal in the publisher config that will be needed by the OneSignal script and also will add one toggle which will enable or disable OneSignal from the app.
 
 ## OneSignal Configuration with app
 
