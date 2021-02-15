@@ -20,6 +20,8 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
       "verification-status": "email"
     };
 
+    console.log("inside verifyEmailOTP");
+
     return wretch()
       .options({ credentials: "same-origin" })
       .url(`/api/auth/v1/users/update-with-otp`)
@@ -35,7 +37,7 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
     e.preventDefault();
     e.stopPropagation();
     console.log("need to add verify email logic");
-    verifyEmailOTP(otp, otpId)
+    return verifyEmailOTP(otp, otpId)
       .then(() => {
         checkForMemberUpdated().then(res => {
           manageLoginForm(false);
@@ -55,7 +57,7 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
 
   const resendOTP = () => {
     console.log("need to add resend otp logic");
-    verifyEmail(member.email)
+    return verifyEmail(member.email)
       .then(res => {
         setSuccessMsg("OTP Sent to your registered email");
         setOPTId(res["email-token"]);

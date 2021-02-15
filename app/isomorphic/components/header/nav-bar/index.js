@@ -10,6 +10,7 @@ import { MenuItem } from "../helper-components";
 import { AppLogo } from "../app-logo";
 
 import "./styles.m.css";
+import { WithMember } from "@quintype/components";
 
 const NavBar = ({ menu, enableLogin }) => {
   const AccountModal = lazy(() => import("../../login/AccountModal"));
@@ -52,23 +53,32 @@ const NavBar = ({ menu, enableLogin }) => {
           );
         })}
         {enableLogin && (
-          <li>
-            {member ? (
-              <>
-                <button onClick={logoutHandler}>Logout</button>
-                <p>{`Username: ${get(member, ["name"], "")}`}</p>
-              </>
-            ) : (
-              <>
-                <button onClick={() => setShowAccountModal(true)}>Login</button>
-                {showAccountModal && (
-                  <Suspense fallback={<div></div>}>
-                    <AccountModal onBackdropClick={() => setShowAccountModal(false)} />
-                  </Suspense>
-                )}
-              </>
-            )}
-          </li>
+          <WithMember>
+            {({ checkForMemberUpdated, isLoading }) =>
+              !isLoading && (
+                <li>
+                  {member ? (
+                    <>
+                      <button onClick={logoutHandler}>Logout</button>
+                      <p>{`Username: ${get(member, ["name"], "")}`}</p>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={() => setShowAccountModal(true)}>Login</button>
+                      {showAccountModal && (
+                        <Suspense fallback={<div></div>}>
+                          <AccountModal
+                            onBackdropClick={() => setShowAccountModal(false)}
+                            checkForMemberUpdated={checkForMemberUpdated}
+                          />
+                        </Suspense>
+                      )}
+                    </>
+                  )}
+                </li>
+              )
+            }
+          </WithMember>
         )}
       </ul>
       <NavbarSearch />
