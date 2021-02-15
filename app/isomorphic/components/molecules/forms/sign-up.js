@@ -47,7 +47,7 @@ export const SignUp = ({ onSignup }) => {
 
     console.log("## userObj=", userObj);
 
-    register(userObj)
+    return register(userObj)
       .then(({ user }) => {
         console.log("## user", user);
         onSignup(user);

@@ -34,7 +34,7 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
   };
 
   const onSuccess = member => {
-    verifyEmail(member.email)
+    return verifyEmail(member.email)
       .then(res => otpHandler(member, res))
       .catch(error => setError(error));
   };

@@ -2,7 +2,7 @@
 import wretch from "wretch";
 import { startApp } from "@quintype/framework/client/start";
 import { renderApplication, preRenderApplication } from "./render";
-import { REDUCERS } from "../isomorphic/components/store/reducers";
+// import { REDUCERS } from "../isomorphic/components/store/reducers";
 
 import "../../app/assets/stylesheets/app.scss";
 
@@ -24,8 +24,8 @@ if (window.OneSignal) {
   });
 }
 
-const CUSTOM_REDUCERS = REDUCERS;
+// const CUSTOM_REDUCERS = REDUCERS;
 
 global.wretch = wretch;
 
-startApp(renderApplication, CUSTOM_REDUCERS, opts).then(enableHotReload);
+startApp(renderApplication, {}, opts).then(enableHotReload);
