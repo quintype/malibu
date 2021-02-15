@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import PT from "prop-types";
 import get from "lodash/get";
 import { connect } from "react-redux";
-import wretch from "wretch";
 
 import { InputField } from "../../atoms/InputField";
-import { verifyEmail } from "@quintype/bridgekeeper-js";
+import { verifyEmail, updateWithOtp } from "@quintype/bridgekeeper-js";
 import "./forms.m.css";
 
 const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
@@ -21,15 +20,7 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
 
     console.log("inside verifyEmailOTP");
 
-    return wretch()
-      .options({ credentials: "same-origin" })
-      .url(`/api/auth/v1/users/update-with-otp`)
-      .post({
-        otp: `${otp}`,
-        user: user
-      })
-      .json(res => Promise.resolve(res))
-      .catch(ex => Promise.reject(ex));
+    return updateWithOtp(otp, user);
   }
 
   const otpHandler = async e => {

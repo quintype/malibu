@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PT from "prop-types";
-import wretch from "wretch";
+import { register } from "@quintype/bridgekeeper-js";
 
 import { InputField } from "../../atoms/InputField";
 
@@ -23,15 +23,6 @@ export const SignUp = ({ onSignup }) => {
   //   };
   //   wretch("/send-email").post(data);
   // };
-
-  function register(body) {
-    return wretch()
-      .options({ credentials: "same-origin" })
-      .url("/api/auth/v1/signup")
-      .post(body)
-      .json(res => Promise.resolve(res))
-      .catch(ex => Promise.reject(ex));
-  }
 
   const signUpHandler = async e => {
     e.preventDefault();
