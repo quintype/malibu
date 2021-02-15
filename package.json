@@ -7,7 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
-    "@quintype/bridgekeeper-js": "^1.0.1",
+    "@quintype/bridgekeeper-js": "^2.1.1",
     "@quintype/components": "^2.25.3",
     "@quintype/framework": "^4.5.4",
     "@quintype/seo": "^1.38.25",
@@ -44,7 +44,7 @@
     "jest": "^26.0.1",
     "lint-staged": "^10.0.0",
     "mocha": "^8.0.1",
-    "nodemon": "^2.0.2",
+    "nodemon": "^1.8.1",
     "postcss": "^8.0.2",
     "prettier": "1.19.1",
     "react-test-renderer": "^16.3.2",
