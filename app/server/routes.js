@@ -6,22 +6,22 @@ export const STATIC_ROUTES = [
   {
     path: "/about-us",
     pageType: PAGE_TYPE.STATIC_PAGE,
-    renderParams: { contentTemplate: "./about-us" }
+    renderParams: { contentTemplate: "./about-us" },
   },
   {
     path: "/preview/story",
     pageType: PAGE_TYPE.STORY_PREVIEW,
     exact: true,
     renderParams: { contentTemplate: "./story-preview" },
-    disableIsomorphicComponent: false
+    disableIsomorphicComponent: false,
   },
   {
     path: "/preview/home",
     pageType: PAGE_TYPE.HOME_PREVIEW,
     exact: true,
     renderParams: { contentTemplate: "./story-preview" },
-    disableIsomorphicComponent: false
-  }
+    disableIsomorphicComponent: false,
+  },
 ];
 
 const ISOMORPHIC_ROUTES = [
@@ -29,25 +29,27 @@ const ISOMORPHIC_ROUTES = [
     path: "/template-options",
     pageType: PAGE_TYPE.CATALOG_PAGE,
     exact: true,
-    skipPWA: true
+    skipPWA: true,
   },
   {
     path: "/preview/story/:encryptedKey",
     pageType: PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE,
-    exact: true
+    exact: true,
   },
 
   {
     path: `${TAG_PAGE_URL_PREFIX}:tagSlug`,
     pageType: PAGE_TYPE.TAG_PAGE,
-    exact: true
+    exact: true,
   },
   { path: "/search", pageType: PAGE_TYPE.SEARCH_PAGE, exact: true },
   {
     path: "/forms/:formSlug",
     pageType: PAGE_TYPE.FORM_PAGE,
-    exact: true
-  }
+    exact: true,
+  },
+  { path: "/collection/:collectionSlug", pageType: PAGE_TYPE.COLLECTION_PAGE, exact: true, skipPWA: true },
+  { path: "/author/:authorSlug", pageType: PAGE_TYPE.AUTHOR_PAGE, exact: true },
 ];
 
 export function generateRoutes(config, domainSlug = undefined) {

@@ -16,41 +16,33 @@ jobs:
           paths:
             - docker-tag.txt
 
-  deploy_qa_staging:
-    deploy_task: &deploy_task
+  deploy_task: &deploy_task
     machine: true
     steps:
       - attach_workspace:
           at: /tmp/workspace
       - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
-      - run: docker run --rm --name bk quay.io/quintype/bk-deploy staging $BK_QA_STG_ID deployment $(cat /tmp/workspace/docker-tag.txt)
+      - run: docker run --rm --name bk quay.io/quintype/bk-deploy $BK_ENVIRONMENT deployment $(cat /tmp/workspace/docker-tag.txt)
+
+  deploy_qa_staging:
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: staging 1475
 
   deploy_staging:
-    deploy_task: &deploy_task
-    machine: true
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
-      - run: docker run --rm --name bk quay.io/quintype/bk-deploy staging $BK_STG_ID deployment $(cat /tmp/workspace/docker-tag.txt)
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: staging 1474
 
   deploy_perf:
-    deploy_task: &deploy_task
-    machine: true
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
-      - run: docker run --rm --name bk quay.io/quintype/bk-deploy production $BK_PERF_ID deployment $(cat /tmp/workspace/docker-tag.txt)
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: production 204
 
   deploy_production:
-    deploy_task: &deploy_task
-    machine: true
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
-      - run: docker run --rm --name bk quay.io/quintype/bk-deploy production $BK_PROD_ID deployment $(cat /tmp/workspace/docker-tag.txt)
+    <<: *deploy_task
+    environment:
+      BK_ENVIRONMENT: production 134
 
   lint_js:
     docker:
@@ -73,7 +65,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES=$LHCI_QA_STG_SITE
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
           npx @lhci/cli@0.6.x autorun
 
   perf_lighthouse_task:
@@ -82,7 +74,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES=$LHCI_PERF_SITE
+          export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
           npx @lhci/cli@0.6.x autorun
 
 
@@ -92,7 +84,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES=$LHCI_STG_SITE
+          export LHCI_SITES="[\"https://malibu-web.qtstage.io\"]"
           npx @lhci/cli@0.6.x autorun
 
   prod_lighthouse_task:
@@ -101,7 +93,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES=$LHCI_PROD_SITE
+          export LHCI_SITES="[\"https://malibu-web.quintype.io\"]"
           npx @lhci/cli@0.6.x autorun
 
 workflows:
