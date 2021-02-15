@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import wretch from "wretch";
 
 import { InputField } from "../../atoms/InputField";
-// import { verifyEmailOTP, verifyEmail } from "../../helper/api";
-// import { IS_OPEN_LOGIN_FORM } from "../../helper/actions";
+import { verifyEmail } from "@quintype/bridgekeeper-js";
 import "./forms.m.css";
 
 const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
@@ -64,16 +63,6 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
       })
       .catch(error => setError(error));
   };
-
-  function verifyEmail(email) {
-    console.log("## inside verify email");
-    return wretch()
-      .options({ credentials: "same-origin" })
-      .url("/api/auth/v1/users/send-otp")
-      .post({ email: email })
-      .json(res => Promise.resolve(res))
-      .catch(ex => Promise.reject(ex));
-  }
 
   return (
     <React.Fragment>

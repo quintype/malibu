@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
-import wretch from "wretch";
+
+import { verifyEmail } from "@quintype/bridgekeeper-js";
 
 import { Modal } from "../Modal";
 import { Login } from "../../molecules/forms/login";
@@ -9,16 +10,6 @@ import { OTP } from "../../molecules/forms/otp";
 import { ForgotPassword } from "../../molecules/forms/forgot-password";
 
 import "./account-modal.m.css";
-
-function verifyEmail(email) {
-  console.log("## inside verify email");
-  return wretch()
-    .options({ credentials: "same-origin" })
-    .url("/api/auth/v1/users/send-otp")
-    .post({ email: email })
-    .json(res => Promise.resolve(res))
-    .catch(ex => Promise.reject(ex));
-}
 
 const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
   const [activeTab, setActiveTab] = useState("login");
