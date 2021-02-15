@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PT from "prop-types";
 import get from "lodash/get";
 import { connect } from "react-redux";
+import wretch from "wretch";
 
 import { InputField } from "../../atoms/InputField";
 // import { verifyEmailOTP, verifyEmail } from "../../helper/api";
@@ -10,24 +11,41 @@ import "./forms.m.css";
 
 const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
   const [otp, setOTP] = useState("");
-  // const [error, setError] = useState(false);
-  // const [successMsg, setSuccessMsg] = useState("");
-  // const [otpId, setOPTId] = useState(id);
+  const [error, setError] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [otpId, setOPTId] = useState(id);
+
+  function verifyEmailOTP(otp) {
+    const user = {
+      "verification-status": "email"
+    };
+
+    return wretch()
+      .options({ credentials: "same-origin" })
+      .url(`/api/auth/v1/users/update-with-otp`)
+      .post({
+        otp: `${otp}`,
+        user: user
+      })
+      .json(res => Promise.resolve(res))
+      .catch(ex => Promise.reject(ex));
+  }
+
   const otpHandler = async e => {
     e.preventDefault();
     e.stopPropagation();
     console.log("need to add verify email logic");
-    // verifyEmailOTP(otp, otpId)
-    //   .then(() => {
-    //     checkForMemberUpdated().then(res => {
-    //       manageLoginForm(false);
-    //       console.log("successfully login");
-    //     });
-    //   })
-    //   .catch(error => {
-    //     setError(true);
-    //     console.warn("error", error);
-    //   });
+    verifyEmailOTP(otp, otpId)
+      .then(() => {
+        checkForMemberUpdated().then(res => {
+          manageLoginForm(false);
+          console.log("successfully login");
+        });
+      })
+      .catch(error => {
+        setError(true);
+        console.warn("error", error);
+      });
   };
 
   const setData = e => {
@@ -37,13 +55,24 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
 
   const resendOTP = () => {
     console.log("need to add resend otp logic");
-    // verifyEmail(member.email)
-    //   .then(res => {
-    //     setSuccessMsg("OTP Sent to your registered email");
-    //     setOPTId(res["email-token"]);
-    //   })
-    //   .catch(error => setError(error));
+    verifyEmail(member.email)
+      .then(res => {
+        setSuccessMsg("OTP Sent to your registered email");
+        setOPTId(res["email-token"]);
+      })
+      .catch(error => setError(error));
   };
+
+  function verifyEmail(email) {
+    console.log("## inside verify email");
+    return wretch()
+      .options({ credentials: "same-origin" })
+      .url("/api/auth/v1/users/send-otp")
+      .post({ email: email })
+      .json(res => Promise.resolve(res))
+      .catch(ex => Promise.reject(ex));
+  }
+
   return (
     <React.Fragment>
       <p styleName="otp-text">
@@ -51,8 +80,8 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
       </p>
       <form styleName="malibu-form" onSubmit={otpHandler}>
         <InputField name="Enter OTP" id="otp" type="text" required onChange={setData} />
-        {/* {error && <p styleName="error">Invalid OTP</p>} */}
-        {/* {successMsg && <p>{successMsg}</p>} */}
+        {error && <p styleName="error">Invalid OTP</p>}
+        {successMsg && <p>{successMsg}</p>}
         <div styleName="actions">
           <button aria-label="verify-otp-button" onClick={otpHandler} className="malibu-btn-large">
             Verify OTP
