@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import PT from "prop-types";
 import get from "lodash/get";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 import { InputField } from "../../atoms/InputField";
-import { verifyEmail, updateWithOtp } from "@quintype/bridgekeeper-js";
-import "./forms.m.css";
+import { verifyEmail, updateWithOtp, currentUser } from "@quintype/bridgekeeper-js";
 
-const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
+import "./forms.m.css";
+import { MEMBER_UPDATED } from "../../store/actions";
+
+const OTPBase = ({ id, member, manageLoginForm }) => {
   const [otp, setOTP] = useState("");
   const [error, setError] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -18,18 +20,27 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
       "verification-status": "email"
     };
 
-    console.log("inside verifyEmailOTP");
-
     return updateWithOtp(otp, user);
   }
+
+  const dispatch = useDispatch();
+
+  const getCurrentUser = async () => {
+    try {
+      const currentUserResp = await currentUser();
+      dispatch({ type: MEMBER_UPDATED, member: get(currentUserResp, ["user"], null) });
+    } catch (err) {
+      console.log("error--------", err);
+    }
+  };
 
   const otpHandler = async e => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("need to add verify email logic");
+
     return verifyEmailOTP(otp, otpId)
       .then(() => {
-        checkForMemberUpdated().then(res => {
+        getCurrentUser().then(res => {
           manageLoginForm(false);
           console.log("successfully login");
         });
@@ -42,11 +53,9 @@ const OTPBase = ({ id, member, checkForMemberUpdated, manageLoginForm }) => {
 
   const setData = e => {
     setOTP(e.target.value);
-    console.log(otp);
   };
 
   const resendOTP = () => {
-    console.log("need to add resend otp logic");
     return verifyEmail(member.email)
       .then(res => {
         setSuccessMsg("OTP Sent to your registered email");

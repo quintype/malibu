@@ -2,7 +2,7 @@
 import wretch from "wretch";
 import { startApp } from "@quintype/framework/client/start";
 import { renderApplication, preRenderApplication } from "./render";
-// import { REDUCERS } from "../isomorphic/components/store/reducers";
+import { REDUCERS } from "../isomorphic/components/store/reducers";
 
 import "../../app/assets/stylesheets/app.scss";
 
@@ -28,4 +28,4 @@ if (window.OneSignal) {
 
 global.wretch = wretch;
 
-startApp(renderApplication, {}, opts).then(enableHotReload);
+startApp(renderApplication, REDUCERS, opts).then(enableHotReload);

@@ -15,10 +15,8 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
   const [activeTab, setActiveTab] = useState("login");
   const [member, setMember] = useState(null);
   const [otpToken, setOtpToken] = useState(null);
-  const [error, setError] = useState({});
 
   const otpHandler = (member, otpDetails) => {
-    console.log("## inside otp handler");
     setMember(member);
     setOtpToken(otpDetails["email-token"]);
     setActiveTab("otp");
@@ -27,7 +25,7 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
   const onSuccess = member => {
     return verifyEmail(member.email)
       .then(res => otpHandler(member, res))
-      .catch(error => setError(error));
+      .catch(error => console.log(error));
   };
 
   const getScreen = () => {
@@ -43,7 +41,7 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
       case "register":
         return <SignUp onSignup={member => onSuccess(member)} />;
       case "otp":
-        return <OTP id={otpToken} member={member} checkForMemberUpdated={checkForMemberUpdated} />;
+        return <OTP id={otpToken} member={member} />;
       case "forgot-password":
         return <ForgotPassword onBackdropClick={onBackdropClick} />;
       default:
@@ -70,8 +68,6 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
       </ul>
     );
   };
-
-  console.log("## error=", error);
 
   return (
     <Modal onBackdropClick={onBackdropClick}>
