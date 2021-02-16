@@ -6,6 +6,23 @@ import { InputField } from "../../atoms/InputField";
 
 import "./forms.m.css";
 
+// export const register = async (body) => {
+//   console.log("body", body)
+//   try {
+//     const response = await fetch('/api/auth/v1/signup', {
+//       method: 'POST',
+//       headers: {'Content-Type': 'application/json'},
+//       body: JSON.stringify(body),
+//       credentials: 'same-origin',
+//     });
+//     const user = await response.json();
+//     console.log(user)
+//     return user;
+//   } catch (err) {
+//     return await Promise.reject(err);
+//   }
+// };
+
 export const SignUp = ({ onSignup }) => {
   const [userInfo, setUserInfo] = useState({
     name: "",
