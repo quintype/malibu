@@ -24,8 +24,6 @@ if (window.OneSignal) {
   });
 }
 
-// const CUSTOM_REDUCERS = REDUCERS;
-
 global.wretch = wretch;
 
 startApp(renderApplication, REDUCERS, opts).then(enableHotReload);
