@@ -22,10 +22,13 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
     setActiveTab("otp");
   };
 
-  const onSuccess = member => {
-    return verifyEmail(member.email)
-      .then(res => otpHandler(member, res))
-      .catch(error => console.log(error));
+  const onSuccess = async member => {
+    try {
+      const otpDetails = await verifyEmail(member.email);
+      otpHandler(member, otpDetails);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const getScreen = () => {

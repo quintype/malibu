@@ -2,26 +2,17 @@ import React, { useState } from "react";
 import PT from "prop-types";
 import get from "lodash/get";
 import { connect, useDispatch } from "react-redux";
-
-import { InputField } from "../../atoms/InputField";
 import { verifyEmail, updateWithOtp, currentUser } from "@quintype/bridgekeeper-js";
 
-import "./forms.m.css";
+import { InputField } from "../../atoms/InputField";
 import { MEMBER_UPDATED } from "../../store/actions";
 
-const OTPBase = ({ id, member, manageLoginForm }) => {
+import "./forms.m.css";
+
+const OTPBase = ({ member, manageLoginForm }) => {
   const [otp, setOTP] = useState("");
   const [error, setError] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
-  const [otpId, setOPTId] = useState(id);
-
-  function verifyEmailOTP(otp) {
-    const user = {
-      "verification-status": "email"
-    };
-
-    return updateWithOtp(otp, user);
-  }
 
   const dispatch = useDispatch();
 
@@ -38,30 +29,28 @@ const OTPBase = ({ id, member, manageLoginForm }) => {
     e.preventDefault();
     e.stopPropagation();
 
-    return verifyEmailOTP(otp, otpId)
-      .then(() => {
-        getCurrentUser().then(res => {
-          manageLoginForm(false);
-          console.log("successfully login");
-        });
-      })
-      .catch(error => {
-        setError(true);
-        console.warn("error", error);
-      });
+    try {
+      await updateWithOtp(otp);
+      await getCurrentUser();
+      manageLoginForm(false);
+      console.log("successfully login");
+    } catch (err) {
+      setError(true);
+      console.warn("error", error);
+    }
   };
 
   const setData = e => {
     setOTP(e.target.value);
   };
 
-  const resendOTP = () => {
-    return verifyEmail(member.email)
-      .then(res => {
-        setSuccessMsg("OTP Sent to your registered email");
-        setOPTId(res["email-token"]);
-      })
-      .catch(error => setError(error));
+  const resendOTP = async () => {
+    try {
+      await verifyEmail(member.email);
+      setSuccessMsg("OTP Sent to your registered email");
+    } catch (error) {
+      setError(error);
+    }
   };
 
   return (
@@ -89,7 +78,6 @@ const OTPBase = ({ id, member, manageLoginForm }) => {
 OTPBase.propTypes = {
   onSubmit: PT.func,
   member: PT.object,
-  id: PT.string,
   checkForMemberUpdated: PT.func,
   manageLoginForm: PT.func,
   isLoginOpen: PT.bool

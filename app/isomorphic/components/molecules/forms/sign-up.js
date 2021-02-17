@@ -35,18 +35,16 @@ export const SignUp = ({ onSignup }) => {
       "dont-login": false
     };
 
-    return register(userObj)
-      .then(({ user }) => {
-        onSignup(user);
-        // sendEmail(user);
-      })
-      .catch(err => {
-        if (err.status === 409) {
-          setError(`The email '${userObj.email}' already exists`);
-        } else {
-          setError("Oops! Something went wrong");
-        }
-      });
+    try {
+      const { user } = await register(userObj);
+      onSignup(user);
+    } catch (err) {
+      if (err.status === 409) {
+        setError(`The email '${userObj.email}' already exists`);
+      } else {
+        setError("Oops! Something went wrong");
+      }
+    }
   };
 
   const setData = e => {
@@ -59,15 +57,6 @@ export const SignUp = ({ onSignup }) => {
   return (
     <form styleName="malibu-form" onSubmit={signUpHandler}>
       <InputField name="Name" id="name" required onChange={setData} />
-      {/* <InputField
-        name="Mobile Number"
-        type="tel"
-        id="mobile"
-        maxLength="10"
-        pattern="^\d{10}$"
-        onChange={setData}
-        required
-      /> */}
       <InputField name="Email" type="email" id="email" onChange={setData} required />
       <InputField name="Password" type="password" id="password" onChange={setData} required />
       {errorMsg && <p styleName="error">{errorMsg}</p>}
