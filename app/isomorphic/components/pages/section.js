@@ -33,7 +33,7 @@ SectionPage.propTypes = {
   pageType: string,
   data: shape({
     collection: object,
-    section: string,
+    section: object,
   }),
 };
 
