@@ -70,13 +70,6 @@ exports[`Navbar renders the navbar when menu.default is a valid array 1`] = `
         }
       />
     </li>
-    <li>
-      <button
-        onClick={[Function]}
-      >
-        Login
-      </button>
-    </li>
   </ul>
   <NavbarSearch />
 </React.Fragment>
@@ -87,15 +80,7 @@ exports[`Navbar renders the navbar when menu.default is empty array 1`] = `
   <AppLogo />
   <ul
     className="styles-m__navbar__1m8_H"
-  >
-    <li>
-      <button
-        onClick={[Function]}
-      >
-        Login
-      </button>
-    </li>
-  </ul>
+  />
   <NavbarSearch />
 </React.Fragment>
 `;
@@ -105,15 +90,7 @@ exports[`Navbar renders the navbar with default vaules 1`] = `
   <AppLogo />
   <ul
     className="styles-m__navbar__1m8_H"
-  >
-    <li>
-      <button
-        onClick={[Function]}
-      >
-        Login
-      </button>
-    </li>
-  </ul>
+  />
   <NavbarSearch />
 </React.Fragment>
 `;
