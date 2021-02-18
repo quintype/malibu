@@ -24,7 +24,7 @@ const WHITELIST_CONFIG_KEYS = [
   "publisher-name",
   "public-integrations",
   "sketches-host",
-  "publisher-settings",
+  "publisher-settings"
 ];
 
 export function getPublisherAttributes(publisherYml = publisher) {
@@ -37,13 +37,13 @@ export function loadErrorData(error, config) {
   const errorComponents = { 404: "not-found" };
   return Promise.resolve({
     data: {
-      navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections),
+      navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
     config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
-      "publisher-attributes": publisherAttributes,
+      "publisher-attributes": publisherAttributes
     }),
     pageType: errorComponents[error.httpStatusCode],
-    httpStatusCode: error.httpStatusCode || 500,
+    httpStatusCode: error.httpStatusCode || 500
   });
 }
 
@@ -81,18 +81,18 @@ export function loadData(pageType, params, config, client, { host, next, domainS
     }
   }
 
-  return _loadData().then((data) => {
+  return _loadData().then(data => {
     return {
       httpStatusCode: data.httpStatusCode || 200,
       pageType: data.pageType || pageType,
       data: Object.assign({}, data, {
         navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections),
-        timezone: publisherAttributes.timezone || null,
+        timezone: publisherAttributes.timezone || null
       }),
       config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
         "publisher-attributes": publisherAttributes,
-        "image-cdn-format": "gumlet",
-      }),
+        "image-cdn-format": "gumlet"
+      })
     };
   });
 }
