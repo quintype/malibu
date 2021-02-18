@@ -16,7 +16,7 @@ export function FourColGrid({ collection, stories }) {
 
 FourColGrid.propTypes = {
   collection: object,
-  stories: array
+  stories: array,
 };
 
 FourColGrid.storyLimit = 8;

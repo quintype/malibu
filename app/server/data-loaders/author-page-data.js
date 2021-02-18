@@ -8,16 +8,16 @@ export function loadAuthorPageData(client, authorSlug, config) {
   const params = { author: authorSlug, sort: "published-at", fields: storyFields, limit: 20 };
 
   return Author.getAuthor(client, authorSlug)
-    .then(authorData => {
+    .then((authorData) => {
       authorDetails = authorData || {
-        cacheKeys: () => {}
+        cacheKeys: () => {},
       };
       const authorId = get(authorDetails, ["author", "id"]);
       return Author.getAuthorCollection(client, authorId, params);
     })
-    .then(storiesData => ({
+    .then((storiesData) => ({
       author: authorDetails.author,
       stories: storiesData.items,
-      cacheKeys: authorDetails.cacheKeys(config["publisher-id"])
+      cacheKeys: authorDetails.cacheKeys(config["publisher-id"]),
     }));
 }

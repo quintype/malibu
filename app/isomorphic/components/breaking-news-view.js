@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import "./breaking-news.m.css";
 
 const renderBreakingNewsMarquee = (breakingNews, breakingNewsConfig) => {
-  const items = breakingNews.map(story => {
+  const items = breakingNews.map((story) => {
     const linkedStorySlug = get(story, ["metadata", "linked-story-slug"], null);
     const externalLink = breakingNewsConfig.open_in_new_tab ? `/${linkedStorySlug}` : false;
     const linkLabel = `Read full story: ${story.headline}`;
@@ -62,12 +62,12 @@ BreakingNewsViewBase.propTypes = {
   breakingNewsLoaded: bool,
   breakingNews: array,
   breakingNewsConfig: object,
-  pageType: string
+  pageType: string,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   pageType: get(state, ["qt", "pageType"], null),
-  breakingNewsConfig: get(state, ["qt", "config", "publisher-attributes", "breaking_news"], {})
+  breakingNewsConfig: get(state, ["qt", "config", "publisher-attributes", "breaking_news"], {}),
 });
 
 export const BreakingNewsView = connect(mapStateToProps, () => ({}))(BreakingNewsViewBase);

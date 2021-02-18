@@ -31,12 +31,12 @@ const storyPropType = shape({
   "hero-image-s3-key": string,
   "hero-image-metadata": object,
   headline: string,
-  "author-name": string
+  "author-name": string,
 });
 
 StoryGridStoryItem.propTypes = {
   story: storyPropType,
-  position: integer
+  position: integer,
 };
 
 export function StoryGrid({ stories = [] }) {
@@ -54,5 +54,5 @@ export function StoryGrid({ stories = [] }) {
 }
 
 StoryGrid.propTypes = {
-  stories: arrayOf(storyPropType)
+  stories: arrayOf(storyPropType),
 };

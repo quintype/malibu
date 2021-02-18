@@ -11,6 +11,6 @@ export async function loadHomePageData(client, config, slug) {
   );
   return {
     collection: collection.asJson(),
-    cacheKeys: collection.cacheKeys(config["publisher-id"])
+    cacheKeys: collection.cacheKeys(config["publisher-id"]),
   };
 }

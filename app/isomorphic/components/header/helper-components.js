@@ -17,8 +17,8 @@ MenuItem.propTypes = {
   item: PT.shape({
     isExternalLink: PT.bool,
     completeUrl: PT.string,
-    title: PT.string
-  })
+    title: PT.string,
+  }),
 };
 
 export { MenuItem };

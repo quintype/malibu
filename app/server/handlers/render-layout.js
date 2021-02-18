@@ -12,25 +12,19 @@ const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
 const allChunks = getAllChunks("list", "story");
 
-const getConfig = state => {
+const getConfig = (state) => {
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     isGtmEnable: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "is_enable"], false),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
     isGaEnable: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "is_enable"], false),
-    cdnImage: get(state, ["qt", "config", "cdn-image"], "")
+    cdnImage: get(state, ["qt", "config", "cdn-image"], ""),
   };
 };
 
 export function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-  const {
-    gtmId,
-    gaId,
-    cdnImage,
-    isGtmEnable,
-    isGaEnable
-  } = getConfig(params.store.getState());
+  const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
   res.render(
     "pages/layout",
     Object.assign(
@@ -46,7 +40,7 @@ export function renderLayout(res, params) {
         footer: renderReduxComponent(Footer, params.store),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],
-          breakingNewsLoaded: false
+          breakingNewsLoaded: false,
         }),
         disableAjaxNavigation: false,
         gtmId,
@@ -58,7 +52,7 @@ export function renderLayout(res, params) {
         shell: params.shell,
         serialize,
         isGtmEnable,
-        isGaEnable
+        isGaEnable,
       },
       params
     )

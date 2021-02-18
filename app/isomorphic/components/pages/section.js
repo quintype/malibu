@@ -6,10 +6,10 @@ import { collectionToStories, LazyCollection } from "@quintype/components";
 import { StoryGrid } from "../story-grid";
 import { getCollectionTemplate } from "../get-collection-template";
 
-const SectionPage = props => {
+const SectionPage = (props) => {
   const stories = (props.data.collection.items && collectionToStories(props.data.collection)) || [];
   const childCollections = (get(props, ["data", "collection", "items"]) || []).filter(
-    item => item.type === "collection" && item.items.length > 0
+    (item) => item.type === "collection" && item.items.length > 0
   );
   const pageTitle =
     props.pageType === "collection-page"
@@ -33,8 +33,8 @@ SectionPage.propTypes = {
   pageType: string,
   data: shape({
     collection: object,
-    section: string
-  })
+    section: string,
+  }),
 };
 
 export { SectionPage };

@@ -7,29 +7,23 @@ import "./styles.m.css";
 
 const FooterBase = ({ footerLinks }) => (
   <div styleName="footer">
-    {footerLinks.map(
-      item =>
-        item.isExternalLink ? (
-          <a
-            href={item.completeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            styleName="link"
-          >
-            {item.title}
-          </a>
-        ) : (
-          <Link href={item.completeUrl} styleName="link">
-            {item.title}
-          </Link>
-        )
+    {footerLinks.map((item) =>
+      item.isExternalLink ? (
+        <a href={item.completeUrl} target="_blank" rel="noopener noreferrer" styleName="link">
+          {item.title}
+        </a>
+      ) : (
+        <Link href={item.completeUrl} styleName="link">
+          {item.title}
+        </Link>
+      )
     )}
   </div>
 );
 
 function mapStateToProps(state) {
   return {
-    footerLinks: get(state, ["qt", "data", "navigationMenu", "footerLinks"], [])
+    footerLinks: get(state, ["qt", "data", "navigationMenu", "footerLinks"], []),
   };
 }
 
@@ -38,12 +32,9 @@ FooterBase.propTypes = {
     PT.shape({
       isExternalLink: PT.bool,
       completeUrl: PT.string,
-      title: PT.string
+      title: PT.string,
     })
-  )
+  ),
 };
 
-export const Footer = connect(
-  mapStateToProps,
-  null
-)(FooterBase);
+export const Footer = connect(mapStateToProps, null)(FooterBase);
