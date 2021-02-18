@@ -88,5 +88,4 @@ isomorphicRoutes(app, {
     structuredData: STRUCTURED_DATA
   }),
   preloadJs: true,
-  oneSignalServiceWorkers: true
 });
