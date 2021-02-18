@@ -13,7 +13,7 @@ function DrawForm({ children }) {
     </label>,
     <button aria-label="search-button" type="submit" styleName="search__form-submit" key="2">
       <Search width={16} height={16} />
-    </button>
+    </button>,
   ];
 }
 
@@ -22,13 +22,13 @@ class NavbarSearch extends React.Component {
     super(props);
     this.state = {
       isSearchFormOpen: false,
-      initialized: false
+      initialized: false,
     };
   }
 
   componentDidMount() {
     this.setState({
-      initialized: true
+      initialized: true,
     });
   }
 
@@ -40,7 +40,7 @@ class NavbarSearch extends React.Component {
 
   render() {
     const formStyle = {
-      transform: this.state.isSearchFormOpen ? "translate(0, 0)" : ""
+      transform: this.state.isSearchFormOpen ? "translate(0, 0)" : "",
     };
     return (
       <div styleName="search">
@@ -52,9 +52,9 @@ class NavbarSearch extends React.Component {
             styleName="search-box"
             template={DrawForm}
             inputId="searchForm"
-            inputRef={input => (this.input = input)}
+            inputRef={(input) => (this.input = input)}
             inputClassName="search__form-input"
-            formRef={searchForm => (this.searchForm = searchForm)}
+            formRef={(searchForm) => (this.searchForm = searchForm)}
             onSubmitHandler={() => this.setState({ isSearchFormOpen: false })}
             onEscape={() => this.setState({ isSearchFormOpen: false })}
             placeholder="Search Stories"

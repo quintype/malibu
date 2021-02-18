@@ -6,10 +6,10 @@ const Form = ({ formioUrl, disabled }) => {
   useEffect(() => {
     // SSR is not supported by react-formio
     import(/* webpackChunkName: "qtc-react-formio" */ "react-formio")
-      .then(Formio => {
+      .then((Formio) => {
         setFormComponent({ component: Formio.Form });
       })
-      .catch(error => console.error("Error loading formio component", error));
+      .catch((error) => console.error("Error loading formio component", error));
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const Form = ({ formioUrl, disabled }) => {
 
 Form.propTypes = {
   formioUrl: string,
-  disabled: bool
+  disabled: bool,
 };
 
 export { Form };

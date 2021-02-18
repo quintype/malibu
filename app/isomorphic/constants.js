@@ -11,7 +11,7 @@ export const PAGE_TYPE = Object.freeze({
   HOME_PREVIEW: "home-preview",
   STATIC_PAGE: "static-page",
   FORM_PAGE: "form-page",
-  AUTHOR_PAGE: "author-page"
+  AUTHOR_PAGE: "author-page",
 });
 export const TAG_PAGE_URL_PREFIX = "/topic/";
 export const storyFields =

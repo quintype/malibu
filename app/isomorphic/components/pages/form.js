@@ -3,7 +3,7 @@ import { shape, string } from "prop-types";
 
 import { Form } from "../form";
 
-const FormPage = props => {
+const FormPage = (props) => {
   const { headline, subheadline, status, "formio-url": formioUrl } = props.data.form;
   const isClosed = status === "closed";
   return (
@@ -22,9 +22,9 @@ FormPage.propTypes = {
       "formio-url": string,
       headline: string,
       subheadline: string,
-      status: string
-    }
-  })
+      status: string,
+    },
+  }),
 };
 
 export { FormPage };

@@ -18,5 +18,5 @@ export function Search({ color = "#d0021b", width = 16, height = 16 }) {
 Search.propTypes = {
   color: PT.string,
   width: PT.number,
-  height: PT.number
+  height: PT.number,
 };

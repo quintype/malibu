@@ -18,7 +18,7 @@ afterEach(() => {
 
 describe("Navbar", () => {
   const defaultMenu = {
-    default: []
+    default: [],
   };
 
   const menuData = {
@@ -45,7 +45,7 @@ describe("Navbar", () => {
         "menu-group-id": 95,
         data: '{color: "#000000"}',
         children: "[]",
-        completeUrl: "/for-developers"
+        completeUrl: "/for-developers",
       },
       {
         "updated-at": 1604300936818,
@@ -69,9 +69,9 @@ describe("Navbar", () => {
         "menu-group-id": 95,
         data: '{color: "#000000"}',
         children: "[{…}, {…}]",
-        completeUrl: "/tech/mobile"
-      }
-    ]
+        completeUrl: "/tech/mobile",
+      },
+    ],
   };
 
   it("renders the navbar with default vaules", () => {

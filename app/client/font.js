@@ -8,7 +8,7 @@ function loadFonts(fontFamilies, classToAddToBody) {
       console.log(`font's loaded`);
       document.body.classList.add(classToAddToBody);
     })
-    .catch(err => {
+    .catch((err) => {
       console.warn(`Some critical font are not available: ${err} `);
     });
 }

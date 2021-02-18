@@ -13,7 +13,7 @@ export function preRenderApplication(store) {
     breakingNewsConfig.interval && breakingNewsConfig.interval <= 60 ? 60 : breakingNewsConfig.interval;
   const breakingNewsbaseProps = {
     hydrate,
-    updateInterval: breakingNewsInterval * 1000
+    updateInterval: breakingNewsInterval * 1000,
   };
 
   renderComponent(Header, "header", store, hydrate);
@@ -25,6 +25,6 @@ export function preRenderApplication(store) {
 // This is a separate file as everything from here on is hot reloaded when the app changes
 export function renderApplication(store) {
   renderIsomorphicComponent("container", store, pickComponent, {
-    hydrate: !global.qtLoadedFromShell
+    hydrate: !global.qtLoadedFromShell,
   });
 }

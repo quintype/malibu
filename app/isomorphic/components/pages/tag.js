@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { StoryGrid } from "../story-grid";
 
-const TagPage = props => (
+const TagPage = (props) => (
   <div>
     <h1>{get(props, "data.tag.name") || "Tag Page"}</h1>
     <StoryGrid stories={props.data.stories} />
@@ -13,5 +13,5 @@ const TagPage = props => (
 
 export { TagPage };
 TagPage.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
 };

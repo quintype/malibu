@@ -7,7 +7,7 @@ import wretch from "wretch";
 const opts = {
   enableServiceWorker: process.env.NODE_ENV === "production",
   appVersion: require("../isomorphic/app-version"),
-  preRenderApplication
+  preRenderApplication,
 };
 
 function enableHotReload(store) {

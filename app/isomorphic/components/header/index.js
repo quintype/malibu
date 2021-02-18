@@ -17,8 +17,8 @@ class HeaderBase extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  menu: get(state, ["qt", "data", "navigationMenu"], [])
+const mapStateToProps = (state) => ({
+  menu: get(state, ["qt", "data", "navigationMenu"], []),
 });
 
 export const Header = connect(mapStateToProps, () => ({}))(HeaderBase);
