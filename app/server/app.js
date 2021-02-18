@@ -43,7 +43,9 @@ const STRUCTURED_DATA = {
       "https://www.youtube.com/user/Quintype"
     ]
   },
-  enableLiveBlog: true
+  enableLiveBlog: true,
+  enableVideo: true,
+  enableNewsArticle: true
 };
 
 const redirectCollectionHandler = () => async (req, res, next, { client, config }) => {
