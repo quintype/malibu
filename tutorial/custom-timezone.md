@@ -8,7 +8,7 @@ nav_exclude: true
 
 # {{page.title}}
 
-*This tutorial was contributed by [Shraddha] & [Nandakishore]*
+*This tutorial was contributed by Shraddha Kesari & Nandakishore Prakash Rao*
 
 By default the date schema for the publishers in structured data is shown in the UTC time standard.
 Some publishers require the dates in their structured data to be of a specific timezone.
@@ -30,5 +30,7 @@ return _loadData().then((data) => {
 ```
 
 The expected value of date property in the structured data should be of the format `[-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]`([optional data]).
+
 Ex: 2021-04-31T10:23:45+05:30
-Ref: https://schema.org/DateTime
+
+Ref: [Schema.org](https://schema.org/DateTime)
