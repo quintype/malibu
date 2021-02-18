@@ -86,7 +86,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       httpStatusCode: data.httpStatusCode || 200,
       pageType: data.pageType || pageType,
       data: Object.assign({}, data, {
-        navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
+        navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections),
+        timezone: publisherAttributes.timezone || null
       }),
       config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
         "publisher-attributes": publisherAttributes,

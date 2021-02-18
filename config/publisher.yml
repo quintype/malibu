@@ -9,6 +9,7 @@ domain_mapping:
   subdomain.lvh.me: subdomain
 
 publisher:
+  timezone: "Asia/Baku"
   google_tag_manager:
     id: "gtm-id"
     is_enable: true
