@@ -5,7 +5,7 @@ import {
   upstreamQuintypeRoutes,
   isomorphicRoutes,
   staticRoutes,
-  getWithConfig
+  getWithConfig,
 } from "@quintype/framework/server/routes";
 import { generateRoutes, STATIC_ROUTES } from "./routes";
 import { renderLayout } from "./handlers/render-layout";
@@ -28,7 +28,7 @@ const STATIC_TAGS = {
   "google-play-app": undefined,
   "fb:app_id": undefined,
   "fb:pages": undefined,
-  "og:site_name": "Quintype"
+  "og:site_name": "Quintype",
 };
 
 const STRUCTURED_DATA = {
@@ -40,10 +40,10 @@ const STRUCTURED_DATA = {
       "https://www.facebook.com/quintype",
       "https://twitter.com/quintype_in",
       "https://plus.google.com/+quintype",
-      "https://www.youtube.com/user/Quintype"
-    ]
+      "https://www.youtube.com/user/Quintype",
+    ],
   },
-  enableLiveBlog: true
+  enableLiveBlog: true,
 };
 
 const redirectCollectionHandler = () => async (req, res, next, { client, config }) => {
@@ -54,7 +54,7 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   const collection = response && response.collection;
   if (collection.template === "section") {
     const sectionId = collection.metadata.section[0].id;
-    const section = config.sections.find(section => section.id === sectionId) || {};
+    const section = config.sections.find((section) => section.id === sectionId) || {};
     return res.redirect(301, `${section["section-url"]}`);
   }
 
@@ -64,15 +64,15 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   return next();
 };
 
-const logError = error => logger.error(error);
+const logError = (error) => logger.error(error);
 
 getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
-  logError
+  logError,
 });
 
 isomorphicRoutes(app, {
   appVersion: require("../isomorphic/app-version"),
-  logError: error => logger.error(error),
+  logError: (error) => logger.error(error),
   generateRoutes: generateRoutes,
   loadData: loadData,
   pickComponent: pickComponent,
@@ -85,8 +85,7 @@ isomorphicRoutes(app, {
     enableTwitterCards: true,
     enableOgTags: true,
     enableNews: true,
-    structuredData: STRUCTURED_DATA
+    structuredData: STRUCTURED_DATA,
   }),
   preloadJs: true,
-  oneSignalServiceWorkers: true
 });

@@ -9,7 +9,7 @@ function layoutToCollection(template, stories, associatedMetadata) {
     // association fields
     type: "collection",
     "associated-metadata": Object.assign({}, associatedMetadata, {
-      layout: template.name
+      layout: template.name,
     }),
 
     // Internal Fields
@@ -20,7 +20,7 @@ function layoutToCollection(template, stories, associatedMetadata) {
     name: "Collection Name",
     slug: "name",
     template: "default",
-    items: stories.map(story => ({ type: "story", id: story.id, story: story }))
+    items: stories.map((story) => ({ type: "story", id: story.id, story: story })),
   };
 }
 
@@ -30,16 +30,16 @@ function createTemplateClass(template, updateTemplateAttribute) {
       super(props);
       this.state = {
         isDropdownOpen: false,
-        componentKey: "start"
+        componentKey: "start",
       };
       this.toggleDropdown = this.toggleDropdown.bind(this);
       this.configureData = this.configureData.bind(this);
     }
 
     toggleDropdown() {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         return {
-          isDropdownOpen: !prevState.isDropdownOpen
+          isDropdownOpen: !prevState.isDropdownOpen,
         };
       });
     }
@@ -47,7 +47,7 @@ function createTemplateClass(template, updateTemplateAttribute) {
     configureData() {
       this.setState({
         componentKey: String(Math.random()),
-        isDropdownOpen: false
+        isDropdownOpen: false,
       });
     }
 
@@ -62,7 +62,7 @@ function createTemplateClass(template, updateTemplateAttribute) {
                 type="number"
                 placeholder={`${option.default}`}
                 value={this.props.collection["associated-metadata"][option.name] || ""}
-                onChange={e => updateTemplateAttribute(option.name, Number(e.target.value))}
+                onChange={(e) => updateTemplateAttribute(option.name, Number(e.target.value))}
               />
             </div>
           );
@@ -73,7 +73,7 @@ function createTemplateClass(template, updateTemplateAttribute) {
                 styleName="checkboxInput"
                 type="checkbox"
                 checked={this.props.collection["associated-metadata"][option.name] || false}
-                onChange={e => updateTemplateAttribute(option.name, e.target.checked)}
+                onChange={(e) => updateTemplateAttribute(option.name, e.target.checked)}
               />
               <span>{option.name}</span>
             </div>
@@ -86,7 +86,7 @@ function createTemplateClass(template, updateTemplateAttribute) {
                 type="text"
                 placeholder={`${option.default}`}
                 value={this.props.collection["associated-metadata"][option.name] || ""}
-                onChange={e => updateTemplateAttribute(option.name, e.target.value)}
+                onChange={(e) => updateTemplateAttribute(option.name, e.target.value)}
               />
             </div>
           );
@@ -109,7 +109,7 @@ function createTemplateClass(template, updateTemplateAttribute) {
                   </button>
                   {this.state.isDropdownOpen && (
                     <div styleName="dropdownBox">
-                      {this.props.collection.options.map(option => this.optionToFormField(option))}
+                      {this.props.collection.options.map((option) => this.optionToFormField(option))}
                       <button styleName="configureBtn" onClick={this.configureData}>
                         Configure
                       </button>
@@ -131,8 +131,8 @@ function createTemplateClass(template, updateTemplateAttribute) {
     collection: PT.shape({
       "associated-metadata": PT.object,
       templatePageDisplay: PT.string,
-      options: PT.array
-    })
+      options: PT.array,
+    }),
   };
 
   return Wrapper;
@@ -143,10 +143,10 @@ export class CatalogPage extends React.Component {
     super(props);
     this.state = {
       // TwoCol: {auto_scroll: false}
-      componentToOptions: {}
+      componentToOptions: {},
     };
     const templates = {};
-    this.templatePicker = template => {
+    this.templatePicker = (template) => {
       if (!templates[template]) {
         templates[template] = createTemplateClass(template, this.updateComponentAttribute.bind(this, template));
       }
@@ -158,9 +158,9 @@ export class CatalogPage extends React.Component {
     this.setState({
       componentToOptions: Object.assign({}, this.state.componentToOptions, {
         [name]: Object.assign({}, this.state.componentToOptions[name], {
-          [key]: value
-        })
-      })
+          [key]: value,
+        }),
+      }),
     });
   }
 
@@ -169,9 +169,9 @@ export class CatalogPage extends React.Component {
       name: "Home",
       slug: "/",
       template: "default",
-      items: this.props.data.templateOptions["collection-layouts"].map(c =>
+      items: this.props.data.templateOptions["collection-layouts"].map((c) =>
         layoutToCollection(c, this.props.data.stories, this.state.componentToOptions[c.name])
-      )
+      ),
     };
   }
 
@@ -195,8 +195,8 @@ export class CatalogPage extends React.Component {
 CatalogPage.propTypes = {
   data: PT.shape({
     templateOptions: PT.shape({
-      "collection-layouts": PT.array
+      "collection-layouts": PT.array,
     }),
-    stories: PT.array
-  })
+    stories: PT.array,
+  }),
 };

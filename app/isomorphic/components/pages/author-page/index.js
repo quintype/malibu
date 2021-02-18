@@ -3,7 +3,7 @@ import { object, array, shape } from "prop-types";
 
 import { StoryGrid } from "../../story-grid";
 
-const AuthorPage = props => {
+const AuthorPage = (props) => {
   const stories = props.data.stories.map(({ story }) => story) || [];
   if (!props.data.author.name) {
     return <h1>No author found</h1>;
@@ -19,8 +19,8 @@ const AuthorPage = props => {
 AuthorPage.propTypes = {
   data: shape({
     author: object,
-    stories: array
-  })
+    stories: array,
+  }),
 };
 
 export { AuthorPage };

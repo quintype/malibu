@@ -6,7 +6,7 @@ import { ResponsiveImage, StoryElement } from "@quintype/components";
 function StoryCard(props) {
   return (
     <div>
-      {props.card["story-elements"].map(element => (
+      {props.card["story-elements"].map((element) => (
         <StoryElement element={element} key={element.id} story={props.story} loadIframeOnClick />
       ))}
     </div>
@@ -15,7 +15,7 @@ function StoryCard(props) {
 
 StoryCard.propTypes = {
   card: PT.object,
-  story: PT.object
+  story: PT.object,
 };
 
 function BlankStoryTemplate(props) {
@@ -33,7 +33,7 @@ function BlankStoryTemplate(props) {
       </figure>
       <h1>{props.story.headline}</h1>
       <span className="blank-story-author">{props.story["author-name"]}</span>
-      {props.story.cards.map(card => (
+      {props.story.cards.map((card) => (
         <StoryCard key={card.id} card={card} story={props.story} />
       ))}
       <div className="space-before-next-story" style={{ minHeight: 100 }} />
@@ -43,7 +43,7 @@ function BlankStoryTemplate(props) {
 
 BlankStoryTemplate.propTypes = {
   card: PT.object,
-  story: PT.object
+  story: PT.object,
 };
 
 function BlankStory(props) {
@@ -55,7 +55,7 @@ function BlankStory(props) {
 }
 
 BlankStory.propTypes = {
-  story: PT.object
+  story: PT.object,
 };
 
 export { BlankStory };

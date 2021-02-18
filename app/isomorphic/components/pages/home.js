@@ -5,7 +5,7 @@ import React from "react";
 import img from "../../../assets/images/pw_maze_white.png";
 import { getCollectionTemplate } from "../get-collection-template";
 
-export const HomePage = props => (
+export const HomePage = (props) => (
   <div>
     <h1>Home Page</h1>
     <LazyLoadImages>
@@ -17,12 +17,12 @@ export const HomePage = props => (
 
 HomePage.propTypes = {
   data: shape({
-    collection: object
-  })
+    collection: object,
+  }),
 };
 
 export const HomePagePreview = WithPreview(HomePage, (data, story) =>
   Object.assign({}, data, {
-    collection: replaceAllStoriesInCollection(data.collection, story)
+    collection: replaceAllStoriesInCollection(data.collection, story),
   })
 );

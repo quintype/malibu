@@ -30,5 +30,5 @@ export function CloseIcon({ color = "#fff", width = 21, height = 21 }) {
 CloseIcon.propTypes = {
   color: PT.string,
   width: PT.number,
-  height: PT.number
+  height: PT.number,
 };

@@ -15,11 +15,11 @@ const { pickComponent, getChunkName } = pickComponentHelper(
     [PAGE_TYPE.STORY_PUBLIC_PREVIEW_PAGE]: { chunk: "story", component: "StoryPage" },
     [PAGE_TYPE.AUTHOR_PAGE]: { chunk: "list", component: "AuthorPage" },
     [PAGE_TYPE.HOME_PREVIEW]: { chunk: "list", component: "HomePagePreview" },
-    default: { chunk: "list", component: "NotFoundPage" }
+    default: { chunk: "list", component: "NotFoundPage" },
   },
   {
     list: () => import(/* webpackChunkName: "list" */ "./component-bundles/list.js"),
-    story: () => import(/* webpackChunkName: "story" */ "./component-bundles/story.js")
+    story: () => import(/* webpackChunkName: "story" */ "./component-bundles/story.js"),
   }
 );
 

@@ -13,7 +13,7 @@ function StoryPageBase({ index, story, otherProp }) {
 StoryPageBase.propTypes = {
   index: number,
   story: object,
-  otherProp: any
+  otherProp: any,
 };
 
 const FIELDS =
@@ -24,10 +24,10 @@ function storyPageLoadItems(pageNumber) {
     .query({
       fields: FIELDS,
       limit: 5,
-      offset: 5 * pageNumber
+      offset: 5 * pageNumber,
     })
     .get()
-    .json(response => response.stories.map(story => ({ story, otherProp: "value" })));
+    .json((response) => response.stories.map((story) => ({ story, otherProp: "value" })));
 }
 
 export function StoryPage(props) {
@@ -36,23 +36,23 @@ export function StoryPage(props) {
       {...props}
       render={StoryPageBase}
       loadItems={storyPageLoadItems}
-      onInitialItemFocus={item =>
+      onInitialItemFocus={(item) =>
         app.registerPageView({ pageType: "story-page", data: { story: item.story } }, `/${item.story.slug}`)
       }
-      onItemFocus={item => console.log(`Story In View: ${item.story.headline}`)}
+      onItemFocus={(item) => console.log(`Story In View: ${item.story.headline}`)}
     />
   );
 }
 
 StoryPage.propTypes = {
   data: shape({
-    story: object
-  })
+    story: object,
+  }),
 };
 
 export const StoryPagePreview = WithPreview(StoryPage, (data, story) =>
   Object.assign({}, data, {
     story,
-    relatedStories: Array(5).fill(story)
+    relatedStories: Array(5).fill(story),
   })
 );

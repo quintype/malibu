@@ -28,7 +28,7 @@ const NavBar = ({ menu }) => {
 
 NavBar.propTypes = {
   menu: object,
-  enableLogin: bool
+  enableLogin: bool,
 };
 
 export { NavBar };
