@@ -35,7 +35,7 @@ const NavBar = () => {
 
   return (
     <div styleName="main-wrapper">
-      <div className="container" styleName="wrapper">
+      <nav className="container" styleName="wrapper">
         <div styleName="dropdown" ref={wrapperRef}>
           <NavBarToggleBtn
             onMenuToggle={() => onMenuToggle()}
@@ -86,7 +86,7 @@ const NavBar = () => {
         </ul>
         {/* <NavbarSearch /> */}
         <div> user</div>
-      </div>
+      </nav>
     </div>
   );
 };
