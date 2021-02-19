@@ -89,6 +89,5 @@ isomorphicRoutes(app, {
     enableNews: true,
     structuredData: STRUCTURED_DATA
   }),
-  preloadJs: true,
-  oneSignalServiceWorkers: true
+  preloadJs: true
 });
