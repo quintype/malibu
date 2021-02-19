@@ -9,10 +9,10 @@ const AuthorPage = props => {
     return <h1>No author found</h1>;
   }
   return (
-    <React.Fragment>
+    <div className="container">
       <h1>{`Author - ${props.data.author.name}`}</h1>
       <StoryGrid stories={stories} />
-    </React.Fragment>
+    </div>
   );
 };
 

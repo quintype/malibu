@@ -1,0 +1,12 @@
+.menu-link {
+  padding: 8px 16px 12px 0;
+  display: flex;
+  align-items: center;
+  color: var(--brandSecondary);
+
+}
+
+.menu-link:hover {
+  color: var( --rgbBlack);
+}
+

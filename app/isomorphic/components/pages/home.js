@@ -6,7 +6,7 @@ import img from "../../../assets/images/pw_maze_white.png";
 import { getCollectionTemplate } from "../get-collection-template";
 
 export const HomePage = props => (
-  <div>
+  <div className="container">
     <h1>Home Page</h1>
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />

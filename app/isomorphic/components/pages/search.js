@@ -3,7 +3,7 @@ import React from "react";
 import { StoryGrid } from "../story-grid";
 
 const SearchPage = props => (
-  <div>
+  <div className="container">
     <h1>
       Search - {props.data.query} ({props.data.total} results)
     </h1>
