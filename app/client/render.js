@@ -4,7 +4,7 @@ import get from "lodash/get";
 import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { Footer } from "../isomorphic/components/layouts/footer";
-import { NavbarSearch } from "../isomorphic/components/header/navbar-search"
+import { NavbarSearch } from "../isomorphic/components/header/navbar-search";
 import { NavBar } from "../isomorphic/components/header/nav-bar";
 
 export function preRenderApplication(store) {
@@ -17,8 +17,8 @@ export function preRenderApplication(store) {
     updateInterval: breakingNewsInterval * 1000
   };
 
-  renderComponent( NavbarSearch, "search-bar", store, hydrate);
-  renderComponent(  NavBar, "nav-bar", store, hydrate);
+  renderComponent(NavbarSearch, "search-bar", store, hydrate);
+  renderComponent(NavBar, "nav-bar", store, hydrate);
   breakingNewsConfig.is_enable &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
   renderComponent(Footer, "footer", store, hydrate);

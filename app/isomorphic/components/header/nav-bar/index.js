@@ -21,13 +21,13 @@ const NavBar = () => {
   };
 
   const handleScroll = e => {
-    const header = document.getElementById("sticky-header");
-    if (header) {
-      const sticky = header.offsetTop;
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
+    const navBar = document.getElementById("sticky-navbar");
+    if (navBar) {
+      const offsetTop = navBar.offsetTop;
+      if (window.pageYOffset > offsetTop) {
+        navBar.classList.add("sticky");
       } else {
-        header.classList.remove("sticky");
+        navBar.classList.remove("sticky");
       }
     }
   };
@@ -48,7 +48,7 @@ const NavBar = () => {
   };
 
   return (
-    <div styleName="main-wrapper" id="sticky-header">
+    <div styleName="main-wrapper" id="sticky-navbar">
       <nav className="container" styleName="wrapper">
         {hamburgerMenu.length > 0 && (
           <div styleName="dropdown" ref={wrapperRef}>

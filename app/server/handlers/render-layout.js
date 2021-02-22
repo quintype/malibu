@@ -39,7 +39,7 @@ const getConfig = state => {
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
-  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["headercss"]});
+  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["headercss"] });
   const header = renderLoadableReduxComponent(Header, params.store, extractor);
   const criticalCss = await extractor.getCssString();
   res.render(

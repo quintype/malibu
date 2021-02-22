@@ -3,9 +3,9 @@ import PT from "prop-types";
 
 import "./nav-bar-toggle-btn.m.css";
 
-export const NavBarToggleBtn = ({ onMenuToggle, isMegaMenuOpen}) => {
+export const NavBarToggleBtn = ({ onMenuToggle, isMegaMenuOpen }) => {
   return (
-    <button  onClick={onMenuToggle} styleName={`hamburger ${(isMegaMenuOpen) ? "is-open" : ""}`}>
+    <button onClick={onMenuToggle} styleName={`hamburger ${isMegaMenuOpen ? "is-open" : ""}`}>
       <span styleName="line" />
       <span styleName="line" />
       <span styleName="line" />
