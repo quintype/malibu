@@ -64,5 +64,6 @@ typings/
 /public/quintype-malibu
 /webpack-assets.json
 /asset-manifest.json
+/stats.json
 
 .DS_Store
