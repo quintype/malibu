@@ -8,6 +8,7 @@
 .main-wrapper {
   background-color: var(--brandPrimary);
   position: relative;
+  box-shadow: -1px 12px 13px -11px rgba(0,0,0,0.42);
 }
 
 .wrapper {

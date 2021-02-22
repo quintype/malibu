@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
-import { NavbarSearch } from "../navbar-search";
+import throttle from "lodash/throttle";
 import { MenuItem } from "../menu-item";
 import NavBarToggleBtn from "../../atoms/nav-bar-toggle-btn";
 
@@ -20,9 +20,23 @@ const NavBar = () => {
     setIsMegaMenuOpen(!isMegaMenuOpen);
   };
 
+  const handleScroll = e => {
+    const header = document.getElementById("sticky-header");
+    if (header) {
+      const sticky = header.offsetTop;
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+  };
+
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside, false);
+    window.addEventListener("scroll", throttle(handleScroll, 50));
+    document.addEventListener("click", handleClickOutside, false)
     return () => {
+      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleClickOutside, false);
     };
   }, []);
@@ -34,7 +48,7 @@ const NavBar = () => {
   };
 
   return (
-    <div styleName="main-wrapper">
+    <div styleName="main-wrapper" id="sticky-header">
       <nav className="container" styleName="wrapper">
         <div styleName="dropdown" ref={wrapperRef}>
           <NavBarToggleBtn
