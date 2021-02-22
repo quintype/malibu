@@ -6,7 +6,6 @@ import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { Header } from "../isomorphic/components/header";
 import { Footer } from "../isomorphic/components/layouts/footer";
 import { NavbarSearch } from "../isomorphic/components/header/navbar-search"
-import { NavrBarToggle } from "../isomorphic/components/header/nav-bar";
 
 
 export function preRenderApplication(store) {
@@ -20,7 +19,6 @@ export function preRenderApplication(store) {
   };
 
   renderComponent( NavbarSearch, "search-bar", store, hydrate);
-  renderComponent( NavrBarToggle, "navbar-toggle", store, hydrate);
   breakingNewsConfig.is_enable &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
   renderComponent(Footer, "footer", store, hydrate);

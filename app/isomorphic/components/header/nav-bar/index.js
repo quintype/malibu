@@ -3,18 +3,19 @@ import { useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
+import { NavbarSearch } from "../navbar-search";
 import { MenuItem } from "../menu-item";
 import NavBarToggleBtn from "../../atoms/nav-bar-toggle-btn";
 
 import "./navbar.m.css";
 
-export const NavrBarToggle = () => {
+const NavBar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const wrapperRef = useRef(null);
-  const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
-  if (menu.length < 1) {
-    return null;
-  }
+  const menu = useSelector((state) =>
+    get(state, ["qt", "data", "navigationMenu", "homeMenu"], [])
+  );
+
   const onMenuToggle = () => {
     setIsMegaMenuOpen(!isMegaMenuOpen);
   };
@@ -33,45 +34,49 @@ export const NavrBarToggle = () => {
   };
 
   return (
-    <div styleName="dropdown" ref={wrapperRef}>
-      <NavBarToggleBtn onMenuToggle={() => onMenuToggle()} isMegaMenuOpen={isMegaMenuOpen} />
-      <ul styleName="dropdown-content" style={{ display: isMegaMenuOpen ? "block" : "none" }}>
-        {isMegaMenuOpen &&
-          menu.length > 0 &&
-          menu.map(item => {
-            return (
-              <li key={item.title} styleName="dropdown">
-                <MenuItem item={item} showIcon={false} />
-              </li>
-            );
-          })}
-      </ul>
-    </div>
-  );
-};
-
-const NavBar = () => {
-  const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
-  return (
     <div styleName="main-wrapper">
       <nav className="container" styleName="wrapper">
-        <div id="navbar-toggle"></div>
+        <div styleName="dropdown" ref={wrapperRef}>
+          <NavBarToggleBtn
+            onMenuToggle={() => onMenuToggle()}
+            isMegaMenuOpen={isMegaMenuOpen}
+          />
+          <ul
+            styleName="dropdown-content"
+            style={{ display: isMegaMenuOpen ? "block" : "none" }}
+          >
+            {isMegaMenuOpen &&
+              menu.length > 0 &&
+              menu.map((item) => {
+                return (
+                  <li key={item.title} styleName="dropdown">
+                    <MenuItem item={item} showIcon={false} />
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
+
         <ul styleName="navbar">
           {menu.length > 0 &&
-            menu.map(item => {
+            menu.map((item) => {
               return (
                 <li key={item.title} styleName="dropdown">
                   <MenuItem item={item} />
                   {item.children && item.children.length > 0 && (
                     <div styleName="dropdown-content">
                       <ul style={{ position: "relative" }}>
-                        {item.children.map(item => {
-                          return (
-                            <li key={item.title} styleName="dropdown">
-                              <MenuItem item={item} showIcon={false} key={item.title} />
-                            </li>
-                          );
-                        })}
+                      {item.children.map((item) => {
+                        return (
+                          <li key={item.title} styleName="dropdown">
+                            <MenuItem
+                              item={item}
+                              showIcon={false}
+                              key={item.title}
+                            />
+                          </li>
+                        );
+                      })}
                       </ul>
                     </div>
                   )}
@@ -79,6 +84,7 @@ const NavBar = () => {
               );
             })}
         </ul>
+        {/* <NavbarSearch /> */}
         <div> user</div>
       </nav>
     </div>
@@ -87,7 +93,7 @@ const NavBar = () => {
 
 NavBar.propTypes = {
   menu: object,
-  enableLogin: bool
+  enableLogin: bool,
 };
 
 export { NavBar };
