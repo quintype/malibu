@@ -7,6 +7,8 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
+    "@loadable/component": "^5.14.1",
+    "@loadable/server": "^5.14.2",
     "@quintype/components": "^2.25.3",
     "@quintype/framework": "^4.8.4",
     "@quintype/seo": "^1.38.27",
@@ -23,6 +25,8 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/webpack-plugin": "^5.14.2",
     "@quintype/build": "^3.10.0",
     "babel-eslint": "^10.0.3",
     "cosmiconfig": "^7.0.0",

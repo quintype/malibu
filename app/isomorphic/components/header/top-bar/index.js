@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLogo } from "../app-logo"
-import { NavbarSearch } from "../navbar-search";
+// import { NavbarSearch } from "../navbar-search";
 
 import "./top-bar.m.css";
 
@@ -9,7 +9,7 @@ const TopBar = () => {
     <div className="container">
       <div styleName="wrapper">
       <AppLogo />
-      <NavbarSearch />
+      <div id="search-bar"></div>
       </div>
 
     </div>

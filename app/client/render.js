@@ -5,6 +5,8 @@ import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { Header } from "../isomorphic/components/header";
 import { Footer } from "../isomorphic/components/layouts/footer";
+import { NavbarSearch } from "../isomorphic/components/header/navbar-search"
+
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
@@ -16,7 +18,7 @@ export function preRenderApplication(store) {
     updateInterval: breakingNewsInterval * 1000
   };
 
-  renderComponent(Header, "header", store, hydrate);
+  renderComponent( NavbarSearch, "search-bar", store, hydrate);
   breakingNewsConfig.is_enable &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
   renderComponent(Footer, "footer", store, hydrate);

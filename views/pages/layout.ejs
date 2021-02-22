@@ -36,6 +36,9 @@
     <style>
       <%- cssContent %>
     </style>
+    <style>
+      <%- criticalCss %>
+    </style>
     <%_ if(pageChunk) { _%>
     <%_ pageChunk.cssFiles.map(cssFile => {_%>
       <style data-href="<%= cssFile.path %>"><%- cssFile.content %></style>
