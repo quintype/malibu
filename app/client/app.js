@@ -16,12 +16,6 @@ function enableHotReload(store) {
   }
 }
 
-if (window.OneSignal) {
-  Object.assign(opts, {
-    serviceWorkerLocation: "/OneSignalSDKWorker.js"
-  });
-}
-
 const CUSTOM_REDUCERS = {};
 
 global.wretch = wretch;

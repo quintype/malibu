@@ -9,6 +9,7 @@ domain_mapping:
   subdomain.lvh.me: subdomain
 
 publisher:
+  timezone: "Asia/Baku"
   google_tag_manager:
     id: "gtm-id"
     is_enable: true
@@ -21,7 +22,4 @@ publisher:
     item_display: 1
     open_in_new_tab: false
     pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]
-  onesignal:
-    safari_web_id: "safari-web-id"
-    is_enable: true
   should_use_collection: true
