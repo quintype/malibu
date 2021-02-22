@@ -3,6 +3,7 @@
   margin: 0 12px;
   display: flex;
   overflow: auto;
+  font-family: var(--title-font);
 }
 
 .main-wrapper {

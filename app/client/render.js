@@ -3,7 +3,6 @@ import get from "lodash/get";
 
 import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
-import { Header } from "../isomorphic/components/header";
 import { Footer } from "../isomorphic/components/layouts/footer";
 import { NavbarSearch } from "../isomorphic/components/header/navbar-search"
 import { NavBar } from "../isomorphic/components/header/nav-bar";

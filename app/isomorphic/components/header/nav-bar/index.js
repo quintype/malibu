@@ -12,9 +12,9 @@ import "./navbar.m.css";
 const NavBar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const wrapperRef = useRef(null);
-  const menu = useSelector((state) =>
-    get(state, ["qt", "data", "navigationMenu", "homeMenu"], [])
-  );
+  const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
+
+  const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
 
   const onMenuToggle = () => {
     setIsMegaMenuOpen(!isMegaMenuOpen);
@@ -34,7 +34,7 @@ const NavBar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", throttle(handleScroll, 50));
-    document.addEventListener("click", handleClickOutside, false)
+    document.addEventListener("click", handleClickOutside, false);
     return () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleClickOutside, false);
@@ -50,47 +50,38 @@ const NavBar = () => {
   return (
     <div styleName="main-wrapper" id="sticky-header">
       <nav className="container" styleName="wrapper">
-        <div styleName="dropdown" ref={wrapperRef}>
-          <NavBarToggleBtn
-            onMenuToggle={() => onMenuToggle()}
-            isMegaMenuOpen={isMegaMenuOpen}
-          />
-          <ul
-            styleName="dropdown-content"
-            style={{ display: isMegaMenuOpen ? "block" : "none" }}
-          >
-            {isMegaMenuOpen &&
-              menu.length > 0 &&
-              menu.map((item) => {
-                return (
-                  <li key={item.title} styleName="dropdown">
-                    <MenuItem item={item} showIcon={false} />
-                  </li>
-                );
-              })}
-          </ul>
-        </div>
+        {hamburgerMenu.length > 0 && (
+          <div styleName="dropdown" ref={wrapperRef}>
+            <NavBarToggleBtn onMenuToggle={() => onMenuToggle()} isMegaMenuOpen={isMegaMenuOpen} />
+            <ul styleName="dropdown-content" style={{ display: isMegaMenuOpen ? "block" : "none" }}>
+              {isMegaMenuOpen &&
+                hamburgerMenu.map(item => {
+                  return (
+                    <li key={item.title} styleName="dropdown">
+                      <MenuItem item={item} showIcon={false} />
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+        )}
 
         <ul styleName="navbar">
           {menu.length > 0 &&
-            menu.map((item) => {
+            menu.map(item => {
               return (
                 <li key={item.title} styleName="dropdown">
                   <MenuItem item={item} />
                   {item.children && item.children.length > 0 && (
                     <div styleName="dropdown-content">
                       <ul style={{ position: "relative" }}>
-                      {item.children.map((item) => {
-                        return (
-                          <li key={item.title} styleName="dropdown">
-                            <MenuItem
-                              item={item}
-                              showIcon={false}
-                              key={item.title}
-                            />
-                          </li>
-                        );
-                      })}
+                        {item.children.map(item => {
+                          return (
+                            <li key={item.title} styleName="dropdown">
+                              <MenuItem item={item} showIcon={false} key={item.title} />
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   )}
@@ -98,7 +89,6 @@ const NavBar = () => {
               );
             })}
         </ul>
-        {/* <NavbarSearch /> */}
         <div> user</div>
       </nav>
     </div>
@@ -107,7 +97,7 @@ const NavBar = () => {
 
 NavBar.propTypes = {
   menu: object,
-  enableLogin: bool,
+  enableLogin: bool
 };
 
 export { NavBar };
