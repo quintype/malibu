@@ -18,7 +18,7 @@ function MenuItem({item, showIcon = true}) {
     >
       {item.title}{" "}
       {item.children.length >= 1 &&  showIcon && (
-        <img src={`${assetify(ArrowDownIcon)}`} alt="search" />
+        <img width="16px" height="16px" src={`${assetify(ArrowDownIcon)}`} alt="search" />
       )}
     </a>
   ) : (
