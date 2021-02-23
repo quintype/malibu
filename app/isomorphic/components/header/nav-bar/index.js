@@ -42,19 +42,6 @@ const NavBar = () => {
   const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
   const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
 
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside, false);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, false);
-    };
-  }, []);
-
-  const handleClickOutside = event => {
-    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-      setIsMegaMenuOpen(false);
-    }
-  };
-
   const displayStyle = isMegaMenuOpen ? "block" : "none";
 
   return (
@@ -63,6 +50,7 @@ const NavBar = () => {
         {hamburgerMenu.length && (
           <div styleName="dropdown" ref={wrapperRef}>
             <HamburgerMenu onMenuToggle={() => setIsMegaMenuOpen(!isMegaMenuOpen)} isMegaMenuOpen={isMegaMenuOpen} />
+            <div styleName="overlay" onClick={()=> setIsMegaMenuOpen(false)}></div>
             <ul styleName="dropdown-content" style={{ display: displayStyle }}>
               {isMegaMenuOpen &&
                 hamburgerMenu.map(item => {
