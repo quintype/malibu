@@ -1,12 +1,22 @@
 .navbar {
+  display: flex;
+  background-color: #28c7a4;
+}
+.navbar-right {
+  display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0 30px;
-  display: flex;
+  justify-content: center;
 }
 .menu-item {
   cursor: pointer;
   padding: 12px;
+}
+.hamburger {
+  height: 30px;
+  align-self: center;
+  padding-left: 10px;
 }
 @media only screen and (max-width: 768px) {
   .desktop-view {
