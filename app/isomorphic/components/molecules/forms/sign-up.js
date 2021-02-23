@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import PT from "prop-types";
+import { func } from "prop-types";
 import { register } from "@quintype/bridgekeeper-js";
 
 import { InputField } from "../../atoms/InputField";
 
 import "./forms.m.css";
 
-export const SignUp = ({ onSignup }) => {
+export const SignUp = ({ onSignup, onLogin }) => {
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -14,6 +14,7 @@ export const SignUp = ({ onSignup }) => {
     mobile: ""
   });
   const [errorMsg, setError] = useState("");
+  const [ifUserExists, setUserExists] = useState(false);
 
   // const sendEmail = user => {
   //   const data = {
@@ -36,7 +37,10 @@ export const SignUp = ({ onSignup }) => {
     };
 
     try {
-      const { user } = await register(userObj);
+      const { user, message } = await register(userObj);
+      if (!user && message === "User Already exists") {
+        return setUserExists(true);
+      }
       onSignup(user);
     } catch (err) {
       if (err.status === 409) {
@@ -59,6 +63,12 @@ export const SignUp = ({ onSignup }) => {
       <InputField name="Name" id="name" required onChange={setData} />
       <InputField name="Email" type="email" id="email" onChange={setData} required />
       <InputField name="Password" type="password" id="password" onChange={setData} required />
+      {ifUserExists && (
+        <p styleName="error">
+          The email ID is already registered. Please <button onClick={() => onSignup(userInfo)}>verify</button> or{" "}
+          <button onClick={onLogin}>login</button>.
+        </p>
+      )}
       {errorMsg && <p styleName="error">{errorMsg}</p>}
       <button aria-label="signup-button" onClick={signUpHandler} className="malibu-btn-large malibu-btn-right">
         Sign up
@@ -68,6 +78,7 @@ export const SignUp = ({ onSignup }) => {
 };
 
 SignUp.propTypes = {
-  onSignup: PT.func,
-  setMember: PT.func
+  onSignup: func,
+  setMember: func,
+  onLogin: func
 };

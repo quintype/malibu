@@ -30,12 +30,16 @@ const NavBar = ({ menu, enableLogin }) => {
   }, []);
 
   const logoutHandler = () => {
-    logout().then(() => {
-      dispatch({
-        type: MEMBER_UPDATED,
-        member: null
+    logout()
+      .then(() => {
+        dispatch({
+          type: MEMBER_UPDATED,
+          member: null
+        });
+      })
+      .finally(() => {
+        setShowAccountModal(false);
       });
-    });
   };
 
   const member = useSelector(state => get(state, ["member"], null));
@@ -53,7 +57,7 @@ const NavBar = ({ menu, enableLogin }) => {
         })}
         {enableLogin && (
           <li>
-            {member ? (
+            {member && member["verification-status"] ? (
               <>
                 <button onClick={logoutHandler}>Logout</button>
                 <p>{`Username: ${get(member, ["name"], "")}`}</p>

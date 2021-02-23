@@ -42,7 +42,14 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
           />
         );
       case "register":
-        return <SignUp onSignup={member => onSuccess(member)} />;
+        return (
+          <SignUp
+            onSignup={member => onSuccess(member)}
+            onLogin={() => {
+              setActiveTab("login");
+            }}
+          />
+        );
       case "otp":
         return <OTP id={otpToken} member={member} />;
       case "forgot-password":
