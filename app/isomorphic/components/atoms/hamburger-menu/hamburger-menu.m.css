@@ -12,7 +12,7 @@
 }
 
 .line {
-  background-color: var(--brandSecondary);
+  background-color: var(--brand-secondary);
   display: block;
   margin-bottom: 3px;
   height: 3px;

@@ -22,8 +22,7 @@ module.exports = {
       ...config,
       plugins: config.plugins.concat([new LoadablePlugin({ writeToDisk: true, filename: path.resolve("stats.json") })]),
       entry: Object.assign({}, config.entry, {
-        headercss: "./app/isomorphic/components/header/index.js",
-        footercss: "./app/isomorphic/components/layouts/footer/index.js"
+        headercss: "./app/isomorphic/components/header/index.js"
       })
     };
   },

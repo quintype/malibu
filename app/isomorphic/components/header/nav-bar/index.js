@@ -5,9 +5,37 @@ import { object, bool } from "prop-types";
 
 import throttle from "lodash/throttle";
 import { MenuItem } from "../menu-item";
-import NavBarToggleBtn from "../../atoms/nav-bar-toggle-btn";
+import HamburgerMenu from "../../atoms/hamburger-menu";
 
 import "./navbar.m.css";
+
+const getNavbar = menu => {
+  return (
+    <ul styleName="navbar">
+      {menu.length &&
+        menu.map(item => {
+          return (
+            <li key={item.title} styleName="dropdown">
+              <MenuItem item={item} />
+              {item.children && item.children.length > 0 && (
+                <div styleName="dropdown-content">
+                  <ul style={{ position: "relative" }}>
+                    {item.children.map(item => {
+                      return (
+                        <li key={item.title} styleName="dropdown">
+                          <MenuItem item={item} showIcon={false} key={item.title} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </li>
+          );
+        })}
+    </ul>
+  );
+};
 
 const NavBar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -15,10 +43,6 @@ const NavBar = () => {
   const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
 
   const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
-
-  const onMenuToggle = () => {
-    setIsMegaMenuOpen(!isMegaMenuOpen);
-  };
 
   const handleScroll = e => {
     const navBar = document.getElementById("sticky-navbar");
@@ -47,13 +71,15 @@ const NavBar = () => {
     }
   };
 
+  const displayStyle = isMegaMenuOpen ? "block" : "none";
+
   return (
     <div styleName="main-wrapper" id="sticky-navbar">
       <nav className="container" styleName="wrapper">
-        {hamburgerMenu.length > 0 && (
+        {hamburgerMenu.length && (
           <div styleName="dropdown" ref={wrapperRef}>
-            <NavBarToggleBtn onMenuToggle={() => onMenuToggle()} isMegaMenuOpen={isMegaMenuOpen} />
-            <ul styleName="dropdown-content" style={{ display: isMegaMenuOpen ? "block" : "none" }}>
+            <HamburgerMenu onMenuToggle={() => setIsMegaMenuOpen(!isMegaMenuOpen)} isMegaMenuOpen={isMegaMenuOpen} />
+            <ul styleName="dropdown-content" style={{ display: displayStyle }}>
               {isMegaMenuOpen &&
                 hamburgerMenu.map(item => {
                   return (
@@ -65,30 +91,7 @@ const NavBar = () => {
             </ul>
           </div>
         )}
-
-        <ul styleName="navbar">
-          {menu.length > 0 &&
-            menu.map(item => {
-              return (
-                <li key={item.title} styleName="dropdown">
-                  <MenuItem item={item} />
-                  {item.children && item.children.length > 0 && (
-                    <div styleName="dropdown-content">
-                      <ul style={{ position: "relative" }}>
-                        {item.children.map(item => {
-                          return (
-                            <li key={item.title} styleName="dropdown">
-                              <MenuItem item={item} showIcon={false} key={item.title} />
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-        </ul>
+        <div>{getNavbar(menu)}</div>
         <div> user</div>
       </nav>
     </div>

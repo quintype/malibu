@@ -1,9 +1,9 @@
 import React from "react";
 import PT from "prop-types";
 
-import "./nav-bar-toggle-btn.m.css";
+import "./hamburger-menu.m.css";
 
-export const NavBarToggleBtn = ({ onMenuToggle, isMegaMenuOpen }) => {
+export const HamburgerMenu = ({ onMenuToggle, isMegaMenuOpen }) => {
   return (
     <button onClick={onMenuToggle} styleName={`hamburger ${isMegaMenuOpen ? "is-open" : ""}`}>
       <span styleName="line" />
@@ -13,9 +13,9 @@ export const NavBarToggleBtn = ({ onMenuToggle, isMegaMenuOpen }) => {
   );
 };
 
-NavBarToggleBtn.propTypes = {
+HamburgerMenu.propTypes = {
   onMenuToggle: PT.func,
   isMegaMenuOpen: PT.bool
 };
 
-export default NavBarToggleBtn;
+export default HamburgerMenu;

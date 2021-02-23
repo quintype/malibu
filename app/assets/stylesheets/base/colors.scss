@@ -1,13 +1,13 @@
 :root {
   --white: #ffffff;
-  --rgbBlack: 0, 0, 0;
-  --brandPrimary: #2CC7A4;
-  --brandPrimaryDark: #108167;
-  --brandSecondary: #1e1e1e;
-  --greyLight: #e8e8e8;
-  --bgGradient: linear-gradient(to bottom, rgba(76, 76, 76, 0), rgba(59, 59, 59, 0.45) 46%, var(--greyDark));
+  --rgb-black: 0, 0, 0;
+  --brand-primary: #2cc7a4;
+  --brand-primary-dark: #108167;
+  --brand-secondary: #1e1e1e;
+  --grey-light: #e8e8e8;
+  --bg-gradient: linear-gradient(to bottom, rgba(76, 76, 76, 0), rgba(59, 59, 59, 0.45) 46%, var(--grey-dark));
 
-  --metaColor: var(--brandPrimary);
-  --titleColor: var(--brandSecondary);
-  --borderColor: var(--greyLight);
+  --meta-color: var(--brand-primary);
+  --title-color: var(--brand-secondary);
+  --border-color: var(--grey-light);
 }

@@ -1,4 +1,8 @@
 :root {
-  --z-level-1: 100;
+  --z-level-0: 1;
+  --z-level-1: 2;
+  --z-level-2: 3;
+  --z-level-3: 4;
+  --z-level-100: 100;
   --modal: var(--z-level-1);
 }
