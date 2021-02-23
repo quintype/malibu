@@ -20,10 +20,11 @@ const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
 const allChunks = getAllChunks("list", "story");
 
 function renderLoadableReduxComponent(Component, store, extractor, props) {
-  const comp = extractor.collectChunks(React.createElement(Provider, { store }, React.createElement(Component, props)));
-  const string = ReactDOMServer.renderToString(comp);
+  const children = React.createElement(Component, props);
+  const comp = extractor.collectChunks(React.createElement(Provider, { store }, children));
+  const renderString = ReactDOMServer.renderToString(comp);
 
-  return string;
+  return renderString;
 }
 
 const getConfig = state => {

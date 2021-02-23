@@ -43,7 +43,7 @@ function findCompleteUrl(menutItem, sectionList) {
     const parentSectionObj = _.find(sectionList, function(item) {
       return sectionObject["parent-id"] === item.id;
     });
-    return parentSectionObj ? "/" + parentSectionObj.slug + "/" + sectionObject.slug : "/#";
+    return parentSectionObj ? `/${parentSectionObj.slug}/${sectionObject.slug }` : "/#";
   }
   return "/" + sectionObject.slug || "/#";
 }

@@ -1,9 +1,9 @@
 :root {
-  --zindex-1: -1;
-  --z-level-0: 1;
-  --z-level-1: 2;
-  --z-level-2: 3;
-  --z-level-3: 4;
-  --z-level-100: 100;
-  --modal: var(--z-level-1);
+  --zlevel-1: -1;
+  --zlevel-0: 1;
+  --zlevel-1: 2;
+  --zlevel-2: 3;
+  --zlevel-3: 4;
+  --zlevel-100: 100;
+  --modal: var(--zlevel-1);
 }

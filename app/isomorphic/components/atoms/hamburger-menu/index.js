@@ -6,9 +6,7 @@ import "./hamburger-menu.m.css";
 export const HamburgerMenu = ({ onMenuToggle, isMegaMenuOpen }) => {
   return (
     <button onClick={onMenuToggle} styleName={`hamburger ${isMegaMenuOpen ? "is-open" : ""}`}>
-      <span styleName="line" />
-      <span styleName="line" />
-      <span styleName="line" />
+      {new Array(3).fill(<span styleName="line" />)}
     </button>
   );
 };
