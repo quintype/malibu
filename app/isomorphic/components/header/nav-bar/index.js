@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
-import throttle from "lodash/throttle";
 import { MenuItem } from "../menu-item";
 import HamburgerMenu from "../../atoms/hamburger-menu";
 
@@ -41,26 +40,11 @@ const NavBar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const wrapperRef = useRef(null);
   const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
-
   const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
 
-  const handleScroll = e => {
-    const navBar = document.getElementById("sticky-navbar");
-    if (navBar) {
-      const offsetTop = navBar.offsetTop;
-      if (window.pageYOffset > offsetTop) {
-        navBar.classList.add("sticky");
-      } else {
-        navBar.classList.remove("sticky");
-      }
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", throttle(handleScroll, 50));
     document.addEventListener("click", handleClickOutside, false);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleClickOutside, false);
     };
   }, []);

@@ -54,7 +54,8 @@
       <%- include ./partials/noscriptgtm -%>
     <% } %>
     <div>
-      <header id="header"><%- navbar %></header>
+      <div><%- navbar %></div>
+      <header id="nav-bar" class="sticky-header"></header>
       <div id='breaking-news-container'><%- breakingNews -%></div>
       <div id="container"><%_ if(contentTemplate) { _%><%- include(contentTemplate) -%><%_ }else { _%><%- content %><%_ } _%></div>
       <footer id="footer"><%- footer %></footer>

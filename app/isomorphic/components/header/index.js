@@ -7,7 +7,6 @@ import { TopBar } from "./top-bar";
 const Header = () => (
   <React.Fragment>
     <TopBar />
-    <div id="nav-bar"></div>
   </React.Fragment>
 );
 
