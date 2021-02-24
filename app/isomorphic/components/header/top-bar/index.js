@@ -5,10 +5,10 @@ import "./top-bar.m.css";
 
 const TopBar = () => (
   <div styleName="main-wrapper">
-  <div className="container" styleName="wrapper">
-    <AppLogo />
-    <div id="search-bar"></div>
-  </div>
+    <div className="container" styleName="wrapper">
+      <AppLogo />
+      <div id="search-bar"></div>
+    </div>
   </div>
 );
 
