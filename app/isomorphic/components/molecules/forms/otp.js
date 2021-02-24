@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PT from "prop-types";
 import get from "lodash/get";
 import { connect, useDispatch } from "react-redux";
-import { verifyEmail, updateWithOtp, currentUser } from "@quintype/bridgekeeper-js";
+import { sendOtp, updateWithOtp, currentUser } from "@quintype/bridgekeeper-js";
 
 import { InputField } from "../../atoms/InputField";
 import { MEMBER_UPDATED } from "../../store/actions";
@@ -46,7 +46,7 @@ const OTPBase = ({ member, manageLoginForm }) => {
 
   const resendOTP = async () => {
     try {
-      await verifyEmail(member.email);
+      await sendOtp(member.email);
       setSuccessMsg("OTP Sent to your registered email");
     } catch (error) {
       setError(error);

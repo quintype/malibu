@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { func } from "prop-types";
 
-import { verifyEmail } from "@quintype/bridgekeeper-js";
+import { sendOtp } from "@quintype/bridgekeeper-js";
 
 import { Modal } from "../Modal";
 import { Login } from "../../molecules/forms/login";
@@ -24,7 +24,7 @@ const AccountModal = ({ onBackdropClick, checkForMemberUpdated }) => {
 
   const onSuccess = async member => {
     try {
-      const otpDetails = await verifyEmail(member.email);
+      const otpDetails = await sendOtp(member.email);
       otpHandler(member, otpDetails);
     } catch (err) {
       console.log(err);
