@@ -10,7 +10,7 @@ const AppLogo = () => (
   <div>
     <Link href="/">
       <img
-        height="60px"
+        height="50px"
         loading="lazy"
         styleName="publisher-logo"
         srcSet={` ${assetify(logo)}`}

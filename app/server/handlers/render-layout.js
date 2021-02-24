@@ -12,6 +12,7 @@ import { renderReduxComponent } from "@quintype/framework/server/render";
 
 import { getChunkName } from "../../isomorphic/pick-component";
 import { Header } from "../../isomorphic/components/header";
+import { NavBar } from "../../isomorphic/components/header/nav-bar";
 import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
@@ -25,7 +26,6 @@ function renderLoadableReduxComponent(Component, store, extractor, props) {
   const children = React.createElement(Component, props);
   const comp = extractor.collectChunks(React.createElement(Provider, { store }, children));
   const renderString = ReactDOMServer.renderToString(comp);
-
   return renderString;
 }
 
@@ -42,9 +42,11 @@ const getConfig = state => {
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
-  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["headercss"] });
-  const header = renderLoadableReduxComponent(Header, params.store, extractor);
+  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["topbarCriticalCss", "navbarCriticalCss"] });
+  const topbar = renderLoadableReduxComponent(Header, params.store, extractor);
+  const navbar = renderLoadableReduxComponent(NavBar, params.store, extractor);
   const criticalCss = await extractor.getCssString();
+
   res.render(
     "pages/layout",
     Object.assign(
@@ -57,7 +59,8 @@ export async function renderLayout(res, params) {
         fontFace: fontFace,
         contentTemplate: null,
         title: params.title,
-        navbar: header,
+        topbar: topbar,
+        navbar: navbar,
         footer: renderReduxComponent(Footer, params.store),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],
