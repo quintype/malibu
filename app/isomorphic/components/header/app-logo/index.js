@@ -4,7 +4,7 @@ import assetify from "@quintype/framework/assetify";
 
 import "./app-logo.m.css";
 
-import logo from "../../../../assets/images/malibu-logo.png";
+import logo from "../../../../assets/images/malibu-logo.jpg";
 
 const AppLogo = () => (
   <div>
