@@ -8,33 +8,31 @@ import HamburgerMenu from "../../atoms/hamburger-menu";
 
 import "./navbar.m.css";
 
-const getNavbarMenu = menu => {
-  return (
-    <ul styleName="navbar">
-      {menu.length > 0 &&
-        menu.map(item => {
-          return (
-            <li key={item.title} styleName="dropdown">
-              <MenuItem item={item} />
-              {item.children.length > 0 && (
-                <div styleName="dropdown-content">
-                  <ul>
-                    {item.children.map(item => {
-                      return (
-                        <li key={item.title} styleName="dropdown">
-                          <MenuItem item={item} showIcon={false} key={item.title} />
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
-            </li>
-          );
-        })}
-    </ul>
-  );
-};
+const getNavbarMenu = menu => (
+  <ul styleName="navbar">
+    {menu.length > 0 &&
+      menu.map(item => {
+        return (
+          <li key={item.title} styleName="dropdown">
+            <MenuItem item={item} />
+            {item.children.length > 0 && (
+              <div styleName="dropdown-content">
+                <ul>
+                  {item.children.map(item => {
+                    return (
+                      <li key={item.title} styleName="dropdown">
+                        <MenuItem item={item} showIcon={false} key={item.title} />
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </li>
+        );
+      })}
+  </ul>
+);
 
 const NavBar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -43,17 +41,22 @@ const NavBar = () => {
 
   const displayStyle = isMegaMenuOpen ? "block" : "none";
   const getDropdownList = () => {
+    if (!isMegaMenuOpen) {
+      return null;
+    }
     return (
-      <ul styleName="dropdown-content" style={{ display: displayStyle }}>
-        {isMegaMenuOpen &&
-          hamburgerMenu.map(item => {
+      <div>
+        <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div>
+        <ul styleName="dropdown-content" style={{ display: displayStyle }}>
+          {hamburgerMenu.map(item => {
             return (
               <li key={item.title} styleName="dropdown">
                 <MenuItem item={item} showIcon={false} />
               </li>
             );
           })}
-      </ul>
+        </ul>
+      </div>
     );
   };
 
@@ -63,7 +66,7 @@ const NavBar = () => {
         {hamburgerMenu.length && (
           <div styleName="dropdown">
             <HamburgerMenu onMenuToggle={() => setIsMegaMenuOpen(!isMegaMenuOpen)} isMegaMenuOpen={isMegaMenuOpen} />
-            <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div>
+            {/* <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div> */}
             {getDropdownList()}
           </div>
         )}

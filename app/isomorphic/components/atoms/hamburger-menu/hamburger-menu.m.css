@@ -14,7 +14,7 @@
 .line {
   background-color: var(--brand-secondary);
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   height: 3px;
   width: 16px;
   transition: all 0.1s ease-in;
@@ -22,7 +22,7 @@
 }
 
 .hamburger.is-open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(4px) rotate(45deg);
 }
 
 .hamburger.is-open span:nth-child(2) {
