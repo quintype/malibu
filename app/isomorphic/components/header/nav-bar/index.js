@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
@@ -8,17 +8,17 @@ import HamburgerMenu from "../../atoms/hamburger-menu";
 
 import "./navbar.m.css";
 
-const getNavbar = menu => {
+const getNavbarMenu = menu => {
   return (
     <ul styleName="navbar">
-      {menu.length &&
+      {menu.length > 0 &&
         menu.map(item => {
           return (
             <li key={item.title} styleName="dropdown">
               <MenuItem item={item} />
-              {item.children && item.children.length > 0 && (
+              {item.children.length > 0 && (
                 <div styleName="dropdown-content">
-                  <ul style={{ position: "relative" }}>
+                  <ul>
                     {item.children.map(item => {
                       return (
                         <li key={item.title} styleName="dropdown">
@@ -38,32 +38,36 @@ const getNavbar = menu => {
 
 const NavBar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-  const wrapperRef = useRef(null);
   const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
   const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
 
   const displayStyle = isMegaMenuOpen ? "block" : "none";
+  const getDropdownList = () => {
+    return (
+      <ul styleName="dropdown-content" style={{ display: displayStyle }}>
+        {isMegaMenuOpen &&
+          hamburgerMenu.map(item => {
+            return (
+              <li key={item.title} styleName="dropdown">
+                <MenuItem item={item} showIcon={false} />
+              </li>
+            );
+          })}
+      </ul>
+    );
+  };
 
   return (
     <div styleName="main-wrapper" id="sticky-navbar">
       <nav className="container" styleName="wrapper">
         {hamburgerMenu.length && (
-          <div styleName="dropdown" ref={wrapperRef}>
+          <div styleName="dropdown">
             <HamburgerMenu onMenuToggle={() => setIsMegaMenuOpen(!isMegaMenuOpen)} isMegaMenuOpen={isMegaMenuOpen} />
-            <div styleName="overlay" onClick={()=> setIsMegaMenuOpen(false)}></div>
-            <ul styleName="dropdown-content" style={{ display: displayStyle }}>
-              {isMegaMenuOpen &&
-                hamburgerMenu.map(item => {
-                  return (
-                    <li key={item.title} styleName="dropdown">
-                      <MenuItem item={item} showIcon={false} />
-                    </li>
-                  );
-                })}
-            </ul>
+            <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div>
+            {getDropdownList()}
           </div>
         )}
-        <div>{getNavbar(menu)}</div>
+        {getNavbarMenu(menu)}
         <div> user</div>
       </nav>
     </div>

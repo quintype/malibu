@@ -5,9 +5,7 @@ import { TopBar } from "./top-bar";
 // Common wrapper for navigation. We could add OffcanvasMenu, Navbar etc components here.
 
 const Header = () => (
-  <React.Fragment>
-    <TopBar />
-  </React.Fragment>
+  <TopBar />
 );
 
 export { Header };

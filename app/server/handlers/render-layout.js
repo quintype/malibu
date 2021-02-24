@@ -4,15 +4,18 @@ import { ChunkExtractor } from "@loadable/server";
 import path from "path";
 import ReactDOMServer from "react-dom/server";
 import { Provider } from "react-redux";
-import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/asset-helper";
+import serialize from "serialize-javascript";
 import get from "lodash/get";
-import { getChunkName } from "../../isomorphic/pick-component";
+
+import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/asset-helper";
 import { renderReduxComponent } from "@quintype/framework/server/render";
+
+import { getChunkName } from "../../isomorphic/pick-component";
 import { Header } from "../../isomorphic/components/header";
 import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";
-import serialize from "serialize-javascript";
+
 
 const statsFile = path.resolve("stats.json");
 const cssContent = assetPath("app.css") ? readAsset("app.css") : "";

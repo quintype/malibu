@@ -64,7 +64,7 @@
 .navbar::-webkit-scrollbar {
   width: 0px;
   height: 0px;
-  z-index: var(--zlevel-3);
+  z-index: var(--zlevel3);
 }
 
 .navbar::-webkit-scrollbar-thumb {
