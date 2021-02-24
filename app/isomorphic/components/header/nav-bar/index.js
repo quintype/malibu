@@ -48,7 +48,7 @@ const NavBar = () => {
       <div>
         <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div>
         <ul styleName="dropdown-content" style={{ display: displayStyle }}>
-          {hamburgerMenu.map(item => {
+          {hamburgerMenu.length > 0 && hamburgerMenu.map(item => {
             return (
               <li key={item.title} styleName="dropdown">
                 <MenuItem item={item} showIcon={false} />
@@ -63,7 +63,7 @@ const NavBar = () => {
   return (
     <div styleName="main-wrapper" id="sticky-navbar">
       <nav className="container" styleName="wrapper">
-        {hamburgerMenu.length && (
+        {hamburgerMenu.length > 0 && (
           <div styleName="dropdown">
             <HamburgerMenu onMenuToggle={() => setIsMegaMenuOpen(!isMegaMenuOpen)} isMegaMenuOpen={isMegaMenuOpen} />
             {/* <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div> */}
