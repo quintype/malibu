@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
@@ -10,9 +10,9 @@ import { MenuItem } from "../helper-components";
 import { AppLogo } from "../app-logo";
 
 import "./styles.m.css";
+import AccountModal from "../../login/AccountModal";
 
 const NavBar = ({ menu, enableLogin }) => {
-  const AccountModal = lazy(() => import("../../login/AccountModal"));
   const [showAccountModal, setShowAccountModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -65,11 +65,7 @@ const NavBar = ({ menu, enableLogin }) => {
             ) : (
               <>
                 <button onClick={() => setShowAccountModal(true)}>Login</button>
-                {showAccountModal && (
-                  <Suspense fallback={<div></div>}>
-                    <AccountModal onBackdropClick={() => setShowAccountModal(false)} />
-                  </Suspense>
-                )}
+                {showAccountModal && <AccountModal onBackdropClick={() => setShowAccountModal(false)} />}
               </>
             )}
           </li>
