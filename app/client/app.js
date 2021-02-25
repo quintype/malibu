@@ -1,8 +1,11 @@
 /* eslint-disable global-require */
 import { startApp } from "@quintype/framework/client/start";
+import wretch from "wretch";
+
 import { renderApplication, preRenderApplication } from "./render";
 import "../../app/assets/stylesheets/app.scss";
-import wretch from "wretch";
+import { REDUCERS } from "../isomorphic/components/store/reducers";
+
 
 const opts = {
   enableServiceWorker: process.env.NODE_ENV === "production",
@@ -16,7 +19,7 @@ function enableHotReload(store) {
   }
 }
 
-const CUSTOM_REDUCERS = {};
+const CUSTOM_REDUCERS = REDUCERS;
 
 global.wretch = wretch;
 

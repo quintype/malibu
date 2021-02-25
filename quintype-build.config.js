@@ -24,7 +24,6 @@ module.exports = {
       entry: Object.assign({}, config.entry, {
         topbarCriticalCss: "./app/isomorphic/components/header/index.js",
         navbarCriticalCss: "./app/isomorphic/components/header/nav-bar"
-
       })
     };
   },

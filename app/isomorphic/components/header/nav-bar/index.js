@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
+import { OPEN_HAMBURGER_MENU, OPEN_SEARCHBAR } from "../../store/actions";
 import { MenuItem } from "../menu-item";
 import HamburgerMenu from "../../atoms/hamburger-menu";
 
@@ -35,40 +36,55 @@ const getNavbarMenu = menu => (
 );
 
 const NavBar = () => {
-  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isHamburgerMenuOpen = useSelector(state => get(state, ["isHamburgerMenuOpen"], false));
   const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
   const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
 
-  const displayStyle = isMegaMenuOpen ? "block" : "none";
+  const displayStyle = isHamburgerMenuOpen ? "block" : "none";
+
+  const toggleHandler = () => {
+    dispatch({
+      type: OPEN_HAMBURGER_MENU,
+      isHamburgerMenuOpen: !isHamburgerMenuOpen
+    });
+    dispatch({
+      type: OPEN_SEARCHBAR,
+      isSearchBarOpen: false
+    });
+  };
+
   const getDropdownList = () => {
-    if (!isMegaMenuOpen) {
+    if (!isHamburgerMenuOpen) {
       return null;
     }
     return (
-      <div>
-        <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div>
+      <Fragment>
+        <div styleName="overlay" onClick={() => toggleHandler()}></div>
         <ul styleName="dropdown-content" style={{ display: displayStyle }}>
-          {hamburgerMenu.length > 0 && hamburgerMenu.map(item => {
-            return (
-              <li key={item.title} styleName="dropdown">
-                <MenuItem item={item} showIcon={false} />
-              </li>
-            );
-          })}
+          {hamburgerMenu.length > 0 &&
+            hamburgerMenu.map(item => {
+              return (
+                <li key={item.title} styleName="dropdown">
+                  <MenuItem item={item} showIcon={false} />
+                </li>
+              );
+            })}
         </ul>
-      </div>
+      </Fragment>
     );
   };
 
   return (
     <div styleName="main-wrapper" id="sticky-navbar">
       <nav className="container" styleName="wrapper">
-        {hamburgerMenu.length > 0 && (
+        {hamburgerMenu.length > 0 ? (
           <div styleName="dropdown">
-            <HamburgerMenu onMenuToggle={() => setIsMegaMenuOpen(!isMegaMenuOpen)} isMegaMenuOpen={isMegaMenuOpen} />
-            {/* <div styleName="overlay" onClick={() => setIsMegaMenuOpen(false)}></div> */}
+            <HamburgerMenu onMenuToggle={() => toggleHandler()} isMegaMenuOpen={isHamburgerMenuOpen} />
             {getDropdownList()}
           </div>
+        ) : (
+          <div />
         )}
         {getNavbarMenu(menu)}
         <div> user</div>
