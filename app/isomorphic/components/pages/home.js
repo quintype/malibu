@@ -1,8 +1,6 @@
 import { LazyCollection, LazyLoadImages, replaceAllStoriesInCollection, WithPreview } from "@quintype/components";
-import assetify from "@quintype/framework/assetify";
 import { object, shape } from "prop-types";
 import React from "react";
-import img from "../../../assets/images/pw_maze_white.png";
 import { getCollectionTemplate } from "../get-collection-template";
 
 export const HomePage = props => (
@@ -11,7 +9,6 @@ export const HomePage = props => (
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
     </LazyLoadImages>
-    <img src={assetify(img)} alt="bg-tile" />
   </div>
 );
 
