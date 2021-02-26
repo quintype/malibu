@@ -62,7 +62,7 @@ const NavbarSearch = () => {
           <CloseIcon />
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

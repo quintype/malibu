@@ -1,7 +1,6 @@
 import { OPEN_HAMBURGER_MENU, OPEN_SEARCHBAR } from "./actions";
 
 function hamburgerMenuReducer(state = false, action) {
-  console.log("state--------111", state)
   switch (action.type) {
     case OPEN_HAMBURGER_MENU:
       return action.isHamburgerMenuOpen;
@@ -11,7 +10,6 @@ function hamburgerMenuReducer(state = false, action) {
 }
 
 function searchBarReducer(state = false, action) {
-  console.log("state--------111", state)
   switch (action.type) {
     case OPEN_SEARCHBAR:
       return action.isSearchBarOpen;
