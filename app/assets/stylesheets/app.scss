@@ -38,6 +38,14 @@ a {
   font-weight: normal;
 }
 
+#breaking-news-container {
+  min-height: 71px;
+
+  @media screen and (min-width: 480px) {
+    min-height: 51px;
+  }
+}
+
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
