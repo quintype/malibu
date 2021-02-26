@@ -7,7 +7,7 @@ import "./app-logo.m.css";
 import logo from "../../../../assets/images/malibu-logo.jpg";
 
 const AppLogo = () => (
-  <div>
+  <h1>
     <Link href="/">
       <img
         height="50"
@@ -18,7 +18,7 @@ const AppLogo = () => (
         alt="Logo"
       />
     </Link>
-  </div>
+  </h1>
 );
 
 export { AppLogo };
