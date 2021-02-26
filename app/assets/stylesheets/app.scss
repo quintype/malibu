@@ -73,6 +73,10 @@ a {
   transform: translateY(0);
 }
 
+#breaking-news-container {
+  min-height: 51px;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;

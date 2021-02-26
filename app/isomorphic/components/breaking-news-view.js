@@ -48,16 +48,8 @@ export const BreakingNewsViewBase = ({ breakingNews = [], breakingNewsConfig = {
     return <div className="empty-div-margin-bottom"></div>;
   }
 
-  const breakingNewsContainerStyle = () => {
-    if (breakingNews.length > 0) {
-      return { height: "50px" };
-    } else {
-      return { height: 0 };
-    }
-  };
-
   return (
-    <div styleName="base" style={breakingNewsContainerStyle()}>
+    <div styleName="base">
       <div styleName="container">
         <div styleName="breaking-news-label">BREAKING NEWS</div>
         {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)}
