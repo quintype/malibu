@@ -10,6 +10,7 @@
   background-color: var(--brand-primary);
   position: relative;
   box-shadow: -1px 12px 13px -11px rgba(var(--rgb-black), 0.42);
+  margin-bottom: 16px;
 }
 
 .wrapper {
