@@ -6,7 +6,6 @@ import { renderApplication, preRenderApplication } from "./render";
 import "../../app/assets/stylesheets/app.scss";
 import { REDUCERS } from "../isomorphic/components/store/reducers";
 
-
 const opts = {
   enableServiceWorker: process.env.NODE_ENV === "production",
   appVersion: require("../isomorphic/app-version"),

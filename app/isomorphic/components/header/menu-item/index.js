@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PT from "prop-types";
 import { Link } from "@quintype/components";
 
@@ -7,7 +7,14 @@ import "./menu-item.m.css";
 const MenuItem = ({ item, toggleHandler }) => {
   if (item.isExternalLink) {
     return (
-      <a styleName="menu-link" onClick={toggleHandler} className="menu-link" target="_blank" rel="noopener noreferrer" href={item.url || "/"}>
+      <a
+        styleName="menu-link"
+        onClick={toggleHandler}
+        className="menu-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={item.url || "/"}
+      >
         {item.title}
       </a>
     );

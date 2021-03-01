@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
@@ -55,8 +55,8 @@ const NavBar = () => {
           {hamburgerMenu.length > 0 &&
             hamburgerMenu.map(item => {
               return (
-                <li key={item.title} styleName="dropdown"  >
-                  <MenuItem item={item} showIcon={false}  toggleHandler={() => toggleHandler()}/>
+                <li key={item.title} styleName="dropdown">
+                  <MenuItem item={item} showIcon={false} toggleHandler={() => toggleHandler()} />
                 </li>
               );
             })}
