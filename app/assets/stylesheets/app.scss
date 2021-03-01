@@ -159,6 +159,12 @@ a {
   }
 }
 
+.topbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .sticky-header {
   position: sticky;
   top: 0;

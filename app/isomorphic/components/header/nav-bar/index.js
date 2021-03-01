@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
@@ -9,31 +9,20 @@ import HamburgerMenu from "../../atoms/hamburger-menu";
 
 import "./navbar.m.css";
 
-const getNavbarMenu = menu => (
-  <ul styleName="navbar">
-    {menu.length > 0 &&
-      menu.map(item => {
-        return (
-          <li key={item.title} styleName="dropdown">
-            <MenuItem item={item} />
-            {item.children.length > 0 && (
-              <div styleName="dropdown-content">
-                <ul>
-                  {item.children.map(item => {
-                    return (
-                      <li key={item.title} styleName="dropdown">
-                        <MenuItem item={item} showIcon={false} key={item.title} />
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            )}
-          </li>
-        );
-      })}
-  </ul>
-);
+const getNavbarMenu = menu => {
+  return (
+    <ul styleName="navbar">
+      {menu.length > 0 &&
+        menu.map(item => {
+          return (
+            <li key={item.title} styleName="dropdown">
+              <MenuItem item={item} />
+            </li>
+          );
+        })}
+    </ul>
+  );
+};
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -41,7 +30,7 @@ const NavBar = () => {
   const menu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "homeMenu"], []));
   const hamburgerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "hamburgerMenu"], []));
 
-  const displayStyle = isHamburgerMenuOpen ? "block" : "none";
+  const displayStyle = isHamburgerMenuOpen ? "flex" : "none";
 
   const toggleHandler = () => {
     dispatch({
@@ -62,11 +51,12 @@ const NavBar = () => {
       <Fragment>
         <div styleName="overlay" onClick={() => toggleHandler()}></div>
         <ul styleName="dropdown-content" style={{ display: displayStyle }}>
+          <HamburgerMenu onMenuToggle={() => toggleHandler()} isMegaMenuOpen={isHamburgerMenuOpen} />
           {hamburgerMenu.length > 0 &&
             hamburgerMenu.map(item => {
               return (
-                <li key={item.title} styleName="dropdown">
-                  <MenuItem item={item} showIcon={false} />
+                <li key={item.title} styleName="dropdown"  >
+                  <MenuItem item={item} showIcon={false}  toggleHandler={() => toggleHandler()}/>
                 </li>
               );
             })}

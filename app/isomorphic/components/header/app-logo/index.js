@@ -10,7 +10,7 @@ const AppLogo = () => (
   <h1>
     <Link href="/">
       <img
-        height="50"
+        height="60"
         loading="lazy"
         styleName="publisher-logo"
         srcSet="https://qtstage-01.gumlet.io/malibu/2021-02/22dbd380-a2f2-4910-a016-0ae8a8bf7081/malibu_logo.jpg?auto=format%2Ccompress&format=webp&w=100&dpr=2.0"
