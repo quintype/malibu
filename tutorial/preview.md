@@ -8,7 +8,7 @@ nav_order: 15
 
 *Author [Deo Kumar](https://www.linkedin.com/in/deo-kumar)*
 
-Before publishing a story via Bold, you might be interested to preview it in your frontend. In this tutorial, we will walk through how previewing works in Bold and the steps that are required to implement the feature in your frontend application. 
+Before publishing a story via Bold, you might be interested to preview it in your frontend. In this tutorial, we will walk through how previewing works in Bold and the steps that are required to implement the feature in your frontend application.
 
 ## How to preview the story in Bold
 
@@ -50,9 +50,7 @@ The event handler grabs the `story` data from the `event` and updates the state.
 
 ## Steps to implement the feature
 
-If you are using Malibu, then you don't need to do anything. The preview feature that is already implemented in malibu by default.
-
-But if you are not using malibu, then you need to do the following steps:-
+You need to do the following steps:-
 
 ## Add routes for home page preview and story page preview
 
@@ -107,7 +105,7 @@ Once your data is loaded, then you need to create a story page component in the 
 Ex:-  Story page component */pages/story.js*
 
 ```javascript
-  class StoryPagePreview extends React.Component {
+  class StoryPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {};
@@ -128,39 +126,29 @@ Ex:- For story page preview component */pages/story-preview.js*.
 
 import React from "react";
 import PropTypes from "prop-types";
-import { StoryPageContent } from "./story.js"; //your story page component
+import { StoryPage } from "./story.js"; //your story page component
 
-class StoryPagePreview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const StoryPagePreview = (props) => {
+  const [data, setData] = useState(null);
 
-  componentDidMount() {
-    this.collectStoryData();
-  }
-
-  collectStoryData() {
-    global.addEventListener("message", event => {
+  const collectStoryData = () => {
+    global.addEventListener("message", (event) => {
       if (event.data.story) {
-        this.setState({
-          story: event.data.story,
-          relatedStories: Array(4).fill(event.data.story),
-          preview: true
-        });
+        setData(event.data);
       }
     });
-  }
+  };
 
-  render() {
-    if (!this.state.story) return <div />;
-    return StoryPageContent(
-      Object.assign({ index: 0 }, this.state),
-      this.props.config,
-      this.props.renderStoryPageContent
-    );
-  }
-}
+  useEffect(() => {
+    collectStoryData();
+  }, []);
+
+  return <StoryPage data={data} config={props.config} isPreview={true} />;
+};
+
+StoryPagePreview.propTypes = {
+  config: object,
+};
 
 export { StoryPagePreview };
 
@@ -172,7 +160,7 @@ That's it for story page preview, now you should able to see the story preview i
 
 ### Rendering Home Page Preview
 
-Similar to the story page preview, you can render your home page preview as well. you need to create routes, load the data, create a home page component where your home page data will show, and then render your home page preview
+Similar to the story page preview, you can render your home page preview as well. You need to create routes, load the data, create a home page component where your home page data will show, and then render your home page preview
 
 Ex:- Home page preview component */pages/home-preview.js*.
 
@@ -181,39 +169,37 @@ Ex:- Home page preview component */pages/home-preview.js*.
 import React from "react";
 import { HomePage } from "./home.js";
 import { replaceAllStoriesInCollection } from "@quintype/components";
+import { object } from "prop-types";
 
-class HomePagePreview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      started: false,
-      data: props.data,
-      preview: true
-    };
-  }
+const HomePagePreview = (props) => {
+  const [started, setStarted] = useState(false);
+  const [data, setData] = useState(props.data);
 
-  componentDidMount() {
-    this.collectStoryData();
-  }
-
-  collectStoryData() {
-    global.addEventListener("message", event => {
+  const collectStoryData = () => {
+    global.addEventListener("message", (event) => {
       if (event.data.story) {
-        this.setState({
-          started: true,
-          data: Object.assign({}, this.props.data, {
-            collection: replaceAllStoriesInCollection(this.props.data.collection, event.data.story)
-          })
+        setStarted(true);
+        const storyData = Object.assign({}, data, {
+          collection: props.data.collection
+            ? replaceAllStoriesInCollection(props.data.collection, event.data.story)
+            : null,
         });
+        setData(storyData);
       }
     });
-  }
+  };
 
-  render() {
-    if (!this.state.started) return <div />;
-    return <HomePage data={this.state.data} />;
-  }
-}
+  useEffect(() => {
+    collectStoryData();
+  }, []);
+
+  if (!started) return <div />;
+  return <HomePage data={data} />;
+};
+
+HomePagePreview.propTypes = {
+  data: object,
+};
 
 export { HomePagePreview };
 ```
