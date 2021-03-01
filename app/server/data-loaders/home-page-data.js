@@ -5,12 +5,12 @@ import { getStoryLimits } from "../../isomorphic/components/get-collection-templ
 export async function loadHomePageData(client, config, slug) {
   const collection = await Collection.getCollectionBySlug(
     client,
-    slug,
+    slug || "home",
     { "item-type": "collection" },
     { depth: 1, storyLimits: getStoryLimits() }
   );
   return {
-    collection: collection.asJson(),
-    cacheKeys: collection.cacheKeys(config["publisher-id"])
+    collection: collection ? collection.asJson() : null,
+    cacheKeys: collection ? collection.cacheKeys(config["publisher-id"]) : null
   };
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
-import { shape, string, object, integer, arrayOf } from "prop-types";
+import { shape, string, object, number, arrayOf } from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
@@ -36,7 +36,7 @@ const storyPropType = shape({
 
 StoryGridStoryItem.propTypes = {
   story: storyPropType,
-  position: integer
+  position: number
 };
 
 export function StoryGrid({ stories = [] }) {
