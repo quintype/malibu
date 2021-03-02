@@ -10,23 +10,6 @@ nav_order: 15
 
 Before publishing a story via Bold, you might be interested to preview it in your frontend. In this tutorial, we will walk through how previewing works in Bold and the steps that are required to implement the feature in your frontend application.
 
-## How to preview the story in Bold
-
-- Open the story that you want to preview.
-
-![Story]({{"images/edit-story.png" | absolute_url}})
-
-- You should be able to see the preview button in the top right corner of the page, in the header.
-
-![story preview icon]({{"images/story-preview-icon.png" | absolute_url}})
-
-- Clicking the preview button will open a window on the right side of your editor. This will preview the story page in mobile view by default.
-
-![Story preview]({{"images/story-preview.png" | absolute_url}})
-
-- You can toggle between *mobile home preview*, *desktop story preview* and *desktop home preview* previews by clicking on *other previews* dropdown.
-
-![Preview options]({{"images/preview-options.png" | absolute_url}})
 
 ## How it works
 
@@ -146,15 +129,6 @@ export { StoryPreview };
 
 ```
 
-*Note*: Bundle and export StoryPage and StoryPreview components in *app/isomorphic/component-bundles/story.js*
-
-```javascript
-
-export { StoryPage } from "../components/pages/story";
-export { StoryPreview } from "../components/pages/story-preview";
-
-```
-
 #### b. Home preview
 
 Call the respective component inside *app/isomorphic/components/pages/home-preview.js*.
@@ -202,8 +176,6 @@ export { HomePagePreview };
 All the stories in the home page will be replaced by the story being previewed.
 
 
-Export the above components and utilize it in the pick-component file
-
 ### 5. Utilize StoryPreview and HomePreview in app/isomorphic/pick-component.js
 
 ```javascript
@@ -227,5 +199,46 @@ const { pickComponent, getChunkName } = pickComponentHelper(
 export { pickComponent, getChunkName };
 
 ```
+
+*Note*: As you can see in the above snippet, there are two chunks *list* and *story*. The *StoryPreview* and *HomePreview* needs to be exported from the corresponding chunk(bundle) files as shown below.
+
+In *app/isomorphic/component-bundles/story.js*
+
+```javascript
+
+...
+export { StoryPreview } from "../components/pages/story-preview";
+...
+
+```
+In *app/isomorphic/component-bundles/list.js*
+
+```javascript
+
+...
+export { HomePreview } from "../components/pages/home-preview";
+...
+
+```
+
+
+## How to preview the story in Bold
+
+- Open the story that you want to preview.
+
+![Story]({{"images/edit-story.png" | absolute_url}})
+
+- You should be able to see the preview button in the top right corner of the page, in the header.
+
+![story preview icon]({{"images/story-preview-icon.png" | absolute_url}})
+
+- Clicking the preview button will open a window on the right side of your editor. This will preview the story page in mobile view by default.
+
+![Story preview]({{"images/story-preview.png" | absolute_url}})
+
+- You can toggle between *mobile home preview*, *desktop story preview* and *desktop home preview* previews by clicking on *other previews* dropdown.
+
+![Preview options]({{"images/preview-options.png" | absolute_url}})
+
 
 You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
