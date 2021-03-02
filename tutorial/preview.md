@@ -52,9 +52,7 @@ The event handler grabs the `story` data from the `event` and updates the state.
 
 ### 1. Add routes for home page preview and story page preview
 
-The first step of any new page is to create a route for it.
-
-Ex:- In *app/server/routes.js*, we add the following lines for adding routes:
+In *app/server/routes.js*, add the following lines for adding routes:
 
 ```javascript
 export const STATIC_ROUTES = [
@@ -63,22 +61,22 @@ export const STATIC_ROUTES = [
     path: "/preview/story",
     pageType: PAGE_TYPE.STORY_PREVIEW,
     exact: true,
-    renderParams: { contentTemplate: "./story-preview" },
+    renderParams: { contentTemplate: "./preview" },
     disableIsomorphicComponent: false
   },
   {
     path: "/preview/home",
     pageType: PAGE_TYPE.HOME_PREVIEW,
     exact: true,
-    renderParams: { contentTemplate: "./story-preview" },
+    renderParams: { contentTemplate: "./preview" },
     disableIsomorphicComponent: false
   }
 ];
 ```
 
-### 2. Add story-preview template 
+### 2. Add preview template 
 
-Ex:- In *views/pages/story-preview.js*, we add the following lines for creating story content template:
+In *views/pages/preview.js*, add the following lines for creating story content template:
 
 ```html
 <script type="text/javascript" src="<%= assetPath("qtc-parsecsv.js") %>"></script>
@@ -90,11 +88,9 @@ Ex:- In *views/pages/story-preview.js*, we add the following lines for creating 
 </script>
 ```
 
-### 3. Loading the data
+### 3. Load the data from the server
 
-The next step is to load the data from your server.
-
-For example, in *app/server/load-data.js*, we add the following:
+In *app/server/load-data.js*, add the following:
 
 ```javascript
 import { loadStoryPageData } from "./data-loaders/story-page-data";
@@ -113,37 +109,18 @@ export function loadData(pageType, params, config, client, { host, next }) {
   }
 ```
 
-### 4. Rendering story page preview
+### 4. Render the preview
+#### a. Story preview
 
-Once your data is loaded, then you need to create a story page component in the new file, and then you can call the story page component inside the story-preview.js to render the story page preview.
-
-Ex:-  Story page component *app/isomorphic/components/pages/story.js*
-
-```javascript
-  class StoryPage extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {};
-    }
-
-    componentDidMount() {
-      this.collectStoryData();
-    }
-    render() {
-      return <div>Story page data</div>
-    }
-  }
-```
-
-Ex:- For story page preview component *app/isomorphic/components/pages/story-preview.js*.
+Call the respective component inside *app/isomorphic/components/pages/story-preview.js*.
 
 ```javascript
 
 import React from "react";
 import PropTypes from "prop-types";
-import { StoryPage } from "./story.js"; //your story page component
+import { StoryPage } from "./story.js"; //your story page
 
-const StoryPagePreview = (props) => {
+const StoryPreview = (props) => {
   const [data, setData] = useState(null);
 
   const collectStoryData = () => {
@@ -161,19 +138,15 @@ const StoryPagePreview = (props) => {
   return <StoryPage data={data} config={props.config} isPreview={true} />;
 };
 
-StoryPagePreview.propTypes = {
+StoryPreview.propTypes = {
   config: object,
 };
 
-export { StoryPagePreview };
+export { StoryPreview };
 
 ```
 
-In the above example for story page preview, we have added **addEventListener()** to catch any kind of message sent by the postMessage() method and take the necessary data from the event and return it back to the iframe from where it's being called.
-
-We need to export these two components and utilize them in pick-component file
-
-Ex:- For exporting the story page and story page preview components *app/isomorphic/component-bundles/story.js*
+*Note*: Bundle and export StoryPage and StoryPreview components in *app/isomorphic/component-bundles/story.js*
 
 ```javascript
 
@@ -182,11 +155,9 @@ export { StoryPreview } from "../components/pages/story-preview";
 
 ```
 
-### 5. Rendering Home Page Preview
+#### b. Home preview
 
-Similar to the story page preview, you can render your home page preview as well. You need to create routes, load the data, create a home page component where your home page data will show, and then render your home page preview
-
-Ex:- Home page preview component */pages/home-preview.js*.
+Call the respective component inside *app/isomorphic/components/pages/home-preview.js*.
 
 ```javascript
 
@@ -228,12 +199,12 @@ HomePagePreview.propTypes = {
 export { HomePagePreview };
 ```
 
-In the above example, we are replacing all the stories with a respected collection for rendering on the home page.
+All the stories in the home page will be replaced by the story being previewed.
 
 
-### 6. Utilizing StoryPreview and HomePreview in pick-component file
+Export the above components and utilize it in the pick-component file
 
-Ex:- For utilizing in pick-component file *app/isomorphic/pick-component.js*
+### 5. Utilize StoryPreview and HomePreview in app/isomorphic/pick-component.js
 
 ```javascript
 
