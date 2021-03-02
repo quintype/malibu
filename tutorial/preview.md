@@ -101,6 +101,7 @@ Call the respective component inside *app/isomorphic/components/pages/story-prev
 
 import React from "react";
 import PropTypes from "prop-types";
+
 import { StoryPage } from "./story.js"; //your story page
 
 const StoryPreview = (props) => {
@@ -136,9 +137,10 @@ Call the respective component inside *app/isomorphic/components/pages/home-previ
 ```javascript
 
 import React from "react";
-import { HomePage } from "./home.js";
 import { replaceAllStoriesInCollection } from "@quintype/components";
 import { object } from "prop-types";
+
+import { HomePage } from "./home.js"; //your home page
 
 const HomePagePreview = (props) => {
   const [started, setStarted] = useState(false);
