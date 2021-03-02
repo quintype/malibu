@@ -13,7 +13,7 @@ Before publishing a story via Bold, you might be interested to preview it in you
 
 ## How it works
 
-When you click on any of the preview options from the editor, the `/preview/story` route for story pages and `/preview/home` route for the home page will be called with the story data sent to it via the `postMessage` window method. The frontend app has an event listener on the `message` event which will receive the message that it received from `postMessage`. The receiving frontend page is an `iframe` inside Bold in case of the embedded preview or a new window in case of the desktop previews.
+When you click on any of the preview options from Bold, the `/preview/story` route for story pages and `/preview/home` route for the home page will be called with the story data sent to it via the `postMessage` window method. The frontend app has an event listener on the `message` event which will receive the message that it received from `postMessage`. The receiving frontend page is an `iframe` inside Bold in case of the embedded preview or a new window in case of the desktop previews.
 
 Example of an event listener for receiving the messages sent via the `postMessage` call.
 
