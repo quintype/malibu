@@ -142,7 +142,7 @@ import { object } from "prop-types";
 
 import { HomePage } from "./home.js"; //your home page
 
-const HomePagePreview = (props) => {
+const HomePreview = (props) => {
   const [started, setStarted] = useState(false);
   const [data, setData] = useState(props.data);
 
@@ -168,11 +168,11 @@ const HomePagePreview = (props) => {
   return <HomePage data={data} />;
 };
 
-HomePagePreview.propTypes = {
+HomePreview.propTypes = {
   data: object,
 };
 
-export { HomePagePreview };
+export { HomePreview };
 ```
 
 All the stories in the home page will be replaced by the story being previewed.
