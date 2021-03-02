@@ -56,7 +56,7 @@ const NavBar = () => {
             hamburgerMenu.map(item => {
               return (
                 <li key={item.title} styleName="dropdown">
-                  <MenuItem item={item} showIcon={false} toggleHandler={() => toggleHandler()} />
+                  <MenuItem item={item} toggleHandler={() => toggleHandler()} />
                 </li>
               );
             })}

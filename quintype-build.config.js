@@ -22,7 +22,7 @@ module.exports = {
       ...config,
       plugins: config.plugins.concat([new LoadablePlugin({ writeToDisk: true, filename: path.resolve("stats.json") })]),
       entry: Object.assign({}, config.entry, {
-        topbarCriticalCss: "./app/isomorphic/components/header/index.js",
+        topbarCriticalCss: "./app/isomorphic/components/header",
         navbarCriticalCss: "./app/isomorphic/components/header/nav-bar"
       })
     };
