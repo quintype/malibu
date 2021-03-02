@@ -113,7 +113,7 @@ export function loadData(pageType, params, config, client, { host, next }) {
   }
 ```
 
-### Rendering story page preview
+### 4. Rendering story page preview
 
 Once your data is loaded, then you need to create a story page component in the new file, and then you can call the story page component inside the story-preview.js to render the story page preview.
 
@@ -182,7 +182,7 @@ export { StoryPreview } from "../components/pages/story-preview";
 
 ```
 
-### Rendering Home Page Preview
+### 5. Rendering Home Page Preview
 
 Similar to the story page preview, you can render your home page preview as well. You need to create routes, load the data, create a home page component where your home page data will show, and then render your home page preview
 
@@ -231,7 +231,7 @@ export { HomePagePreview };
 In the above example, we are replacing all the stories with a respected collection for rendering on the home page.
 
 
-### Utilizing StoryPreview and HomePreview in pick-component file
+### 6. Utilizing StoryPreview and HomePreview in pick-component file
 
 Ex:- For utilizing in pick-component file *app/isomorphic/pick-component.js*
 
