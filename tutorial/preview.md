@@ -6,7 +6,7 @@ nav_order: 15
 
 # {{page.title}}
 
-*This tutorial was contributed by [Harshith Raj](https://www.linkedin.com/in/harshith-raj-092ba4176/), [Shraddha](https://www.linkedin.com/in/harshith-raj-092ba4176/)*
+*This tutorial was contributed by [Harshith Raj](https://www.linkedin.com/in/harshith-raj-092ba4176), [Shraddha](https://www.linkedin.com/in/shraddha-k-3a3548161)*
 
 Before publishing a story via Bold, you might be interested to preview it in your frontend. In this tutorial, we will walk through how previewing works in Bold and the steps that are required to implement the feature in your frontend application.
 
@@ -257,4 +257,4 @@ export { pickComponent, getChunkName };
 
 ```
 
-You may now proceed to [Form Page]({{"/tutorial/form-page.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed back to the list of [Tutorials]({{"/tutorial" | absolute_url}}).
