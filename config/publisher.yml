@@ -1,5 +1,5 @@
 asset_host: http://localhost:8080
-sketches_host: https://quintype-demo.quintype.io
+sketches_host: https://malibu-web.qtstage.io
 host_to_api_host:
   help.lvh.me: https://user-documentation.quintype.io
 host_to_automatic_api_host:
@@ -7,8 +7,22 @@ host_to_automatic_api_host:
   - ".malibu"
 domain_mapping:
   subdomain.lvh.me: subdomain
-publisher :
+publisher:
   onesignal:
     app_id: "77c3162a-6beb-4ae4-accd-ff5f79c19c72"
     safari_web_id: ""
     tag_name: "publisher-breaking-news"
+  timezone: "Asia/Baku"
+  google_tag_manager:
+    id: "gtm-id"
+    is_enable: true
+  google_analytics:
+    id: "ga-id"
+    is_enable: true
+  breaking_news:
+    is_enable: true
+    interval: 120
+    item_display: 1
+    open_in_new_tab: false
+    pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]
+  should_use_collection: true

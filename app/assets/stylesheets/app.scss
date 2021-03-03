@@ -1,4 +1,9 @@
 @import "images";
+@import "modal";
+@import "base";
+
+@import "./base/z-index.scss";
+@import "./base/colors.scss";
 
 *,
 *::after,
@@ -14,7 +19,6 @@ html {
 
 body {
   margin: 0;
-  background: #eee url("../images/pw_maze_white.png");
 }
 
 img {
@@ -67,6 +71,14 @@ a {
 
 #main-navigation:target {
   transform: translateY(0);
+}
+
+#breaking-news-container {
+  min-height: 71px;
+
+  @media screen and (min-width: 480px) {
+    min-height: 51px;
+  }
 }
 
 .container {

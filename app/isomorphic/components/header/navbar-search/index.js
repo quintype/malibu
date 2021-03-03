@@ -3,16 +3,16 @@ import { SearchBox } from "@quintype/components";
 
 import "./styles.m.css";
 
-import { Search } from "../../basic/icons/search";
-import { CloseIcon } from "../../basic/icons/close-icon";
+import { Search } from "../../atoms/icons/search";
+import { CloseIcon } from "../../atoms/icons/close-icon";
 
 function DrawForm({ children }) {
   return [
     <label styleName="search__form-label" htmlFor="searchForm" key="1">
       {children}
     </label>,
-    <button type="submit" styleName="search__form-submit" key="2">
-      <Search width="16" height="16" />
+    <button aria-label="search-button" type="submit" styleName="search__form-submit" key="2">
+      <Search width={16} height={16} />
     </button>
   ];
 }
@@ -44,7 +44,7 @@ class NavbarSearch extends React.Component {
     };
     return (
       <div styleName="search">
-        <button styleName="search__btn" onClick={() => this.toggleSearchForm()}>
+        <button aria-label="search-button" styleName="search__btn" onClick={() => this.toggleSearchForm()}>
           <Search />
         </button>
         <div styleName="search-form" style={formStyle}>
