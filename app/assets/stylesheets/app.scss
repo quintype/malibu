@@ -87,6 +87,13 @@ a {
   min-height: 100vh;
 }
 
+@media only screen and(max-width: 500px) {
+  .container {
+    padding-bottom: 500px;
+    min-height: 100vh;
+  }
+}
+
 .item-container {
   margin: 0 auto;
   width: 70%;

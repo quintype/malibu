@@ -9,13 +9,21 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 500px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 .link {
   color: #fff;
   margin-right: 10px;
 }
 
 .logo-footer {
-  max-width: 100%;
+  max-width: 25%;
   height: 4rem;
   padding: 0 1rem;
 }
