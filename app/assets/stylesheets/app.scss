@@ -20,6 +20,17 @@ html {
 body {
   margin: 0;
   position: relative;
+  padding-bottom: 209px;
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    margin: 0;
+    position: relative;
+    padding-bottom: 545px;
+    min-height: 100vh;
+  }
 }
 
 img {

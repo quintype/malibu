@@ -13,15 +13,15 @@ const Footer = () => {
   return (
     <div styleName="footer">
       <img src={assetify(logo)} styleName="logo-footer" alt="Logo" />
-      <div>
+      <div styleName="footer-items">
         <div styleName="footer-headings">Popular categories:</div>
         <ul>{categories}</ul>
       </div>
-      <div>
+      <div styleName="footer-items">
         <div styleName="footer-headings">Popular Sections:</div>
         <ul>{sections}</ul>
       </div>
-      <div>
+      <div styleName="footer-items">
         <div styleName="footer-headings">Quick Links:</div>
         <ul>{links}</ul>
       </div>
