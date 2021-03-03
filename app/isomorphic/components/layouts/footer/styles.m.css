@@ -4,17 +4,6 @@
   padding: 15px 0;
   display: flex;
   justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-@media only screen and (max-width: 500px) {
-  .footer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
 .link {

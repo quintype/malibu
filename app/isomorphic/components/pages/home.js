@@ -2,10 +2,9 @@ import { LazyCollection, LazyLoadImages, replaceAllStoriesInCollection, WithPrev
 import { object, shape } from "prop-types";
 import React from "react";
 import { getCollectionTemplate } from "../get-collection-template";
-import "./catalog.m.css";
 
 export const HomePage = props => (
-  <div styleName="story-grid">
+  <div>
     <h1>Home Page</h1>
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />

@@ -5,8 +5,6 @@
   @media screen and (min-width: 1280px) {
     padding: 8px 0;
   }
-  max-width: 1000px;
-  margin: 0 auto;
   .container {
     display: flex;
     padding-bottom: 8px;

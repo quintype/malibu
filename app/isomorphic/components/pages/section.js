@@ -5,7 +5,6 @@ import { collectionToStories, LazyCollection } from "@quintype/components";
 
 import { StoryGrid } from "../story-grid";
 import { getCollectionTemplate } from "../get-collection-template";
-import "./catalog.m.css";
 
 const SectionPage = props => {
   const stories = (props.data.collection.items && collectionToStories(props.data.collection)) || [];
@@ -22,7 +21,7 @@ const SectionPage = props => {
     return <h1>{noStoriesFound}</h1>;
   }
   return (
-    <div styleName="story-grid">
+    <div>
       <h1>{pageTitle}</h1>
       <StoryGrid stories={stories} />
       <LazyCollection collection={{ items: childCollections }} collectionTemplates={getCollectionTemplate} />

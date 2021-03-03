@@ -83,20 +83,9 @@ a {
 }
 
 .container {
-  padding-bottom: 194px;
-  min-height: 100vh;
-}
-
-@media only screen and(max-width: 500px) {
-  .container {
-    padding-bottom: 500px;
-    min-height: 100vh;
-  }
-}
-
-.item-container {
+  max-width: 1000px;
+  padding: 0 16px;
   margin: 0 auto;
-  width: 70%;
 }
 
 h1 {
