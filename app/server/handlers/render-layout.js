@@ -1,7 +1,6 @@
 /* eslint-disable object-shorthand */
 import get from "lodash/get";
 import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/asset-helper";
-import get from "lodash/get";
 import { getChunkName } from "../../isomorphic/pick-component";
 import { renderReduxComponent } from "@quintype/framework/server/render";
 import { Header } from "../../isomorphic/components/header";
