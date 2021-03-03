@@ -19,6 +19,7 @@ html {
 
 body {
   margin: 0;
+  position: relative;
 }
 
 img {
@@ -82,9 +83,13 @@ a {
 }
 
 .container {
-  max-width: 1000px;
+  padding-bottom: 194px;
+  min-height: 100vh;
+}
+
+.item-container {
   margin: 0 auto;
-  padding: 0 16px;
+  width: 70%;
 }
 
 h1 {

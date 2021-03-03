@@ -1,49 +1,32 @@
 import React from "react";
-import PT from "prop-types";
-import { connect } from "react-redux";
-import get from "lodash/get";
-import { Link } from "@quintype/components";
 import "./styles.m.css";
+import logo from "./logo.png";
+import assetify from "@quintype/framework/assetify";
 
-const FooterBase = ({ footerLinks }) => (
-  <div styleName="footer">
-    {footerLinks.map(
-      item =>
-        item.isExternalLink ? (
-          <a
-            href={item.completeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            styleName="link"
-          >
-            {item.title}
-          </a>
-        ) : (
-          <Link href={item.completeUrl} styleName="link">
-            {item.title}
-          </Link>
-        )
-    )}
-  </div>
-);
-
-function mapStateToProps(state) {
-  return {
-    footerLinks: get(state, ["qt", "data", "navigationMenu", "footerLinks"], [])
-  };
-}
-
-FooterBase.propTypes = {
-  footerLinks: PT.arrayOf(
-    PT.shape({
-      isExternalLink: PT.bool,
-      completeUrl: PT.string,
-      title: PT.string
-    })
-  )
+const Footer = () => {
+  const categorieItems = ["First", "Second", "Third", "Forth", "Fifth"];
+  const sectionItems = ["First", "Second", "Third"];
+  const linkItems = ["First", "Second", "Third", "Forth"];
+  const categories = categorieItems.map((item, id) => <li key={id}>{item}</li>);
+  const sections = sectionItems.map((item, id) => <li key={id}>{item}</li>);
+  const links = linkItems.map((item, id) => <li key={id}>{item}</li>);
+  return (
+    <div styleName="footer">
+      <img src={assetify(logo)} styleName="logo-footer" alt="Logo" />
+      <div>
+        <div styleName="footer-headings">Popular categories:</div>
+        <ul>{categories}</ul>
+      </div>
+      <div>
+        <div styleName="footer-headings">Popular Sections:</div>
+        <ul>{sections}</ul>
+      </div>
+      <div>
+        <div styleName="footer-headings">Quick Links:</div>
+        <ul>{links}</ul>
+      </div>
+    </div>
+  );
 };
 
-export const Footer = connect(
-  mapStateToProps,
-  null
-)(FooterBase);
+export { Footer };
