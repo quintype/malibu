@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@quintype/components": "^2.25.4-upgrade-package.1",
-    "@quintype/framework": "4.10.3-update-backend.1",
+    "@quintype/framework": "^4.10.3-upgrade-package.1",
     "@quintype/seo": "^1.38.28",
     "fontfaceobserver": "^2.1.0",
     "formiojs": "^4.12.0",
