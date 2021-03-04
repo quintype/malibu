@@ -24,12 +24,9 @@ body {
   min-height: 100vh;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   body {
-    margin: 0;
-    position: relative;
     padding-bottom: 545px;
-    min-height: 100vh;
   }
 }
 

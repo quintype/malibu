@@ -1,28 +1,35 @@
 import React from "react";
-import "./styles.m.css";
-import logo from "./logo.png";
 import assetify from "@quintype/framework/assetify";
+
+import "./styles.m.css";
+
+import logo from "./logo.png";
 
 const Footer = () => {
   const categories = ["First", "Second", "Third", "Forth", "Fifth"];
   const sections = ["First", "Second", "Third"];
   const links = ["First", "Second", "Third", "Forth"];
-  const generateList = (item, id) => <li key={id}>{item}</li>;
+
+  const generateItemsList = (item, id) => (
+    <li styleName="list-items" key={id}>
+      {item}
+    </li>
+  );
 
   return (
     <div styleName="footer">
       <img src={assetify(logo)} styleName="logo-footer" alt="Logo" />
-      <div styleName="footer-items">
-        <div styleName="footer-headings">Popular categories:</div>
-        <ul>{categories.map(generateList)}</ul>
+      <div styleName="block">
+        <div styleName="footer-headings">Popular Categories:</div>
+        <ul>{categories.map(generateItemsList)}</ul>
       </div>
-      <div styleName="footer-items">
+      <div styleName="block">
         <div styleName="footer-headings">Popular Sections:</div>
-        <ul>{sections.map(generateList)}</ul>
+        <ul>{sections.map(generateItemsList)}</ul>
       </div>
-      <div styleName="footer-items">
+      <div styleName="block">
         <div styleName="footer-headings">Quick Links:</div>
-        <ul>{links.map(generateList)}</ul>
+        <ul>{links.map(generateItemsList)}</ul>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 .footer {
   clear: both;
-  border-top: 1px solid black;
-  padding: 15px 0;
+  border-top: 1px solid var(--malibu-gray9);
+  padding: 16px 0;
   display: flex;
   justify-content: space-around;
   position: absolute;
@@ -9,7 +9,7 @@
   width: 968px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .footer {
     display: flex;
     flex-direction: column;
@@ -20,28 +20,28 @@
   .logo-footer {
     align-self: center;
   }
+
+  .block {
+    margin-top: 16px;
+  }
 }
 
 .link {
   color: #fff;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .logo-footer {
   max-width: 25%;
-  height: 4rem;
-  padding: 0 1rem;
+  height: 64px;
+  padding: 0 16px;
 }
 
 .footer-headings {
   font-weight: bolder;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
-.footer-items {
-  margin-top: 15px;
-}
-
-ul > li {
-  padding: 5px 0;
+.list-items {
+  padding: 4px 0;
 }
