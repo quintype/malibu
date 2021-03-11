@@ -1,19 +1,30 @@
 /* eslint-disable no-console, no-unused-vars, import/extensions, object-shorthand, global-require */
+import { Collection } from "@quintype/framework/server/api-client";
 import createApp from "@quintype/framework/server/create-app";
 import logger from "@quintype/framework/server/logger";
-import {
-  upstreamQuintypeRoutes,
-  isomorphicRoutes,
-  staticRoutes,
-  getWithConfig
-} from "@quintype/framework/server/routes";
-import { generateRoutes, STATIC_ROUTES } from "./routes";
+import { getWithConfig, isomorphicRoutes, upstreamQuintypeRoutes } from "@quintype/framework/server/routes";
+import { SEO } from "@quintype/seo";
+import { pickComponent } from "../isomorphic/pick-component";
 import { renderLayout } from "./handlers/render-layout";
 import { loadData, loadErrorData } from "./load-data";
-import { pickComponent } from "../isomorphic/pick-component";
-import { SEO } from "@quintype/seo";
-import { Collection } from "@quintype/framework/server/api-client";
+import { generateRoutes, STATIC_ROUTES } from "./routes";
 export const app = createApp();
+
+// Add this to the VERY top of the first file loaded in your app
+var apm = require("elastic-apm-node").start({
+  // Override the service name from package.json
+  // Allowed characters: a-z, A-Z, 0-9, -, _, and space
+  serviceName: "",
+
+  // Use if APM Server requires a secret token
+  secretToken: "",
+
+  // Set the custom APM Server URL (default: http://localhost:8200)
+  serverUrl: "",
+
+  // Set the service environment
+  environment: "production"
+});
 
 upstreamQuintypeRoutes(app, { forwardAmp: true });
 
