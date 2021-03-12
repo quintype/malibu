@@ -15,19 +15,22 @@ html {
   font-family: var(--content-font);
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  height: 100%;
 }
 
 body {
   margin: 0;
-  position: relative;
-  padding-bottom: 209px;
-  min-height: 100vh;
+  height: 100%;
 }
 
-@media only screen and (max-width: 768px) {
-  body {
-    padding-bottom: 545px;
-  }
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.footer-wrapper {
+  margin-top: auto;
 }
 
 img {

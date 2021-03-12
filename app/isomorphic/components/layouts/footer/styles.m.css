@@ -1,19 +1,13 @@
 .footer {
-  clear: both;
   border-top: 1px solid var(--malibu-gray9);
   padding: 16px 0;
   display: flex;
   justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-  width: 968px;
 }
 
 @media only screen and (max-width: 768px) {
   .footer {
-    display: flex;
     flex-direction: column;
-    width: 95%;
     text-align: center;
   }
 
@@ -21,7 +15,7 @@
     align-self: center;
   }
 
-  .block {
+  .menu-group {
     margin-top: 16px;
   }
 }
@@ -42,6 +36,6 @@
   margin-bottom: 4px;
 }
 
-.list-items {
+.list-item {
   padding: 4px 0;
 }

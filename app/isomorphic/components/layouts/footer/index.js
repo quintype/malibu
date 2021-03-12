@@ -11,7 +11,7 @@ const Footer = () => {
   const links = ["First", "Second", "Third", "Forth"];
 
   const generateItemsList = (item, id) => (
-    <li styleName="list-items" key={id}>
+    <li styleName="list-item" key={id}>
       {item}
     </li>
   );
@@ -19,15 +19,15 @@ const Footer = () => {
   return (
     <div styleName="footer">
       <img src={assetify(logo)} styleName="logo-footer" alt="Logo" />
-      <div styleName="block">
+      <div styleName="menu-group">
         <div styleName="footer-headings">Popular Categories:</div>
         <ul>{categories.map(generateItemsList)}</ul>
       </div>
-      <div styleName="block">
+      <div styleName="menu-group">
         <div styleName="footer-headings">Popular Sections:</div>
         <ul>{sections.map(generateItemsList)}</ul>
       </div>
-      <div styleName="block">
+      <div styleName="menu-group">
         <div styleName="footer-headings">Quick Links:</div>
         <ul>{links.map(generateItemsList)}</ul>
       </div>
