@@ -21,6 +21,7 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.7.0",
     "@quintype/build": "^3.10.0",
     "babel-eslint": "^10.0.3",
     "cosmiconfig": "^7.0.0",
