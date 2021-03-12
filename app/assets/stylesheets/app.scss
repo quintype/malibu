@@ -7,7 +7,6 @@
 @import "./base/normalize.scss";
 @import "./base/typography.scss";
 
-
 :root {
   --container-width: 1280px;
 }
@@ -169,4 +168,9 @@ a {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.logo-wrapper {
+  line-height: 0;
+  padding: 16px 0;
 }

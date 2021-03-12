@@ -7,15 +7,15 @@ import "./app-logo.m.css";
 // import logo from "../../../../assets/images/malibu-logo.jpg";
 
 const AppLogo = () => (
-  <h1>
+  <h1 className="logo-wrapper">
     <Link href="/">
       <img
-        height="66"
+        height="36"
         width="178"
         loading="lazy"
         styleName="publisher-logo"
-        srcSet="https://qtstage-01.gumlet.io/malibu/2021-03/c49bd5b9-d324-402a-a658-cc18f6380b05/malibu_full_logo.svg?w=178"
-        data-src="https://qtstage-01.gumlet.io/malibu/2021-03/c49bd5b9-d324-402a-a658-cc18f6380b05/malibu_full_logo.svg"
+        srcSet="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
+        data-src="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
         alt="Logo"
       />
     </Link>
