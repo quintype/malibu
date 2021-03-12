@@ -29,11 +29,15 @@ const getConfig = state => {
   };
 };
 
+const extractor = new ChunkExtractor({ statsFile, entrypoints: ["topbarCriticalCss", "navbarCriticalCss"] });
+export const getCriticalCss = async () => {
+  const criticalCss = await extractor.getCssString();
+  return criticalCss.trim();
+};
+
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
-  const extractor = new ChunkExtractor({ statsFile, entrypoints: ["topbarCriticalCss", "navbarCriticalCss"] });
-  const criticalCss = await extractor.getCssString();
 
   res.render(
     "pages/layout",
@@ -42,7 +46,7 @@ export async function renderLayout(res, params) {
         assetPath: assetPath,
         content: "",
         cssContent: cssContent,
-        criticalCss,
+        criticalCss: getCriticalCss(),
         fontJsContent: fontJsContent,
         fontFace: fontFace,
         contentTemplate: null,
