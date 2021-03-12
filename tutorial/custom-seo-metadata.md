@@ -45,7 +45,7 @@ function getCustomSeoMetadata(data, pageType) {
         description: "Custom description",
         ogTitle: "og custom title",
         ogDescription: "og custom description",
-        keywords: ['opinion, sports, videos, myjournal']
+        keywords: ['opinion', 'sports', 'videos', 'malibu']
       };
     default:
       break;
