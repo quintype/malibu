@@ -21,7 +21,7 @@ const SectionPage = props => {
     return <h1>{noStoriesFound}</h1>;
   }
   return (
-    <div>
+    <div className="container">
       <h1>{pageTitle}</h1>
       <StoryGrid stories={stories} />
       <LazyCollection collection={{ items: childCollections }} collectionTemplates={getCollectionTemplate} />

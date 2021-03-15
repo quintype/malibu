@@ -1,5 +1,12 @@
 :root {
   --white: #ffffff;
-  --rgbBlack: 0, 0, 0;
-  --malibu-gray9: #9c9c9c;
+  --rgb-black: 0, 0, 0;
+  --brand-primary: #2cc7a4;
+  --brand-primary-dark: #108167;
+  --brand-secondary: #1e1e1e;
+  --grey-light: #e8e8e8;
+
+  --meta-color: var(--brand-primary);
+  --title-color: var(--brand-secondary);
+  --border-color: var(--grey-light);
 }

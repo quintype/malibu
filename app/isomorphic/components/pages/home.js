@@ -4,8 +4,7 @@ import React from "react";
 import { getCollectionTemplate } from "../get-collection-template";
 
 export const HomePage = props => (
-  <div>
-    <h1>Home Page</h1>
+  <div className="container">
     <LazyLoadImages>
       <LazyCollection collection={props.data.collection} collectionTemplates={getCollectionTemplate} lazyAfter={2} />
     </LazyLoadImages>

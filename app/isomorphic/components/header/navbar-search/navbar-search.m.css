@@ -5,7 +5,6 @@
 .search__btn {
   background: transparent;
   border: none;
-  margin-right: 12px;
   cursor: pointer;
   padding: 6px 3px 3px;
 }
@@ -26,7 +25,7 @@
 }
 
 .search-form {
-  height: 85px;
+  height: 74px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,6 +39,7 @@
   transition-property: all;
   transition-duration: 0.8s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  z-index: var(--zlevel3);
 }
 :global .search__form-input {
   width: 100%;
@@ -65,4 +65,11 @@
   right: 0;
   margin-right: 24px;
   cursor: pointer;
+}
+
+
+@media only screen and (max-width: 320px) {
+  .search__form-label {
+    width: 64%;
+  }
 }
