@@ -10,7 +10,7 @@
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
     "@quintype/components": "^2.26.1",
-    "@quintype/framework": "^4.12.1",
+    "@quintype/framework": "^4.12.2",
     "@quintype/seo": "^1.38.29",
     "fontfaceobserver": "^2.1.0",
     "formiojs": "^4.12.0",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@lhci/cli": "^0.7.0",
-    "@quintype/build": "3.11.0-loadable-component.4",
+    "@quintype/build": "^3.11.0",
     "babel-eslint": "^10.0.3",
     "cosmiconfig": "^7.0.0",
     "eslint": "^6.8.0",
