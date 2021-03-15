@@ -4,7 +4,8 @@ const lhciConfig = {
     collect: {
       url: JSON.parse(process.env.LHCI_SITES),
       settings: {
-        emulatedFormFactor: "mobile"
+        emulatedFormFactor: "mobile",
+        throttlingMethod: "devtools"
       }
     },
     assert: {
