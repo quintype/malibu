@@ -9,7 +9,7 @@
   "dependencies": {
     "@quintype/components": "^2.26.1",
     "@quintype/framework": "^4.12.1",
-    "@quintype/seo": "^1.38.28",
+    "@quintype/seo": "^1.38.29",
     "fontfaceobserver": "^2.1.0",
     "formiojs": "^4.12.0",
     "lodash": "^4.17.15",
