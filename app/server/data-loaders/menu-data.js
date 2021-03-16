@@ -26,7 +26,9 @@ exports.getNavigationMenuArray = function(menuList, sectionList) {
     .value();
   return {
     footer: menu.filter(item => item["menu-group-slug"] === "footer"),
-    default: menu.filter(item => item["menu-group-slug"] === "default")
+    default: menu.filter(item => item["menu-group-slug"] === "default"),
+    homeMenu: menu.filter(item => item["menu-group-slug"] === "home"),
+    hamburgerMenu: menu.filter(item => item["menu-group-slug"] === "hamburger")
   };
 };
 
@@ -41,7 +43,7 @@ function findCompleteUrl(menutItem, sectionList) {
     const parentSectionObj = _.find(sectionList, function(item) {
       return sectionObject["parent-id"] === item.id;
     });
-    return parentSectionObj ? "/" + parentSectionObj.slug + "/" + sectionObject.slug : "/#";
+    return parentSectionObj ? `/${parentSectionObj.slug}/${sectionObject.slug}` : "/#";
   }
   return "/" + sectionObject.slug || "/#";
 }

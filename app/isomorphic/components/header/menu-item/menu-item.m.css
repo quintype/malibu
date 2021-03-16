@@ -1,0 +1,18 @@
+.menu-link {
+  padding: 14px 6px 14px 6px;
+  display: flex;
+  align-items: center;
+  color: var(--brand-secondary);
+}
+
+.menu-link:hover {
+  color: var(--rgb-black);
+}
+
+.arrow-down {
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--brand-secondary);
+  margin: 4px 4px 0;
+  cursor: pointer;
+}

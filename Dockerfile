@@ -8,7 +8,6 @@ WORKDIR /app
 
 COPY package.json package-lock.json /app/
 RUN npm install --no-optional
-RUN npm install -g @lhci/cli@0.6.x
 
 # Environment variables for compile phase here
 ENV MINIFY_CSS_CLASSNAMES true
