@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid var(--malibu-gray9);
+  border-top: 1px solid var(--malibu-green);
   padding: 16px 0;
   display: flex;
   justify-content: space-around;
@@ -38,4 +38,5 @@
 
 .list-item {
   padding: 4px 0;
+  cursor: pointer;
 }

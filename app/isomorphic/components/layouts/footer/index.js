@@ -1,30 +1,42 @@
 import React from "react";
-import assetify from "@quintype/framework/assetify";
+import PT from "prop-types";
+import { connect, useSelector } from "react-redux";
+import get from "lodash/get";
 
 import "./styles.m.css";
 
-import logo from "./logo.png";
+import { MenuItem } from "../../header/helper-components";
+import { AppLogo } from "../../header/app-logo";
 
-const Footer = () => {
-  const categories = ["First", "Second", "Third", "Forth", "Fifth"];
-  const sections = ["First", "Second", "Third"];
-  const links = ["First", "Second", "Third", "Forth"];
+const FooterBase = ({ footerLinks }) => {
+  const footerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "footer"], []));
+
+  const parentMenus = footerMenu.filter(item => (item["item-type"] = "placeholder"));
+
+  const menuList = {};
+  parentMenus.forEach(menu => (menuList[menu.title] = menu.children));
+
+  const categories = menuList["Popular Categories"].map(child => child);
+  const sections = menuList["Popular Topics"].map(child => child);
+  const links = menuList["Quick Links"].map(child => child);
+
+  console.log(categories);
 
   const generateItemsList = (item, id) => (
     <li styleName="list-item" key={id}>
-      {item}
+      <MenuItem item={item} />
     </li>
   );
 
   return (
     <div styleName="footer">
-      <img src={assetify(logo)} styleName="logo-footer" alt="Logo" />
+      <AppLogo />
       <div styleName="menu-group">
         <div styleName="footer-headings">Popular Categories:</div>
         <ul>{categories.map(generateItemsList)}</ul>
       </div>
       <div styleName="menu-group">
-        <div styleName="footer-headings">Popular Sections:</div>
+        <div styleName="footer-headings">Popular Topics:</div>
         <ul>{sections.map(generateItemsList)}</ul>
       </div>
       <div styleName="menu-group">
@@ -35,4 +47,20 @@ const Footer = () => {
   );
 };
 
-export { Footer };
+function mapStateToProps(state) {
+  return {
+    footerLinks: get(state, ["qt", "data", "navigationMenu", "footerLinks"], [])
+  };
+}
+
+FooterBase.propTypes = {
+  footerLinks: PT.arrayOf(
+    PT.shape({
+      isExternalLink: PT.bool,
+      completeUrl: PT.string,
+      title: PT.string
+    })
+  )
+};
+
+export const Footer = connect(mapStateToProps, null)(FooterBase);
