@@ -77,7 +77,7 @@ const NavBar = () => {
           <div />
         )}
         {getNavbarMenu(menu)}
-        <div> user</div>
+        <span />
       </nav>
     </div>
   );
