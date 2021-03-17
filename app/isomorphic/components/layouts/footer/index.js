@@ -5,10 +5,10 @@ import get from "lodash/get";
 
 import "./styles.m.css";
 
-import { MenuItem } from "../../header/helper-components";
+import { MenuItem } from "../../header/menu-item";
 import { AppLogo } from "../../header/app-logo";
 
-const FooterBase = ({ footerLinks }) => {
+const FooterBase = () => {
   const footerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "footer"], []));
 
   const parentMenus = footerMenu.filter(item => (item["item-type"] = "placeholder"));
@@ -16,33 +16,27 @@ const FooterBase = ({ footerLinks }) => {
   const menuList = {};
   parentMenus.forEach(menu => (menuList[menu.title] = menu.children));
 
-  const categories = menuList["Popular Categories"].map(child => child);
-  const sections = menuList["Popular Topics"].map(child => child);
-  const links = menuList["Quick Links"].map(child => child);
-
-  console.log(categories);
-
   const generateItemsList = (item, id) => (
     <li styleName="list-item" key={id}>
-      <MenuItem item={item} />
+      <MenuItem item={item} menuStyle="menu-items-footer" />
     </li>
   );
+
+  const generateMenuGroup = menu => {
+    const titles = Object.keys(menu);
+
+    return titles.map((title, id) => (
+      <div styleName="menu-group" key={id}>
+        <div styleName="footer-headings">{title}</div>
+        <ul>{menu[title].map(generateItemsList)}</ul>
+      </div>
+    ));
+  };
 
   return (
     <div styleName="footer">
       <AppLogo />
-      <div styleName="menu-group">
-        <div styleName="footer-headings">Popular Categories:</div>
-        <ul>{categories.map(generateItemsList)}</ul>
-      </div>
-      <div styleName="menu-group">
-        <div styleName="footer-headings">Popular Topics:</div>
-        <ul>{sections.map(generateItemsList)}</ul>
-      </div>
-      <div styleName="menu-group">
-        <div styleName="footer-headings">Quick Links:</div>
-        <ul>{links.map(generateItemsList)}</ul>
-      </div>
+      {generateMenuGroup(menuList)}
     </div>
   );
 };
