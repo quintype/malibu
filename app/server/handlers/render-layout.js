@@ -8,8 +8,8 @@ import { assetPath, readAsset, getAllChunks } from "@quintype/framework/server/a
 import { renderReduxComponent, renderLoadableReduxComponent } from "@quintype/framework/server/render";
 
 import { getChunkName } from "../../isomorphic/pick-component";
-import { Header } from "../../isomorphic/components/header";
-import { NavBar } from "../../isomorphic/components/header/nav-bar";
+import { Header } from "../../isomorphic/components/layouts/header";
+import { NavBar } from "../../isomorphic/components/layouts/header/nav-bar";
 import { Footer } from "../../isomorphic/components/layouts/footer";
 import fontFace from "../font";
 import { BreakingNewsView } from "../../isomorphic/components/breaking-news-view";

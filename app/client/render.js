@@ -4,8 +4,8 @@ import get from "lodash/get";
 import { pickComponent } from "../isomorphic/pick-component";
 import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { Footer } from "../isomorphic/components/layouts/footer";
-import { NavbarSearch } from "../isomorphic/components/header/navbar-search";
-import { NavBar } from "../isomorphic/components/header/nav-bar";
+import { NavbarSearch } from "../isomorphic/components/layouts/header/navbar-search";
+import { NavBar } from "../isomorphic/components/layouts/header/nav-bar";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };

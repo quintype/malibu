@@ -5,8 +5,8 @@ import get from "lodash/get";
 
 import "./styles.m.css";
 
-import { MenuItem } from "../../header/menu-item";
-import { AppLogo } from "../../header/app-logo";
+import { MenuItem } from "../menu-item";
+import { AppLogo } from "../app-logo";
 
 const FooterBase = () => {
   const footerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "footer"], []));

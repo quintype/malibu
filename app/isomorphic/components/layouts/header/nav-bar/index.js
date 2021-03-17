@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
-import { OPEN_HAMBURGER_MENU, OPEN_SEARCHBAR } from "../../store/actions";
-import { MenuItem } from "../menu-item";
-import HamburgerMenu from "../../atoms/hamburger-menu";
+import { OPEN_HAMBURGER_MENU, OPEN_SEARCHBAR } from "../../../store/actions";
+import { MenuItem } from "../../menu-item";
+import HamburgerMenu from "../../../atoms/hamburger-menu";
 
 import "./navbar.m.css";
 
