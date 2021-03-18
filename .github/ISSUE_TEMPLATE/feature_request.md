@@ -22,7 +22,7 @@ Add a brief description of the feature that is generic enough to be added to the
 - Example 2: Added support for `register()` to accept custom fields (like DOB, Location, Mobile, etc.) using the `customFields` parameter.
 
 **Definition of Done**
-[ ] All ACs are passing during dev box and in staging.
-[ ] All Test cases are passing.
-[ ] All High and medium bugs are closed.(Create ticket, if any of the bug will not be fixed as part of this ticket)
-[ ] All test cases are automated
+- [ ] All ACs are passing during dev box and in staging.
+- [ ] All Test cases are passing.
+- [ ] All High and medium bugs are closed.(Create ticket, if any of the bug will not be fixed as part of this ticket)
+- [ ] All test cases are automated

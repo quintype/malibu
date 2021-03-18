@@ -40,7 +40,7 @@ Add a brief description of the fix that is generic enough to be added to the rel
 - Example 2: Fixed the issue which stopped the redirection from happening to the provided `redirectURL`.
 
 **Definition of Done**
-[ ] All ACs are passing during dev box and in staging.
-[ ] All Test cases are passing.
-[ ] All High and medium bugs are closed.(Create ticket, if any of the bug will not be fixed as part of this ticket)
-[ ] All test cases are automated
+- [ ] All ACs are passing during dev box and in staging.
+- [ ] All Test cases are passing.
+- [ ] All High and medium bugs are closed.(Create ticket, if any of the bug will not be fixed as part of this ticket)
+- [ ] All test cases are automated
