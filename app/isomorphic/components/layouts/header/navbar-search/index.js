@@ -1,14 +1,14 @@
 import React from "react";
 import { SearchBox } from "@quintype/components";
 import { useDispatch, useSelector } from "react-redux";
-
-import { OPEN_SEARCHBAR } from "../../../store/actions";
 import get from "lodash/get";
 
-import "./navbar-search.m.css";
+import { OPEN_SEARCHBAR } from "../../../store/actions";
 
 import { Search } from "../../../atoms/icons/search";
 import { CloseIcon } from "../../../atoms/icons/close-icon";
+
+import "./navbar-search.m.css";
 
 function DrawForm({ children }) {
   return [

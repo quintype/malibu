@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid var(--malibu-green);
+  border-top: 1px solid var(--brand-primary);
   padding: 16px 0;
   display: flex;
   justify-content: space-around;
