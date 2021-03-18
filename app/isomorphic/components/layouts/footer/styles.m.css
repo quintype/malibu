@@ -11,29 +11,13 @@
     text-align: center;
   }
 
-  .logo-footer {
-    align-self: center;
-  }
-
   .menu-group {
     margin-top: 16px;
   }
 }
 
-.link {
-  color: #fff;
-  margin-right: 12px;
-}
-
-.logo-footer {
-  max-width: 25%;
-  height: 64px;
-  padding: 0 16px;
-}
-
 .footer-headings {
   font-weight: bolder;
-  margin-bottom: 4px;
 }
 
 .list-item {
