@@ -34,5 +34,13 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
-**Additional context**
-Add any other context about the problem here.
+**[To be filled by the developer] Description for release notes**
+Add a brief description of the fix that is generic enough to be added to the release note that will be sent to all the stakeholders.
+- Example 1: Added a defensive check to `someFunction()` so that it does not crash if `someParameter` is not passed.
+- Example 2: Fixed the issue which stopped the redirection from happening to the provided `redirectURL`.
+
+**Definition of Done**
+- [ ] All ACs are passing during dev box and in staging.
+- [ ] All Test cases are passing.
+- [ ] All High and medium bugs are closed.(Create ticket, if any of the bug will not be fixed as part of this ticket)
+- [ ] All test cases are automated
