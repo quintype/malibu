@@ -1,5 +1,6 @@
 .footer {
-  border-top: 1px solid var(--brand-primary);
+  --border-color: var(--brand-primary);
+  border-top: 1px solid var(--border-color);
   padding: 16px 0;
   display: flex;
   justify-content: space-around;
@@ -17,7 +18,7 @@
 }
 
 .footer-headings {
-  font-weight: bolder;
+  font-weight: var(--bold);
 }
 
 .list-item {
