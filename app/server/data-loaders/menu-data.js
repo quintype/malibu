@@ -7,9 +7,7 @@ exports.getNavigationMenuArray = function(menuList, sectionList) {
       .value();
     switch (menutItem["item-type"]) {
       case "tag":
-        menutItem.completeUrl = menutItem["tag-slug"]
-          ? `/topic/${menutItem["tag-slug"]}`
-          : "/#";
+        menutItem.completeUrl = menutItem["tag-slug"] ? `/topic/${menutItem["tag-slug"]}` : "/#";
         break;
       case "link":
         menutItem.completeUrl = _.get(menutItem, ["data", "link"]) || "/#";
@@ -28,7 +26,9 @@ exports.getNavigationMenuArray = function(menuList, sectionList) {
     .value();
   return {
     footerLinks: menu.filter(item => item["menu-group-slug"] === "footerLinks"),
-    default: menu.filter(item => item["menu-group-slug"] === "default")
+    default: menu.filter(item => item["menu-group-slug"] === "default"),
+    homeMenu: menu.filter(item => item["menu-group-slug"] === "home"),
+    hamburgerMenu: menu.filter(item => item["menu-group-slug"] === "hamburger")
   };
 };
 
@@ -43,9 +43,7 @@ function findCompleteUrl(menutItem, sectionList) {
     const parentSectionObj = _.find(sectionList, function(item) {
       return sectionObject["parent-id"] === item.id;
     });
-    return parentSectionObj
-      ? "/" + parentSectionObj.slug + "/" + sectionObject.slug
-      : "/#";
+    return parentSectionObj ? `/${parentSectionObj.slug}/${sectionObject.slug}` : "/#";
   }
   return "/" + sectionObject.slug || "/#";
 }

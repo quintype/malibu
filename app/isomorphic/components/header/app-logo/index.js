@@ -1,26 +1,25 @@
 import React from "react";
 import { Link } from "@quintype/components";
-import assetify from "@quintype/framework/assetify";
+// import assetify from "@quintype/framework/assetify";
 
-import "./styles.m.css";
+import "./app-logo.m.css";
 
-import logo from "./publisher-logo.png";
+// import logo from "../../../../assets/images/malibu-logo.jpg";
 
-function AppLogo() {
-  return (
-    <div>
-      <Link href="/">
-        <img
-          width="53"
-          height="60"
-          styleName="publisher-logo"
-          srcSet={` ${assetify(logo)}`}
-          src={assetify(logo)}
-          alt="Logo"
-        />
-      </Link>
-    </div>
-  );
-}
+const AppLogo = () => (
+  <h1 className="logo-wrapper">
+    <Link href="/">
+      <img
+        height="36"
+        width="178"
+        loading="lazy"
+        styleName="publisher-logo"
+        srcSet="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
+        data-src="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
+        alt="Logo"
+      />
+    </Link>
+  </h1>
+);
 
 export { AppLogo };

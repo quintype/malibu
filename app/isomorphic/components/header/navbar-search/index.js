@@ -1,7 +1,11 @@
 import React from "react";
 import { SearchBox } from "@quintype/components";
+import { useDispatch, useSelector } from "react-redux";
 
-import "./styles.m.css";
+import { OPEN_SEARCHBAR } from "../../store/actions";
+import get from "lodash/get";
+
+import "./navbar-search.m.css";
 
 import { Search } from "../../atoms/icons/search";
 import { CloseIcon } from "../../atoms/icons/close-icon";
@@ -17,55 +21,49 @@ function DrawForm({ children }) {
   ];
 }
 
-class NavbarSearch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSearchFormOpen: false,
-      initialized: false
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      initialized: true
+const NavbarSearch = () => {
+  const dispatch = useDispatch();
+  const isSearchBarOpen = useSelector(state => get(state, ["isSearchBarOpen"], false));
+  const toggleSearchForm = () => {
+    dispatch({
+      type: OPEN_SEARCHBAR,
+      isSearchBarOpen: !isSearchBarOpen
     });
-  }
+    document.getElementById("searchForm").focus();
+  };
 
-  toggleSearchForm() {
-    this.setState({ isSearchFormOpen: !this.state.isSearchFormOpen }, () => {
-      document.getElementById("searchForm").focus();
+  const closeSearchBar = () => {
+    dispatch({
+      type: OPEN_SEARCHBAR,
+      isSearchBarOpen: false
     });
-  }
+  };
 
-  render() {
-    const formStyle = {
-      transform: this.state.isSearchFormOpen ? "translate(0, 0)" : ""
-    };
-    return (
-      <div styleName="search">
-        <button aria-label="search-button" styleName="search__btn" onClick={() => this.toggleSearchForm()}>
-          <Search />
-        </button>
-        <div styleName="search-form" style={formStyle}>
-          <SearchBox
-            styleName="search-box"
-            template={DrawForm}
-            inputId="searchForm"
-            inputRef={input => (this.input = input)}
-            inputClassName="search__form-input"
-            formRef={searchForm => (this.searchForm = searchForm)}
-            onSubmitHandler={() => this.setState({ isSearchFormOpen: false })}
-            onEscape={() => this.setState({ isSearchFormOpen: false })}
-            placeholder="Search Stories"
-          />
-          <div styleName="close-icon" onClick={() => this.toggleSearchForm()}>
-            <CloseIcon />
-          </div>
+  const formStyle = {
+    transform: isSearchBarOpen ? "translate(0, 0)" : ""
+  };
+
+  return (
+    <div styleName="search">
+      <button aria-label="search-button" styleName="search__btn" onClick={() => toggleSearchForm()}>
+        <Search />
+      </button>
+      <div styleName="search-form" style={formStyle}>
+        <SearchBox
+          styleName="search-box"
+          template={DrawForm}
+          inputId="searchForm"
+          inputClassName="search__form-input"
+          onSubmitHandler={() => closeSearchBar()}
+          onEscape={() => closeSearchBar()}
+          placeholder="Search Stories"
+        />
+        <div styleName="close-icon" onClick={() => toggleSearchForm()}>
+          <CloseIcon />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export { NavbarSearch };

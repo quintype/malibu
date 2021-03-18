@@ -1,0 +1,54 @@
+:root {
+  --base-smallest: 1.2rem;
+  --base-smaller: 1.4rem;
+  --base-regular: 1.3rem;
+  --base-small: 1.5rem;
+  --base: 1.6rem;
+  --base-medium: 1.8rem;
+  --base-large: 2rem;
+  --base-larger: 2.4rem;
+  --medium: 2.6rem;
+  --large: 3.2rem;
+  --jumbo: 5.4rem;
+
+  --regular: 400;
+  --semi-bold: 600;
+  --bold: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--content-font);
+  font-weight: var(--regular);
+  font-size: var(--base);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  font-family: var(--content-font);
+}
+
+p,
+li {
+  font-size: var(--base);
+}
