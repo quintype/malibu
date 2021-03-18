@@ -1,60 +1,42 @@
 import React from "react";
-import PT from "prop-types";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import get from "lodash/get";
-
-import "./styles.m.css";
 
 import { MenuItem } from "../menu-item";
 import { AppLogo } from "../app-logo";
 
-const FooterBase = () => {
-  const footerMenu = useSelector(state => get(state, ["qt", "data", "navigationMenu", "footer"], []));
+import "./styles.m.css";
 
-  const parentMenus = footerMenu.filter(item => (item["item-type"] = "placeholder"));
+const generateItemsList = (item, id) => (
+  <li styleName="list-item" key={id}>
+    <MenuItem item={item} menuStyle="menu-items-footer" />
+  </li>
+);
 
-  const menuList = {};
-  parentMenus.forEach(menu => (menuList[menu.title] = menu.children));
+const generateMenuGroup = placeholderMenus => {
+  return placeholderMenus.map(({ title, children }, id) => (
+    <div styleName="menu-group" key={id}>
+      <div styleName="footer-headings">{title}</div>
+      <ul>{children.map(generateItemsList)}</ul>
+    </div>
+  ));
+};
 
-  const generateItemsList = (item, id) => (
-    <li styleName="list-item" key={id}>
-      <MenuItem item={item} menuStyle="menu-items-footer" />
-    </li>
-  );
-
-  const generateMenuGroup = menu => {
-    const titles = Object.keys(menu);
-
-    return titles.map((title, id) => (
-      <div styleName="menu-group" key={id}>
-        <div styleName="footer-headings">{title}</div>
-        <ul>{menu[title].map(generateItemsList)}</ul>
-      </div>
-    ));
-  };
+const FooterBase = footer => {
+  const placeholderMenus = footer.menu.filter(item => (item["item-type"] = "placeholder"));
 
   return (
     <div styleName="footer">
       <AppLogo />
-      {generateMenuGroup(menuList)}
+      {generateMenuGroup(placeholderMenus)}
     </div>
   );
 };
 
 function mapStateToProps(state) {
   return {
-    footerLinks: get(state, ["qt", "data", "navigationMenu", "footerLinks"], [])
+    menu: get(state, ["qt", "data", "navigationMenu", "footer"], [])
   };
 }
-
-FooterBase.propTypes = {
-  footerLinks: PT.arrayOf(
-    PT.shape({
-      isExternalLink: PT.bool,
-      completeUrl: PT.string,
-      title: PT.string
-    })
-  )
-};
 
 export const Footer = connect(mapStateToProps, null)(FooterBase);
