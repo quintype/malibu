@@ -1,23 +1,23 @@
 import _ from "lodash";
 
 exports.getNavigationMenuArray = function(menuList, sectionList) {
-  _(menuList).forEach(menutItem => {
-    menutItem.children = _(menuList)
-      .filter(item => item["parent-id"] === menutItem.id)
+  _(menuList).forEach(menuItem => {
+    menuItem.children = _(menuList)
+      .filter(item => item["parent-id"] === menuItem.id)
       .value();
-    switch (menutItem["item-type"]) {
+    switch (menuItem["item-type"]) {
       case "tag":
-        menutItem.completeUrl = menutItem["tag-slug"] ? `/topic/${menutItem["tag-slug"]}` : "/#";
+        menuItem.completeUrl = menuItem["tag-slug"] ? `/topic/${menuItem["tag-slug"]}` : "/#";
         break;
       case "link":
-        menutItem.completeUrl = _.get(menutItem, ["data", "link"]) || "/#";
-        menutItem.isExternalLink = true;
+        menuItem.completeUrl = _.get(menuItem, ["data", "link"]) || "/#";
+        menuItem.isExternalLink = true;
         break;
       case "section":
-        menutItem.completeUrl = findCompleteUrl(menutItem, sectionList);
+        menuItem.completeUrl = findCompleteUrl(menuItem, sectionList);
         break;
       default:
-        menutItem.completeUrl = "/#";
+        menuItem.completeUrl = "/#";
         break;
     }
   });
@@ -32,9 +32,9 @@ exports.getNavigationMenuArray = function(menuList, sectionList) {
   };
 };
 
-function findCompleteUrl(menutItem, sectionList) {
+function findCompleteUrl(menuItem, sectionList) {
   const sectionObject = _.find(sectionList, function(item) {
-    return item.id === menutItem["item-id"];
+    return item.id === menuItem["item-id"];
   });
   if (!sectionObject) {
     return "/#";
