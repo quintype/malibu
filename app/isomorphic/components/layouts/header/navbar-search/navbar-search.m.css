@@ -67,7 +67,6 @@
   cursor: pointer;
 }
 
-
 @media only screen and (max-width: 320px) {
   .search__form-label {
     width: 64%;

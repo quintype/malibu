@@ -3,8 +3,8 @@ const quintypeBuildConfig = require("@quintype/build/config/quintype-build");
 const loadableConfigObj = {
   loadableConfig: {
     entryFiles: {
-      topbarCriticalCss: "./app/isomorphic/components/header",
-      navbarCriticalCss: "./app/isomorphic/components/header/nav-bar"
+      topbarCriticalCss: "./app/isomorphic/components/layouts/header",
+      navbarCriticalCss: "./app/isomorphic/components/layouts/header/nav-bar"
     }
   }
 };

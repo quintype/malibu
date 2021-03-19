@@ -4,15 +4,15 @@ import { Link } from "@quintype/components";
 
 import "./menu-item.m.css";
 
-const MenuItem = ({ item, toggleHandler }) => {
+const MenuItem = ({ item, toggleHandler, menuStyle = "menu-link" }) => {
   if (item["item-type"] === "placeholder") {
     return <span styleName="menu-link">{item.title}</span>;
   } else if (item["item-type"] === "link") {
     return (
       <a
-        styleName="menu-link"
+        styleName={menuStyle}
         onClick={toggleHandler}
-        className="menu-link"
+        className={menuStyle}
         target="_blank"
         rel="noopener noreferrer"
         href={item.completeUrl || "/"}
@@ -22,7 +22,7 @@ const MenuItem = ({ item, toggleHandler }) => {
     );
   } else {
     return (
-      <Link styleName="menu-link" callback={toggleHandler} className="menu-link" href={item.completeUrl || "/"}>
+      <Link styleName={menuStyle} callback={toggleHandler} className={menuStyle} href={item.completeUrl || "/"}>
         {item.title}
       </Link>
     );

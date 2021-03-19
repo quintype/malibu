@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "@quintype/components";
-// import assetify from "@quintype/framework/assetify";
 
 import "./app-logo.m.css";
-
-// import logo from "../../../../assets/images/malibu-logo.jpg";
 
 const AppLogo = () => (
   <h1 className="logo-wrapper">

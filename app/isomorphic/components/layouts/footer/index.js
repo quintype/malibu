@@ -1,49 +1,42 @@
 import React from "react";
-import PT from "prop-types";
 import { connect } from "react-redux";
 import get from "lodash/get";
-import { Link } from "@quintype/components";
+
+import { MenuItem } from "../menu-item";
+import { AppLogo } from "../app-logo";
+
 import "./styles.m.css";
 
-const FooterBase = ({ footerLinks }) => (
-  <div styleName="footer">
-    {footerLinks.map(
-      item =>
-        item.isExternalLink ? (
-          <a
-            href={item.completeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            styleName="link"
-          >
-            {item.title}
-          </a>
-        ) : (
-          <Link href={item.completeUrl} styleName="link">
-            {item.title}
-          </Link>
-        )
-    )}
-  </div>
+const generateItemsList = (item, id) => (
+  <li styleName="list-item" key={id}>
+    <MenuItem item={item} menuStyle="menu-items-footer" />
+  </li>
 );
+
+const generateMenuGroup = placeholderMenus => {
+  return placeholderMenus.map(({ title, children }, id) => (
+    <div styleName="menu-group" key={id}>
+      <div styleName="footer-headings">{title}</div>
+      <ul>{children.map(generateItemsList)}</ul>
+    </div>
+  ));
+};
+
+const FooterBase = footer => {
+  const placeholderMenus = footer.menu.filter(item => (item["item-type"] = "placeholder"));
+
+  return (
+    <div styleName="footer">
+      <AppLogo />
+      {generateMenuGroup(placeholderMenus)}
+    </div>
+  );
+};
 
 function mapStateToProps(state) {
   return {
-    footerLinks: get(state, ["qt", "data", "navigationMenu", "footerLinks"], [])
+    menu: get(state, ["qt", "data", "navigationMenu", "footer"], [])
   };
 }
 
-FooterBase.propTypes = {
-  footerLinks: PT.arrayOf(
-    PT.shape({
-      isExternalLink: PT.bool,
-      completeUrl: PT.string,
-      title: PT.string
-    })
-  )
-};
-
-export const Footer = connect(
-  mapStateToProps,
-  null
-)(FooterBase);
+export const Footer = connect(mapStateToProps, null)(FooterBase);

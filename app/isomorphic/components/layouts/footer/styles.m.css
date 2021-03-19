@@ -1,13 +1,27 @@
 .footer {
-  clear: both;
-  text-align: center;
-  font-size: 20px;
-  background-color: black;
-  color: white;
-  padding: 20px 0;
+  --border-color: var(--brand-primary);
+  border-top: 1px solid var(--border-color);
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-around;
 }
 
-.link {
-  color: #fff;
-  margin-right: 10px;
+@media only screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .menu-group {
+    margin-top: 16px;
+  }
+}
+
+.footer-headings {
+  font-weight: var(--bold);
+}
+
+.list-item {
+  padding: 4px 0;
+  cursor: pointer;
 }

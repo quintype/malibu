@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import { object, bool } from "prop-types";
 
-import { OPEN_HAMBURGER_MENU, OPEN_SEARCHBAR } from "../../store/actions";
-import { MenuItem } from "../menu-item";
-import HamburgerMenu from "../../atoms/hamburger-menu";
+import { OPEN_HAMBURGER_MENU, OPEN_SEARCHBAR } from "../../../store/actions";
+import { MenuItem } from "../../menu-item";
+import HamburgerMenu from "../../../atoms/hamburger-menu";
 
 import "./navbar.m.css";
 
@@ -16,7 +16,7 @@ const getNavbarMenu = menu => {
         menu.map(item => {
           return (
             <li key={item.title} styleName="dropdown">
-              <MenuItem item={item} />
+              <MenuItem item={item} menuStyle="menu-link" />
             </li>
           );
         })}
@@ -56,7 +56,7 @@ const NavBar = () => {
             hamburgerMenu.map(item => {
               return (
                 <li key={item.title} styleName="dropdown">
-                  <MenuItem item={item} toggleHandler={() => toggleHandler()} />
+                  <MenuItem menuStyle="menu-link" item={item} toggleHandler={() => toggleHandler()} />
                 </li>
               );
             })}
