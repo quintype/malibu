@@ -19,7 +19,7 @@ export function preRenderApplication(store) {
 
   renderComponent(NavbarSearch, "search-bar", store, hydrate);
   renderComponent(NavBar, "nav-bar", store, hydrate);
-  renderComponent(Footer, "nav-bar", store);
+  renderComponent(Footer, "footer", store);
   breakingNewsConfig.is_enable &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
 }
