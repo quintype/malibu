@@ -5,7 +5,7 @@ import get from "lodash/get";
 import { MenuItem } from "../menu-item";
 import { AppLogo } from "../app-logo";
 
-import "./styles.m.css";
+import "./footer.m.css";
 
 const generateItemsList = (item, id) => (
   <li styleName="list-item" key={id}>
@@ -14,12 +14,15 @@ const generateItemsList = (item, id) => (
 );
 
 const generateMenuGroup = placeholderMenus => {
-  return placeholderMenus.map(({ title, children }, id) => (
-    <div styleName="menu-group" key={id}>
-      <div styleName="footer-headings">{title}</div>
-      <ul>{children.map(generateItemsList)}</ul>
-    </div>
-  ));
+  return placeholderMenus.map(
+    ({ title, children }, id) =>
+      children.length > 0 && (
+        <div styleName="menu-group" key={id}>
+          <h6 styleName="title">{title}</h6>
+          <ul>{children.map(generateItemsList)}</ul>
+        </div>
+      )
+  );
 };
 
 const FooterBase = footer => {
@@ -27,7 +30,9 @@ const FooterBase = footer => {
 
   return (
     <div styleName="footer">
-      <AppLogo />
+      <div>
+        <AppLogo />
+      </div>
       {generateMenuGroup(placeholderMenus)}
     </div>
   );

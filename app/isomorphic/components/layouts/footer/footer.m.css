@@ -6,6 +6,16 @@
   justify-content: space-around;
 }
 
+.title {
+  font-size: var(--base);
+  font-weight: var(--bold);
+}
+
+.list-item {
+  padding: 4px 0;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
   .footer {
     flex-direction: column;
@@ -15,13 +25,4 @@
   .menu-group {
     margin-top: 16px;
   }
-}
-
-.footer-headings {
-  font-weight: var(--bold);
-}
-
-.list-item {
-  padding: 4px 0;
-  cursor: pointer;
 }

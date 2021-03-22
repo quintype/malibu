@@ -29,7 +29,10 @@ const getConfig = state => {
   };
 };
 
-const extractor = new ChunkExtractor({ statsFile, entrypoints: ["topbarCriticalCss", "navbarCriticalCss"] });
+const extractor = new ChunkExtractor({
+  statsFile,
+  entrypoints: ["topbarCriticalCss", "navbarCriticalCss", "footerCriticalCss"]
+});
 export const getCriticalCss = async () => {
   const criticalCss = await extractor.getCssString();
   return criticalCss.trim();
@@ -38,6 +41,7 @@ export const getCriticalCss = async () => {
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
+  console.log("getCriticalCss()---------", await getCriticalCss());
 
   res.render(
     "pages/layout",
@@ -46,14 +50,14 @@ export async function renderLayout(res, params) {
         assetPath: assetPath,
         content: "",
         cssContent: cssContent,
-        criticalCss: getCriticalCss(),
+        criticalCss: await getCriticalCss(),
         fontJsContent: fontJsContent,
         fontFace: fontFace,
         contentTemplate: null,
         title: params.title,
         topbar: renderLoadableReduxComponent(Header, params.store, extractor),
         navbar: renderLoadableReduxComponent(NavBar, params.store, extractor),
-        footer: renderReduxComponent(Footer, params.store),
+        footer: renderLoadableReduxComponent(Footer, params.store, extractor),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],
           breakingNewsLoaded: false
