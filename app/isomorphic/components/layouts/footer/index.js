@@ -7,24 +7,6 @@ import { AppLogo } from "../app-logo";
 
 import "./footer.m.css";
 
-const generateItemsList = (item, id) => (
-  <li styleName="list-item" key={id}>
-    <MenuItem item={item} menuStyle="menu-items-footer" />
-  </li>
-);
-
-const generateMenuGroup = placeholderMenus => {
-  return placeholderMenus.map(
-    ({ title, children }, id) =>
-      children.length > 0 && (
-        <div styleName="menu-group" key={id}>
-          <h6 styleName="title">{title}</h6>
-          <ul>{children.map(generateItemsList)}</ul>
-        </div>
-      )
-  );
-};
-
 const FooterBase = footer => {
   const placeholderMenus = footer.menu.filter(item => (item["item-type"] = "placeholder"));
 
@@ -34,7 +16,24 @@ const FooterBase = footer => {
         <div>
           <AppLogo />
         </div>
-        {generateMenuGroup(placeholderMenus)}
+        <ul>
+          <li>sdcdsc</li>
+        </ul>
+        {placeholderMenus.map(
+          ({ title, children }, id) =>
+            children.length > 0 && (
+              <div styleName="menu-group" key={id}>
+                <h6 styleName="title">{title}</h6>
+                <ul>
+                  {children.map(item => (
+                    <li styleName="list-item" key={id}>
+                      <MenuItem item={item} menuStyle="menu-items-footer" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+        )}
       </div>
     </div>
   );
