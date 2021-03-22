@@ -41,7 +41,6 @@ export const getCriticalCss = async () => {
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
-  console.log("getCriticalCss()---------", await getCriticalCss());
 
   res.render(
     "pages/layout",
