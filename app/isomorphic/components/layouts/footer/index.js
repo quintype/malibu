@@ -29,11 +29,13 @@ const FooterBase = footer => {
   const placeholderMenus = footer.menu.filter(item => (item["item-type"] = "placeholder"));
 
   return (
-    <div styleName="footer">
-      <div>
-        <AppLogo />
+    <div className="container">
+      <div styleName="footer">
+        <div>
+          <AppLogo />
+        </div>
+        {generateMenuGroup(placeholderMenus)}
       </div>
-      {generateMenuGroup(placeholderMenus)}
     </div>
   );
 };
