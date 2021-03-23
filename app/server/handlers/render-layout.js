@@ -56,7 +56,7 @@ export async function renderLayout(res, params) {
         title: params.title,
         topbar: renderLoadableReduxComponent(Header, params.store, extractor),
         navbar: renderLoadableReduxComponent(NavBar, params.store, extractor),
-        footer: renderLoadableReduxComponent(Footer, params.store, extractor),
+        getFooter: renderLoadableReduxComponent(Footer, params.store, extractor),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],
           breakingNewsLoaded: false
