@@ -3,7 +3,6 @@ import { Collection } from "@quintype/framework/server/api-client";
 import { getStoryLimits } from "../../isomorphic/components/get-collection-template";
 
 export async function loadHomePageData(client, config, slug) {
-  console.log(slug);
   const collection = await Collection.getCollectionBySlug(
     client,
     slug,
