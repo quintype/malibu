@@ -9,7 +9,6 @@ import { AppLogo } from "../app-logo";
 import "./footer.m.css";
 
 const FooterBase = ({ menu }) => {
-  console.log("menu-data-------------", menu);
   const placeholderMenus = menu.filter(item => (item["item-type"] = "placeholder"));
 
   const generateItemsList = (item, id) => (
