@@ -6,7 +6,9 @@ import "./top-bar.m.css";
 const TopBar = () => (
   <div styleName="main-wrapper">
     <div className="container topbar-wrapper">
-      <AppLogo />
+      <h1>
+        <AppLogo />
+      </h1>
       <div id="search-bar"></div>
     </div>
   </div>
