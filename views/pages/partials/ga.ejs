@@ -1,5 +1,5 @@
 <!-- Google Analytics -->
-<script>
+<!-- <script>
   window.ga =
     window.ga ||
     function () {
@@ -9,5 +9,14 @@
   ga("create", "<%= gaId %>", "auto");
   ga("send", "pageview");
 </script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
+<script async src="https://www.google-analytics.com/analytics.js"></script> -->
 <!-- End Google Analytics -->
+
+<script>
+  window.galite=window.galite||function(){(galite.q=galite.q||[]).push(arguments)};
+  galite('create', "<%= gaId %>", "auto");
+  galite('send', 'pageview');
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/ga-lite@2.0.1/dist/ga-lite.min.js"></script>
+
