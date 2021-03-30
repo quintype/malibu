@@ -9,7 +9,7 @@
   "dependencies": {
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
-    "@quintype/components": "^2.27.1",
+    "@quintype/components": "^2.25.4-alternate-hero-image.0",
     "@quintype/framework": "^4.12.3",
     "@quintype/seo": "^1.38.29",
     "fontfaceobserver": "^2.1.0",
