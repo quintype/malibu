@@ -10,7 +10,7 @@
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
     "@quintype/components": "^2.27.1",
-    "@quintype/framework": "^4.12.3",
+    "@quintype/framework": "^4.13.1-history-change.0",
     "@quintype/seo": "^1.38.29",
     "fontfaceobserver": "^2.1.0",
     "formiojs": "^4.12.0",
