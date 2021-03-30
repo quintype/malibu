@@ -5,7 +5,7 @@ import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
   return (
-    <Link href={`${props.story.slug}`} className="story-grid-item">
+    <Link href={`/${props.story.slug}`} className="story-grid-item">
       <figure className="qt-image-16x9" styleName="story-grid-item-image">
         <ResponsiveImage
           slug={props.story["hero-image-s3-key"]}
