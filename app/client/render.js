@@ -19,8 +19,8 @@ export function preRenderApplication(store) {
   };
 
   global.qtLoadedFromShell && renderComponent(Footer, "footer", store, hydrate);
-  renderComponent(AppLogo, "app-logo", store, hydrate);
-  renderComponent(AppLogo, "app-logo-footer", store, hydrate);
+  renderComponent(AppLogo, "app-logo", store);
+  renderComponent(AppLogo, "app-logo-footer", store);
   renderComponent(NavbarSearch, "search-bar", store, hydrate);
   renderComponent(NavBar, "nav-bar", store, hydrate);
   breakingNewsConfig.is_enable &&
