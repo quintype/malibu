@@ -4,7 +4,6 @@ import get from "lodash/get";
 import { object } from "prop-types";
 
 import { MenuItem } from "../menu-item";
-import { AppLogo } from "../app-logo";
 
 import "./footer.m.css";
 
@@ -32,9 +31,7 @@ const FooterBase = ({ menu }) => {
   return (
     <div className="container">
       <div styleName="footer">
-        <div>
-          <AppLogo />
-        </div>
+        <div id="app-logo-footer"></div>
         <MenuGroup menus={placeholderMenus} />
       </div>
     </div>

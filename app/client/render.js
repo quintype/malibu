@@ -6,6 +6,7 @@ import { BreakingNewsView } from "../isomorphic/components/breaking-news-view";
 import { NavbarSearch } from "../isomorphic/components/layouts/header/navbar-search";
 import { NavBar } from "../isomorphic/components/layouts/header/nav-bar";
 import { Footer } from "../isomorphic/components/layouts/footer";
+import { AppLogo } from "../isomorphic/components/layouts/app-logo";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
@@ -18,6 +19,8 @@ export function preRenderApplication(store) {
   };
 
   global.qtLoadedFromShell && renderComponent(Footer, "footer", store, hydrate);
+  renderComponent(AppLogo, "app-logo", store, hydrate);
+  renderComponent(AppLogo, "app-logo-footer", store, hydrate);
   renderComponent(NavbarSearch, "search-bar", store, hydrate);
   renderComponent(NavBar, "nav-bar", store, hydrate);
   breakingNewsConfig.is_enable &&
