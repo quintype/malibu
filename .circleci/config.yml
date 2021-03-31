@@ -102,6 +102,22 @@ workflows:
     jobs:
       - lint_js
       - lint_css
+  stg_lighthouse_test:
+    jobs:
+      - build:
+          context: quay-login
+      - hold_staging:
+          type: approval
+          requires:
+            - build
+      - deploy_staging:
+          context: quay-login
+          requires:
+            - hold_staging
+      - stg_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_staging
 
   lighthouse_test:
     jobs:
@@ -132,19 +148,6 @@ workflows:
           context: quay-login
           requires:
             - deploy_perf
-
-      - hold_staging:
-          type: approval
-          requires:
-            - build
-      - deploy_staging:
-          context: quay-login
-          requires:
-            - hold_staging
-      - stg_lighthouse_task:
-          context: quay-login
-          requires:
-            - deploy_staging
       - hold_production:
           type: approval
           requires:
