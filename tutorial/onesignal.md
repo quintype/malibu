@@ -125,4 +125,6 @@ Congratulations, we are all done. The next time a user comes to your app, they s
 
 You can disable onesignal push notification by setting *is_enable:false* in the *config/publisher.yml* config file.
 
+**Note:** When the timeout is added here with the integration, you might want to reduce the popup loading time in the OneSignal dashboard, so that the delay is not increased.
+
 You may now proceed to [Gumlet Integration]({{"/gumlet-integration" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
