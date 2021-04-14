@@ -10,7 +10,7 @@ export async function loadHomePageData(client, config) {
     { depth: 1, storyLimits: getStoryLimits() }
   );
   return {
-    collection: collection.asJson(),
+    collection: collection ? collection.asJson() : null,
     cacheKeys: collection.cacheKeys(config["publisher-id"])
   };
 }
