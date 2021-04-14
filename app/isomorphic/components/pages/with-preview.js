@@ -10,6 +10,7 @@ export function WithPreview(klazz, updateData) {
 
     componentDidMount() {
       global.addEventListener("message", event => {
+        console.log(event, "--------------------------");
         if (event.data && event.data.action === "reloadStory" && event.data.story) {
           this.setState({ story: event.data.story });
         }
