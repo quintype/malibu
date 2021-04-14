@@ -2,10 +2,10 @@
 import { Collection } from "@quintype/framework/server/api-client";
 import { getStoryLimits } from "../../isomorphic/components/get-collection-template";
 
-export async function loadHomePageData(client, config, slug) {
+export async function loadHomePageData(client, config) {
   const collection = await Collection.getCollectionBySlug(
     client,
-    slug,
+    "home",
     { "item-type": "collection" },
     { depth: 1, storyLimits: getStoryLimits() }
   );
