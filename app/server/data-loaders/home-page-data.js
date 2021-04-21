@@ -7,7 +7,7 @@ export async function loadHomePageData(client, config, slug) {
     client,
     slug,
     { "item-type": "collection" },
-    { depth: 1, storyLimits: getStoryLimits() }
+    { depth: 2, storyLimits: getStoryLimits() }
   );
   return {
     collection: collection.asJson(),
