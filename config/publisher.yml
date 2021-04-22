@@ -30,3 +30,6 @@ publisher:
       defaultTemplate: 8
       ArrowThreeColGrid: 4
     defaultNestedLimit: 4
+    nestedCollectionLimit:
+      ArrowThreeColGrid: [2, 2, 2, 2, 2]
+      ArrowFullScreenSlider: [2,2,2,2,2]
