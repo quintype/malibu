@@ -53,7 +53,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
   function _loadData() {
     switch (pageType) {
       case PAGE_TYPE.HOME_PAGE:
-        return loadHomePageData(client, config, params.collectionSlug);
+        return loadHomePageData(client, config, params.collectionSlug, publisherAttributes.collectionParams);
       case PAGE_TYPE.HOME_PREVIEW:
         return loadHomePageData(client, config);
       case PAGE_TYPE.SECTION_PAGE:
