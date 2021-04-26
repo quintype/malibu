@@ -55,7 +55,7 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       case PAGE_TYPE.HOME_PAGE:
         return loadHomePageData(client, config, params.collectionSlug, publisherAttributes.collectionParams);
       case PAGE_TYPE.HOME_PREVIEW:
-        return loadHomePageData(client, config);
+        return loadHomePageData(client, config, "home", publisherAttributes.collectionParams);
       case PAGE_TYPE.SECTION_PAGE:
         return loadSectionPageData(client, params.sectionId, config, publisherAttributes);
       case PAGE_TYPE.COLLECTION_PAGE:
