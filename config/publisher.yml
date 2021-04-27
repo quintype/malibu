@@ -23,7 +23,7 @@ publisher:
     open_in_new_tab: false
     pages: [home-page, section-page, tag-page, search-page, story-page, catalog-page, static-page, form-page]
   should_use_collection: true
-  options:
+  collectionParams:
     depth: 2
     storyLimits:
       FourColGrid: 8
@@ -32,4 +32,4 @@ publisher:
     defaultNestedLimit: 4
     nestedCollectionLimit:
       ArrowThreeColGrid: [2, 2, 2, 2, 2]
-      ArrowFullScreenSlider: [2,2,2,2,2]
+      ArrowFullScreenSlider: [1,2,3,4,5]
