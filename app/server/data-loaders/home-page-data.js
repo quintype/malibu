@@ -11,7 +11,7 @@ export async function loadHomePageData(client, config, slug) {
       depth: 2,
       storyLimits: getStoryLimits(),
       nestedCollectionLimit: getNestedCollectionLimit(),
-      defaultNestedLimit: 4
+      defaultNestedLimit: 5
     }
   );
   return {

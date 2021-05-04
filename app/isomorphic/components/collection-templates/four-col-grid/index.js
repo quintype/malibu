@@ -19,5 +19,5 @@ FourColGrid.propTypes = {
   stories: array
 };
 
-FourColGrid.storyLimit = 8;
-FourColGrid.nestedCollectionLimit = [1, 2];
+FourColGrid.storyLimit = 4;
+FourColGrid.nestedCollectionLimit = [1, 2, 3];
