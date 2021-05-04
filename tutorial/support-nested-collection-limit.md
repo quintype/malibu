@@ -14,15 +14,26 @@ This tutorial is for setting the nested collection items limit.
 We noticed that */route-data.json* was massive for many publishers (publishers using collection of collection in home/collection page). After debugging, we found that the vast majority of this data is stories that were not needed for the render of the home/collection page. Thus, we wanted to introduce a way to declaratively specify how many stories are loaded by each nested collection.
 
 The `nestedCollectionLimit` is the number of stories or collection to fetch from each nested collection. 
-
 Eg:
 - Home `(Level 1)`
   - Sports Row `(Level 2)` `(Template- FourColGrid)`
-    - Cricket `(Level 3)`
-    - Football `(Level 3)`
-    - Tennis `(Level 3)`
+    - Cricket `(Level 3, Type - collection)`
+    - Football `(Level 3, Type - collection)`
+    - Tennis `(Level 3, Type - collection)`
 
-In the above example with `nestedCollectionLimit: {FourColGrid: [2, 3, 4]}`, The `Cricket` collection will fetch `2`  items, `Football` will fetch `5` items and `Tennis` will fetch `4` items respectively. (default: `defaultNestedLimit` || `40`)
+In the above example with `nestedCollectionLimit: {FourColGrid: [2, 3, 4]}`. The `Cricket` collection will fetch `2`  items, `Football` will fetch `3` items and `Tennis` will fetch `4` items respectively. (default: `defaultNestedLimit` || `40`)
+
+
+Note: If `FourColGrid` is a collection of collection and stories pass `null` for the respective position of the story.
+Eg:
+- Home `(Level 1)`
+  - Sports Row `(Level 2)` `(Template- FourColGrid)`
+    - Cricket `(Level 3, Type - collection)`
+    - Story `(Level 3, Type - story)`
+    - Football `(Level 3, Type - collection)`
+    - Tennis `(Level 3, Type - collection)`
+
+In this case pass `nestedCollectionLimit: {FourColGrid: [2, null, 3, 4]}`.
 
 ## Steps to implement
 
