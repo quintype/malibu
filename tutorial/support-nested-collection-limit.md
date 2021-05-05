@@ -21,7 +21,7 @@ The `nestedCollectionLimit` is the number of stories or collection to fetch from
     - Football `(Level 3, Type - collection)`
     - Tennis `(Level 3, Type - collection)`
 
-In the above example with `nestedCollectionLimit: {FourColGrid: [2, 3, 4]}`, the `Cricket` collection will fetch `2`  items, `Football` will fetch `3` items and `Tennis` will fetch `4` items respectively. ( default: `defaultNestedLimit` || `40` )
+In the above example with `nestedCollectionLimit: {FourColGrid: [2, 3, 4]}`, the `Cricket` collection will fetch `2`  items, `Football` will fetch `3` items and `Tennis` will fetch `4` items respectively. ( default: `defaultNestedLimit` or `40` )
 
 Note: If `FourColGrid` is a collection having collections and stories, pass `null` for the respective position of the story.
 Example:
