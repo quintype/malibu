@@ -37,7 +37,7 @@ In this case pass `nestedCollectionLimit: {FourColGrid: [2, null, 3, 4]}`.
 
 ## Steps to implement
 
-* First Ensure that  *@quintype/components* and *@quintype/framework* are at the latest version
+* First ensure that  *@quintype/components* and *@quintype/framework* are at the latest version
 
 * Add the following to *app/isomorphic/components/get-collection-template.js*
 
@@ -70,5 +70,31 @@ export async function loadHomePageData(client, config, slug) {
     { depth: 2, storyLimits: getStoryLimits() , defaultNestedLimit: 4 , nestedCollectionLimit: getNestedCollectionLimit()}
   );
   ...
+}
+```
+
+* Finally, add the number of nested collection items to each component. For example, in *app/isomorphic/components/collection-templates/four-col-grid/index.js*, add the following
+
+```javascript
+function FourColGrid(props) {
+...
+}
+...
+FourColGrid.nestedCollectionLimit = [4, 4, 2];
+```
+
+* In case you are wrapping components in a function, such as *wrapEager*, then add the following to the relevant function (in this case in *app/isomorphic/components/get-collection-template.js*)
+
+```javascript
+function wrapEager(f) {
+  const wrappedComponent = function WrapEager(props) {
+    ...
+  };
+
+  if (f.nestedCollectionLimit) {
+    wrappedComponent.nestedCollectionLimit = f.nestedCollectionLimit;
+  }
+
+  return wrappedComponent;
 }
 ```
