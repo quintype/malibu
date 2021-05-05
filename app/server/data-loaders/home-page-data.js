@@ -9,9 +9,7 @@ export async function loadHomePageData(client, config, slug) {
     { "item-type": "collection" },
     {
       depth: 2,
-      storyLimits: getStoryLimits(),
-      nestedCollectionLimit: getNestedCollectionLimit(),
-      defaultNestedLimit: 4
+      storyLimits: getStoryLimits()
     }
   );
   return {
