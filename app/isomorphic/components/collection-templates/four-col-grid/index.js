@@ -20,4 +20,4 @@ FourColGrid.propTypes = {
 };
 
 FourColGrid.storyLimit = 8;
-FourColGrid.nestedCollectionLimit = [1, 2];
+FourColGrid.nestedCollectionLimit = [1, 2, 3];
