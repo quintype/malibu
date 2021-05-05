@@ -18,12 +18,14 @@ This tutorial is for setting the default collection items limit. If there are no
 
 ```javascript
 ...
+import { getStoryLimits } from "../../isomorphic/components/get-collection-template";
+
 export async function loadHomePageData(client, config, slug) {
   const collection = await Collection.getCollectionBySlug(
     client,
     slug,
     { "item-type": "collection" },
-    { depth: 2, storyLimits: { FourColGrid: 8 , defaultTemplate: 6 }, defaultNestedLimit: 4  }
+    { depth: 2, storyLimits: getStoryLimits(), defaultNestedLimit: 4  }
   );
   ...
 }
