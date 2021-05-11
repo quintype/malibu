@@ -7,7 +7,7 @@ nav_order: 16
 
 *This tutorial was contributed by [Athira](https://twitter.com/AthiraMRaju) and [Amogh](https://github.com/ags1773)*
 
-`Loadable components` is a library to solve the React code-splitting client-side, server-side, critical CSS, by loading all the scripts asynchronously to ensure optimal performances.
+[Loadable components](https://loadable-components.com/docs/server-side-rendering/) is a library to solve the React code-splitting client-side, server-side, critical CSS, by loading all the scripts asynchronously to ensure optimal performances.
 
 The first step towards implementing this is passing the files(components) for which code splitting and SSR is needed.
 
@@ -107,6 +107,7 @@ export async function renderLayout(res, params) {
 }
 
 ```
+Note:  Hydrate the components if necessary to attach any event handlers.
 
 In `views/pages/layout.ejs` file, the HTML string is injected as shown below:
 
