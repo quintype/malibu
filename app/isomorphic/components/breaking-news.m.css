@@ -25,6 +25,7 @@
       margin-right: 14px;
       font-weight: bold;
       flex-shrink: 0;
+      height: 26px;
       @media screen and (min-width: 768px) {
         font-size: 16px;
         padding: 4px 0;
