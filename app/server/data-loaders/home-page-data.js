@@ -2,7 +2,7 @@
 import { Collection } from "@quintype/framework/server/api-client";
 import { getStoryLimits, getNestedCollectionLimit } from "../../isomorphic/components/get-collection-template";
 
-export async function loadHomePageData(client, config, slug="home") {
+export async function loadHomePageData(client, config, slug = "home") {
   const collection = await Collection.getCollectionBySlug(
     client,
     slug,
@@ -11,11 +11,11 @@ export async function loadHomePageData(client, config, slug="home") {
       depth: 2,
       storyLimits: getStoryLimits(),
       nestedCollectionLimit: getNestedCollectionLimit(),
-      defaultNestedLimit: 5
+      defaultNestedLimit: 5,
     }
   );
   return {
     collection: collection.asJson(),
-    cacheKeys: collection.cacheKeys(config["publisher-id"])
+    cacheKeys: collection.cacheKeys(config["publisher-id"]),
   };
 }
