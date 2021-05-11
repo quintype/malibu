@@ -49,12 +49,13 @@ export const BreakingNewsViewBase = ({ breakingNews = [], breakingNewsConfig = {
   }
 
   return (
-    <div styleName="base" className="container">
-      <div styleName="container">
-        <div styleName="breaking-news-label">BREAKING NEWS</div>
-        {/* {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)} */}
-      </div>
-    </div>
+    <div>scvdfvfdg</div>
+    // <div styleName="base" className="container">
+    //   <div styleName="container">
+    //     <div styleName="breaking-news-label">BREAKING NEWS</div>
+    //     {/* {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)} */}
+    //   </div>
+    // </div>
   );
 };
 
