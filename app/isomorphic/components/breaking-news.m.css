@@ -2,6 +2,7 @@
   overflow-wrap: break-word;
   word-break: break-word;
   padding: 18px 12px;
+  height: 35px;
   @media screen and (min-width: 1280px) {
     padding: 8px 0;
   }
