@@ -23,7 +23,6 @@ export function preRenderApplication(store) {
   renderComponent(AppLogo, "app-logo-footer", store);
   renderComponent(NavbarSearch, "search-bar", store, hydrate);
   renderComponent(NavBar, "nav-bar", store, hydrate);
-  breakingNewsConfig.is_enable &&
     renderBreakingNews("breaking-news-container", store, BreakingNewsView, breakingNewsbaseProps);
 }
 

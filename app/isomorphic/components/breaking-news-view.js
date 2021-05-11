@@ -52,7 +52,7 @@ export const BreakingNewsViewBase = ({ breakingNews = [], breakingNewsConfig = {
     <div styleName="base" className="container">
       <div styleName="container">
         <div styleName="breaking-news-label">BREAKING NEWS</div>
-        {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)}
+        {/* {renderBreakingNewsMarquee(breakingNewsItem, breakingNewsConfig)} */}
       </div>
     </div>
   );
