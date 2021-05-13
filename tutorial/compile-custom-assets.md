@@ -9,17 +9,17 @@ parent: Malibu Tutorial
 *This tutorial was contributed by [Deo](https://www.linkedin.com/in/deo-kumar) and [Phaneendra](https://www.linkedin.com/in/venkata-phaneendra-andukuri)*
 
 ## Custom assets
- Malibu support custom assets like fonts, images, icons, etc. We will follow the below steps for loading custom fonts in Malibu.
+ Malibu supports custom/static assets like fonts, images, icons, etc. We will follow the below steps for loading custom fonts in Malibu.
 
 ## Steps to implement the custom fonts
 
-1. Create `static-assets` folder inside app. ex - `app/static-assets`.
+1. Create `static-assets` folder inside app. Ex: `app/static-assets`.
 
 ![Static assets]({{"images/static-assets.png" | absolute_url}})
 
-2. Put all the fonts inside the above folder or you can create a separate folder for the fonts and put it inside static-assets folder. ex - `app/static-assets/fonts`.
+2. ut all the fonts inside the above folder or you can create a separate folder for the fonts and put it inside the static-assets folder. Ex: `app/static-assets/fonts`.
 
-3. Now open `app/server/handlers/render-layout.js` and use your fonts.
+3. Now open `app/server/handlers/render-layout.js` and use your fonts as shown below:
 
 ```javascript
 ...
@@ -52,10 +52,8 @@ res.render(
         }
 ...
 ```
-That's all, your font should show on your app.
+The expected fonts should be applied in the app now. The same implementation can be replicated for other assets.
 
-You can use other assets similar to fonts.
-
-**Note** - If you are putting HD images/icons inside `static-assets` folder may cause a quay build delay. So make sure to put only low-quality images/icons or other custom assets.
+**Note** - If you are putting HD `images/icons` inside `static-assets` folder, they may cause an increase in the quay build time.
 
 You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
