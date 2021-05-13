@@ -22,4 +22,4 @@ We use the [Form react component](https://github.com/formio/react-formio) expose
 ## Styling
 Formio relies on bootstrap for styling. Since it might conflict with the global styleguide of your app, we are using an [isolated version of bootstrap](https://toert.github.io/Isolated-Bootstrap/).
 
-You may now proceed to [Third Party Integrations]({{"/tutorial/third-party-integrations.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).
+You may now proceed to [Support Loadable Component]({{"/tutorial/loadable-components.html" | absolute_url}}) or jump to a recipe from the [Tutorial]({{"/tutorial" | absolute_url}}).

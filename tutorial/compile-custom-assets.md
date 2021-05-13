@@ -1,5 +1,5 @@
 ---
-title: Compile Custom Assets
+title: Custom Assets
 nav_order: 18
 parent: Malibu Tutorial
 ---
@@ -54,7 +54,7 @@ res.render(
 ```
 That's all, your font should show on your app.
 
-Similarly you can use other assets to separetly compile it.
+You can use other assets similar to fonts.
 
 **Note** - If you are putting HD images/icons inside `static-assets` folder may cause a quay build delay. So make sure to put only low-quality images/icons or other custom assets.
 

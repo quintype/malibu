@@ -16,10 +16,10 @@ Malibu comes pre-loaded with two fonts, primarily as an integration example. In 
 
 The method we use to load fonts follows two important characteristics
 * Text is still visible, even if the font is loading. The fonts follow a *"Flash of Unstyled Text"* rather than a *"Flash of Invisible Text"*.
-* The page should rerender exactly once, after all fonts are loaded. This is as opposed to multiple rerenders as each font loads, which is slow.
+* The page should rerender exactly once after all fonts are loaded. This is as opposed to multiple rerenders as each font loads, which is slow.
 
 In order to achieve the above goals, we use [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) to load fonts in Malibu. This works as follows.
-* We define all fonts as css variables. By default, they are set to the fallback font, and the variables change to the loaded fonts when the *"fonts-loaded"* class is set on body
+* We define all fonts as CSS variables. By default, they are set to the fallback font, and the variables change to the loaded fonts when the *"fonts-loaded"* class is set on the body.
 * *FontFaceObserver* waits for all the fonts to be loaded, and then sets the *"fonts-loaded"* class on the body, causing the page to rerender.
 * Font families are defined by google fonts or other font hosting, in the usual way.
 
