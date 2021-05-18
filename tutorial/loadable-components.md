@@ -125,3 +125,5 @@ In `views/pages/layout.ejs` file, the HTML string is injected as shown below:
 ...
 </body>
 ```
+
+Note: To view the changes locally, run `./run-prodish` instead of `./run`.
