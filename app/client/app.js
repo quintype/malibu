@@ -14,7 +14,10 @@ const opts = {
 
 function enableHotReload(store) {
   if (process.env.NODE_ENV === "development" && module.hot) {
-    module.hot.accept("./render", () => renderApplication(store));
+    module.hot.accept("./render", () => {
+      renderApplication(store);
+      preRenderApplication(store);
+    });
   }
 }
 
