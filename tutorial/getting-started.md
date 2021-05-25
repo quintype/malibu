@@ -110,25 +110,25 @@ Open a browser, and navigate over to [http://localhost:3000](http://localhost:30
 
 ## Checking that hot reloading works
 
-Keep your development server and browser running, and use your editor to open _app/isomorphic/components/header/index.js_.
+Keep your development server and browser running, and use your editor to open _app/isomorphic/components/header/nav-bar/index.js_.
 
 Find the line that looks like this
 
 ```javascript
-<div styleName="container">
+<ul styleName="navbar">
 ```
 
-and change it to this
+for the above styleName provide a background color
 
 ```javascript
-<div styleName="container blue">
+.navbar{
+  background-color: blue;
+}
 ```
 
-Hit save, then come back to the browser. The header should immediately change to a blue background, and look like this:
+Hit save, then come back to the browser. The navbar should immediately change to a blue background, and look like this:
 
-![Malibu Blue]({{"images/malibu-blue.jpg" | absolute_url}})
-
-If the browser didn't immediately reload, try refreshing your browser.
+![Malibu Blue]({{"images/malibu-blue-navbar.png" | absolute_url}})
 
 ## Switching to a different API end point
 
