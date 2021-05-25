@@ -130,8 +130,6 @@ Hit save, then come back to the browser. The navbar should immediately change to
 
 ![Malibu Blue]({{"images/malibu-blue-navbar.png" | absolute_url}})
 
-Note: If you're loading the component from [shell] (https://developers.google.com/web/fundamentals/architecture/app-shell) then refresh your browser to see the changes. 
-
 ## Switching to a different API end point
 
 By default, Malibu points to https://quintype-demo.quintype.io as it's API endpoint. In order to change this, edit _config/publisher.yml_, and update the `sketches_host` to `https://<your-name>.quintype.io`.
