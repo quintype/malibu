@@ -130,7 +130,7 @@ Hit save, then come back to the browser. The navbar should immediately change to
 
 ![Malibu Blue]({{"images/malibu-blue-navbar.png" | absolute_url}})
 
-Note: If your loading your loading your component from shell then try refreshing your browser.
+Note: If you're loading your component from shell then try refreshing your browser.
 
 ## Switching to a different API end point
 
