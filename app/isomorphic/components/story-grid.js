@@ -4,29 +4,33 @@ import { shape, string, object, integer, arrayOf } from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
-  const [size, setSize] = useState("10vw");
-  const [blur, setBlur] = useState(10);
+  const imagePerfObj = { size: "10vw", blur: 10 };
+  const [perfObj, setPerfObj] = useState(imagePerfObj);
 
   useEffect(() => {
     setTimeout(() => {
-      setSize("30vw");
-      setBlur(0);
+      setPerfObj({ size: "30vw", blur: 0 });
     }, 2500);
   }, []);
 
   return (
     <Link href={`/${props.story.slug}`} className="story-grid-item">
-      <figure className="qt-image-16x9" styleName="story-grid-item-image">
-        <ResponsiveImage
-          slug={props.story["hero-image-s3-key"]}
-          metadata={props.story["hero-image-metadata"]}
-          aspectRatio={[16, 9]}
-          defaultWidth={480}
-          widths={[250, 480, 640]}
-          sizes={size}
-          imgParams={{ auto: ["format", "compress"], blur: blur }}
-          alt={props.story.headline || ""}
-        />
+      <figure
+        className="qt-image-16x9"
+        styleName={`story-grid-item-image ${!props.story["hero-image-s3-key"] ? "placeholder" : ""}`}
+      >
+        {props.story["hero-image-s3-key"] && (
+          <ResponsiveImage
+            slug={props.story["hero-image-s3-key"]}
+            metadata={props.story["hero-image-metadata"]}
+            aspectRatio={[16, 9]}
+            defaultWidth={480}
+            widths={[250, 480, 640]}
+            sizes={perfObj.size}
+            imgParams={{ auto: ["format", "compress"], blur: perfObj.blur }}
+            alt={props.story.headline || ""}
+          />
+        )}
       </figure>
       <h3>{props.story.headline}</h3>
       <span className="story-grid-item-author">{props.story["author-name"]}</span>
