@@ -14,7 +14,7 @@ function StoryGridStoryItem(props) {
           defaultWidth={480}
           widths={[250, 480, 640]}
           sizes="5vw"
-          imgParams={{ auto: ["format", "compress"], blur: 100 }}
+          imgParams={{ auto: ["format", "compress"], blur: 10 }}
           alt={props.story.headline || ""}
         />
       </figure>
