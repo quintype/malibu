@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
 import { shape, string, object, integer, arrayOf } from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
+  const [size, setSize] = useState("10vw");
+  const [blur, setBlur] = useState(10);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSize("30vw");
+      setBlur(0);
+    }, 2500);
+  }, []);
+
   return (
     <Link href={`/${props.story.slug}`} className="story-grid-item">
       <figure className="qt-image-16x9" styleName="story-grid-item-image">
@@ -13,8 +23,8 @@ function StoryGridStoryItem(props) {
           aspectRatio={[16, 9]}
           defaultWidth={480}
           widths={[250, 480, 640]}
-          sizes="10vw"
-          imgParams={{ auto: ["format", "compress"], blur: 10 }}
+          sizes={size}
+          imgParams={{ auto: ["format", "compress"], blur: blur }}
           alt={props.story.headline || ""}
         />
       </figure>
