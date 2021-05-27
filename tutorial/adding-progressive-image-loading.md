@@ -25,9 +25,8 @@ Go to the `views/pages/layout.ejs` file, modify the gumlet config by adding `src
 ```html
 <script type="text/javascript">
   window.GUMLET_CONFIG = {
-    hosts: [{ current: "<%= cdnImage %>", gumlet: "<%= cdnImage %>" }],
-    lazy_load: true,
-    auto_webp: true,
+    ...
+    ...
     srcset: true,
   };
 </script>
@@ -157,9 +156,8 @@ Wherever the Gumlet config is set, modify the gumlet config by adding `srcset: t
 ```html
 <script type="text/javascript">
   window.GUMLET_CONFIG = {
-    hosts: [{ current: "<%= cdnImage %>", gumlet: "<%= cdnImage %>" }],
-    lazy_load: true,
-    auto_webp: true,
+    ...
+    ...
     srcset: true,
   };
 </script>
