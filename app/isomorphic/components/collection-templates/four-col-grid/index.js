@@ -6,10 +6,11 @@ import { StoryGrid } from "../../story-grid";
 import "./four-col-grid.m.css";
 
 export function FourColGrid({ collection, stories, index }) {
+  const isInitRow = index === 0 || index === 1;
   return (
     <div>
       <h2 styleName="heading">{collection.name}</h2>
-      <StoryGrid stories={stories} rowNumber={index} />
+      <StoryGrid stories={stories} isInitRow={isInitRow} />
     </div>
   );
 }

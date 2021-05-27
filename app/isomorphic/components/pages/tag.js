@@ -7,7 +7,7 @@ import { StoryGrid } from "../story-grid";
 const TagPage = props => (
   <div className="container">
     <h1>{get(props, "data.tag.name") || "Tag Page"}</h1>
-    <StoryGrid stories={props.data.stories} />
+    <StoryGrid stories={props.data.stories} isInitRow />
   </div>
 );
 

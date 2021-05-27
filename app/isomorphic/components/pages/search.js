@@ -8,7 +8,7 @@ const SearchPage = props => (
     <h1>
       Search - {props.data.query} ({props.data.total} results)
     </h1>
-    <StoryGrid stories={props.data.stories} />
+    <StoryGrid stories={props.data.stories} isInitRow />
   </div>
 );
 

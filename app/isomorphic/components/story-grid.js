@@ -27,12 +27,10 @@ StoryGridStoryItem.propTypes = {
   isInitRow: bool
 };
 
-export function StoryGrid({ stories = [], rowNumber }) {
+export function StoryGrid({ stories = [], isInitRow }) {
   if (stories.length === 0) {
     return null;
   }
-
-  const isInitRow = rowNumber === 0 || rowNumber === 1;
 
   return (
     <div className="story-grid">
@@ -45,5 +43,5 @@ export function StoryGrid({ stories = [], rowNumber }) {
 
 StoryGrid.propTypes = {
   stories: arrayOf(storyPropType),
-  rowNumber: number
+  isInitRow: bool
 };

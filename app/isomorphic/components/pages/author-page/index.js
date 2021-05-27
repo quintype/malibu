@@ -11,7 +11,7 @@ const AuthorPage = props => {
   return (
     <div className="container">
       <h1>{`Author - ${props.data.author.name}`}</h1>
-      <StoryGrid stories={stories} />
+      <StoryGrid stories={stories} isInitRow />
     </div>
   );
 };

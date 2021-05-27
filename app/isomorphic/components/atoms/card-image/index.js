@@ -4,20 +4,29 @@ import { shape, string, object, bool } from "prop-types";
 
 import "./card-image.m.css";
 
-export const CardImage = ({ story, isInitRow }) => {
+export const CardImage = ({ story, isInitRow, pageType }) => {
   const imagePerfObj = isInitRow ? { size: "3vw", blur: 0 } : { size: "25vw", blur: 0 };
   const [perfObj, setPerfObj] = useState(imagePerfObj);
+  const customStyleName = pageType !== "story-page" && !story["hero-image-s3-key"] ? "placeholder" : "";
+
+  const perfImageTimeout = (size, blur) => {
+    setTimeout(() => {
+      setPerfObj({ size, blur });
+    }, 2500);
+  };
 
   useEffect(() => {
     if (isInitRow) {
-      setTimeout(() => {
-        setPerfObj({ size: "30vw", blur: 0 });
-      }, 2500);
+      if (pageType === "story-page") {
+        perfImageTimeout("50vw", 0);
+      } else {
+        perfImageTimeout("25vw", 0);
+      }
     }
   }, []);
 
   return (
-    <figure className="qt-image-16x9" styleName={`card-image ${!story["hero-image-s3-key"] ? "placeholder" : ""}`}>
+    <figure className="qt-image-16x9" styleName={`card-image ${customStyleName}`}>
       {story["hero-image-s3-key"] && (
         <ResponsiveImage
           slug={story["hero-image-s3-key"]}
@@ -45,5 +54,6 @@ const storyPropType = shape({
 
 CardImage.propTypes = {
   story: storyPropType,
-  isInitRow: bool
+  isInitRow: bool,
+  pageType: string
 };
