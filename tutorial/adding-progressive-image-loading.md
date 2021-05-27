@@ -55,9 +55,11 @@ progressive_image:
 | transition_timeout | number  | The time taken to render a high-resolution image from a low-resolution image (in milliseconds)                                                        |
 | initial_load       | object  | Contain keys for loading the low-resolution image                                                                                                     |
 | subsequent_load    | object  | Contain keys for loading the higher resolution of the image                                                                                           |
-| blur               | Number  | This will blur out the image from a range of 0 to 100, 0 being no blurred effect and 100 being fully blurred effect                                   |
+| blur               | number  | This will blur out the image from a range of 0 to 100, 0 being no blurred effect and 100 being fully blurred effect                                   |
 | generic_size       | string  | This will set the image size for all the pages (in px or vw). Preferred to be in vw so that the size would be determined based on the viewport width. |
 | story_page_size    | string  | The sizes can be set for individual pages or any other custom params. The logic for the same needs to be handled in the code.                         |
+
+Here is an example: `app/isomorphic/components/atoms/card-image/index.js`:
 
 ```javascript
 import React, { useEffect, useState } from "react";
