@@ -11,14 +11,13 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
     get(state, ["qt", "config", "publisher-attributes", "progressive_image"], {})
   );
 
-  const imagePerfObj = progressiveImageConfig.is_enable
-    ? progressiveImageConfig.initial_load
-    : { size: "25vw", blur: 0 };
+  const imagePerfObj =
+    progressiveImageConfig.is_enable && isInitRow ? progressiveImageConfig.initial_load : { size: "25vw", blur: 0 };
   const [perfObj, setPerfObj] = useState(imagePerfObj);
   const customStyleName = pageType !== "story-page" && !story["hero-image-s3-key"] ? "placeholder" : "";
 
   useEffect(() => {
-    if (isInitRow) {
+    if (isInitRow && progressiveImageConfig.is_enable) {
       // if we need progressive loading for the images in the page, this condition can be removed
       setTimeout(() => {
         setPerfObj(progressiveImageConfig.subsequent_load);
