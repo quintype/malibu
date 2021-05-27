@@ -1,44 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link, ResponsiveImage } from "@quintype/components";
+import React from "react";
+import { Link } from "@quintype/components";
 import { shape, string, object, arrayOf, number, bool } from "prop-types";
-import "./story-grid.m.css";
 
-function StoryGridStoryItem(props) {
-  const imagePerfObj = props.isInitRow ? { size: "3vw", blur: 0 } : { size: "25vw", blur: 0 };
-  const [perfObj, setPerfObj] = useState(imagePerfObj);
+import { CardImage } from "./atoms/card-image";
 
-  useEffect(() => {
-    if (props.isInitRow) {
-      setTimeout(() => {
-        setPerfObj({ size: "30vw", blur: 0 });
-      }, 2500);
-    }
-  }, []);
-
-  return (
-    <Link href={`/${props.story.slug}`} className="story-grid-item">
-      <figure
-        className="qt-image-16x9"
-        styleName={`story-grid-item-image ${!props.story["hero-image-s3-key"] ? "placeholder" : ""}`}
-      >
-        {props.story["hero-image-s3-key"] && (
-          <ResponsiveImage
-            slug={props.story["hero-image-s3-key"]}
-            metadata={props.story["hero-image-metadata"]}
-            aspectRatio={[16, 9]}
-            defaultWidth={480}
-            widths={[250, 480, 640]}
-            sizes={perfObj.size}
-            imgParams={{ auto: ["format", "compress"], blur: perfObj.blur }}
-            alt={props.story.headline || ""}
-          />
-        )}
-      </figure>
-      <h3>{props.story.headline}</h3>
-      <span className="story-grid-item-author">{props.story["author-name"]}</span>
-    </Link>
-  );
-}
+const StoryGridStoryItem = props => (
+  <Link href={`/${props.story.slug}`} className="story-grid-item">
+    <CardImage story={props.story} isInitRow={props.isInitRow} />
+    <h3>{props.story.headline}</h3>
+    <span className="story-grid-item-author">{props.story["author-name"]}</span>
+  </Link>
+);
 
 const storyPropType = shape({
   id: string,
