@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { get } from "lodash";
 import { ResponsiveImage } from "@quintype/components";
 import { shape, string, object, bool } from "prop-types";
+import { useSelector } from "react-redux";
 
 import "./card-image.m.css";
 
 export const CardImage = ({ story, isInitRow, pageType }) => {
-  const imagePerfObj = isInitRow ? { size: "3vw", blur: 0 } : { size: "25vw", blur: 0 };
+  const progressiveImageConfig = useSelector(state =>
+    get(state, ["qt", "config", "publisher-attributes", "progressive_image"], {})
+  );
+
+  const imagePerfObj = progressiveImageConfig.is_enable
+    ? progressiveImageConfig.initial_load
+    : { size: "25vw", blur: 0 };
   const [perfObj, setPerfObj] = useState(imagePerfObj);
   const customStyleName = pageType !== "story-page" && !story["hero-image-s3-key"] ? "placeholder" : "";
 
-  const perfImageTimeout = (size, blur) => {
-    setTimeout(() => {
-      setPerfObj({ size, blur });
-    }, 2500);
-  };
-
   useEffect(() => {
     if (isInitRow) {
-      if (pageType === "story-page") {
-        perfImageTimeout("50vw", 0);
-      } else {
-        perfImageTimeout("25vw", 0);
-      }
+      setTimeout(() => {
+        setPerfObj(progressiveImageConfig.subsequent_load);
+      }, progressiveImageConfig.transition_timeout || 2500);
     }
   }, []);
+
+  const getImageSize = () => {
+    if (pageType === "story-page") {
+      return perfObj.story_page_size;
+    }
+    return perfObj.generic_size;
+  };
 
   return (
     <figure className="qt-image-16x9" styleName={`card-image ${customStyleName}`}>
@@ -34,7 +41,7 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
           aspectRatio={[16, 9]}
           defaultWidth={480}
           widths={[250, 480, 640]}
-          sizes={perfObj.size}
+          sizes={getImageSize()}
           imgParams={{ auto: ["format", "compress"], blur: perfObj.blur }}
           alt={story.headline || ""}
         />
