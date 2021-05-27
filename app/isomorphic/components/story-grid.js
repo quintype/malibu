@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
-import { shape, string, object, integer, arrayOf } from "prop-types";
+import { shape, string, object, arrayOf, number, bool } from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
-  const imagePerfObj = { size: "10vw", blur: 10 };
+  const imagePerfObj = props.isInitRow ? { size: "3vw", blur: 0 } : { size: "25vw", blur: 0 };
   const [perfObj, setPerfObj] = useState(imagePerfObj);
 
   useEffect(() => {
-    setTimeout(() => {
-      setPerfObj({ size: "30vw", blur: 0 });
-    }, 2500);
+    if (props.isInitRow) {
+      setTimeout(() => {
+        setPerfObj({ size: "30vw", blur: 0 });
+      }, 2500);
+    }
   }, []);
 
   return (
@@ -49,23 +51,27 @@ const storyPropType = shape({
 
 StoryGridStoryItem.propTypes = {
   story: storyPropType,
-  position: integer
+  position: number,
+  isInitRow: bool
 };
 
-export function StoryGrid({ stories = [] }) {
+export function StoryGrid({ stories = [], rowNumber }) {
   if (stories.length === 0) {
     return null;
   }
 
+  const isInitRow = rowNumber === 0 || rowNumber === 1;
+
   return (
     <div className="story-grid">
       {stories.map((story, index) => (
-        <StoryGridStoryItem story={story} key={`${index}-${story.id}`} position={index} />
+        <StoryGridStoryItem story={story} key={`${index}-${story.id}`} position={index} isInitRow={isInitRow} />
       ))}
     </div>
   );
 }
 
 StoryGrid.propTypes = {
-  stories: arrayOf(storyPropType)
+  stories: arrayOf(storyPropType),
+  rowNumber: number
 };
