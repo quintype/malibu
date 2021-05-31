@@ -18,10 +18,13 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
 
   useEffect(() => {
     if (isInitRow && progressiveImageConfig.is_enable) {
-      // if we need progressive loading for the images in the page, this condition can be removed
-      setTimeout(() => {
-        setPerfObj(progressiveImageConfig.subsequent_load);
-      }, progressiveImageConfig.transition_timeout || 2500);
+      // if we need progressive loading for the images in the page, isInitRow condition can be removed
+      const timer = () => {
+        setTimeout(() => {
+          setPerfObj(progressiveImageConfig.subsequent_load);
+        }, progressiveImageConfig.transition_timeout || 2500);
+      };
+      return () => clearTimeout(timer);
     }
   }, []);
 

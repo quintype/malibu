@@ -3,5 +3,5 @@
 }
 
 .placeholder {
-  background-color: lightgray;
+  background-color: var(--grey-light);
 }
