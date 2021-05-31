@@ -22,9 +22,11 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
       const timer = () => {
         setTimeout(() => {
           setPerfObj(progressiveImageConfig.subsequent_load);
+          clearTimeout(timer);
         }, progressiveImageConfig.transition_timeout || 2500);
       };
-      return () => clearTimeout(timer);
+
+      timer();
     }
   }, []);
 
