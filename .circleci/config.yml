@@ -75,6 +75,7 @@ jobs:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
+          export LHCI_SCORE_BENCHMARK=0.9
           npx @lhci/cli@0.6.x autorun
 
 

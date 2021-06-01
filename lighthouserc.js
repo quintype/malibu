@@ -23,7 +23,7 @@ const lhciConfig = {
         "uses-optimized-images": "warn",
         "no-unload-listeners": "off",
         "no-document-write": "warn", // Avoid `document.write()`
-        "categories:performance": ["error", { minScore: 0.95 }],
+        "categories:performance": ["error", { minScore: JSON.parse(process.env.LHCI_SCORE_BENCHMARK) || 0.95 }],
         "image-alt": "warn",
         "link-name": "warn",
         "link-text": "warn"
