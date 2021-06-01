@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { get } from "lodash";
+import get from "lodash/get";
 import { ResponsiveImage } from "@quintype/components";
 import { shape, string, object, bool } from "prop-types";
 import { useSelector } from "react-redux";
@@ -20,10 +20,9 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
     if (isInitRow && progressiveImageConfig.is_enable) {
       // if we need progressive loading for the images in the page, isInitRow condition can be removed
       const timer = setTimeout(() => {
+        clearTimeout(timer);
         setPerfObj(progressiveImageConfig.subsequent_load);
       }, progressiveImageConfig.transition_timeout || 2500);
-
-      return () => clearTimeout(timer);
     }
   }, []);
 
