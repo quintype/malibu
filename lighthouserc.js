@@ -1,4 +1,6 @@
 const url = `https://${process.env.LH_USER}:${process.env.LH_PASSWORD}@lighthouse-ci.staging.quinpress.com/`;
+console.log("---------------------------------------------", JSON.parse(process.env.LHCI_SITES));
+console.log("---------------------------------------------", JSON.parse(process.env.LHCI_SITES).includes("perf"));
 const lhciBenchmark = JSON.parse(process.env.LHCI_SITES).includes("perf") ? 0.9 : 0.95;
 const lhciConfig = {
   ci: {
