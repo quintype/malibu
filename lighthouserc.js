@@ -1,4 +1,5 @@
 const url = `https://${process.env.LH_USER}:${process.env.LH_PASSWORD}@lighthouse-ci.staging.quinpress.com/`;
+const lhciBenchmark = JSON.parse(process.env.LHCI_SITES).includes("perf") ? 0.9 : 0.95;
 const lhciConfig = {
   ci: {
     collect: {
@@ -23,7 +24,7 @@ const lhciConfig = {
         "uses-optimized-images": "warn",
         "no-unload-listeners": "off",
         "no-document-write": "warn", // Avoid `document.write()`
-        "categories:performance": ["error", { minScore: JSON.parse(process.env.LHCI_SCORE_BENCHMARK) || 0.95 }],
+        "categories:performance": ["error", { minScore: lhciBenchmark }],
         "image-alt": "warn",
         "link-name": "warn",
         "link-text": "warn"
