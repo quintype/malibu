@@ -19,14 +19,11 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
   useEffect(() => {
     if (isInitRow && progressiveImageConfig.is_enable) {
       // if we need progressive loading for the images in the page, isInitRow condition can be removed
-      const timer = () => {
-        setTimeout(() => {
-          setPerfObj(progressiveImageConfig.subsequent_load);
-          clearTimeout(timer);
-        }, progressiveImageConfig.transition_timeout || 2500);
-      };
+      const timer = setTimeout(() => {
+        setPerfObj(progressiveImageConfig.subsequent_load);
+      }, progressiveImageConfig.transition_timeout || 2500);
 
-      timer();
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -37,20 +34,28 @@ export const CardImage = ({ story, isInitRow, pageType }) => {
     return perfObj.generic_size;
   };
 
+  const getImage = () => {
+    if (!story["hero-image-s3-key"]) {
+      return null;
+    }
+
+    return (
+      <ResponsiveImage
+        slug={story["hero-image-s3-key"]}
+        metadata={story["hero-image-metadata"]}
+        aspectRatio={[16, 9]}
+        defaultWidth={480}
+        widths={[250, 480, 640]}
+        sizes={getImageSize()}
+        imgParams={{ auto: ["format", "compress"], blur: perfObj.blur }}
+        alt={story.headline || ""}
+      />
+    );
+  };
+
   return (
     <figure className="qt-image-16x9" styleName={`card-image ${customStyleName}`}>
-      {story["hero-image-s3-key"] && (
-        <ResponsiveImage
-          slug={story["hero-image-s3-key"]}
-          metadata={story["hero-image-metadata"]}
-          aspectRatio={[16, 9]}
-          defaultWidth={480}
-          widths={[250, 480, 640]}
-          sizes={getImageSize()}
-          imgParams={{ auto: ["format", "compress"], blur: perfObj.blur }}
-          alt={story.headline || ""}
-        />
-      )}
+      {getImage()}
     </figure>
   );
 };
