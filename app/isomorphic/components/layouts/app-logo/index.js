@@ -5,7 +5,7 @@ import "./app-logo.m.css";
 
 const AppLogo = () => (
   <Link href="/">
-    <img
+    {/* <img
       height="36"
       width="178"
       loading="lazy"
@@ -13,7 +13,7 @@ const AppLogo = () => (
       srcSet="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
       data-src="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
       alt="Logo"
-    />
+    /> */}
   </Link>
 );
 
