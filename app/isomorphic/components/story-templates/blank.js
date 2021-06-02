@@ -1,8 +1,7 @@
 import React from "react";
 import PT from "prop-types";
 
-import { StoryElement } from "@quintype/components";
-import { CardImage } from "../atoms/card-image";
+import { ResponsiveImage, StoryElement } from "@quintype/components";
 
 function StoryCard(props) {
   return (
@@ -22,8 +21,16 @@ StoryCard.propTypes = {
 function BlankStoryTemplate(props) {
   return (
     <div className="blank-story container">
-      {/* The pagetype can be fetched from redux as well */}
-      <CardImage pageType="story-page" story={props.story} isInitRow />
+      <figure className="blank-story-image qt-image-16x9">
+        <ResponsiveImage
+          slug={props.story["hero-image-s3-key"]}
+          metadata={props.story["hero-image-metadata"]}
+          aspectRatio={[16, 9]}
+          defaultWidth={480}
+          widths={[250, 480, 640]}
+          imgParams={{ auto: ["format", "compress"] }}
+        />
+      </figure>
       <h1>{props.story.headline}</h1>
       <span className="blank-story-author">{props.story["author-name"]}</span>
       {props.story.cards.map(card => (

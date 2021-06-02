@@ -1,24 +1,22 @@
 // Implement more logic here
 
 import React from "react";
-import { array, object, number } from "prop-types";
+import { array, object } from "prop-types";
 import { StoryGrid } from "../../story-grid";
 import "./four-col-grid.m.css";
 
-export function FourColGrid({ collection, stories, index }) {
-  const isInitRow = index === 0 || index === 1;
+export function FourColGrid({ collection, stories }) {
   return (
     <div>
       <h2 styleName="heading">{collection.name}</h2>
-      <StoryGrid stories={stories} isInitRow={isInitRow} />
+      <StoryGrid stories={stories} />
     </div>
   );
 }
 
 FourColGrid.propTypes = {
   collection: object,
-  stories: array,
-  index: number
+  stories: array
 };
 
 FourColGrid.storyLimit = 8;

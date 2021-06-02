@@ -1,16 +1,29 @@
 import React from "react";
-import { Link } from "@quintype/components";
-import { shape, string, object, arrayOf, number, bool } from "prop-types";
+import { Link, ResponsiveImage } from "@quintype/components";
+import { shape, string, object, integer, arrayOf } from "prop-types";
+import "./story-grid.m.css";
 
-import { CardImage } from "./atoms/card-image";
-
-const StoryGridStoryItem = props => (
-  <Link href={`/${props.story.slug}`} className="story-grid-item">
-    <CardImage story={props.story} isInitRow={props.isInitRow} />
-    <h3>{props.story.headline}</h3>
-    <span className="story-grid-item-author">{props.story["author-name"]}</span>
-  </Link>
-);
+function StoryGridStoryItem(props) {
+  return (
+    <Link href={`/${props.story.slug}`} className="story-grid-item">
+      <figure className="qt-image-16x9" styleName="story-grid-item-image">
+        <ResponsiveImage
+          slug={props.story["hero-image-s3-key"]}
+          metadata={props.story["hero-image-metadata"]}
+          aspectRatio={[16, 9]}
+          defaultWidth={480}
+          widths={[250, 480, 640]}
+          sizes="( max-width: 500px ) 98vw, ( max-width: 768px ) 48vw, 23vw"
+          imgParams={{ auto: ["format", "compress"] }}
+          eager={props.position < 2 ? "above-fold" : "below-fold"}
+          alt={props.story.headline || ""}
+        />
+      </figure>
+      <h3>{props.story.headline}</h3>
+      <span className="story-grid-item-author">{props.story["author-name"]}</span>
+    </Link>
+  );
+}
 
 const storyPropType = shape({
   id: string,
@@ -23,11 +36,10 @@ const storyPropType = shape({
 
 StoryGridStoryItem.propTypes = {
   story: storyPropType,
-  position: number,
-  isInitRow: bool
+  position: integer
 };
 
-export function StoryGrid({ stories = [], isInitRow }) {
+export function StoryGrid({ stories = [] }) {
   if (stories.length === 0) {
     return null;
   }
@@ -35,13 +47,12 @@ export function StoryGrid({ stories = [], isInitRow }) {
   return (
     <div className="story-grid">
       {stories.map((story, index) => (
-        <StoryGridStoryItem story={story} key={`${index}-${story.id}`} position={index} isInitRow={isInitRow} />
+        <StoryGridStoryItem story={story} key={`${index}-${story.id}`} position={index} />
       ))}
     </div>
   );
 }
 
 StoryGrid.propTypes = {
-  stories: arrayOf(storyPropType),
-  isInitRow: bool
+  stories: arrayOf(storyPropType)
 };

@@ -23,7 +23,7 @@ const SectionPage = props => {
   return (
     <div className="container">
       <h1>{pageTitle}</h1>
-      <StoryGrid stories={stories} isInitRow />
+      <StoryGrid stories={stories} />
       <LazyCollection collection={{ items: childCollections }} collectionTemplates={getCollectionTemplate} />
     </div>
   );
