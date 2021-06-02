@@ -30,9 +30,9 @@ publisher:
       blur: 0
       generic_size: "3vw"
       story_page_size: "10vw"
+      load_place_holder: true
     subsequent_load:
       blur: 0
       generic_size: "25vw"
       story_page_size: "50vw"
-
-
+      load_place_holder: false
