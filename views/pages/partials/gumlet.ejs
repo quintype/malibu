@@ -1,0 +1,953 @@
+<script>
+  !(function r(n, o, i) {
+    function a(e, t) {
+      if (!o[e]) {
+        if (!n[e]) {
+          var s = "function" == typeof require && require;
+          if (!t && s) return s(e, !0);
+          if (l) return l(e, !0);
+          throw (((s = new Error("Cannot find module '" + e + "'")).code = "MODULE_NOT_FOUND"), s);
+        }
+        (s = o[e] = { exports: {} }),
+          n[e][0].call(
+            s.exports,
+            function(t) {
+              return a(n[e][1][t] || t);
+            },
+            s,
+            s.exports,
+            r,
+            n,
+            o,
+            i
+          );
+      }
+      return o[e].exports;
+    }
+    for (var l = "function" == typeof require && require, t = 0; t < i.length; t++) a(i[t]);
+    return a;
+  })(
+    {
+      1: [
+        function(t, e, s) {
+          "use strict";
+          var o = Object.prototype.hasOwnProperty;
+          function i(t) {
+            try {
+              return decodeURIComponent(t.replace(/\+/g, " "));
+            } catch (t) {
+              return null;
+            }
+          }
+          function a(t) {
+            try {
+              return encodeURIComponent(t);
+            } catch (t) {
+              return null;
+            }
+          }
+          (s.stringify = function(t, e) {
+            var s,
+              r,
+              n = [];
+            for (r in ("string" != typeof (e = e || "") && (e = "?"), t))
+              o.call(t, r) &&
+                ((s = t[r]) || (null != s && !isNaN(s)) || (s = ""),
+                (r = a(r)),
+                (s = a(s)),
+                null !== r && null !== s && n.push(r + "=" + s));
+            return n.length ? e + n.join("&") : "";
+          }),
+            (s.parse = function(t) {
+              for (var e = /([^=?#&]+)=?([^&]*)/g, s = {}; (n = e.exec(t)); ) {
+                var r = i(n[1]),
+                  n = i(n[2]);
+                null === r || null === n || r in s || (s[r] = n);
+              }
+              return s;
+            });
+        },
+        {}
+      ],
+      2: [
+        function(t, e, s) {
+          "use strict";
+          e.exports = function(t, e) {
+            if (((e = e.split(":")[0]), !(t = +t))) return !1;
+            switch (e) {
+              case "http":
+              case "ws":
+                return 80 !== t;
+              case "https":
+              case "wss":
+                return 443 !== t;
+              case "ftp":
+                return 21 !== t;
+              case "gopher":
+                return 70 !== t;
+              case "file":
+                return !1;
+            }
+            return 0 !== t;
+          };
+        },
+        {}
+      ],
+      3: [
+        function(t, r, e) {
+          !function(i) {
+            !function() {
+              "use strict";
+              var g = t("requires-port"),
+                h = t("querystringify"),
+                n = /^[A-Za-z][A-Za-z0-9+-.]*:[\\/]+/,
+                e = /^([a-z][a-z0-9.+-]*:)?([\\/]{1,})?([\S\s]*)/i,
+                s = new RegExp(
+                  "^[\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028\\u2029\\uFEFF]+"
+                );
+              function p(t) {
+                return (t || "").toString().replace(s, "");
+              }
+              var f = [
+                  ["#", "hash"],
+                  ["?", "query"],
+                  function(t) {
+                    return t.replace("\\", "/");
+                  },
+                  ["/", "pathname"],
+                  ["@", "auth", 1],
+                  [NaN, "host", void 0, 1, 1],
+                  [/:(\d+)$/, "port", void 0, 1],
+                  [NaN, "hostname", void 0, 1, 1]
+                ],
+                o = { hash: 1, query: 1 };
+              function m(t) {
+                var e,
+                  s = "undefined" != typeof window ? window : void 0 !== i ? i : "undefined" != typeof self ? self : {},
+                  s = s.location || {},
+                  r = {},
+                  s = typeof (t = t || s);
+                if ("blob:" === t.protocol) r = new y(unescape(t.pathname), {});
+                else if ("string" == s) for (e in ((r = new y(t, {})), o)) delete r[e];
+                else if ("object" == s) {
+                  for (e in t) e in o || (r[e] = t[e]);
+                  void 0 === r.slashes && (r.slashes = n.test(t.href));
+                }
+                return r;
+              }
+              function _(t) {
+                t = p(t);
+                t = e.exec(t);
+                return {
+                  protocol: t[1] ? t[1].toLowerCase() : "",
+                  slashes: !!(t[2] && 2 <= t[2].length),
+                  rest: t[2] && 1 === t[2].length ? "/" + t[3] : t[3]
+                };
+              }
+              function y(t, e, s) {
+                if (((t = p(t)), !(this instanceof y))) return new y(t, e, s);
+                var r,
+                  n,
+                  o,
+                  i,
+                  a,
+                  l = f.slice(),
+                  u = typeof e,
+                  c = this,
+                  d = 0;
+                for (
+                  "object" != u && "string" != u && ((s = e), (e = null)),
+                    s && "function" != typeof s && (s = h.parse),
+                    e = m(e),
+                    r = !(u = _(t || "")).protocol && !u.slashes,
+                    c.slashes = u.slashes || (r && e.slashes),
+                    c.protocol = u.protocol || e.protocol || "",
+                    t = u.rest,
+                    u.slashes || (l[3] = [/(.*)/, "pathname"]);
+                  d < l.length;
+                  d++
+                )
+                  "function" != typeof (o = l[d])
+                    ? ((n = o[0]),
+                      (a = o[1]),
+                      n != n
+                        ? (c[a] = t)
+                        : "string" == typeof n
+                        ? ~(i = t.indexOf(n)) &&
+                          (t =
+                            "number" == typeof o[2]
+                              ? ((c[a] = t.slice(0, i)), t.slice(i + o[2]))
+                              : ((c[a] = t.slice(i)), t.slice(0, i)))
+                        : (i = n.exec(t)) && ((c[a] = i[1]), (t = t.slice(0, i.index))),
+                      (c[a] = c[a] || (r && o[3] && e[a]) || ""),
+                      o[4] && (c[a] = c[a].toLowerCase()))
+                    : (t = o(t));
+                s && (c.query = s(c.query)),
+                  r &&
+                    e.slashes &&
+                    "/" !== c.pathname.charAt(0) &&
+                    ("" !== c.pathname || "" !== e.pathname) &&
+                    (c.pathname = (function(t, e) {
+                      if ("" === t) return e;
+                      for (
+                        var s = (e || "/")
+                            .split("/")
+                            .slice(0, -1)
+                            .concat(t.split("/")),
+                          r = s.length,
+                          t = s[r - 1],
+                          n = !1,
+                          o = 0;
+                        r--;
+
+                      )
+                        "." === s[r]
+                          ? s.splice(r, 1)
+                          : ".." === s[r]
+                          ? (s.splice(r, 1), o++)
+                          : o && (0 === r && (n = !0), s.splice(r, 1), o--);
+                      return n && s.unshift(""), ("." !== t && ".." !== t) || s.push(""), s.join("/");
+                    })(c.pathname, e.pathname)),
+                  "/" !== c.pathname.charAt(0) && c.hostname && (c.pathname = "/" + c.pathname),
+                  g(c.port, c.protocol) || ((c.host = c.hostname), (c.port = "")),
+                  (c.username = c.password = ""),
+                  c.auth && ((o = c.auth.split(":")), (c.username = o[0] || ""), (c.password = o[1] || "")),
+                  (c.origin = c.protocol && c.host && "file:" !== c.protocol ? c.protocol + "//" + c.host : "null"),
+                  (c.href = c.toString());
+              }
+              (y.prototype = {
+                set: function(t, e, s) {
+                  var r,
+                    n = this;
+                  switch (t) {
+                    case "query":
+                      "string" == typeof e && e.length && (e = (s || h.parse)(e)), (n[t] = e);
+                      break;
+                    case "port":
+                      (n[t] = e),
+                        g(e, n.protocol) ? e && (n.host = n.hostname + ":" + e) : ((n.host = n.hostname), (n[t] = ""));
+                      break;
+                    case "hostname":
+                      (n[t] = e), n.port && (e += ":" + n.port), (n.host = e);
+                      break;
+                    case "host":
+                      (n[t] = e),
+                        /:\d+$/.test(e)
+                          ? ((e = e.split(":")), (n.port = e.pop()), (n.hostname = e.join(":")))
+                          : ((n.hostname = e), (n.port = ""));
+                      break;
+                    case "protocol":
+                      (n.protocol = e.toLowerCase()), (n.slashes = !s);
+                      break;
+                    case "pathname":
+                    case "hash":
+                      e ? ((r = "pathname" === t ? "/" : "#"), (n[t] = e.charAt(0) !== r ? r + e : e)) : (n[t] = e);
+                      break;
+                    default:
+                      n[t] = e;
+                  }
+                  for (var o = 0; o < f.length; o++) {
+                    var i = f[o];
+                    i[4] && (n[i[1]] = n[i[1]].toLowerCase());
+                  }
+                  return (
+                    (n.origin = n.protocol && n.host && "file:" !== n.protocol ? n.protocol + "//" + n.host : "null"),
+                    (n.href = n.toString()),
+                    n
+                  );
+                },
+                toString: function(t) {
+                  (t && "function" == typeof t) || (t = h.stringify);
+                  var e = this,
+                    s = e.protocol;
+                  return (
+                    s && ":" !== s.charAt(s.length - 1) && (s += ":"),
+                    (s += e.slashes ? "//" : ""),
+                    e.username && ((s += e.username), e.password && (s += ":" + e.password), (s += "@")),
+                    (s += e.host + e.pathname),
+                    (t = "object" == typeof e.query ? t(e.query) : e.query) && (s += "?" !== t.charAt(0) ? "?" + t : t),
+                    e.hash && (s += e.hash),
+                    s
+                  );
+                }
+              }),
+                (y.extractProtocol = _),
+                (y.location = m),
+                (y.trimLeft = p),
+                (y.qs = h),
+                (r.exports = y);
+            }.call(this);
+          }.call(
+            this,
+            "undefined" != typeof global
+              ? global
+              : "undefined" != typeof self
+              ? self
+              : "undefined" != typeof window
+              ? window
+              : {}
+          );
+        },
+        { querystringify: 1, "requires-port": 2 }
+      ],
+      4: [
+        function(t, e, s) {
+          "use strict";
+          e.exports = function(t) {
+            return {
+              auto_webp: t.auto_webp || !1,
+              srcset: t.srcset || !1,
+              auto_quality: void 0 === t.auto_quality || t.auto_quality,
+              use_native_lazy_load: void 0 === t.use_native_lazy_load || t.use_native_lazy_load,
+              lazy_load: t.lazy_load || !1,
+              proxy: t.proxy || !1,
+              width_from_img: t.width_from_img || !1,
+              class_loaded: t.class_loaded || "gm-loaded",
+              class_added: t.class_added || "gm-added",
+              class_lazy: t.class_lazy || "gm-lazy",
+              class_observing: t.class_observing || "gm-observing",
+              class_observing_cb: t.class_observing_cb || "gm-observing-cb",
+              elements_selector_img: t.elements_selector || t.elements_selector_img || "img",
+              elements_selector_bg: t.elements_selector_bg || "[data-bg]",
+              elements_selector_picture: t.elements_selector_picture || "picture > source",
+              data_src: t.data_src || "src",
+              data_bg: t.data_bg || "bg",
+              default_params: t.default_params || null,
+              hosts: t.hosts || null,
+              threshold: t.threshold || 500,
+              serviceworker: t.serviceworker || !1
+            };
+          };
+        },
+        {}
+      ],
+      5: [
+        function(t, e, s) {
+          "use strict";
+          var r = "undefined" != typeof window;
+          e.exports = {
+            runningOnBrowser: r,
+            webp_support: !1,
+            isBot:
+              (r && !("onscroll" in window)) ||
+              ("undefined" != typeof navigator && /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent)),
+            supportsIntersectionObserver:
+              r &&
+              "IntersectionObserver" in window &&
+              IntersectionObserverEntry.prototype.hasOwnProperty("isIntersecting"),
+            supportsMutationObserver: r && "MutationObserver" in window
+          };
+        },
+        {}
+      ],
+      6: [
+        function(t, e, s) {
+          "use strict";
+          var i = t("./url_parser"),
+            a = t("./utils"),
+            l = t("./environment"),
+            r = t("./config"),
+            n = t("./lazyload"),
+            u = {
+              currentHosts: [],
+              gumletHosts: [],
+              gumletioHosts: [],
+              settings: null,
+              initDone: !1,
+              init: function(t) {
+                if (!u.initDone) {
+                  if (((u.initDone = !0), !t.hosts))
+                    throw new Error('You must provide "hosts" config while initializing Gumlet.');
+                  (u.settings = r(t)),
+                    a.hasWebP(function(t) {
+                      l.webp_support = t;
+                    }),
+                    u.settings.lazy_load &&
+                      l.supportsIntersectionObserver &&
+                      ((u._lazyload_observer_pic = n(u.load_pic, u.settings.threshold)),
+                      (u._lazyload_observer_img = n(u.load_img, u.settings.threshold)),
+                      (u._lazyload_observer_bg = n(u.load_bg, u.settings.threshold))),
+                    l.supportsMutationObserver &&
+                      (u._mutation_observer = new window.MutationObserver(u.mutatedCallback)),
+                    u.settings.hosts.forEach(function(t) {
+                      var e;
+                      t.current &&
+                        (t.current.startsWith("http") && ((e = new i(t.current)), (t.current = e.hostname)),
+                        u.currentHosts.push(t.current)),
+                        t.gumlet.startsWith("http") && ((e = new i(t.gumlet)), (t.gumlet = e.hostname)),
+                        t.gumlet.endsWith("gumlet.com")
+                          ? u.gumletioHosts.push(t.gumlet.replace("gumlet.com", "gumlet.io"))
+                          : u.gumletioHosts.push(null),
+                        u.gumletHosts.push(t.gumlet);
+                    }),
+                    u.settings.serviceworker
+                      ? u.init_service_worker()
+                      : a.domReady(function() {
+                          u.init_dom_observer(), u.load_all();
+                        });
+                }
+              },
+              init_service_worker: function() {
+                "serviceWorker" in navigator &&
+                  navigator.serviceWorker.register("/gumlet-sw.js").then(
+                    function(t) {
+                      navigator.serviceWorker.ready.then(function(t) {
+                        t.active.postMessage({ type: "GUMLET_CONFIG", gumletConfig: u.settings });
+                      });
+                    },
+                    function(t) {
+                      console.log("Gumlet ServiceWorker registration failed: ", t);
+                    }
+                  );
+              },
+              init_dom_observer: function() {
+                !u._entireDomObserver &&
+                  l.supportsMutationObserver &&
+                  (u._entireDomObserver = new MutationObserver(u.dom_mutation_cb).observe(document, {
+                    childList: !0,
+                    subtree: !0
+                  }));
+              },
+              dom_mutation_cb: function(t) {
+                t.forEach(function(t) {
+                  "HEAD" != t.target.tagName &&
+                    setTimeout(function() {
+                      t.addedNodes.forEach(function(t) {
+                        ("SOURCE" != t.tagName && "IMG" != t.tagName) || "function" != typeof t.matches
+                          ? "function" == typeof t.querySelectorAll &&
+                            (t.querySelectorAll(u.settings.elements_selector_img).forEach(u.load_if_needed),
+                            t.querySelectorAll(u.settings.elements_selector_picture).forEach(u.load_if_needed),
+                            t.querySelectorAll(u.settings.elements_selector_bg).forEach(u.load_if_needed))
+                          : u.load_if_needed(t);
+                      });
+                    }, 300);
+                });
+              },
+              load_if_needed: function(t) {
+                t.classList.contains(u.settings.class_loaded) || (t.classList.add(u.settings.class_added), u.load(t));
+              },
+              load_all: function() {
+                var t = document.querySelectorAll(
+                  u.settings.elements_selector_img +
+                    ", " +
+                    u.settings.elements_selector_picture +
+                    ", " +
+                    u.settings.elements_selector_bg
+                );
+                t.forEach(function(t) {
+                  u.load(t);
+                });
+              },
+              initMutationObserver: function(t) {
+                !t.classList.contains(u.settings.class_observing) &&
+                  u._mutation_observer &&
+                  (t.classList.add(u.settings.class_observing),
+                  t.classList.add(u.settings.class_observing_cb),
+                  u._mutation_observer.observe(t, {
+                    attributes: !0,
+                    attributeFilter: ["src", "data-" + u.settings.data_src, "data-" + u.settings.data_bg]
+                  }));
+              },
+              mutatedCallback: function(t, e) {
+                for (var s = 0, r = t.length; s < r; s++)
+                  t[s].target.classList.contains(u.settings.class_observing_cb)
+                    ? ("src" == t[s].attributeName && (t[s].target.dataset[u.settings.data_src] = t[s].target.src),
+                      t[s].attributeName == "data-" + u.settings.data_src &&
+                        (t[s].target.classList.remove(u.settings.class_observing_cb), u.load_img(t[s].target, !0)),
+                      t[s].attributeName == "data-" + u.settings.data_bg &&
+                        (t[s].target.classList.remove(u.settings.class_observing_cb), u.load_bg(t[s].target)))
+                    : t[s].target.classList.add(u.settings.class_observing_cb);
+              },
+              get_hostname: function(t) {
+                if (!u.currentHosts.length) return u.gumletioHosts[0] || u.gumletHosts[0];
+                if (-1 < u.currentHosts.indexOf(t.hostname)) {
+                  var e = u.currentHosts.indexOf(t.hostname);
+                  return u.gumletioHosts[e] || u.gumletHosts[e];
+                }
+                if (-1 < u.gumletHosts.indexOf(t.hostname)) {
+                  e = u.gumletHosts.indexOf(t.hostname);
+                  return u.gumletioHosts[e] || t.hostname;
+                }
+              },
+              get_element_params: function(t, e) {
+                if (-1 < e.indexOf(";base64,")) return null;
+                var s = new i(e),
+                  r = (s =
+                    -1 < s.hash.indexOf("#gumleturl=") && 1 < (s = e.split("#gumleturl=")).length && s[1]
+                      ? new i(s[1])
+                      : s).pathname
+                    .split(".")
+                    .pop()
+                    .toLowerCase(),
+                  n = u.get_hostname(s);
+                if (!n) return null;
+                if (
+                  (u.settings.proxy || ((s.protocol = "https"), (s.hostname = n), (s.port = "443")),
+                  (s.query = a.filterQuery(s.query)),
+                  u.settings.auto_webp && l.webp_support && (s.query.format = "webp"),
+                  u.settings.auto_quality &&
+                    navigator.connection &&
+                    (navigator.connection.saveData
+                      ? ((s.query.dpr = "1.0"), (s.query.q = 50))
+                      : "3g" == navigator.connection.effectiveType
+                      ? ((s.query.dpr = "1.0"), (s.query.q = 70))
+                      : "2g" == navigator.connection.effectiveType
+                      ? ((s.query.dpr = "1.0"), (s.query.q = 60))
+                      : "slow-2g" == navigator.connection.effectiveType && ((s.query.dpr = "1.0"), (s.query.q = 50))),
+                  u.settings.default_params)
+                )
+                  for (var o in u.settings.default_params) s.query[o] = u.settings.default_params[o];
+                e = null;
+                return {
+                  url: s,
+                  extension: r,
+                  hostname: n,
+                  ratio: (e = s.query.w && s.query.h ? s.query.h / s.query.w : e)
+                };
+              },
+              load: function(t) {
+                var e = u.settings.lazy_load && !l.isBot && l.supportsIntersectionObserver;
+                t.matches(u.settings.elements_selector_picture)
+                  ? e && "false" != t.dataset.gmlazy
+                    ? (u._lazyload_observer_pic.unobserve(t),
+                      t.classList.add(u.settings.class_lazy),
+                      u._lazyload_observer_pic.observe(t))
+                    : u.load_pic(t)
+                  : t.matches(u.settings.elements_selector_img) &&
+                    (!e ||
+                    "false" == t.dataset.gmlazy ||
+                    ("loading" in HTMLImageElement.prototype && 0 != u.settings.use_native_lazy_load)
+                      ? (e &&
+                          "false" != t.dataset.gmlazy &&
+                          "loading" in HTMLImageElement.prototype &&
+                          t.setAttribute("loading", "lazy"),
+                        u.load_img(t))
+                      : (u._lazyload_observer_img.unobserve(t),
+                        t.classList.add(u.settings.class_lazy),
+                        u._lazyload_observer_img.observe(t))),
+                  t.matches(u.settings.elements_selector_bg) &&
+                    (e && "false" != t.dataset.gmlazy
+                      ? (u._lazyload_observer_bg.unobserve(t),
+                        t.classList.add(u.settings.class_lazy),
+                        u._lazyload_observer_bg.observe(t))
+                      : u.load_bg(t));
+              },
+              load_bg: function(t) {
+                var e, s;
+                "false" !== t.dataset.gumlet &&
+                  t.dataset[u.settings.data_bg] &&
+                  ((e = u.get_element_params(t, t.dataset[u.settings.data_bg]))
+                    ? ((s = a.getSizes(t, u.settings)),
+                      (e.url.query.w = e.url.query.w || s.width),
+                      (e.url.query.dpr = e.url.query.dpr || window.devicePixelRatio.toFixed(1)),
+                      0 <= (s = e.url.toString()).indexOf(" ") && (s = encodeURI(s)),
+                      u.settings.proxy
+                        ? (t.style.backgroundImage = 'url("https://' + e.hostname + "/fetch/" + s + '")')
+                        : (t.style.backgroundImage = 'url("' + s + '")'),
+                      t.removeAttribute("data-bsrjs"),
+                      t.classList.add(u.settings.class_loaded),
+                      u.initMutationObserver(t))
+                    : (t.style.backgroundImage = "url('" + t.dataset[u.settings.data_bg] + "')"));
+              },
+              load_pic: function(t) {
+                var e, s;
+                "false" !== t.dataset.gumlet &&
+                  (t.dataset[u.settings.data_src] || t.dataset.srcset || t.srcset) &&
+                  ((e = u.get_element_params(
+                    t,
+                    (t.dataset[u.settings.data_src] || t.dataset.srcset || t.srcset).split(",")[0].split(/\s+/)[0]
+                  ))
+                    ? ((s = a.getSizes(t, u.settings)),
+                      (t.sizes && "100vw" != t.sizes) || (t.sizes = s.sizes),
+                      t.media
+                        ? ((e.url.query.w = e.url.query.w || s.width),
+                          (t.srcset = u.settings.proxy
+                            ? "https://" + e.hostname + "/fetch/" + e.url.toString()
+                            : e.url.toString()))
+                        : (t.srcset = a.getSrcsets(e.url, e.hostname, e.ratio, u.settings.proxy)),
+                      t.classList.add(u.settings.class_loaded))
+                    : (t.dataset[u.settings.data_src] || t.dataset.srcset) &&
+                      (t.srcset = t.dataset[u.settings.data_src] || t.dataset.srcset));
+              },
+              load_img: function(t) {
+                if ((0, "false" !== t.dataset.gumlet))
+                  if (t.dataset[u.settings.data_src] || t.src || t.src != window.location.href) {
+                    var e = u.get_element_params(t, t.dataset[u.settings.data_src] || t.src);
+                    if (!e)
+                      return (
+                        t.dataset[u.settings.data_src] && (t.src = t.dataset[u.settings.data_src]),
+                        void u.initMutationObserver(t)
+                      );
+                    var s = a.getSizes(t, u.settings);
+                    u.settings.srcset
+                      ? ((t.sizes && "100vw" != t.sizes) || (t.sizes = s.sizes),
+                        (t.srcset = a.getSrcsets(e.url, e.hostname, e.ratio, u.settings.proxy)),
+                        u.settings.proxy
+                          ? (t.src = "https://" + e.hostname + "/fetch/" + e.url.toString())
+                          : (t.src = e.url.toString()))
+                      : ((e.url.query.w = e.url.query.w || s.width),
+                        (e.url.query.dpr = e.url.query.dpr || window.devicePixelRatio.toFixed(1)),
+                        0 <= (s = e.url.toString()).indexOf(" ") && (s = encodeURI(s)),
+                        u.settings.proxy ? (t.src = "https://" + e.hostname + "/fetch/" + s) : (t.src = s)),
+                      t.classList.add(u.settings.class_loaded),
+                      u.initMutationObserver(t);
+                  } else u.initMutationObserver(t);
+              }
+            };
+          e.exports = u;
+        },
+        { "./config": 4, "./environment": 5, "./lazyload": 7, "./url_parser": 11, "./utils": 12 }
+      ],
+      7: [
+        function(t, e, s) {
+          "use strict";
+          e.exports = function(n, t) {
+            return new IntersectionObserver(
+              function(t, e) {
+                for (var s = 0, r = t.length; s < r; s++)
+                  (t[s].isIntersecting || 0 < t[s].intersectionRatio) && (e.unobserve(t[s].target), n(t[s].target));
+              },
+              { rootMargin: t + "px" }
+            );
+          };
+        },
+        {}
+      ],
+      8: [
+        function(t, e, s) {
+          "use strict";
+          t("./polyfills");
+          var r = t("./utils");
+          function n() {
+            gumlet.init({
+              data_src: "gmsrc",
+              auto_webp: !!parseInt(gumlet_wp_config.auto_webp),
+              lazy_load: !!parseInt(gumlet_wp_config.lazy_load),
+              width_from_img: !!parseInt(gumlet_wp_config.width_from_img),
+              default_params: {
+                compress: !!parseInt(gumlet_wp_config.auto_compress),
+                quality: parseInt(gumlet_wp_config.quality)
+              },
+              hosts: [{ current: gumlet_wp_config.current_host, gumlet: gumlet_wp_config.gumlet_host }]
+            });
+          }
+          (window.gumlet = t("./gumlet")),
+            "undefined" != typeof gumlet_wp_config
+              ? n()
+              : window.GUMLET_CONFIG
+              ? gumlet.init(window.GUMLET_CONFIG)
+              : r.domReady(function() {
+                  "undefined" != typeof gumlet_wp_config && n();
+                });
+        },
+        { "./gumlet": 6, "./polyfills": 9, "./utils": 12 }
+      ],
+      9: [
+        function(t, e, s) {
+          "use strict";
+          window.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = Array.prototype.forEach),
+            String.prototype.startsWith ||
+              Object.defineProperty(String.prototype, "startsWith", {
+                value: function(t, e) {
+                  e = 0 < e ? 0 | e : 0;
+                  return this.substring(e, e + t.length) === t;
+                }
+              }),
+            "function" != typeof String.prototype.endsWith &&
+              (String.prototype.endsWith = function(t) {
+                return -1 !== this.indexOf(t, this.length - t.length);
+              }),
+            Element.prototype.matches ||
+              (Element.prototype.matches =
+                Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector);
+        },
+        {}
+      ],
+      10: [
+        function(t, e, s) {
+          "use strict";
+          var r,
+            n,
+            o,
+            i,
+            a = [
+              30,
+              50,
+              70,
+              100,
+              128,
+              160,
+              200,
+              240,
+              300,
+              320,
+              360,
+              376,
+              400,
+              480,
+              576,
+              600,
+              610,
+              640,
+              700,
+              720,
+              750,
+              768,
+              800,
+              900,
+              940,
+              1e3,
+              1024,
+              1080,
+              1100,
+              1140,
+              1152,
+              1200,
+              1242,
+              1300,
+              1400,
+              1440,
+              1500,
+              1536,
+              1600,
+              1700,
+              1800,
+              1880,
+              1920,
+              2e3,
+              2048,
+              2100,
+              2208,
+              2280,
+              2400,
+              2415,
+              2500,
+              2560,
+              2600,
+              2732,
+              2800,
+              2880,
+              3e3,
+              3200,
+              3400,
+              3600,
+              3800,
+              4e3,
+              4200,
+              4400,
+              4600,
+              4800,
+              5e3,
+              5120,
+              5600,
+              5800,
+              6144,
+              6400,
+              6656,
+              7168,
+              7680,
+              8192
+            ];
+          e.exports =
+            ((r = "undefined" != typeof window),
+            (n = r && window.devicePixelRatio ? window.devicePixelRatio : 1),
+            (o = r ? Math.max(window.screen.availWidth, window.screen.availHeight) : 8192),
+            (i = r ? Math.floor(o * n) : 8192),
+            (n = a.filter(function(t) {
+              return t <= i;
+            })).push(o),
+            n);
+        },
+        {}
+      ],
+      11: [
+        function(t, e, s) {
+          "use strict";
+          function n(t, e) {
+            for (var s = 0; s < e.length; s++) {
+              var r = e[s];
+              (r.enumerable = r.enumerable || !1),
+                (r.configurable = !0),
+                "value" in r && (r.writable = !0),
+                Object.defineProperty(t, r.key, r);
+            }
+          }
+          var o = t("url-parse");
+          e.exports = (function() {
+            function e(t) {
+              var s;
+              !(function(t, e) {
+                if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+              })(this, e),
+                window.URL && window.URLSearchParams && "function" == typeof window.URL
+                  ? (0 == t.indexOf("http") || 0 == t.indexOf("ftp")
+                      ? (this.url = new window.URL(t))
+                      : (this.url = new window.URL(t, window.location.href)),
+                    (this.query_obj = {}),
+                    (s = this).url.searchParams.forEach(function(t, e) {
+                      s.query_obj[e] = t;
+                    }),
+                    (this.native = !0))
+                  : ((this.url = new o(t, !0)), (this.query_obj = this.url.query), (this.native = !1));
+            }
+            var t, s, r;
+            return (
+              (t = e),
+              (s = [
+                {
+                  key: "protocol",
+                  set: function(t) {
+                    this.native ? (this.url.protocol = t) : this.url.set("protocol", t);
+                  }
+                },
+                {
+                  key: "hostname",
+                  get: function() {
+                    return this.url.hostname;
+                  },
+                  set: function(t) {
+                    this.native ? (this.url.hostname = t) : this.url.set("hostname", t);
+                  }
+                },
+                {
+                  key: "port",
+                  set: function(t) {
+                    this.native ? (this.url.port = t) : this.url.set("port", t);
+                  }
+                },
+                {
+                  key: "query",
+                  get: function() {
+                    return this.query_obj;
+                  },
+                  set: function(t) {
+                    this.query_obj = t;
+                  }
+                },
+                {
+                  key: "hash",
+                  get: function() {
+                    return this.url.hash;
+                  }
+                },
+                {
+                  key: "pathname",
+                  get: function() {
+                    return this.url.pathname;
+                  }
+                },
+                {
+                  key: "toString",
+                  value: function() {
+                    if (this.native) {
+                      var t,
+                        e = new window.URLSearchParams();
+                      for (t in this.query_obj) e.set(t, this.query_obj[t]);
+                      return (this.url.search = e.toString()), this.url.toString();
+                    }
+                    return (this.url.query = this.query_obj), this.url.toString();
+                  }
+                }
+              ]) && n(t.prototype, s),
+              r && n(t, r),
+              e
+            );
+          })();
+        },
+        { "url-parse": 3 }
+      ],
+      12: [
+        function(t, e, s) {
+          "use strict";
+          var l = t("./targetWidths");
+          e.exports = {
+            hasWebP: function(e) {
+              try {
+                window.localStorage;
+              } catch (t) {
+                return e(!1);
+              }
+              if (window.localStorage) {
+                if (null !== window.localStorage.getItem("gumlet-webp"))
+                  return e("yes" == window.localStorage.getItem("gumlet-webp"));
+                var t = document.createElement("img");
+                (t.onload = function() {
+                  if (2 === this.width && 1 === this.height) {
+                    try {
+                      window.localStorage.setItem("gumlet-webp", "yes");
+                    } catch (t) {
+                      console.warn(t);
+                    }
+                    e(!0);
+                  } else {
+                    try {
+                      window.localStorage.setItem("gumlet-webp", "no");
+                    } catch (t) {
+                      console.warn(t);
+                    }
+                    e(!1);
+                  }
+                }),
+                  (t.src =
+                    "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoCAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==");
+              } else e(!1);
+            },
+            filterQuery: function(t) {
+              return (
+                (t.w = t.w || t.width || null),
+                (t.h = t.h || t.height || null),
+                null == t.w && delete t.w,
+                null == t.h && delete t.h,
+                delete t.width,
+                delete t.height,
+                delete t.v,
+                t
+              );
+            },
+            getSizes: function(t, e) {
+              var s, r;
+              if (t.getAttribute("width") && e.width_from_img && t.getAttribute("width").indexOf("%") < 0)
+                s = parseInt(t.getAttribute("width"));
+              else {
+                var n = t.parentElement;
+                for (
+                  t.nextSibling && "FIGCAPTION" == t.nextSibling.tagName && (n = n.parentElement);
+                  n && n.clientWidth <= 30;
+
+                )
+                  n = n.parentElement;
+                (!n || (s = n.clientWidth < t.width ? t.width : n.clientWidth) > window.innerWidth) &&
+                  (s = window.innerWidth);
+              }
+              for (var o = 0; o < l.length; o++)
+                if (0 <= l[o] - s) {
+                  r = l[o];
+                  break;
+                }
+              return (r = r || l[l.length - 1]), { sizes: (100 * s) / window.innerWidth + "vw", width: r };
+            },
+            getSrcsets: function(t, e, s, r) {
+              for (var n = [], o = 0, i = l.length; o < i; o++) {
+                (t.query.w = l[o]), s && (t.query.h = Math.round(t.query.w * s));
+                var a = t.toString();
+                0 <= a.indexOf(" ") && (a = encodeURI(a)),
+                  r ? n.push("https://" + e + "/fetch/" + a + " " + l[o] + "w") : n.push(a + " " + l[o] + "w");
+              }
+              return n.join(",");
+            },
+            domReady: function(t) {
+              "complete" === document.readyState ||
+              "loaded" === document.readyState ||
+              "interactive" === document.readyState
+                ? t()
+                : document.addEventListener("DOMContentLoaded", t, !1);
+            }
+          };
+        },
+        { "./targetWidths": 10 }
+      ]
+    },
+    {},
+    [8]
+  );
+</script>
