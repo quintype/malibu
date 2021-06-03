@@ -56,7 +56,7 @@ useEffect(() => {
 }, []);
 ```
 
-3. Pass the size and blur to the `ResponsiveImage` component. Your final code should look something like this.\*\*
+3. Pass the size and blur to the `ResponsiveImage` component. Your final code should look something like this.
 
 ```javascript
 ...
