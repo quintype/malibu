@@ -8,8 +8,6 @@ parent: Malibu Tutorial
 
 _This tutorial was contributed by [Harshith](https://www.linkedin.com/in/harshith-raj-092ba4176) and [Nandakishore Prakash Rao](https://twitter.com/nkp_adm)_
 
-# Progressive Image Loading
-
 Images form an important asset for an application. Nearly 50% of a typical page’s weight is made up of images, optimizing images is extremely important for running a performant site. To solve this issue, we have implemented progressive image loading.
 
 ## What is progressive image loading?
