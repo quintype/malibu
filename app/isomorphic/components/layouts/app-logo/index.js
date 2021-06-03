@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "@quintype/components";
 
+import assetify from "@quintype/framework/assetify";
+
+import logo from "../../../../assets/images/malibu_logo_new.png";
+
 import "./app-logo.m.css";
 
 const AppLogo = () => (
@@ -10,8 +14,8 @@ const AppLogo = () => (
       width="178"
       loading="lazy"
       styleName="publisher-logo"
-      srcSet="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
-      data-src="https://qtstage-01.gumlet.io/malibu/2021-03/193b1a09-89cf-4b07-8d4f-fcf00d534577/malibu_logo_new.svg"
+      srcSet={assetify(logo)}
+      data-src={assetify(logo)}
       alt="Logo"
     />
   </Link>
