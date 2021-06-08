@@ -12,7 +12,7 @@ Malibu ships with PWA support. By default, Malibu will render a shell when a ret
 
 ### Build rich, immersive content pages with Project Lancelot
 
-Malibu can be integrated with [Project Lancelot](https://developers.quintype.com/lancelot), a curated collection of components to help you quickly build stunning content pages.
+Malibu can be integrated with [Arrow](https://developers.quintype.com/quintype-node-arrow/), a curated collection of components to help you quickly build stunning content pages.
 
 ### Sub second FCP and FMP
 
