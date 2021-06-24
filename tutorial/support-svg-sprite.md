@@ -6,39 +6,28 @@ parent: Malibu Tutorial
 
 # {{page.title}}
 
-_This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105)
+This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105)
 
-Icons are a way to visually communicate concepts and meaning without the use of words. In this chapter, we are going to discuss how to use `SVGs in JS` without causing an impact on performance.
-
-## What makes SVG great for the web?
-SVG was born for the web. We will take a look at some advantages of using SVG over other image formats.
-
-**Scalability and resolution** - This makes it possible to zoom in and out of SVG images without losing any quality and gives SVG the ability to scale infinitely
-
-**Minimal file size** - The file sizes of SVG images are usually small compared to other file formats and they are easily compressible
-
-**High performance and speed** - Because of the small size nature of SVG images, it becomes very easy and fast for browsers to render them. 
-
-**DOM-like and style-able** - SVG images are like code, so this means it can be navigated like a DOM element and also styled, although some properties have different names eg(you might want to use fill instead of color). It can also be styled with CSS.
-
-**Editable** - Since SVGs are DOM-like, SVG’s can be created and edited
+In this chapter, we are going to discuss how to use `SVGs in JS` without causing an impact on performance.
 
 ## What is SVG's in JS?
 
 Like HTML, SVGs are represented using the [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") (DOM) and so can be manipulated with Javascript relatively easily. 
-##### Problem.
+### Problem
 There are SVG's embedded in JS for icons / logos / etc. These cause an impact on performance because:
 - The size of the JS increases with additions and entail cost over the network
 - Render blocking
 - Downloaded JS is parsed affecting FCP & FMP.
 
-##### Solution
+### Solution
 SVG's should be made external via webpack / plugins to load them lazy via a network call or DOM reference. Thus we are using `SVG sprite loader` (Webpack loader for creating SVG sprites.) 
 
 ## Why SVG sprite loader?
 SVG Sprites are rendered and injected in pages automatically, you just refer to images via `<svg><use xlink:href="#id"></use></svg>`. Also it can render sprites on server or in browser manually.  
 
 ## Set up [SVG sprite loader](https://www.npmjs.com/package/svg-sprite-loader "SVG sprite loader") for your app
+
+**Note:** Currently this feature is available in Malibu. Please follow the below steps if your app is cloned from Malibu before 25th June 2021. 
 
 There are few steps you need to follow to set up SVG sprite loader:
 
