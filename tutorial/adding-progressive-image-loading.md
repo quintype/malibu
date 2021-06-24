@@ -37,76 +37,76 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
 1. Create a state, which contains a initial size and blur.
    Ex:
 
-    ```javascript
-    const [perfObj, setPerfObj] = useState({ size: "5vw", blur: 10 });
-    ```
+   ```javascript
+   const [perfObj, setPerfObj] = useState({size: '5vw', blur: 10});
+   ```
 
-    **Note**: Keep the size as minimal as possible. Lower the size, lower is the LCP. Blur can be added or removed based on publisher requirements.
+   **Note**: Keep the size as minimal as possible. Lower the size, lower is the LCP. Blur can be added or removed based on publisher requirements.
 
 2. Update the value of size and blur in the state according to the requirements after an interval, to get a higher quality image.
    Ex:
 
-    ```javascript
-    const [perfObj, setPerfObj] = useState({ size: "5vw", blur: 10 });
+   ```javascript
+   const [perfObj, setPerfObj] = useState({size: '5vw', blur: 10});
 
-    useEffect(() => {
-      setTimeout(() => {
-        setPerfObj({ size: "25vw", blur: 0 });
-      }, 2500);
-    }, []);
-    ```
+   useEffect(() => {
+     setTimeout(() => {
+       setPerfObj({size: '25vw', blur: 0});
+     }, 2500);
+   }, []);
+   ```
 
 3. Pass the size and blur values to the `ResponsiveImage` component. Your final code should look something like this.
 
-    ```javascript
-    ...
-    import React, { useState, useEffect } from "react";
-    import { Link, ResponsiveImage } from "@quintype/components";
-    ...
-    ...
+   ```javascript
+   ...
+   import React, { useState, useEffect } from "react";
+   import { Link, ResponsiveImage } from "@quintype/components";
+   ...
+   ...
 
-    function StoryGridStoryItem(props) {
-      const [perfObj, setPerfObj] = useState({ size: "5vw", blur: 10 });
+   function StoryGridStoryItem(props) {
+     const [perfObj, setPerfObj] = useState({ size: "5vw", blur: 10 });
 
-      useEffect(() => {
-        setTimeout(() => {
-          setPerfObj({ size: "25vw", blur: 0 });
-        }, 2500);
-      }, []);
+     useEffect(() => {
+       setTimeout(() => {
+         setPerfObj({ size: "25vw", blur: 0 });
+       }, 2500);
+     }, []);
 
-      return (
-        <Link href={`/${props.story.slug}`} className="story-grid-item">
-          <figure className="qt-image-16x9" styleName="story-grid-item-image">
-            <ResponsiveImage
-              slug={props.story["hero-image-s3-key"]}
-              metadata={props.story["hero-image-metadata"]}
-              aspectRatio={[16, 9]}
-              defaultWidth={480}
-              widths={[250, 480, 640]}
-              sizes={perfObj.size}
-              imgParams={{ auto: ["format", "compress"], blur:perfObj.blur }}
-              eager={props.position < 2 ? "above-fold" : "below-fold"}
-              alt={props.story.headline || ""}
-            />
-          </figure>
-          ...
-          ...
-        </Link>
-      );
-    }
+     return (
+       <Link href={`/${props.story.slug}`} className="story-grid-item">
+         <figure className="qt-image-16x9" styleName="story-grid-item-image">
+           <ResponsiveImage
+             slug={props.story["hero-image-s3-key"]}
+             metadata={props.story["hero-image-metadata"]}
+             aspectRatio={[16, 9]}
+             defaultWidth={480}
+             widths={[250, 480, 640]}
+             sizes={perfObj.size}
+             imgParams={{ auto: ["format", "compress"], blur:perfObj.blur }}
+             eager={props.position < 2 ? "above-fold" : "below-fold"}
+             alt={props.story.headline || ""}
+           />
+         </figure>
+         ...
+         ...
+       </Link>
+     );
+   }
 
-    export function StoryGrid({ stories = [] }) {
-      ...
-      return (
-        <div className="story-grid">
-          {stories.map(story => (
-            <StoryGridStoryItem story={story} />
-          ))}
-        </div>
-      );
-    }
+   export function StoryGrid({ stories = [] }) {
+     ...
+     return (
+       <div className="story-grid">
+         {stories.map(story => (
+           <StoryGridStoryItem story={story} />
+         ))}
+       </div>
+     );
+   }
 
-    ```
+   ```
 
 **Note:**
 
@@ -123,12 +123,12 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
     For example in the file: `app/isomorphic/components/collection-templates/four-col-grid/index.js`, we are utilizing the index prop and we send it to the `StoryGrid` component as `rowNumber` as below
 
     ```javascript
-    import React from "react";
-    import { array, object } from "prop-types";
-    import { StoryGrid } from "../../story-grid";
-    import "./four-col-grid.m.css";
+    import React from 'react';
+    import {array, object} from 'prop-types';
+    import {StoryGrid} from '../../story-grid';
+    import './four-col-grid.m.css';
 
-    export function FourColGrid({ collection, stories, index }) {
+    export function FourColGrid({collection, stories, index}) {
       return (
         <div>
           <h2 styleName="heading">{collection.name}</h2>
@@ -141,13 +141,14 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
   - Now in the `StoryGrid` component, utilize the `rowNumber` for progressive image loading.
 
     1. Pass the `rowNumber` value to `StoryGridStoryItem` function/component.
-    2. Check if `rownumber` is less than 1 or 2, if it is then use low-quality image properties.  
+    2. Check if `rownumber` is less than 1 or 2, if it is then use low-quality image properties.
 
-        Eg:
-        ```
-        const subsequentImageLoadProps = { size: "25vw", blur: 0 };
-          const initialImageLoadProps = props.rowNumber < 2 ? { size: "5vw", blur: 10 } : subsequentImageLoadProps;
-        ```
+       Eg:
+
+       ```
+       const subsequentImageLoadProps = { size: "25vw", blur: 0 };
+       const initialImageLoadProps = props.rowNumber < 2 ? { size: "5vw", blur: 10 } : subsequentImageLoadProps;
+       ```
 
     Your final code should look something like this:
 
@@ -202,10 +203,10 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
 
 Here, in the above example, the progressive image loading gets applied to the first two rows.
 
-- For the story page, which is also similar to the above example, utilize the index in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
+- For the story page, which is also similar to the above example, utilizes `InfiniteStoryBase` HOC to render story page. This HOC component passes index value to `StoryPageBase`. Utilize this index value to achieve progressive image loading in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
 
   ```javascript
-  function StoryPageBase({ index, story }) {
+  function StoryPageBase({index, story}) {
     return <BlankStory story={story} rowNumber={index} />;
   }
   ```
