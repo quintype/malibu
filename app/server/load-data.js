@@ -3,6 +3,7 @@ import pick from "lodash/pick";
 import get from "lodash/get";
 import publisher from "@quintype/framework/server/publisher-config";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
+import { assetFiles as getAssetFiles } from "@quintype/framework/server/asset-helper";
 
 import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
@@ -27,6 +28,8 @@ const WHITELIST_CONFIG_KEYS = [
   "publisher-settings"
 ];
 
+const svgSpritePath = Array.from(getAssetFiles()).find(asset => asset.includes("sprite"));
+
 export function getPublisherAttributes(publisherYml = publisher) {
   const publisherAttributes = get(publisherYml, ["publisher"], {});
   return publisherAttributes;
@@ -40,7 +43,8 @@ export function loadErrorData(error, config) {
       navigationMenu: getNavigationMenuArray(config.layout.menu, config.sections)
     },
     config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
-      "publisher-attributes": publisherAttributes
+      "publisher-attributes": publisherAttributes,
+      svgSpritePath
     }),
     pageType: errorComponents[error.httpStatusCode],
     httpStatusCode: error.httpStatusCode || 500
@@ -91,7 +95,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
       }),
       config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
         "publisher-attributes": publisherAttributes,
-        "image-cdn-format": "gumlet"
+        "image-cdn-format": "gumlet",
+        svgSpritePath
       })
     };
   });
