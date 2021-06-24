@@ -203,7 +203,7 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
 
 Here, in the above example, the progressive image loading gets applied to the first two rows.
 
-- For the story page, which is also similar to the above example, utilizes `InfiniteStoryBase` HOC to render story page. This HOC component passes index value to `StoryPageBase`. Utilize this index value to achieve progressive image loading in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
+- For the story page, which is also similar to the above example, utilizes `InfiniteStoryBase` HOC to render the story page. This HOC component passes the index value to `StoryPageBase`. Utilize this index value to achieve progressive image loading in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
 
   ```javascript
   function StoryPageBase({index, story}) {
