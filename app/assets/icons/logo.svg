@@ -1,0 +1,17 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 998 196" width="998" height="196">
+	<title>logo-svg</title>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #2ac7a4 }
+		.shp1 { fill: #0e8167 }
+		.shp2 { opacity: 0.8;fill: none;stroke: #2ac7a4 }
+		.shp3 { fill: #586965 }
+	</style>
+	<path id="Layer" class="shp0" d="M107.91 170.72L36.93 131.06L36.93 53.16L107.91 92.83L107.91 170.72L107.91 170.72Z" />
+	<path id="Layer" class="shp1" d="M144.37 170.72L215.34 131.06L215.34 53.16L144.37 92.83L144.37 170.72L144.37 170.72Z" />
+	<path id="Layer" class="shp2" d="M126.09 144.13L55.12 104.46L55.12 26.57L126.09 66.24L126.09 144.13L126.09 144.13Z" />
+	<path id="Layer" class="shp2" d="M126.09 144.13L197.16 104.67L197.16 26.78L126.18 66.44" />
+	<path id="Layer 2" class="shp3" d="M238 146L240 45L257 44L290 131L323 44L342 45L342 146L330 148L331 58L296 147L284 146L253 63L251 146L238 146Z" />
+	<path id="Shape 2" class="shp3" d="" />
+	<path id="Shape 1" class="shp3" d="" />
+</svg>
