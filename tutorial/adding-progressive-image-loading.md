@@ -202,8 +202,6 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
 
 Here, in the above example, the progressive image loading gets applied to the first two rows.
 
-Note: We need to 
-
 - For the story page, which is also similar to the above example, utilize the index in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
 
   ```javascript
