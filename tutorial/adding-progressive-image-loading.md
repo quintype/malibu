@@ -109,14 +109,14 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
 **Note:**
 
 1. The progressive image loading makes two calls for a particular image, during page load and after a specified interval.
-2. Progressive image loading should be applied for the rows above the fold or in the initial viewport on each page to avoid multiple calls for a particular.
+2. Progressive image loading should be applied for the rows above the fold or in the initial viewport on each page to avoid multiple calls for a particular image.
 3. For the pages which consist of only one row (Ex: Components with Load More button), this feature would be applied for all the stories which are loaded initially.
 
 ### How to achieve progressive image loading for the rows/components above the fold ?
 
 - For Home Page/Collection Page/Section Page:
 
-  - Home or collection page utilizes either `Collection` or `LazyCollection` HOC to render the rows/components. These HOC components return the index to each of its rows. Utilize this index value to achieve progressive image loading for the rows/components above the fold.
+  - Home or collection page utilizes either `Collection` or `LazyCollection` HOC to render the rows/components. These higher order components return the index to each of its rows. Utilize this index value to achieve progressive image loading for the rows/components above the fold.
 
     For example in the file: `app/isomorphic/components/collection-templates/four-col-grid/index.js`, we are utilizing the index prop and we send it to the `StoryGrid` component as `rowNumber` as below
 
@@ -201,7 +201,7 @@ Go to the file which uses `ResponsiveImage` imported from `@quintype/components`
 
 Here, in the above example, the progressive image loading gets applied to the first two rows.
 
-- For the story page, which is also similar to the above example, utilizes `InfiniteStoryBase` HOC to render the story page. This HOC component passes the index value to `StoryPageBase`. Utilize this index value to achieve progressive image loading in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
+- For the story page, which is also similar to the above example, utilizes `InfiniteStoryBase` HOC to render the story page. This higher-order component returns the index value to `StoryPageBase`. Utilize this index value to achieve progressive image loading in the `StoryPageBase` function in `app/isomorphic/components/pages/story.js` and then repeat the same process in `BlankStory` to progressively render images for 1st story.
 
   ```javascript
   function StoryPageBase({index, story}) {
