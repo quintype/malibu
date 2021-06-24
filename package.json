@@ -48,7 +48,7 @@
     "react-test-renderer": "^16.3.2",
     "stylelint": "^10.0.1",
     "stylelint-config-css-modules": "^1.4.0",
-    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.3.2",
     "svg-sprite-loader": "^6.0.9",
     "webpack-bundle-analyzer": "^4.2.0",
