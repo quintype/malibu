@@ -15,12 +15,12 @@ In this chapter, we are going to discuss how to use `SVGs in JS` without causing
 Like HTML, SVGs are represented using the [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") (DOM) and so can be manipulated with Javascript relatively easily. 
 ### Problem
 There are SVG's embedded in JS for icons / logos / etc. These cause an impact on performance because:
-- The size of the JS increases with additions and entail cost over the network
-- Render blocking
+- The size of the JS increases with additions and entail cost over the network.
+- Render blocking.
 - Downloaded JS is parsed affecting FCP & FMP.
 
 ### Solution
-SVG's should be made external via webpack / plugins to load them lazy via a network call or DOM reference. Thus we are using `SVG sprite loader` (Webpack loader for creating SVG sprites.) 
+SVG's should be made external via webpack / plugins to load them lazy via a network call or DOM reference. Thus we are using `SVG sprite loader` (Webpack loader for creating SVG sprites). 
 
 ## Why SVG sprite loader?
 SVG Sprites are rendered and injected in pages automatically, you just refer to images via `<svg><use xlink:href="#id"></use></svg>`. Also it can render sprites on server or in browser manually.  
@@ -31,7 +31,7 @@ SVG Sprites are rendered and injected in pages automatically, you just refer to 
 
 There are few steps you need to follow to set up SVG sprite loader:
 
-1. The first thing you need to install the package `npm install svg-sprite-loader -D`
+1. The first thing you need to install the package `npm install svg-sprite-loader -D`.
 2. Go to `webpack.config.js` and modify the webpack config to support svg-sprite-loader.
 
 ```javascript
@@ -49,7 +49,7 @@ const svgSprite = {
       return path
         .basename(filePath)
         .replace(".svg", "")
-        .toLowerCase(); // 
+        .toLowerCase();
     },
     spriteFilename: "sprite.svg",
     esModule: false
@@ -96,7 +96,7 @@ config: Object.assign(pick(config.asJson(), WHITELIST_CONFIG_KEYS), {
 ...      
 ```
 
-- Now create a `SvgIconHandler` component, for that create a new folder inside `atom` 
+- Now create a `SvgIconHandler` component, for that create a new folder inside `atom`.
 Example: `malibu/app/isomorphic/components/atoms/svg-icon-hadler/index.js`
  
 ```javascript
@@ -130,6 +130,7 @@ export const SvgIconHandler = ({
 ```
 
 `SvgIconHandler` component will accept  `type, className, iconStyle, width, height and viewBox` as props. The prop `type` will be the required SVG icon name. 
+
 Example:
 ```javascript
 <SvgIconHandler type="user" width="24px" height="24px" viewBox="0 0 24 24" iconStyle={{ color: "#000" }} />
