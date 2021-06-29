@@ -278,36 +278,6 @@
     }
   }
 
-  :global .story-element-image-gallery {
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-    grid-gap: 8px;
-    margin-bottom: 24px;
-  }
-
-  :global .story-element-image-gallery__image-container {
-    padding-top: 100%;
-    position: relative;
-    margin: 0;
-    img {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  :global .custom-cursor {
-    cursor: zoom-in;
-  }
-
-  :global .lightbox .story-element img {
-    margin-bottom: 0;
-  }
-
   :global .story-element-title h2 {
     font-size: var(--base);
     line-height: 1.35;
