@@ -1,9 +1,11 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: 8fr 4fr;
-  grid-column-gap: 16px;
   border-bottom: 1px solid var(--brand-primary);
-  margin: 24px 0;
+  margin: 16px auto;
+  padding-bottom: 16px;
+
+  .headline {
+    font-size: var(--base-larger);
+  }
 
   .qt-image-16x9 {
     padding-top: 56.25%;
@@ -341,6 +343,18 @@
 
     tr:nth-child(odd) {
       background-color: var(--grey-light);
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .wrapper {
+    width: 820px;
+    margin: 24px auto;
+    padding-bottom: 24px;
+
+    .headline {
+      font-size: var(--large);
     }
   }
 }

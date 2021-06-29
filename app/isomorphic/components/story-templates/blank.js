@@ -8,7 +8,7 @@ function StoryCard(props) {
   return (
     <div styleName="story-card">
       {props.card["story-elements"].map(element => {
-        if (element.type === "image") {
+        if (element.type === "image" || element.type === "jsembed" || element.type === "youtube-video") {
           return (
             <WithLazy margin="50px">
               {() => <StoryElement element={element} key={element.id} story={props.story} loadIframeOnClick />}
@@ -30,29 +30,26 @@ function BlankStoryTemplate(props) {
   return (
     <div className="container">
       <div styleName="wrapper">
-        <div>
-          <WithLazy margin="20px">
-            {() => (
-              <figure className="blank-story-image" styleName="qt-image-16x9">
-                <ResponsiveImage
-                  slug={props.story["hero-image-s3-key"]}
-                  metadata={props.story["hero-image-metadata"]}
-                  aspectRatio={[16, 9]}
-                  defaultWidth={480}
-                  widths={[250, 480, 640]}
-                  sizes="( max-width: 120px ) 98%, ( max-width: 768px ) 48%, 23%"
-                  imgParams={{ auto: ["format", "compress"], fmt: "webp" }}
-                />
-              </figure>
-            )}
-          </WithLazy>
-          <h1>{props.story.headline}</h1>
-          <div styleName="author"> By {props.story["author-name"]}</div>
-          {props.story.cards.map(card => (
-            <StoryCard key={card.id} card={card} story={props.story} />
-          ))}
-        </div>
-        <div>side bar</div>
+        <WithLazy margin="20px">
+          {() => (
+            <figure className="blank-story-image" styleName="qt-image-16x9">
+              <ResponsiveImage
+                slug={props.story["hero-image-s3-key"]}
+                metadata={props.story["hero-image-metadata"]}
+                aspectRatio={[16, 9]}
+                defaultWidth={480}
+                widths={[250, 480, 640]}
+                sizes="( max-width: 120px ) 98%, ( max-width: 768px ) 48%, 23%"
+                imgParams={{ auto: ["format", "compress"], fmt: "webp" }}
+              />
+            </figure>
+          )}
+        </WithLazy>
+        <h1 styleName="headline">{props.story.headline}</h1>
+        <div styleName="author"> By {props.story["author-name"]}</div>
+        {props.story.cards.map(card => (
+          <StoryCard key={card.id} card={card} story={props.story} />
+        ))}
       </div>
     </div>
   );
