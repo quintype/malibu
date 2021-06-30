@@ -89,5 +89,6 @@ isomorphicRoutes(app, {
     enableNews: true,
     structuredData: STRUCTURED_DATA
   }),
-  preloadJs: true
+  preloadJs: true,
+  prerenderServiceUrl: "https://prerender.quintype.io"
 });
