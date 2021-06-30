@@ -47,9 +47,8 @@ function BlankStoryTemplate(props) {
         </WithLazy>
         <h1 styleName="headline">{props.story.headline}</h1>
         <div styleName="author"> By {props.story["author-name"]}</div>
-        {props.story.cards.map(card => (
-          <StoryCard key={card.id} card={card} story={props.story} />
-        ))}
+        {props.story.cards &&
+          props.story.cards.map(card => <StoryCard key={card.id} card={card} story={props.story} />)}
       </div>
     </div>
   );
