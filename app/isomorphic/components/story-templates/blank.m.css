@@ -36,7 +36,7 @@
   }
 
   a {
-    color: var(--brandPrimary);
+    color: var(--brand-primary);
     opacity: 0.8;
   }
 
