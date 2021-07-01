@@ -10,7 +10,7 @@ function StoryPageBase({ index, story, otherProp }) {
   // return <BlankStory story={story} />;
   return (
     <>
-      <div>This is a story page</div>
+      <div>This is the story page</div>
       <BlankStory story={story} />
     </>
   );
