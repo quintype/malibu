@@ -7,7 +7,13 @@ import { number, object, shape, any } from "prop-types";
 
 function StoryPageBase({ index, story, otherProp }) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
-  return <BlankStory story={story} />;
+  // return <BlankStory story={story} />;
+  return (
+    <>
+      <div>This is a story page</div>
+      <BlankStory story={story} />
+    </>
+  );
 }
 
 StoryPageBase.propTypes = {
