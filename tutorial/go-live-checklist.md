@@ -48,7 +48,7 @@ Example:
 - QA Sign Off
 - Account Manager Sign Off
 
-### After Go live checklist
+## After Go live checklist
 - Robots.txt
 - Sitemap regeneration (Check for publisher url, should not show madrid or malibu url)
 - DNS change
