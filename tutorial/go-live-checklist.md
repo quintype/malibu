@@ -13,17 +13,19 @@ There are few points that needs to be check before and after Go-Live
 
 ## Before Go-live checklist
 
-### Black Knight config
+### BlackKnight config
 
-The infra team at Quintype will set up your environment on black knight for you. Once the initial setup is done by infra, you need to add your respective feature configurations in the config file of black night.
+To make sure if the config in blackknight is set properly. If not then follow [Black Knight Tutorial]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) to setup you initial config. Once the initial setup is done, you need to add your respective feature configurations in the config file of blackknight.
 
 Example(Malibu): Publisher.yml -> `enableLogin: true`
 
-More about black night, refer docs [here]({{"/tutorial/deploying-with-black-knight" | absolute_url}})
+![Publisher config]({{"images/publisher-config.png" | absolute_url}})
+
+More about blackknight, refer docs [here]({{"/tutorial/deploying-with-black-knight" | absolute_url}})
 
 ### Production API credentials for third-party applications
 
-Verify all the third-party credentials are whitelisted and added to respective places, like Black night config, Bold, Bridgkeper database, and Accesstype dashboard.
+Verify all the third-party credentials are whitelisted and added to respective places, like Blackknight config, Bold, Bridgekeeper database, and Accesstype dashboard.
 
 Example:
 - GA/GTM ID
@@ -34,7 +36,7 @@ Example:
   - Facebook app id and secret id
   - Apple app id's, service id and keys
 
-### SEO and other stuff
+### Other few point needs to be verify
 - Structured data. Verify structured data in homepage(Organisation, Website) stories. (Article, Organisation) (News Article Schema)
 - Meta description
 - Amp pages
