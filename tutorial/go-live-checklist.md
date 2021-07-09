@@ -55,3 +55,4 @@ Example:
 - Structured Data [Article, News Article, Website and Organisation ]Schema
 - Quintype validator
 - Instant article feed (https://your-website.com/api/instant-articles.rss).
+- All the features should work. Ex: Login(if implemented), push notification etc.
