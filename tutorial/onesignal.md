@@ -26,14 +26,14 @@ publisher :
   onesignal:
     safari_web_id: ""
     is_enable: true
-    time_out: 1000
+    time_out: 4000
 ```
 
 | Opts key | Type | Details |
 | ------ | ------ | ------ |
 | safari_web_id | string | The safari web id provided by onesignal. |
 | is_enable | boolean | This enables or disables onesignal integration to the app.
-| time_out | number | This sets the timeout value for the Onesignal script to be loaded(in ms). Adding the timeout boosts the pagespeed score and removes warnings related to OneSignal. |
+| time_out | number | This sets the timeout value for the Onesignal script to be loaded(in ms). It delays the onesignal script to reduce the impact of third party code which affects the page speed score. This arbitrary number might change depending upon the script parsing and the page rendering. |
 
 
 ## OneSignal configuration with Bold
