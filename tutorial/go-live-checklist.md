@@ -9,7 +9,7 @@ nav_order: 01
 
 *This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-kumar)*
 
-There are few points needs to be check befor and after Go-Live
+There are few points that needs to be check before and after Go-Live
 
 ## Before Go-live checklist
 
@@ -35,7 +35,7 @@ Example:
   - Apple app id's, service id and keys
 
 ### SEO and other stuff
-- Structured data. Verify structured data in homepage(organisation, Website) stories. (Article, organisation) (News Article Schema)
+- Structured data. Verify structured data in homepage(Organisation, Website) stories. (Article, Organisation) (News Article Schema)
 - Meta description
 - Amp pages
 - Shrubbery analytics
@@ -48,9 +48,9 @@ Example:
 - QA Sign Off
 - Account Manager Sign Off
 
-## After Go live checklist
+## After Go-live checklist
 - Robots.txt
-- Sitemap regeneration (Check for publisher url, should not show madrid or malibu url)
+- Sitemap regeneration (Check for publisher URL, should not show Madrid or Malibu URL)
 - DNS change
 - Structured Data [Article, News Article, Website and Organisation ]Schema
 - Quintype validator
