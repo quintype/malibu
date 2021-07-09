@@ -5,8 +5,7 @@ import get from "lodash/get";
 
 import { OPEN_SEARCHBAR } from "../../../store/actions";
 
-import { Search } from "../../../atoms/icons/search";
-import { CloseIcon } from "../../../atoms/icons/close-icon";
+import { SvgIconHandler } from "../../../atoms/svg-icon-hadler";
 
 import "./navbar-search.m.css";
 
@@ -16,7 +15,7 @@ function DrawForm({ children }) {
       {children}
     </label>,
     <button aria-label="search-button" type="submit" styleName="search__form-submit" key="2">
-      <Search width={16} height={16} />
+      <SvgIconHandler type="search" />
     </button>
   ];
 }
@@ -46,7 +45,7 @@ const NavbarSearch = () => {
   return (
     <div styleName="search">
       <button aria-label="search-button" styleName="search__btn" onClick={() => toggleSearchForm()}>
-        <Search />
+        <SvgIconHandler type="search" />
       </button>
       <div styleName="search-form" style={formStyle}>
         <SearchBox
@@ -59,7 +58,7 @@ const NavbarSearch = () => {
           placeholder="Search Stories"
         />
         <div styleName="close-icon" onClick={() => toggleSearchForm()}>
-          <CloseIcon />
+          <SvgIconHandler type="close" iconStyle={{ color: "#fff" }} width="16" height="16" viewBox="0 0 16 16" />
         </div>
       </div>
     </div>
