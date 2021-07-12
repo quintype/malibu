@@ -31,6 +31,7 @@ Example:
 - If your app uses GA or GTM, the staging ID has to be replaced with the production ID.
 - The client ID and secret keys for services like push notifications, social logins, etc. will have to be updated in the corresponding places like the DB, Black Knight config etc.
 - If you are using Metype, the website URL should be whitelisted on Metype settings.
+- Also Please verify your DFP Ad config, if you using it. Ex- network-id, slots, etc are well configured in Black Knight.
 
 Also please make sure that you have enabled the production mode from sandbox/dev mode for your third-party apps.
 
