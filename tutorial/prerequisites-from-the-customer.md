@@ -32,8 +32,7 @@ Setup[https://developers.google.com/web/ilt/pwa/integrating-analytics] the analy
 1. DFP Network ID
    Setup [Google Ad Manager](https://support.google.com/admanager/topic/7505789 "Google Ad Manager") account for your site and get the `Network code`. Your network code is a unique, numeric identifier for your Ad Manager network.
 2. Set up the required slots and get the Ad units. 
-   Example:  `Top Ad : "/5463099287/BannerAd"`
-   `Story Page : "/5463099287/ScrollAdUnit"`
+   Example:  `Top Ad : "/5463099287/BannerAd"` `Story Page : "/5463099287/ScrollAdUnit"`
 
 ### OneSignal 
 
@@ -87,4 +86,4 @@ Configure Apple app id, service id and keys for your application [here](https://
 }
 ```
 
-We need to add all these credentials in our Bridgekeeper's realm table'. For that please contact to our support team[support@quintype.com]
+We need to add all these credentials in our Bridgekeeper's realm table. For that please contact to our support team[support@quintype.com]
