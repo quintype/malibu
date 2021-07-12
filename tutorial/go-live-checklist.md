@@ -13,19 +13,19 @@ There are few points that needs to be check before and after Go-Live
 
 ## Before Go-live checklist
 
-### BlackKnight config
+### Black Knight config
 
-The first thing publisher needs to check is blacknight config, follow [Black Knight Tutorial]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) to understand and set up your initial config-if your project doesn't have. Once the initial setup is done, you need to add your respective feature configurations in the config file of blackknight.
+The first thing publishers need to check is blacknight config, if the initial setup is not done then please register with Black Knight production, then send an email to [support@quintype.com](mailto:support@quintype.com) to be added to the new project. Once the initial setup is done, you need to add your respective feature configurations in the config file of Black Knight.
 
 Example(Malibu): Publisher.yml -> `enableLogin: true`.
 
 ![Publisher config]({{"images/publisher-config.png" | absolute_url}})
 
-More about blackknight, refer docs [here]({{"/tutorial/deploying-with-black-knight" | absolute_url}}).
+More about Black Knight, refer docs [here]({{"/tutorial/deploying-with-black-knight" | absolute_url}}).
 
 ### Production API credentials for third-party applications
 
-Verify all the third-party credentials are whitelisted and added to respective places, like Blackknight config, Bold, Bridgekeeper database, and Accesstype dashboard.
+Verify all the third-party credentials are whitelisted and added to respective places, like Black Knight config, Bold, Bridgekeeper database, and Accesstype dashboard.
 
 Example:
 - GA/GTM ID.
