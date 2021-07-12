@@ -8,16 +8,16 @@ parent: Malibu Tutorial
 
 *This tutorial was contributed by [Athira MR](https://www.linkedin.com/in/athira-m-r-835ab6105/) and [Shraddha Kesari](https://www.linkedin.com/in/shraddha-k-3a3548161/)*
 
-In this tutorial, we will get to know the prerequisites needed from the client.
+In this tutorial, we will get to know the prerequisites needed from the client. 
 
 ## Enable Force Update feature for mobile apps
  
-The client needs to enable the `Force Update` feature on their current mobile app. When an updated version is available, the older version will become unusable – that is, if users do not update the app, they do not enter the app.
+The client needs to enable the `Force Update` feature on their current mobile app. When an updated version is available, the older version will become unusable – that is, if users do not update the app, they do not enter the app. 
 
 
 ## Third-Party Integrations
 
-Malibu advanced supports third-party integrations such as GA, GTM, DFP, push notification services like OneSignal and social logins like Google, Facebook, Apple etc. We need some prerequisites from the client for these integrations, those are given below.
+Malibu advanced supports third-party integrations such as GA, GTM, DFP, push notification services like OneSignal and social logins like Google, Facebook, Apple etc, which are optional.  We need some prerequisites from the client for these integrations, those are given below. 
 
 ### Google Analytics (GA)
 
@@ -44,6 +44,8 @@ Setup [OneSignal ](https://documentation.onesignal.com/docs/web-push-typical-set
 Get the `App Key` and `App ID` from your OneSignal dashboard.
 
 ### Social Logins
+
+Malibu advanced supports `login` feature and the feature is optional. If this feature is needed, below mentioned prerequisites are to be shared with quintype [support team](mailto:support@quintype.com)
 
 #### Google Login
 
@@ -86,4 +88,4 @@ Configure Apple app id, service id and keys for your application [here](https://
 }
 ```
 
-We need to add all these credentials in our Bridgekeeper's realm table. For that please contact to our support team[support@quintype.com]
+We need to add all these credentials in our Bridgekeeper's realm table. For that please contact to our [support team](mailto:support@quintype.com)
