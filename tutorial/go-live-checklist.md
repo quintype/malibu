@@ -36,7 +36,8 @@ Example:
   - Facebook app id and secret id
   - Apple app id's, service id and keys
 
-### Other few point needs to be verify
+Apart from the above points below important points also need to be verified
+
 - Structured data. Verify structured data in homepage(Organisation, Website) stories. (Article, Organisation) (News Article Schema)
 - Meta description
 - Amp pages
