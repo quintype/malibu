@@ -15,7 +15,7 @@ There are few points that needs to be check before and after Go-Live
 
 ### BlackKnight config
 
-The first thing publisher needs to check is blacknight config, Follow [Black Knight Tutorial]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) to understand and set up your initial config-if your project doesn't have. Once the initial setup is done, you need to add your respective feature configurations in the config file of blackknight.
+The first thing publisher needs to check is blacknight config, follow [Black Knight Tutorial]({{"/tutorial/deploying-with-black-knight" | absolute_url}}) to understand and set up your initial config-if your project doesn't have. Once the initial setup is done, you need to add your respective feature configurations in the config file of blackknight.
 
 Example(Malibu): Publisher.yml -> `enableLogin: true`.
 
