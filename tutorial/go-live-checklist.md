@@ -29,7 +29,7 @@ Verify all the third-party credentials are whitelisted and added to respective p
 
 Example:
 - If your app uses GA or GTM, the staging ID has to be replaced with the production ID.
-- The client ID and secret keys for services like push notifications, social logins, etc. will have to be updated in the corresponding places like the DB, Black Knight config etc.
+- The client ID and secret keys for services like push notifications(OneSignal, PushEngage, iZooto, MoEngage), social logins(Google, Facebook, Apple), etc. will have to be updated in the corresponding places like the DB, Black Knight config etc.
 - If you are using Metype, the website URL should be whitelisted on Metype settings.
 - Also Please verify your DFP Ad config, if you using it. Ex- network-id, slots, etc are well configured in Black Knight.
 
