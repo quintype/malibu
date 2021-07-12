@@ -15,7 +15,7 @@ There are few points that needs to be check before and after Go-Live
 
 ### Black Knight config
 
-The first thing publishers need to check is blacknight config, if the initial setup is not done then please register with Black Knight production, then send an email to [support@quintype.com](mailto:support@quintype.com) to be added to the new project. Once the initial setup is done, you need to add your respective feature configurations in the config file of Black Knight.
+The first thing publishers need to check is Black Knight config, if the initial setup is not done, then please register with Black Knight production and send an email to [support@quintype.com](mailto:support@quintype.com). Once the initial setup is done, you need to add your respective feature configurations in the config file of Black Knight.
 
 Example(Malibu): Publisher.yml -> `enableLogin: true`.
 
@@ -25,16 +25,14 @@ More about Black Knight, refer docs [here]({{"/tutorial/deploying-with-black-kni
 
 ### Production API credentials for third-party applications
 
-Verify all the third-party credentials are whitelisted and added to respective places, like Black Knight config, Bold, Bridgekeeper database, and Accesstype dashboard.
+Verify all the third-party credentials are whitelisted and added to respective places, like Black Knight config, Bold, Bridgekeeper database, and Accesstype/Metype dashboard.
 
 Example:
-- GA/GTM ID.
-- Metype ID and Whitelist the domain.
-- Push notifications keys.
-- Social login
-  - Google client id and secret id.
-  - Facebook app id and secret id.
-  - Apple app id's, service id and keys.
+- If your app uses GA or GTM, the staging ID has to be replaced with the production ID.
+- The client ID and secret keys for services like push notifications, social logins, etc. will have to be updated in the corresponding places like the DB, Black Knight config etc.
+- If you are using Metype, the website URL should be whitelisted on Metype settings.
+
+Also please make sure that you have enabled the production mode from sandbox/dev mode for your third-party apps.
 
 Apart from the above points below important points need to be verified.
 
