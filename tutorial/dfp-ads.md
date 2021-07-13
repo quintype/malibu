@@ -29,7 +29,7 @@ dfp_ads:
 network_id: "xxxxxxxxxx"
 slots:
   top_ad:
-    ad_unit: "/5463099287/BannerAd"
+    ad_unit: "/xxxxxxxxxx/BannerAd"
     sizes: [[728, 90], [320, 50]]
     view_port_size_mapping:
       - viewport: [728, 0]
@@ -45,7 +45,7 @@ slots:
       - viewport: [0, 0]
         sizes: [[300, 250]]
   story_page_ads:
-    ad_unit: "/5463099287/ScrollAdUnit"
+    ad_unit: "/xxxxxxxxxx/ScrollAdUnit"
     sizes: [[728, 90], [300, 250]]
     view_port_size_mapping:
       - viewport: [728, 0]
