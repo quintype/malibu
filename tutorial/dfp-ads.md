@@ -1,3 +1,13 @@
+---
+title: DFP ads on Malibu Advanced
+parent: Malibu Advanced Tutorial
+nav_order: 1
+---
+
+# {{page.title}}
+
+\_This tutorial was contributed by [Sanjeev Kumar G](https://twitter.com/sanju296) and [Phaneendra](https://www.linkedin.com/in/venkata-phaneendra-andukuri)
+
 ### Steps to enable the ad:
 
 1. Open BlackKnight.
