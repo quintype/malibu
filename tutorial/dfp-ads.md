@@ -1,7 +1,7 @@
 ---
 title: DFP ads on Malibu Advanced
 parent: Malibu Advanced Tutorial
-nav_order: 1
+nav_order: 2
 ---
 
 # {{page.title}}
@@ -26,7 +26,7 @@ dfp_ads:
   mobile_scaling: 0
   delay_ad_script: 5.0
   delay_ad_load: 5.0
-network_id: "5463099287"
+network_id: "xxxxxxxxxx"
 slots:
   top_ad:
     ad_unit: "/5463099287/BannerAd"
@@ -37,7 +37,7 @@ slots:
       - viewport: [0, 0]
         sizes: [[320, 50]]
   listing_page_ads:
-    ad_unit: "/5463099287/ListingPageAd"
+    ad_unit: "/xxxxxxxxxx/ListingPageAd"
     sizes: [[728, 90], [300, 250]]
     view_port_size_mapping:
       - viewport: [728, 0]
