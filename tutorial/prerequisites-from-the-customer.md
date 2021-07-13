@@ -16,6 +16,7 @@ When you go live with Bold, your websites and mobile apps will have to fetch dat
 
 1. Build and release a new app and remove the old app from App Store/Play Store. This side effect of this is that you will lose all your existing users until they manually download the new app from the store.
 2. Update the existing app so that it’s compatible with the Quintype suite of products (Recommended). While this seems like a straightforward option, there is a catch here. Not all of your users will update to a new version of your app as soon as it’s released. Which means that they will either stop seeing latest content or the app will crash if you shut down your old system. To avoid this, we have to force the users to update their apps when we switch to Bold. This is possible if your app already has the force update feature enabled on it. If it is not, then you need to release a new version of your app as soon as possible with the force update feature enabled in it. For example, if you are planning to go live with your updated mobile app powered by Bold in December, you need to release a new version of your current app with force update feature enabled at least by September so that there are at least 3 months for your existing users to update their app. Please read more about force update. [Ref 1](https://betterprogramming.pub/force-update-your-apps-74de57523650 "Ref 1"), [Ref 2](https://techcrunch.com/2019/05/07/android-developers-can-now-force-app-updates/ "Ref 2"),  [Ref 3](https://medium.com/@sembozdemir/force-your-users-to-update-your-app-with-using-firebase-33f1e0bcec5a "Ref 3")
+
 ## Third-Party Integrations
 
 Malibu Advanced supports third-party integrations such as GA, GTM, DFP, push notification services like OneSignal and social logins like Google, Facebook, Apple etc, which are optional. Those are given below. 
@@ -46,7 +47,7 @@ Get the `App Key` and `App ID` from your OneSignal dashboard.
 
 Your website might require user registration and login for numerous reasons. For example, you might want to send custom newsletters or show paid content. Quintype provides an in-house authentication service called Bridgekeeper for seamless integration across our suite of products. To make development easier, we have also released the Bridgekeeper JS library. To see it in action, refer to Malibu Advanced where the entire flow is built in.
 
-#### Google Login
+**Google Login**
 
 Configure google project for your application [here](https://console.developers.google.com/apis/dashboard "here") and get the `client-id` and `client-secret` also add `http://<your-domain>/api/auth/v1/google/callback` to Authorized redirect URIs.
 
@@ -58,7 +59,7 @@ login-failure-redirect-url: "http://<your-domain>/<failure-redirect-path>"
 
 ```
 
-#### Facebook Login
+**Facebook Login**
 
  Create an account in [Facebook Developer](https://developers.facebook.com/ "Facebook Developer") and create new app for your site. Get the `client-id` and `client-secret` from the dashboard. Also add http://<your-domain>/api/auth/v1/facebook/callback to Authorized redirect URIs.
 
@@ -70,7 +71,7 @@ login-failure-redirect-url: "http://<your-domain>/<failure-redirect-path>"
 
 ```
 
-#### Apple Login
+**Apple Login**
 
 Configure Apple app id, service id and keys for your application [here](https://developer.apple.com/account/resources/identifiers/list "here"). You can refer to this [page ](https://developer.okta.com/blog/2019/06/04/what-the-heck-is-sign-in-with-apple "page ")for creating the same. Also Add https://<your-domain>/api/auth/v1/apple/callback and <your-domain> as redirect URL and domain respectively to the service created in Apple developer account.
 
