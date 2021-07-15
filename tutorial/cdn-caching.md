@@ -13,7 +13,7 @@ _This tutorial was contributed by [Harshith](ttps://www.linkedin.com/in/harshith
 How Quintype handles CDN-caching
 
 - Whenever a collection/story/author is created or updated, the platform does cache/purging through CDN.
-- when a collection/story/author is created, the frontend gets updated with the latest data with the help of cache-keys.
+- when a collection/story/author is created or updated, the frontend gets updated with the latest data with the help of cache-keys.
 
 How cache keys are created
 
