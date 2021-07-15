@@ -128,7 +128,7 @@ How Quintype handles toggle between different CDN providers
 - For now, we have support for `Cloudflare`, `Fastly`, and `akamai`.
 - The default CDN provider is set as `Cloudflare`.
 - Contact Quintype before switching the CDN. Once this is done follow the next steps.
-- Update your CND provider in black knight, publisher.yml file
+- Update your CDN provider in black knight, publisher.yml file
 
   Eg:
   ```javascript
