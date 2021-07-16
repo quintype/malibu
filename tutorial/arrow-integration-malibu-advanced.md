@@ -29,24 +29,4 @@ collection-layouts:
 ```
 6. Make the collection template exportable in the `app/isomorphic/components/collection-templates/index.js` file, so that when the component is selected in Bold the corresponding component has to be rendered.
 
-  ```javascript
-  import React from "react";
-  import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
-  import { ArrowElevenStories } from "./eleven-stories";
-
-  function wrapEager(f) {
-    ...
-    ...
-  }
-
-  export default {
-    ...
-    ...
-    ArrowElevenStories: wrapEager(wrapCollectionLayout(ArrowElevenStories)),
-    ...
-    ...
-    defaultTemplate: wrapEager(wrapCollectionLayout(ArrowElevenStories))
-  };
-  ```
-
 7. If the component is rendered above the fold or is intended to be rendered server-side, then there are a couple of ways to get that running.
