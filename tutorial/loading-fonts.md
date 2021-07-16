@@ -1,7 +1,7 @@
 ---
 title: Loading Fonts
 parent: Malibu Tutorial
-nav_order: 07
+nav_order: 06
 ---
 
 # {{page.title}}
