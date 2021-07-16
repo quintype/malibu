@@ -15,19 +15,20 @@ Ex: ElevenStories, FourColTwelveStories, etc.
 
 **Steps to add a new Arrow component to your app:**
 
-1. Please follow the initial steps [here](https://developers.quintype.com/quintype-node-arrow/?path=/story/introduction--getting-started).
-2. Please find the directory structure in the screenshot shown below:
+* Please follow the initial steps [here](https://developers.quintype.com/quintype-node-arrow/?path=/story/introduction--getting-started).
+* Please find the directory structure in the screenshot shown below:
 ![Arrow Directory structure]({{"images/arrow-directory-structure.png" | absolute_url}}).
-3. The Higher-order component is there to make the component more configurable.
-4. The above component should be made available in the BOLD CMS to be applied to a collection.
-5. If the black-knight is not having a `template-options.yml`, please add the file with `path` as `/app/config/template-options.yml` and value as shown below:
+* The Higher-order component is there to make the component more configurable.
+* The above component should be made available in the BOLD CMS to be applied to a collection.
+* If the black-knight is not having a `template-options.yml`, please add the file with `path` as `/app/config/template-options.yml` and value as shown below:
 ```
 collection-layouts:
   - name: ArrowElevenStoriesRow
     display: Arrow Three Col Seven Stories
     options: []
 ```
-6. Make the collection template exportable in the `app/isomorphic/components/collection-templates/index.js` file, so that when the component is selected in Bold the corresponding component has to be rendered:
+* Make the collection template exportable in the `app/isomorphic/components/collection-templates/index.js` file, so that when the component is selected in Bold the corresponding component has to be rendered.
+
 ```javascript
 import React from "react";
 import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
@@ -48,4 +49,97 @@ export default {
 };
 ```
 
-7. If the component is rendered above the fold or is intended to be rendered server-side, then there are a couple of ways to get that running.
+* If the component is rendered above the fold or is intended to be rendered server-side, then there are a couple of ways to get that running.
+    - Using Loadable Components: In `quintype-build.config.js`:
+    ```javascript
+    const quintypeBuildConfig = require("@quintype/build/config/quintype-build");
+
+    const loadableConfigObj = {
+      loadableConfig: {
+        entryFiles: {
+          ...
+          ...
+          arrowElevenStoriesCssChunk: "@quintype/arrow/ElevenStories/styles.arrow.css",
+          ...
+          ...
+        }
+      }
+    };
+    const modifiedBuildConfig = { ...quintypeBuildConfig, ...loadableConfigObj };
+
+    module.exports = modifiedBuildConfig;
+    ```
+    To know more on how this works, please refer: https://developers.quintype.com/malibu/tutorial/loadable-components.html
+
+    - Without Loadable Components: In `quintype-build.config.js`:
+    ```javascript
+    const quintypeBuildConfig = require("@quintype/build/config/quintype-build");
+
+    const loadableConfigObj = {
+      ...
+      ...
+    };
+    const modifiedBuildConfig = { ...quintypeBuildConfig, ...loadableConfigObj, entryFiles: {
+      arrowElevenStoriesCssChunk: "@quintype/arrow/ElevenStories/styles.arrow.css"
+    }};
+
+    module.exports = modifiedBuildConfig;
+    ```
+
+    - After adding the chunks to be rendered server side,to inject the css to the head, please follow the below snippets:
+
+      In `render-layout.js`:
+    ```javascript
+    ...
+    ...
+    import { getArrowCss } from "../helpers";
+
+    export async function renderLayout(res, params) {
+      ...
+      const arrowCss = await getArrowCss(params.store.getState());
+      ...
+
+      res.render(
+        "pages/layout",
+        Object.assign(
+          {
+            ...,
+            ...,
+            arrowCss,
+            ...
+          },
+          params
+        )
+      );
+    }
+    ```
+
+    In `app/server/helpers/index.js`:
+      - Returns css of 1st arrow row. If 1st row isn't arrow, returns empty string.
+      - This can be used to add styles while server-side rendering.
+      - For this to work, separate CSS chunks need to be created for every arrow row that will be used in the app.
+      - Layout names here should match those in template-options.yml.
+
+    ```javascript
+    export async function getArrowCss(state, { qtAssetHelpers = require("@quintype/framework/server/asset-helper") } = {}) {
+      const layout = get(state, ["qt", "data", "collection", "items", 0, "associated-metadata", "layout"], null);
+      const pageType = get(state, ["qt", "pageType"], "");
+      const extractor = entryPoint => {
+        const getExtractor = new ChunkExtractor({ statsFile, entrypoints: [entryPoint] });
+        return getExtractor.getCssString();
+      };
+      switch (layout) {
+        case "ArrowElevenStories":
+          return getAsset("arrowElevenStoriesCssChunk.css", qtAssetHelpers);
+        ...
+        ...
+        default:
+          return "";
+      }
+    }
+
+    function getAsset(asset, qtAssetHelpers) {
+      const { assetPath, readAsset } = qtAssetHelpers;
+      return assetPath(asset) ? readAsset(asset) : "";
+    }
+    ```
