@@ -5,7 +5,7 @@ import { getStoryLimits, getNestedCollectionLimit } from "../../isomorphic/compo
 export async function loadHomePageData(client, config, slug = "home") {
   const collection = await Collection.getCollectionBySlug(
     client,
-    slug,
+    slug || "home",
     { "item-type": "collection" },
     {
       depth: 2,
@@ -15,7 +15,7 @@ export async function loadHomePageData(client, config, slug = "home") {
     }
   );
   return {
-    collection: collection.asJson(),
-    cacheKeys: collection.cacheKeys(config["publisher-id"])
+    collection: collection ? collection.asJson() : null,
+    cacheKeys: collection ? collection.cacheKeys(config["publisher-id"]) : null
   };
 }

@@ -3,7 +3,8 @@
 import React from "react";
 import { InfiniteStoryBase, WithPreview } from "@quintype/components";
 import { BlankStory } from "../story-templates/blank";
-import { number, object, shape, any } from "prop-types";
+import { number, object, shape, bool, any } from "prop-types";
+import get from "lodash/get";
 
 function StoryPageBase({ index, story, otherProp }) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
@@ -31,10 +32,22 @@ function storyPageLoadItems(pageNumber) {
 }
 
 export function StoryPage(props) {
+  const story = get(props, ["data", "story"], get(props, ["story"], null)) || null;
+
+  if (!story) {
+    return null;
+  }
+
+  const renderSingleStoryComponent = <StoryPageBase index={0} story={story} />;
+
+  if (props.isPreview) {
+    return renderSingleStoryComponent;
+  }
+
   return (
     <InfiniteStoryBase
       {...props}
-      render={StoryPageBase}
+      render={(storyProps) => <StoryPageBase {...storyProps} />}
       loadItems={storyPageLoadItems}
       onInitialItemFocus={item =>
         app.registerPageView({ pageType: "story-page", data: { story: item.story } }, `/${item.story.slug}`)
@@ -46,7 +59,8 @@ export function StoryPage(props) {
 
 StoryPage.propTypes = {
   data: shape({
-    story: object
+    story: object,
+    isPreview: bool,
   })
 };
 
