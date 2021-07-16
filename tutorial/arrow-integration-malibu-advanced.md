@@ -1,7 +1,7 @@
 ---
-title: Arrow Integration to Malibu Advanced
-parent: Malibu Advanced Tutorial
-nav_order: 1
+title: Arrow Integration to Malibu/Malibu Advanced
+parent: Malibu Tutorial
+nav_order: 20
 ---
 # {{page.title}}
 
@@ -11,7 +11,7 @@ Apart from building custom components on the Malibu Advanced app, a wide range o
 
 The list of the Arrow components can be found [here](https://developers.quintype.com/quintype-node-arrow/).
 
-As you clone the Malibu Advanced repository, you will be getting some of the Arrow components out of the box.
+As you clone the Malibu Advanced repository, you will be getting some of the Arrow components out of the box. If you intend to integrate Arrow to your existing app or if you have cloned from Malibu, please check [here](https://developers.quintype.com/quintype-node-arrow/?path=/story/introduction--getting-started)
 
 Ex: ElevenStories, FourColTwelveStories, etc.
 
