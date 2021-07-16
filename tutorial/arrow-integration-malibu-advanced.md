@@ -1,6 +1,5 @@
 ---
 title: Arrow Integration to Malibu/Malibu Advanced
-parent: Malibu Tutorial
 ---
 # {{page.title}}
 
