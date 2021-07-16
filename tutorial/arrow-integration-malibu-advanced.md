@@ -21,12 +21,14 @@ Ex: ElevenStories, FourColTwelveStories, etc.
 * The Higher-order component is there to make the component more configurable.
 * The above component should be made available in the BOLD CMS to be applied to a collection.
 * If the black-knight is not having a `template-options.yml`, please add the file with `path` as `/app/config/template-options.yml` and value as shown below:
+
 ```
 collection-layouts:
   - name: ArrowElevenStoriesRow
     display: Arrow Three Col Seven Stories
     options: []
 ```
+
 * Make the collection template exportable in the `app/isomorphic/components/collection-templates/index.js` file, so that when the component is selected in Bold the corresponding component has to be rendered.
 
 ```javascript
