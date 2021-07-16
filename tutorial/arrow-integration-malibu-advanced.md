@@ -71,7 +71,7 @@ export default {
     module.exports = modifiedBuildConfig;
     ```
 
-  To know more on how this works, please refer: https://developers.quintype.com/malibu/tutorial/loadable-components.html
+  To know more on how this works, please check [here](https://developers.quintype.com/malibu/tutorial/loadable-components.html)
 
     - Without Loadable Components: In `quintype-build.config.js`:
 
@@ -119,10 +119,11 @@ export default {
     ```
 
     In `app/server/helpers/index.js`:
-      - Returns css of 1st arrow row. If 1st row isn't arrow, returns empty string.
-      - This can be used to add styles while server-side rendering.
-      - For this to work, separate CSS chunks need to be created for every arrow row that will be used in the app.
-      - Layout names here should match those in template-options.yml.
+
+      * Returns css of 1st arrow row. If 1st row isn't arrow, returns empty string.
+      * This can be used to add styles while server-side rendering.
+      * For this to work, separate CSS chunks need to be created for every arrow row that will be used in the app.
+      * Layout names here should match those in template-options.yml.
 
     ```javascript
     export async function getArrowCss(state, { qtAssetHelpers = require("@quintype/framework/server/asset-helper") } = {}) {
