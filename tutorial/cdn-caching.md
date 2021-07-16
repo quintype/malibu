@@ -11,7 +11,7 @@ _This tutorial was contributed by [Harshith](ttps://www.linkedin.com/in/harshith
 How Quintype handles CDN caching?
 
 - Whenever a collection/story/author is created or updated, the bold handles cache/purging through the CDN.
-- When a collection/story/author is created or updated, the frontend gets updated with the latest data with the help of cache-keys.
+- When a collection/story/author is created or updated, the frontend gets updated with the latest data with the help of cache-keys returned in the API for that collection/story/author.
 
 How cache keys are created
 
@@ -35,7 +35,7 @@ How cache keys are created
    Note:
 
    - We form the cache keys for nested collection by going from the top-level depth of the collections .i.e, for example, the home collection contains 2 collections and each of these collections has a story then based on the above example `c/1166/87520` is generated based on the first collection in home, `c/1166/96964`is generated based on the second collection in home, `s/1166/5b10a46a` is generated based on the story in the first collection and so on
-   - The values that we get for all the collections/stories on the respective pages are then comma-separated and passed to the Cache-Tag header.
+   - The values that we get for all the collections/stories on the respective pages are then comma-separated and passed to the Cache-Tag header. The default depth is set to 1 and can be changed based on requirement.
 
 4. Format for collections:
 
@@ -127,8 +127,9 @@ How Quintype handles toggle between different CDN providers ?
 
 - For now, we have support for `Cloudflare`, `Fastly`, and `Akamai`.
 - The default CDN provider is set as `Cloudflare`.
+- `Fastly` will be used as a backup CDN if `Cloudflare` goes down.
 - Contact Quintype before switching the CDN. Once this is done follow the next steps.
-- Update your CDN provider in black knight, publisher.yml file
+- Update your CDN provider in black knight, publisher.yml file.
 
   Eg:
   ```javascript
