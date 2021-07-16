@@ -28,7 +28,6 @@ collection-layouts:
     options: []
 ```
 6. Make the collection template exportable in the `app/isomorphic/components/collection-templates/index.js` file, so that when the component is selected in Bold the corresponding component has to be rendered.
-
 ```javascript
 import React from "react";
 import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
