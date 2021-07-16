@@ -51,6 +51,7 @@ export default {
 
 * If the component is rendered above the fold or is intended to be rendered server-side, then there are a couple of ways to get that running.
     - Using Loadable Components: In `quintype-build.config.js`:
+
     ```javascript
     const quintypeBuildConfig = require("@quintype/build/config/quintype-build");
 
@@ -69,9 +70,11 @@ export default {
 
     module.exports = modifiedBuildConfig;
     ```
-    To know more on how this works, please refer: https://developers.quintype.com/malibu/tutorial/loadable-components.html
+
+  To know more on how this works, please refer: https://developers.quintype.com/malibu/tutorial/loadable-components.html
 
     - Without Loadable Components: In `quintype-build.config.js`:
+
     ```javascript
     const quintypeBuildConfig = require("@quintype/build/config/quintype-build");
 
@@ -89,6 +92,7 @@ export default {
     - After adding the chunks to be rendered server side,to inject the css to the head, please follow the below snippets:
 
       In `render-layout.js`:
+
     ```javascript
     ...
     ...
