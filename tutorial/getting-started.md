@@ -14,7 +14,7 @@ In this post we will cover how to get started, building a Quintype publisher app
 
 ## Prerequisites
 
-Before starting, please ensure the following is installed on your development machine
+Before starting, please ensure the following is installed on your development machine:
 
 - [Node LTS](https://nodejs.org) (10.15 at the time of writing), and npm
 - Either [Supervisor](http://supervisord.org) or [Docker](https://www.docker.com) for running the development server
