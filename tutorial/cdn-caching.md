@@ -139,6 +139,7 @@ How Quintype handles toggle between different CDN providers ?
   ```
 
 - Then, in `malibu/app/server/app.js` pass `cdnProvider` with the value obtained from publisher.yml file to `isomorphicRoutes`(No need to pass if `Cloudflare is your CDN provider).
+<<<<<<< HEAD
   Eg:
   ```javascript
   import { isomorphicRoutes } from "@quintype/framework/server/routes";
@@ -146,10 +147,27 @@ How Quintype handles toggle between different CDN providers ?
   const getcdnProvider = (config) => {
     return get(getPublisherAttributes(config), ["cdn_provider"], "");
   };
+=======
+
+  Eg:
+
+  ```javascript
+  import { isomorphicRoutes } from "@quintype/framework/server/routes";
+  import { getPublisherAttributes } from "./load-data";
+
+  const getcdnProvider = (config) => {
+    return get(getPublisherAttributes(config), ["cdn_provider"], "");
+  };
+
+>>>>>>> gh-pages
   isomorphicRoutes(app, {
     ...
     ...
     ...
     cdnProvider: getcdnProvider(),
   });
+<<<<<<< HEAD
   ```
+=======
+  ```
+>>>>>>> gh-pages

@@ -46,7 +46,7 @@ res.render(
  @font-face {
           font-family: "Shurjo";
           font-display: swap;
-          font-weight: 700; 
+          font-weight: 700;
           font-style: normal;
           src: url(<%= shurjo700Woff %>) format('woff'),
         }
