@@ -1,6 +1,6 @@
 ---
 title: Adding a new component to your home page
-nav_order: 04
+nav_order: 03
 parent: Malibu Tutorial
 ---
 
