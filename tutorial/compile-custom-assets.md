@@ -1,6 +1,6 @@
 ---
 title: Custom Assets
-nav_order: 18
+nav_order: 16
 parent: Malibu Tutorial
 ---
 
