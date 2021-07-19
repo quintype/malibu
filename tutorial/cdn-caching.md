@@ -1,7 +1,7 @@
 ---
 title: CDN Caching
+nav_order: 21
 parent: Malibu Tutorial
-nav_order: 01
 ---
 
 # {{page.title}}
