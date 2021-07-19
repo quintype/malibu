@@ -1,7 +1,7 @@
 ---
 title: Amp Library Integration
 parent: Malibu Tutorial
-nav_order: 07
+nav_order: 8
 ---
 # {{page.title}}
 
