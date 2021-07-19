@@ -1,7 +1,7 @@
 ---
 title: Support Nested Collection Items Limit
 parent: Malibu Tutorial
-nav_order: 17
+nav_order: 15
 ---
 
 # {{page.title}}

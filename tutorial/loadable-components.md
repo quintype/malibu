@@ -1,7 +1,7 @@
 ---
 title: Support Loadable Component
 parent: Malibu Tutorial
-nav_order: 16
+nav_order: 14
 ---
 
 # {{page.title}}

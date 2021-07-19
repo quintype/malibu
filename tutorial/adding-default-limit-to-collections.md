@@ -1,7 +1,7 @@
 ---
 title: Support Default Limit to Collections
 parent: Malibu Tutorial
-nav_order: 16
+nav_order: 12
 ---
 
 # {{page.title}}
