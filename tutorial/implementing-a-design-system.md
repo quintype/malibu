@@ -1,7 +1,7 @@
 ---
 title: Implementing a design system
 parent: Malibu Tutorial
-nav_order: 05
+nav_order: 04
 ---
 
 # {{page.title}}

@@ -1,7 +1,7 @@
 ---
 title: Redirect Urls
 parent: Malibu Tutorial
-nav_order: 14
+nav_order: 10
 ---
 
 # {{page.title}}
@@ -34,7 +34,7 @@ export const REDIRECT_URLS = {
  }
 ```
 
-or 
+or
 
 ```javascript
 function redirectUrls() {
@@ -54,7 +54,7 @@ function redirectUrls() {
 * The `destinationUrl` represents the url on which the sourceUrl need to be redirect
 * The `statusCode` represents wether the redirection should be status code 301 (means that a new page has taken over permanently) or 302 (the page moved temporarily)
 
-Then you need to pass `REDIRECT_URLS` to the `isomorphicRoutes` function from your app. **Note:** the 
+Then you need to pass `REDIRECT_URLS` to the `isomorphicRoutes` function from your app. **Note:** the
 `REDIRECT_URLS` could be a list of objects in an array or it could be a function which return list of objects in an array
 
 Open *app/server/app.js*.
@@ -62,7 +62,7 @@ Open *app/server/app.js*.
 ```javascript
 
 isomorphicRoutes(app, {
-  ... 
+  ...
   redirectUrls: REDIRECT_URLS,
 });
 
@@ -70,7 +70,7 @@ isomorphicRoutes(app, {
 
 ## Redirect story slugs with any capital letters to lowercase
 
-By default, story slugs in URLs are case sensitive. This means URLs with capital letters in the story slug will give a 404 (not found) response if your story slugs are all in lowercase. 
+By default, story slugs in URLs are case sensitive. This means URLs with capital letters in the story slug will give a 404 (not found) response if your story slugs are all in lowercase.
 
 If this is not desirable, you may enable lowercase redirection for story slugs which will redirect with a 301 status code to the lowercase equivalent if a URL is encountered with capital letters in the story slug.
 
@@ -78,13 +78,13 @@ This feature does not apply to non-latin characters or accented latin characters
 
 To get this feature, update @quintype/framework to the latest version (4.7.0 or greater)
 
-Then enable the `redirectToLowercaseSlugs` flag in the `isomorphicRoutes` function from your app  
+Then enable the `redirectToLowercaseSlugs` flag in the `isomorphicRoutes` function from your app
 **Note:** the value to `redirectToLowercaseSlugs` can either be a boolean value or a function which returns a boolean value
 
 ```javascript
 
 isomorphicRoutes(app, {
-  ... 
+  ...
   redirectToLowercaseSlugs: true,
 });
 

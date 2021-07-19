@@ -1,7 +1,7 @@
 ---
 title: Implementing the story page and home page preview
 parent: Malibu Tutorial
-nav_order: 15
+nav_order: 11
 ---
 
 # {{page.title}}
@@ -57,7 +57,7 @@ export const STATIC_ROUTES = [
 ];
 ```
 
-### 2. Add preview template 
+### 2. Add preview template
 
 In *views/pages/preview.js*, add the following lines for creating story content template:
 

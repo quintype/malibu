@@ -1,7 +1,7 @@
 ---
 title: Support Nested Collection Items Limit
 parent: Malibu Tutorial
-nav_order: 17
+nav_order: 15
 ---
 
 # {{page.title}}
@@ -53,7 +53,7 @@ export function getNestedCollectionLimit() {
   return collectionLimits;
 }
 ```
-  
+
 * Add the number of nested collection items to each component. For example, in *app/isomorphic/components/collection-templates/four-col-grid/index.js*, add the following:
 
 ```javascript
@@ -79,7 +79,7 @@ export async function loadHomePageData(client, config, slug) {
   );
   ...
 }
-``` 
+```
 
 * In case you are wrapping components with *wrapEager* then add the following inside the function. For example, in *app/isomorphic/components/collection-templates/index.js*
 
