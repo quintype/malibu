@@ -1,6 +1,6 @@
 ---
 title: Implementing Logins
-nav_order: 12
+nav_order: 08
 parent: Malibu Tutorial
 ---
 
