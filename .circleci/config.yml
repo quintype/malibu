@@ -7,7 +7,7 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - checkout
-      - run: "npm install npm@7"
+      - run: "npm install npm@7 && npm cache clean"
       - run: mkdir -p /tmp/workspace && echo $CIRCLE_BRANCH-$CIRCLE_BUILD_NUM > /tmp/workspace/docker-tag.txt
       - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
       - run: docker build -t quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt) .
