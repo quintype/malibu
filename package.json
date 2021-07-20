@@ -83,6 +83,10 @@
     "lint:ci": "npm run lint:js:ci && npm run lint:css:ci",
     "check-node-npm": "check-node-version --node '>= 12.13.0' --npm '>= 7.0.0'"
   },
+  "engines": {
+    "node": "^12.13.0",
+    "npm": "^7.0.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run check-node-npm && lint-staged"
