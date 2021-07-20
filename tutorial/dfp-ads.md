@@ -1,7 +1,7 @@
 ---
-title: DFP ads on Malibu Advanced
-parent: Malibu Advanced Tutorial
-nav_order: 2
+title: DFP ads on Malibu/Malibu Advanced
+parent: Malibu Tutorial
+nav_order: 22
 ---
 
 # {{page.title}}
