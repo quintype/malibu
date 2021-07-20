@@ -73,7 +73,15 @@ getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
   logError
 });
 
-ampRoutes(app, {});
+ampRoutes(app, {
+  seo: new SEO({
+    staticTags: STATIC_TAGS,
+    enableTwitterCards: true,
+    enableOgTags: true,
+    enableNews: true,
+    structuredData: STRUCTURED_DATA
+  })
+});
 
 isomorphicRoutes(app, {
   appVersion: require("../isomorphic/app-version"),
