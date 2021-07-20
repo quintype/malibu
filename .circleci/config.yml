@@ -46,22 +46,17 @@ jobs:
 
   lint_js:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:12.13.0
     steps:
       - checkout
-      - run: node -v
-      - run: npm -v
       - run: npm install
       - run: npm run lint:js:ci
   lint_css:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:12.13.0
     steps:
       - checkout
-      - run: node -v
-      - run: npm -v
       - run: npm install
-      - run: npm rebuild
       - run: npm run lint:css:ci
 
   qa_stg_lighthouse_task:
