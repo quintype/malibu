@@ -1,5 +1,5 @@
 ---
-title: DFP ads on Malibu/Malibu Advanced
+title: DFP ads integration
 parent: Malibu Tutorial
 nav_order: 22
 ---
