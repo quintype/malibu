@@ -1,8 +1,7 @@
 ---
 title: Subdomain support
-parent: Advanced Topics
-grand_parent: Malibu Tutorial
-nav_order: 04
+parent: Malibu Tutorial
+nav_order: 25
 nav_exclude: true
 ---
 
