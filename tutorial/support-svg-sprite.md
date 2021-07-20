@@ -1,6 +1,6 @@
 ---
 title: Support SVG's in JS
-nav_order: 20
+nav_order: 19
 parent: Malibu Tutorial
 ---
 

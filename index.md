@@ -6,7 +6,7 @@ nav_order: 1
 
 A Javascript framework for building apps with Quintype.
 
-The goal of malibu is to make building content sites trivial. Bring your look and feel, and Malibu will handle the rest.
+The goal of Malibu is to make building content sites trivial. Bring your look and feel, and Malibu will handle the rest.
 
 You might want to check out the following topics, before jumping right in to the [tutorial]({{"/tutorial" | absolute_url}})
 

@@ -1,6 +1,6 @@
 ---
 title: Custom Assets
-nav_order: 18
+nav_order: 16
 parent: Malibu Tutorial
 ---
 
@@ -46,7 +46,7 @@ res.render(
  @font-face {
           font-family: "Shurjo";
           font-display: swap;
-          font-weight: 700; 
+          font-weight: 700;
           font-style: normal;
           src: url(<%= shurjo700Woff %>) format('woff'),
         }

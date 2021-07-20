@@ -1,6 +1,6 @@
 ---
 title: Progressive Image Loading
-nav_order: 19
+nav_order: 17
 parent: Malibu Tutorial
 ---
 

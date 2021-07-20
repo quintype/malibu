@@ -1,7 +1,7 @@
 ---
 title: Custom SEO
 parent: Malibu Tutorial
-nav_order: 06
+nav_order: 05
 has_children: true
 nav_exclude: true
 ---
