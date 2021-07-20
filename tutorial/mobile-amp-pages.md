@@ -1,8 +1,7 @@
 ---
 title: Rendering amp story pages on mobile
-parent: Advanced Topics
-grand_parent: Malibu Tutorial
-nav_order: 02
+parent: Malibu Tutorial
+nav_order: 23
 nav_exclude: true
 ---
 

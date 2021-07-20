@@ -1,8 +1,7 @@
 ---
 title: Custom Cache TTL
-parent: Advanced Topics
-grand_parent: Malibu Tutorial
-nav_order: 05
+parent: Malibu Tutorial
+nav_order: 26
 nav_exclude: true
 ---
 

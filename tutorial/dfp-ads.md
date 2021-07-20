@@ -1,7 +1,8 @@
 ---
 title: DFP ads integration
-parent: Malibu Tutorial
-nav_order: 22
+parent: Third Party Integrations
+grand_parent: Malibu Tutorial
+nav_order: 05
 ---
 
 # {{page.title}}

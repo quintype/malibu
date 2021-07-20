@@ -1,8 +1,7 @@
 ---
 title: Disabling Service Worker and Progressive Web App (PWA)
-parent: Advanced Topics
-grand_parent: Malibu Tutorial
-nav_order: 03
+parent: Malibu Tutorial
+nav_order: 24
 nav_exclude: true
 ---
 

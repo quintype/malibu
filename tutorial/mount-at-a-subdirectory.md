@@ -1,8 +1,7 @@
 ---
 title: Mounting at a Subdirectory
-parent: Advanced Topics
-grand_parent: Malibu Tutorial
-nav_order: 01
+parent: Malibu Tutorial
+nav_order: 22
 nav_exclude: true
 ---
 
