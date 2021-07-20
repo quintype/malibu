@@ -26,6 +26,7 @@
     "@lhci/cli": "^0.7.0",
     "@quintype/build": "^3.11.0",
     "babel-eslint": "^10.0.3",
+    "check-node-version": "^4.1.0",
     "cosmiconfig": "^7.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.8.0",
@@ -79,11 +80,12 @@
     "lint:js:ci": "npx eslint $(git diff --pretty='' --diff-filter=d --name-only origin/master...HEAD -- '*.js' '*.jsx') ./start.js",
     "lint:css": "npx stylelint './app/**/*.{scss,css}'",
     "lint:css:ci": "npx stylelint $(git diff --pretty='' --diff-filter=d --name-only origin/master...HEAD -- '*.css' '*.scss') ./app/assets/stylesheets/app.scss",
-    "lint:ci": "npm run lint:js:ci && npm run lint:css:ci"
+    "lint:ci": "npm run lint:js:ci && npm run lint:css:ci",
+    "check-node-npm": "check-node-version --node '>= 12.13.0' --npm '>= 7.0.0'"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run check-node-npm && lint-staged"
     }
   },
   "lint-staged": {
