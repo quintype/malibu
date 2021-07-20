@@ -49,6 +49,7 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
+      - run: npm i npm@7
       - run: node -v
       - run: npm -v
       - run: npm install
