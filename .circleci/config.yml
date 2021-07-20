@@ -7,6 +7,7 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - checkout
+      - command: "npm install -g npm@7"
       - run: mkdir -p /tmp/workspace && echo $CIRCLE_BRANCH-$CIRCLE_BUILD_NUM > /tmp/workspace/docker-tag.txt
       - run: docker login quay.io/$CIRCLE_PROJECT_USERNAME -u $QUAY_USERNAME -p $QUAY_PASSWORD
       - run: docker build -t quay.io/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$(cat /tmp/workspace/docker-tag.txt) .
@@ -76,7 +77,6 @@ jobs:
       - run: |
           export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
           npx @lhci/cli@0.6.x autorun
-
 
   stg_lighthouse_task:
     docker:
@@ -162,10 +162,10 @@ workflows:
           requires:
             - hold_production
           filters:
-              branches:
-                only:
-                  - master
-                  - master-clone
+            branches:
+              only:
+                - master
+                - master-clone
       - prod_lighthouse_task:
           context: quay-login
           requires:
