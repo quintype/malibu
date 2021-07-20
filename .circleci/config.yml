@@ -46,17 +46,16 @@ jobs:
 
   lint_js:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:16
     steps:
       - checkout
-      - run: npm i npm@7
       - run: node -v
       - run: npm -v
       - run: npm install
       - run: npm run lint:js:ci
   lint_css:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:16
     steps:
       - checkout
       - run: node -v
