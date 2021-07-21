@@ -10,7 +10,7 @@ Malibu is the culmination of Quintype's experiences of taking hundreds of conten
 
 Malibu ships with PWA support. By default, Malibu will render a shell when a returning user opens your site, which drastically improves percieved performance. Malibu can also be configured to work in offline mode.
 
-### Build rich, immersive content pages with Project Lancelot
+### Build rich, immersive content pages with Arrow
 
 Malibu can be integrated with [Arrow](https://developers.quintype.com/quintype-node-arrow/), a curated collection of components to help you quickly build stunning content pages.
 
