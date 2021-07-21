@@ -5,6 +5,7 @@ import {
   upstreamQuintypeRoutes,
   isomorphicRoutes,
   staticRoutes,
+  ampRoutes,
   getWithConfig
 } from "@quintype/framework/server/routes";
 import { generateRoutes, STATIC_ROUTES } from "./routes";
@@ -15,7 +16,7 @@ import { SEO } from "@quintype/seo";
 import { Collection } from "@quintype/framework/server/api-client";
 export const app = createApp();
 
-upstreamQuintypeRoutes(app, { forwardAmp: true });
+upstreamQuintypeRoutes(app, {});
 
 const STATIC_TAGS = {
   "twitter:site": "Quintype",
@@ -70,6 +71,16 @@ const logError = error => logger.error(error);
 
 getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
   logError
+});
+
+ampRoutes(app, {
+  seo: new SEO({
+    staticTags: STATIC_TAGS,
+    enableTwitterCards: true,
+    enableOgTags: true,
+    enableNews: true,
+    structuredData: STRUCTURED_DATA
+  })
 });
 
 isomorphicRoutes(app, {
