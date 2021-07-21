@@ -9,13 +9,11 @@ export function loadStoryPageData(client, params, config, next) {
     };
   }
 
-  return Story.getStoryBySlug(client, decodeURIComponent(params.storySlug)).then(
-    story => (story ? returnStoryData(story) : next())
+  return Story.getStoryBySlug(client, decodeURIComponent(params.storySlug)).then(story =>
+    story ? returnStoryData(story) : next()
   );
 }
 
 export function loadStoryPublicPreviewPageData(client, params) {
-  return Story.getPublicPreviewStory(client, params.encryptedKey).then(
-    story => ({ story: story.asJson() })
-  );
+  return Story.getPublicPreviewStory(client, params.encryptedKey).then(story => ({ story: story.asJson() }));
 }

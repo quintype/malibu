@@ -46,14 +46,14 @@ jobs:
 
   lint_js:
     docker:
-      - image: circleci/node:8.11
+      - image: circleci/node:12.13.0
     steps:
       - checkout
       - run: npm install
       - run: npm run lint:js:ci
   lint_css:
     docker:
-      - image: circleci/node:8.11
+      - image: circleci/node:12.13.0
     steps:
       - checkout
       - run: npm install
@@ -61,7 +61,7 @@ jobs:
 
   qa_stg_lighthouse_task:
     docker:
-      - image: circleci/node:10.16-browsers
+      - image: circleci/node:12.13.0-browsers
     steps:
       - checkout
       - run: |
@@ -70,17 +70,16 @@ jobs:
 
   perf_lighthouse_task:
     docker:
-      - image: circleci/node:10.16-browsers
+      - image: circleci/node:12.13.0-browsers
     steps:
       - checkout
       - run: |
           export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
           npx @lhci/cli@0.6.x autorun
 
-
   stg_lighthouse_task:
     docker:
-      - image: circleci/node:10.16-browsers
+      - image: circleci/node:12.13.0-browsers
     steps:
       - checkout
       - run: |
@@ -89,7 +88,7 @@ jobs:
 
   prod_lighthouse_task:
     docker:
-      - image: circleci/node:10.16-browsers
+      - image: circleci/node:12.13.0-browsers
     steps:
       - checkout
       - run: |
@@ -162,10 +161,10 @@ workflows:
           requires:
             - hold_production
           filters:
-              branches:
-                only:
-                  - master
-                  - master-clone
+            branches:
+              only:
+                - master
+                - master-clone
       - prod_lighthouse_task:
           context: quay-login
           requires:
