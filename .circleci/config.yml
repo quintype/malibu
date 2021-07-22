@@ -105,6 +105,11 @@ workflows:
     jobs:
       - build:
           context: quay-login
+          filters:
+            branches:
+              ignore:
+                - master
+                - circleci-skip
       - hold_staging:
           type: approval
           requires:
