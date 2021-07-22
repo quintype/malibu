@@ -23,7 +23,7 @@
     "wretch": "^1.4.1"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.7.0",
+    "@lhci/cli": "^0.8.0",
     "@quintype/build": "^3.11.0",
     "babel-eslint": "^10.0.3",
     "check-node-version": "^4.1.0",
