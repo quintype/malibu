@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    filters:
+      branches:
+        ignore: /^dependabot-*/
     docker:
       - image: circleci/node:12.13.0
     steps:
