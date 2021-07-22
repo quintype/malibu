@@ -51,6 +51,11 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint:js:ci
+    filters:
+      branches:
+        ignore:
+          - master
+          - circleci-skip
   lint_css:
     docker:
       - image: circleci/node:12.13.0
@@ -58,6 +63,11 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint:css:ci
+    filters:
+      branches:
+        ignore:
+          - master
+          - circleci-skip
 
   qa_stg_lighthouse_task:
     docker:
