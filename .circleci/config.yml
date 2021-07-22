@@ -124,14 +124,29 @@ workflows:
           type: approval
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - master
+                - circleci-skip
       - deploy_staging:
           context: quay-login
           requires:
             - hold_staging
+          filters:
+            branches:
+              ignore:
+                - master
+                - circleci-skip
       - stg_lighthouse_task:
           context: quay-login
           requires:
             - deploy_staging
+          filters:
+            branches:
+              ignore:
+                - master
+                - circleci-skip
 
   lighthouse_test:
     jobs:
