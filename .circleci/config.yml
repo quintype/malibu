@@ -108,9 +108,6 @@ workflows:
     jobs:
       - build:
           context: quay-login
-          filters:
-            branches:
-              ignore: /^dependabot-*/
       - hold_staging:
           type: approval
           requires:
@@ -128,9 +125,6 @@ workflows:
     jobs:
       - build:
           context: quay-login
-          filters:
-            branches:
-              ignore: /^dependabot-*/
       - hold_qa_staging:
           type: approval
           requires:
