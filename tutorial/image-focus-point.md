@@ -9,13 +9,13 @@ nav_exclude: true
 
 _This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105/)_
 
-You can set a focal point to ensure that a key part of an image won't get cropped. Focus points are particularly useful for responsive layouts and to make sure the most important part of the image is always visible regardless of the element size. It will ensure that embarrassing image crops do not happen.
+Focus points are particularly useful for responsive layouts and to make sure the most important part of the image is always visible regardless of the element size.You can set a focal point to ensure that a key part of an image won't get cropped.  It will ensure that embarrassing image crops do not happen.
 
 ## How to set image Focus Point in Bold
 
 ![Image Focus Point]({{"images/set-image-focus-point.gif" | absolute_url}})
 
-After you upload an image, you can click anywhere on that image to define a Focus Point for that image. Focus Point ensures that when an image gets cropped to different sizes, the set Focus Point will always be in the viewport.
+After you upload an image, you can click anywhere on that image to define a Focus Point for that image. Focus Point ensures that when an image gets cropped to different sizes, the set Focus Point will always be in the viewport.To remove the Focus Point applied to an image, click the Clear Focus Point button. By default, there is no focus point to be applied.
 
 
 ![Story API]({{"images/story-api.gif" | absolute_url}})
