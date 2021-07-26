@@ -1,7 +1,7 @@
 ---
 title: Isomorphic Rendering
 permalink: /isomorphic-rendering
-nav_order: 6
+nav_order: 7
 has_children: true
 has_toc: false
 ---
