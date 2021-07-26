@@ -9,13 +9,13 @@ nav_exclude: true
 
 _This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105/)_
 
-You can set a focal point to ensure that a key part of an image won't get cropped. Focus points are particularly useful for responsive layouts and make sure the most important part of the image is always visible regardless of the element size. It will ensure that embarrassing image crops do not happen.
+You can set a focal point to ensure that a key part of an image won't get cropped. Focus points are particularly useful for responsive layouts and to make sure the most important part of the image is always visible regardless of the element size. It will ensure that embarrassing image crops do not happen.
 
 ## How to set image Focus Point in Bold
 
 ![Image Focus Point]({{"images/set-image-focus-point.gif" | absolute_url}})
 
-After you upload an image, you can click anywhere on that image to define a Focus Point for that image. Focus Point ensures that when an image gets cropped to different sizes, the set Focus Point of the image will always be in the viewport.
+After you upload an image, you can click anywhere on that image to define a Focus Point for that image. Focus Point ensures that when an image gets cropped to different sizes, the set Focus Point will always be in the viewport.
 
 
 ![Story API]({{"images/story-api.gif" | absolute_url}})
@@ -24,13 +24,13 @@ Once you set the Focus Point, in the story API we can see the image metadata whi
 
 ## How to implement Focus Point using Gumlet
 
-Gumlet automatically convert images to the best format and size for the user browser and device. 
+Gumlet automatically converts images to the best format and size for the user browser and device. 
  
 ###  Extract (rect)
 
 This `extract` parameter will extract a region from an image. The `rect` is an alias for this parameter. This operation is always applied before the `resize` operation. Please give the parameters according to the original image.
 
-The value should be provided as comma-separated list `left,top,width,height`.
+The value should be provided as a comma-separated list `left,top,width,height`.
 
 - `left` is zero-indexed offset from left edge
 - `top` is zero-indexed offset from top edge
@@ -50,7 +50,7 @@ Example:
 function imageBounds(imageDimensions =[ 750, 422 ], aspectRatio=[ 16, 9 ], focusPoint=[ 125, 95 ]]) {
   
   // imageDimensions - Image Width and Height
-  // aspectRatio-  Image Aspect Ratio
+  // aspectRatio -  Image Aspect Ratio
   // focusPoint - Image Focus Point 
 
   var expectedHeight, expectedWidth, bound;
