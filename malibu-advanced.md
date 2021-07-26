@@ -20,6 +20,8 @@ Malibu Advanced has the following add-ons over Malibu:
 - **Arrow design library:** Please refer to the docs [here](https://developers.quintype.com/malibu/tutorial/arrow-integration-malibu-advanced.html) on the Arrow integration.
 For detailed insights on what Arrow is, please check the [Arrow docs](https://developers.quintype.com/quintype-node-arrow/?path=/story/introduction--getting-started).
 
+- **Login Integration:** We've integrated the Login/Register functionality to the Malibu Advanced app using the Bridgekeeper APIs. There are a couple of methods of implementing Login/Register feature: Popup Method and Auth domain(For SSO). The Popup method is integrated with Malibu Advanced. The Auth domain method is still under progress and docs for the same will be updated soon.
+
 
 ## Getting Started with Malibu Advanced:
 
