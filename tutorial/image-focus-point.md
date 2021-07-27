@@ -42,7 +42,63 @@ Example : `extract=0,0,300,300`, `extract=300,300,200,200`
 
 **How to find the `rect` value using image Focus Point and Aspect Ratio**
 
-We need to find the image bounds using the Image Dimensions, Aspect Ratio and Focus Point.
+We need to find the image bounds (x,y) using the Image Dimensions, Aspect Ratio and Focus Point.
+
+Let's see how we can find the `rect` value. First, we need to find out whether we need to take the entire with or height of the image according to the aspect ratio.
+
+image - https://thumbor-stg.assettype.com/malibu/2021-07/091d2769-e14c-4f1a-b4af-83df27d88c6d/aspect_ratio.png
+
+For that, we need to check the ratio between the image dimensions and the aspect ratio.
+
+**Case 1 : **
+
+Suppose if ((image width * aspect ratio height) < (image height * aspect ratio width)) is true, we need to find out the expected crop height.
+
+`expected crop height = (image width * aspect ratio height)/aspect ratio width`
+
+In this case, our `rect` value will be  `[0, y, image width, expected crop height ]`
+
+Now we need to find the value of `y`. So that we need to find the image `top bound` value.  For that, we need to check a couple of conditions.
+
+1. if `focus point height - (expected crop height/2) < 0 ` true 
+`top bound` will be `zero`
+
+2. if `focus point height + (expected crop height/2) > image height ` true, `top bound` will be `image height - expected crop height/2`
+
+3. else `top bound `will be `focus point height - expected crop height/2`
+
+After finding the image `top bound` value, we can find the `y` value accordingly.
+
+1. Check if `top bound +  expected crop height > image height ` true
+ `y = image height -  expected crop height`
+
+2. else `y = top bound `
+
+
+**Case 2 : **
+
+Lets see if `(image width * aspect ratio height) < (image height * aspect ratio width)` is false,  we need to find the expected crop width.
+
+`expected crop width = (image height * aspect ratio width )/aspect ratio height`
+
+In this case, our `rect` value will be  `[x, 0, expected crop width, image height ]`
+
+In the next step, we will find the `x` value,  for that we need to find the image `left bound` value.
+
+1. if `focus point width - (expected crop width/2) < 0 ` true 
+`left bound` will be `zero`
+
+2. if `focus point width + (expected crop width/2) > image width ` true, `left bound` will be `image width - expected crop width/2`
+
+3. else `left bound `will be `focus point width - expected crop width/2`
+
+After finding the image left bound value, we can find the `x` value accordingly
+
+1. Check if `left bound +  expected crop width > image width ` true
+ `y = image width -  expected crop width`
+
+2. else `y = left bound `
+
 
 Example: 
 
@@ -54,9 +110,10 @@ function imageBounds(imageDimensions =[ 750, 422 ], aspectRatio=[ 16, 9 ], focus
   // focusPoint - Image Focus Point 
 
   var expectedHeight, expectedWidth, bound;
-  if (imageDimensions[0] * aspectRatio[1] < imageDimensions[1] * aspectRatio[0]) {
+
+  if (imageDimensions[0] * aspectRatio[1] < imageDimensions[1] * aspectRatio[0]) { 
     // Use the entire width
-    expectedHeight = (imageDimensions[0] * aspectRatio[1]) / aspectRatio[0];
+    expectedHeight = (imageDimensions[0] * aspectRatio[1]) / aspectRatio[0];  // 
     bound          = findBounds(imageDimensions[1], expectedHeight, focusPoint[1]);
     return [0, Math.round(bound), imageDimensions[0], Math.round(expectedHeight)];
   } else {
@@ -69,7 +126,7 @@ function imageBounds(imageDimensions =[ 750, 422 ], aspectRatio=[ 16, 9 ], focus
 ...
 
 function findBounds(imageWidth, cropWidth, focusPoint) {
-  var leftBound = findLeftBound(imageWidth, cropWidth / 2, focusPoint);
+  var leftBound = findLeftBound(imageWidth, cropWidth / 2, focusPoint); 0
   if (leftBound + cropWidth > imageWidth) {
     return (imageWidth - cropWidth);
   }
@@ -79,7 +136,7 @@ function findBounds(imageWidth, cropWidth, focusPoint) {
 }
 ...
 
-function findLeftBound(imageWidth, halfCropWidth, focusPoint) {
+function findLeftBound(imageWidth, halfCropWidth, focusPoint[1]) {
   if (focusPoint - halfCropWidth < 0) {
     return 0;
   }
