@@ -53,7 +53,7 @@ Example, in *app/server/load-data.js*, we add the following
 ```javascript
 import { loadAuthorPageData } from "./data-loaders/author-page-data";
 
-export function loadData(pageType, params, config, client, { host, next }) {
+export function loadData(pageType, params, config, client, { host, next, domainSlug, cookies }) {
   function _loadData() {
     switch (pageType) {
       ...
