@@ -4,6 +4,7 @@ import { shape, string, object, integer, arrayOf } from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
+  console.log("-------In Story grid");
   return (
     <Link href={`/${props.story.slug}`} className="story-grid-item">
       <figure className="qt-image-16x9" styleName="story-grid-item-image">
@@ -13,7 +14,7 @@ function StoryGridStoryItem(props) {
           aspectRatio={[16, 9]}
           defaultWidth={480}
           widths={[250, 480, 640]}
-          sizes="( max-width: 500px ) 98vw, ( max-width: 768px ) 48vw, 23vw"
+          sizes="30vw"
           imgParams={{ auto: ["format", "compress"] }}
           eager={props.position < 2 ? "above-fold" : "below-fold"}
           alt={props.story.headline || ""}
