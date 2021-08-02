@@ -14,7 +14,7 @@ function StoryGridStoryItem(props) {
           aspectRatio={[16, 9]}
           defaultWidth={480}
           widths={[250, 480, 640]}
-          sizes="( max-width: 500px ) 98vw, ( max-width: 768px ) 48vw, 23vw"
+          sizes="( max-width: 320px ) 98vw, ( max-width: 640px ) 48vw, 23vw"
           imgParams={{ auto: ["format", "compress"] }}
           eager={props.position < 2 ? "above-fold" : "below-fold"}
           alt={props.story.headline || ""}
