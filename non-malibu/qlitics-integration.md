@@ -1,6 +1,6 @@
 ---
 title: Qlitics Integration
-parent: Non Malibu
+parent: Non Malibu Publisher
 nav_order: 02
 ---
 

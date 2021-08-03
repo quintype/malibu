@@ -1,6 +1,6 @@
 ---
 title: Progressive Image Loading
-parent: Non Malibu
+parent: Non Malibu Publisher
 nav_order: 01
 ---
 
