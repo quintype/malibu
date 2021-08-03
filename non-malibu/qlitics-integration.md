@@ -8,7 +8,7 @@ nav_order: 02
 
 The `qlitics.js` is a Javascript library that is used for tracking user interaction with the frontend website.
 
-This tutorial consists of Qlitics related functions. The vast majority of these features are already wired and tracked by default (including when pages are loaded via AJAX) if you are a Malibu publisher. If a non-Malibu publisher, then you need to call them manually.
+This tutorial consists of Qlitics related functions. The vast majority of these features are already wired and tracked by default (including when pages are loaded via AJAX) if you are a Malibu publisher. If a non Malibu publisher, then you need to call them manually.
 
 ## Implementation for Non-Malibu Publishers
 
