@@ -12,7 +12,7 @@ This tutorial consists of Qlitics related functions. The vast majority of these 
 
 ## Implementation for Non-Malibu Publishers
 
-If you are not on the Malibu platform, your Frontend website needs to implement a route `/qlitics.js` that proxies to the same route on `API_HOST`. The `qlitics.js` snippet served by `API_HOST` has the correct `publisher-id` hardcoded in it.
+Frontend website needs to implement a route `/qlitics.js` that proxies to the same route on `API_HOST`. The `qlitics.js` snippet served by `API_HOST` has the correct `publisher-id` hardcoded in it.
 
 
 ### Initialize the tracker
