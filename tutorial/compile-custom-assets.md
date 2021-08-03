@@ -17,7 +17,7 @@ parent: Malibu Tutorial
 
 ![Static assets]({{"images/static-assets.png" | absolute_url}})
 
-2. ut all the fonts inside the above folder or you can create a separate folder for the fonts and put it inside the static-assets folder. Ex: `app/static-assets/fonts`.
+2. Put all the fonts inside the above folder or you can create a separate folder for the fonts and put it inside the static-assets folder. Ex: `app/static-assets/fonts`.
 
 3. Now open `app/server/handlers/render-layout.js` and use your fonts as shown below:
 
