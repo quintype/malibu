@@ -208,3 +208,4 @@ Here, in the above example, the progressive image loading gets applied to the fi
     return <BlankStory story={story} rowNumber={index} />;
   }
   ```
+For Non-Malibu Publishers, they need to follow [this]({{"/non-malibu/progressive-image-loading" | absolute_url}}) documentation in order to implement progressive image loading
