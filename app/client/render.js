@@ -7,6 +7,7 @@ import { NavbarSearch } from "../isomorphic/components/layouts/header/navbar-sea
 import { NavBar } from "../isomorphic/components/layouts/header/nav-bar";
 import { Footer } from "../isomorphic/components/layouts/footer";
 import { AppLogo } from "../isomorphic/components/layouts/app-logo";
+import { LoadGtmSscritp } from "../isomorphic/components/gtm-script";
 
 export function preRenderApplication(store) {
   const hydrate = { hydrate: !global.qtLoadedFromShell };
@@ -32,4 +33,5 @@ export function renderApplication(store) {
   renderIsomorphicComponent("container", store, pickComponent, {
     hydrate: !global.qtLoadedFromShell
   });
+  renderComponent(LoadGtmSscritp, "gtm-id", store, { hydrate: true });
 }
