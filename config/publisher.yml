@@ -13,6 +13,7 @@ publisher:
   google_tag_manager:
     id: "gtm-id"
     is_enable: true
+    time_out: 5000
   google_analytics:
     id: "ga-id"
     is_enable: true

@@ -23,6 +23,7 @@ const getConfig = state => {
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     isGtmEnable: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "is_enable"], false),
+    gtmTimeOut: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "time_out"], 4000),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
     isGaEnable: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "is_enable"], false),
     cdnImage: get(state, ["qt", "config", "cdn-image"], "")
@@ -40,7 +41,7 @@ export const getCriticalCss = async () => {
 
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
-  const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
+  const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable, gtmTimeOut } = getConfig(params.store.getState());
   const criticalCss = await getCriticalCss();
 
   res.render(
@@ -72,7 +73,8 @@ export async function renderLayout(res, params) {
         shell: params.shell,
         serialize,
         isGtmEnable,
-        isGaEnable
+        isGaEnable,
+        gtmTimeOut
       },
       params
     )
