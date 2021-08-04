@@ -103,5 +103,6 @@ isomorphicRoutes(app, {
   staticRoutes: STATIC_ROUTES,
   seo: generateSeo,
   preloadJs: true,
-  prerenderServiceUrl: "https://prerender.quintype.io"
+  prerenderServiceUrl: "https://prerender.quintype.io",
+  enableGtm: true
 });

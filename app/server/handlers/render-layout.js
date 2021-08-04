@@ -42,7 +42,7 @@ export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
   const criticalCss = await getCriticalCss();
-
+  console.log("params.gtmScript", params.gtmScript);
   res.render(
     "pages/layout",
     Object.assign(
@@ -72,7 +72,8 @@ export async function renderLayout(res, params) {
         shell: params.shell,
         serialize,
         isGtmEnable,
-        isGaEnable
+        isGaEnable,
+        gtmScript: params.gtmScript
       },
       params
     )
