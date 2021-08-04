@@ -46,7 +46,7 @@ We need to find the image bounds (x,y) using the Image Dimensions, Aspect Ratio 
 
 Let's see how we can find the `rect` value. First, we need to find out whether we need to take the entire with or height of the image according to the aspect ratio.
 
-image - https://thumbor-stg.assettype.com/malibu/2021-07/091d2769-e14c-4f1a-b4af-83df27d88c6d/aspect_ratio.png
+![Aspect Ratio]({{"images/aspect_ratio.png" | absolute_url}})
 
 For that, we need to check the ratio between the image dimensions and the aspect ratio.
 
