@@ -9,7 +9,7 @@ nav_order: 03
 
 *This tutorial was contributed by [Tejas Dinkar](https://twitter.com/tdinkar)*
 
-Quintype is currently running a beta with [Gumlet](https://www.gumlet.com). Gumlet is a service that resizes images on the fly, transcoding to webp and detecting quality in runtime.
+[Gumlet](https://www.gumlet.com) is a service that resizes images on the fly, transcoding to webp and detecting quality in runtime.
 
 Integrating gumlet into quintype is pretty simple. You will need to load the gumlet script, and tell [@quintype/components](https://developers.quintype.com/quintype-node-components) to use gumlet.
 

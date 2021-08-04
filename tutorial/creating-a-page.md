@@ -53,7 +53,7 @@ Example, in *app/server/load-data.js*, we add the following
 ```javascript
 import { loadAuthorPageData } from "./data-loaders/author-page-data";
 
-export function loadData(pageType, params, config, client, { host, next }) {
+export function loadData(pageType, params, config, client, { host, next, domainSlug, cookies }) {
   function _loadData() {
     switch (pageType) {
       ...
@@ -62,6 +62,15 @@ export function loadData(pageType, params, config, client, { host, next }) {
       ...
     }
   }
+```
+
+**Note:** Getting cookies in load data, the publisher needs to install [cookies parser](https://www.npmjs.com/package/cookie-parser) middleware and use it in FE app.
+
+Example, in *app/server/app.js*, add the following
+
+```javascript
+var cookieParser = require("cookie-parser");
+app.use(cookieParser());
 ```
 
 We need to add a file in *app/server/data-loaders* called **author-page-data.js* where we make an api call to get the respective author data.
