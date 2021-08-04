@@ -1,8 +1,7 @@
 ---
 title:  Implementing Focus Point using Gumlet 
-parent: Malibu Tutorial
-nav_order: 27
-nav_exclude: true
+parent: Non Malibu Publisher
+nav_order: 03
 ---
 
 # {{page.title}}
