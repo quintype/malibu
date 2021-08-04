@@ -45,11 +45,11 @@ We need to find the image bounds (x,y) using the Image Dimensions, Aspect Ratio 
 
 Let's see how we can find the `rect` value. First, we need to find out whether we need to take the entire with or height of the image according to the aspect ratio.
 
-![Aspect Ratio]({{"images/aspect_ratio.png" | absolute_url}})
+![Aspect Ratio]({{"images/aspect-ratio.png" | absolute_url}})
 
 For that, we need to check the ratio between the image dimensions and the aspect ratio.
 
-**Case 1 : **
+**Case 1 :**
 
 Suppose if ((image width * aspect ratio height) < (image height * aspect ratio width)) is true, we need to find out the expected crop height.
 
@@ -74,7 +74,7 @@ After finding the image `top bound` value, we can find the `y` value accordingly
 2. else `y = top bound `
 
 
-**Case 2 : **
+**Case 2 :**
 
 Lets see if `(image width * aspect ratio height) < (image height * aspect ratio width)` is false,  we need to find the expected crop width.
 
