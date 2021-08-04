@@ -14,6 +14,7 @@ import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
 import { generateStaticData, generateStructuredData, SEO } from "@quintype/seo";
 import { Collection } from "@quintype/framework/server/api-client";
+import { WHITELIST_DATA_CONFIG } from "../isomorphic/constants";
 export const app = createApp();
 
 upstreamQuintypeRoutes(app, {});
@@ -103,5 +104,7 @@ isomorphicRoutes(app, {
   staticRoutes: STATIC_ROUTES,
   seo: generateSeo,
   preloadJs: true,
-  prerenderServiceUrl: "https://prerender.quintype.io"
+  prerenderServiceUrl: "https://prerender.quintype.io",
+  routeDataFeild: WHITELIST_DATA_CONFIG,
+  isEnableRouteDataField: true
 });
