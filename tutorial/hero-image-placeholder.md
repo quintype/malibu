@@ -47,9 +47,9 @@ Eg:
 }
 ```
 
-If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder, pass `enable_placeholder` from `/app/config/publisher.yml` in `black knight`, which accepts a boolean value.
+If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder, pass `enable_placeholder` from `/app/config/publisher.yml` in `black knight` under `publisher`, which accepts a boolean value.
 
 Note: 
 - We can delay the load of the image generating script to increase LCP and load the placeholder for a particular interval.
-- If your app is cloned from `malibu-advanced`, pass `placeholder_delay` from `/app/config/publisher.yml` in `black knight` with the required interval. Eg: `placeholder_delay: 3`, in this example there will be a delay of 3 seconds post that, we will be loading the required script.
+- If your app is cloned from `malibu-advanced`, pass `placeholder_delay` from `/app/config/publisher.yml` in `black knight` under publisher with the required interval. Eg: `placeholder_delay: 3`, in this example there will be a delay of 3 seconds post that, we will be loading the required script.
 
