@@ -14,7 +14,7 @@ An image placeholder is a background color over the space, on which an actual im
 How Quintype handles image placeholder?
 
 - Wrap `ResponsiveImage` component with `figure` tag.
-- Based on aspect ratio of the image provide `padding-top` to the `figure` tag using styleName/className.
+- Based on aspect ratio of the image, provide `padding-top` for the `figure` tag using styleName/className.
 - Use a generic styleName/className to the `figure` tag to provide required `background- color`.
 
 Eg: 
@@ -47,9 +47,9 @@ Eg:
 }
 ```
 
-If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder from `black knight` `enable_placeholder` which accepts a boolean value.
+If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder, pass `enable_placeholder` from `/app/config/publisher.yml` in `black knight`, which accepts a boolean value.
 
 Note: 
 - We can delay the load of the image generating script to increase LCP and load the placeholder for a particular interval.
-- If your app is cloned from `malibu-advanced`, pass `placeholder_delay` with the required interval. Eg: `placeholder_delay: 3`, in this example there will be a delay of 3 seconds post that, we will be loading the required script.
+- If your app is cloned from `malibu-advanced`, pass `placeholder_delay` from `/app/config/publisher.yml` in `black knight` with the required interval. Eg: `placeholder_delay: 3`, in this example there will be a delay of 3 seconds post that, we will be loading the required script.
 
