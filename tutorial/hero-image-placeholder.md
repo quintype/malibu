@@ -1,5 +1,5 @@
 ---
-title: Placeholder generation for hero image
+title: Placeholder generation for the hero image
 parent: Malibu Tutorial
 nav_order: 27
 nav_exclude: true
@@ -9,7 +9,7 @@ nav_exclude: true
 
 _This tutorial was contributed by [Harshith](https://www.linkedin.com/in/harshith-raj-092ba4176)_
 
-An image placeholder is a background-color over an empty space over which an actual image will be loaded.
+An image placeholder is a background color over the space, on which an actual image will be loaded.
 
 How Quintype handles image placeholder?
 
@@ -50,6 +50,6 @@ Eg:
 If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder from black knight `enable_placeholder` which accepts a boolean value.
 
 Note: 
-- We can delay the load of image generating script to increase lcp and load the placeholder for particular interval.
-- If your app is cloned from `malibu-advanced`, pass `placeholder_delay` with required interval. Eg: `placeholder_delay: 3`, in this example there will be a delay of 3 seconds post that, we will be loading the required script.
+- We can delay the load of the image generating script to increase LCP and load the placeholder for a particular interval.
+- If your app is cloned from `malibu-advanced`, pass `placeholder_delay` with the required interval. Eg: `placeholder_delay: 3`, in this example there will be a delay of 3 seconds post that, we will be loading the required script.
 
