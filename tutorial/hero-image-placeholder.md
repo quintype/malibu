@@ -47,7 +47,7 @@ Eg:
 }
 ```
 
-If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder from black knight `enable_placeholder` which accepts a boolean value.
+If your app is cloned from `malibu-advanced`, we provide a toggle to enable placeholder from `black knight` `enable_placeholder` which accepts a boolean value.
 
 Note: 
 - We can delay the load of the image generating script to increase LCP and load the placeholder for a particular interval.
