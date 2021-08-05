@@ -14,7 +14,7 @@ An image placeholder is a background color over the space, on which an actual im
 How Quintype handles image placeholder?
 
 - Wrap `ResponsiveImage` component with `figure` tag.
-- Based on aspect ratio provide required `padding-top` to the `figure` tag using styleName/className.
+- Based on aspect ratio of the image provide `padding-top` to the `figure` tag using styleName/className.
 - Use a generic styleName/className to the `figure` tag to provide required `background- color`.
 
 Eg: 
