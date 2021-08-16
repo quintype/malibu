@@ -13,13 +13,13 @@ TTL is nothing but the time for which resources are cached on CDN. The value `s-
 
 #### How to override  s-maxage value in Isomorphic Routes
 
-For overriding the s-maxage value, We can set `isomorphicRoutesSmaxage: 900` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level.  The default value is set to 900 seconds.
+For overriding the s-maxage value, We can set `isomorphicRoutesSmaxage: <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level.  The default value is set to 900 seconds.
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
 **How to pass it from Black Knight **
 
-Go to Black Knight  `/app/config/publisher.yml`,  add `isomorphicRoutesSmaxage: 900` under `publisher`.
+Go to Black Knight  `/app/config/publisher.yml`,  add `isomorphicRoutesSmaxage:  <value>` under `publisher`.
 Example :
 
 ```js
@@ -55,13 +55,13 @@ publisher:
 
 #### How to override  s-maxage value in Upstream Quintype Routes
 
-For overriding the s-maxage value for upstream routes(sketches routes),  set `upstreamRoutesSmaxage: 900` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level. By default, the s-maxage value  will be the same as how it's set in sketches.
+For overriding the s-maxage value for upstream routes(sketches routes),  set `upstreamRoutesSmaxage:  <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level. By default, the s-maxage value  will be the same as how it's set in sketches.
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
 How to pass it from Black Knight 
 
-Go to Black Knight  `/app/config/publisher.yml`,  add `upstreamRoutesSmaxage: 900` under `publisher`.
+Go to Black Knight  `/app/config/publisher.yml`,  add `upstreamRoutesSmaxage:  <value>` under `publisher`.
 Example :
 
 ```js
