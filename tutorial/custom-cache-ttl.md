@@ -51,11 +51,12 @@ publisher:
 
 - This will change the s-maxage value of `/route-data.json`, story and section pages, AMP pages, `mobile-data.json`, staticRoutes and custom routes passed from the app
 
-- However, it won't change the s-maxage value of some requests like service-worker, shell.html, app manifest
+**Exceptions for s-maxage**
+ However, it won't change the s-maxage value of some requests like service-worker, shell.html, app manifest
 
 #### How to override  s-maxage value in Upstream Quintype Routes
 
-For overriding the s-maxage value for upstream routes(sketches routes),  set `upstreamRoutesSmaxage:  <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level. By default, the s-maxage value  will be the same as how it's set in sketches.
+For overriding the s-maxage value for upstream routes(sketches routes),  set `upstreamRoutesSmaxage:  <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level. By default, the s-maxage value  will be the same as how it's set in Sketches/Api Server.
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
@@ -78,11 +79,10 @@ publisher:
 ```
 
 **How to pass it from app level**
-- In the `server/app.js` [file](https://github.com/quintype/malibu/blob/master/app/server/app.js), pass an option `sMaxAge: <value>` to the `upstreamQuintypeRoutes` function like so:
+In the `server/app.js` [file](https://github.com/quintype/malibu/blob/master/app/server/app.js), pass an option `sMaxAge: <value>` to the `upstreamQuintypeRoutes` function like so:
 
   ```js
   upstreamQuintypeRoutes(app, {sMaxAge: 1800});
-
   ```
-
-- For `Breaking News(api/v1/breaking-news), /qlitics.js` and if the `cacheability is Private`, it is not overridden, instead the cache control will be the same as how it's set in sketches.
+**Exceptions for s-maxage**
+For `Breaking News(api/v1/breaking-news), /qlitics.js` or if the `cacheability is Private`, it is not overridden, instead the cache control will be the same as how it's set in Sketches/Api Server.
