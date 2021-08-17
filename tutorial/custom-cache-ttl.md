@@ -7,12 +7,36 @@ nav_exclude: true
 
 # {{page.title}}
 
-_This tutorial was contributed by [Amogh](https://github.com/ags1773)_
+_This tutorial was contributed by [Amogh](https://github.com/ags1773) and [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105/)_ 
 
-The time for which resources are cached on CDN i.e. the s-maxage value in the Cache-Control header is set to 900 seconds for most requests. This can be changed if needed from the app level.
+TTL is the time for which resources are cached on CDN. The value `s-maxage` is stored in a part of the response called the HTTP header, and it specifies for how many seconds, minutes, or hours content will be cached. In this tutorial, we are going to discuss how to override  `s-maxage` value in response cache-control header for `isomorphicRoutes` and `upstreamQuintypeRoutes`.  
 
-- Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `4.16.2` or higher
+#### How to override  s-maxage value in Isomorphic Routes
 
+For overriding the s-maxage value, We can set `isomorphicRoutesSmaxage: <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level.  The default value is set to 900 seconds.
+
+- Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
+
+**How to pass it from BlackKnight **
+
+Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight")  `/app/config/publisher.yml`,  add `isomorphicRoutesSmaxage:  <value>` under `publisher`.
+Example :
+
+```js
+...
+...
+
+publisher: 
+  ...
+  isomorphicRoutesSmaxage: 1800
+  ...
+...
+...
+
+```
+
+
+**How to pass it from app level**
 - In the `server/app.js` [file](https://github.com/quintype/malibu/blob/master/app/server/app.js), pass an option `sMaxAge: <value>` to the `isomorphicRoutes` function like so:
 
   ```js
@@ -21,10 +45,44 @@ The time for which resources are cached on CDN i.e. the s-maxage value in the Ca
     loadData: loadData,
     seo: generateSeo,
     ...
-    sMaxAge: "1800"
+    sMaxAge: 1800
   });
   ```
 
-- This will change the s-maxage value of `/route-data.json`, story and section pages, AMP pages, `mobile-data.json`, staticRoutes and custom routes passed from app
+- This will change the s-maxage value of `/route-data.json`, story and section pages, AMP pages, `mobile-data.json`, staticRoutes and custom routes passed from the app
 
-- However it won't change the s-maxage value of some requests like service-worker, shell.html, app manifest
+**Exceptions for s-maxage**
+ However, it won't change the s-maxage value of some requests like service-worker, shell.html, app manifest
+
+#### How to override  s-maxage value in Upstream Quintype Routes
+
+For overriding the s-maxage value for upstream routes(sketches routes),  set `upstreamRoutesSmaxage:  <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level. By default, the s-maxage value  will be the same as how it's set in Sketches/Api Server.
+
+- Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
+
+**How to pass it from BlackKnight **
+
+Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight")  `/app/config/publisher.yml`,  add `upstreamRoutesSmaxage:  <value>` under `publisher`.
+Example :
+
+```js
+...
+...
+
+publisher: 
+  ...
+  upstreamRoutesSmaxage: 1800
+  ...
+...
+...
+
+```
+
+**How to pass it from app level**
+In the `server/app.js` [file](https://github.com/quintype/malibu/blob/master/app/server/app.js), pass an option `sMaxAge: <value>` to the `upstreamQuintypeRoutes` function like so:
+
+  ```js
+  upstreamQuintypeRoutes(app, {sMaxAge: 1800});
+  ```
+**Exceptions for s-maxage**
+For `Breaking News(api/v1/breaking-news), /qlitics.js` or if the `cacheability is Private`, it is not overridden, instead the cache control will be the same as how it's set in Sketches/Api Server.
