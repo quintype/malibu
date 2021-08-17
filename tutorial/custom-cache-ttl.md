@@ -9,7 +9,7 @@ nav_exclude: true
 
 _This tutorial was contributed by [Amogh](https://github.com/ags1773) and [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105/)_ 
 
-TTL is the time for which resources are cached on CDN. The value `s-maxage` is stored in a part of the response called the HTTP header, and it specifies for how many seconds, minutes, or hours content will be cached. In this tutorial, we are going to discuss how to override  `s-maxage` value in response cache-control header for `isomorphicRoutes` and `upstreamQuintypeRoutes`.  
+TTL is the time for which resources are cached on CDN. The value `s-maxage` is stored in a part of the response called the HTTP header, and it specifies for how many seconds the content will be cached. In this tutorial, we are going to discuss how to override  `s-maxage` value in response cache-control header for `isomorphicRoutes` and `upstreamQuintypeRoutes`.  
 
 #### How to override  s-maxage value in Isomorphic Routes
 
