@@ -11,13 +11,13 @@ _This tutorial was contributed by [Amogh](https://github.com/ags1773) and [Athir
 
 TTL is the time for which resources are cached on CDN. The value `s-maxage` is stored in a part of the response called the HTTP header, and it specifies for how many seconds the content will be cached. In this tutorial, we are going to discuss how to override  `s-maxage` value in response cache-control header for `isomorphicRoutes` and `upstreamQuintypeRoutes`.  
 
-#### How to override  s-maxage value in Isomorphic Routes
+## How to override  s-maxage value in Isomorphic Routes
 
 For overriding the s-maxage value, We can set `isomorphicRoutesSmaxage: <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level.  The default value is set to 900 seconds.
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
-**How to pass it from BlackKnight **
+**How to pass it from BlackKnight**
 
 Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight")  `/app/config/publisher.yml`,  add `isomorphicRoutesSmaxage:  <value>` under `publisher`.
 Example :
@@ -54,13 +54,13 @@ publisher:
 **Exceptions for s-maxage**
  However, it won't change the s-maxage value of some requests like service-worker, shell.html, app manifest
 
-#### How to override  s-maxage value in Upstream Quintype Routes
+## How to override  s-maxage value in Upstream Quintype Routes
 
 For overriding the s-maxage value for upstream routes(sketches routes),  set `upstreamRoutesSmaxage:  <value>` under publisher in publisher.yml config file that comes from BlackKnight or pass it from the app level. By default, the s-maxage value  will be the same as how it's set in Sketches/Api Server.
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
-**How to pass it from BlackKnight **
+**How to pass it from BlackKnight**
 
 Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight")  `/app/config/publisher.yml`,  add `upstreamRoutesSmaxage:  <value>` under `publisher`.
 Example :
