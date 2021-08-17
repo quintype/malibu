@@ -7,9 +7,9 @@ nav_exclude: true
 
 # {{page.title}}
 
-_This tutorial was contributed by [Amogh](https://github.com/ags1773)_ and [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105/) 
+_This tutorial was contributed by [Amogh](https://github.com/ags1773) and [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105/)_ 
 
-TTL is nothing but the time for which resources are cached on CDN. The value `s-maxage` is stored in a part of the response called the HTTP header, and it specifies for how many seconds, minutes, or hours content will be cached. In this tutorial, we are going to discuss how to override  `s-maxage` value in response cache-control header for `isomorphicRoutes` and `upstreamQuintypeRoutes`.  
+TTL is the time for which resources are cached on CDN. The value `s-maxage` is stored in a part of the response called the HTTP header, and it specifies for how many seconds, minutes, or hours content will be cached. In this tutorial, we are going to discuss how to override  `s-maxage` value in response cache-control header for `isomorphicRoutes` and `upstreamQuintypeRoutes`.  
 
 #### How to override  s-maxage value in Isomorphic Routes
 
@@ -17,9 +17,9 @@ For overriding the s-maxage value, We can set `isomorphicRoutesSmaxage: <value>`
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
-**How to pass it from Black Knight **
+**How to pass it from BlackKnight **
 
-Go to Black Knight  `/app/config/publisher.yml`,  add `isomorphicRoutesSmaxage:  <value>` under `publisher`.
+Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight")  `/app/config/publisher.yml`,  add `isomorphicRoutesSmaxage:  <value>` under `publisher`.
 Example :
 
 ```js
@@ -59,9 +59,9 @@ For overriding the s-maxage value for upstream routes(sketches routes),  set `up
 
 - Make sure [@quintype/framework](https://www.npmjs.com/package/@quintype/framework) version is `5.0.5` or higher
 
-How to pass it from Black Knight 
+**How to pass it from BlackKnight **
 
-Go to Black Knight  `/app/config/publisher.yml`,  add `upstreamRoutesSmaxage:  <value>` under `publisher`.
+Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight")  `/app/config/publisher.yml`,  add `upstreamRoutesSmaxage:  <value>` under `publisher`.
 Example :
 
 ```js
