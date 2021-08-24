@@ -6,25 +6,21 @@ nav_order: 9
 
 # {{page.title}}
 
-*This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-kumar)*
+_This tutorial was contributed by [Deo Kumar](https://www.linkedin.com/in/deo-kumar) and [Amogh](https://github.com/ags1773)_
 
-Currently, it's difficult to process JavaScript and not all search engine crawlers can process it successfully or immediately which leads to SEO problem. so we came up with one solution called prerender.io.
+[prerender.io](https://prerender.io/) is a service that shows a simplified page without any javascript to crawlers in order to improve SEO
 
-The Prerender.io middleware will check each request to see if it's a request from a crawler. If it is a request from a crawler, the middleware will send a request to Prerender.io for the static HTML of that page. If not, the request will continue to your normal server routes. The crawler never knows that you are using Prerender.io since the response always goes through your server.
+## Steps to enable prerender for a malibu app
 
-If you would like to know more about it, consider reading the [Prerender.io]({{"https://prerender.io/documentation"}}) documentation.
+1. Update `@quintype/framework` to the latest version (`4.13.0` or greater).
 
-## Setup prerender for your app
+2. Whitelist your URLs in Cloudflare, for that, you may [contact support](mailto:support@quintype.com) for it.
 
-There are few steps you need to follow to setup your Prerender app:
+3. In order to detect crawler, we use Cloudflare's URL rewrite feature to append a query parameter `prerender=true`. Get in touch with support to add your URLs to the URL rewrite rules
 
-1. The first thing you need to update the framework library  `@quintype/framework` to the latest version (`4.13.0` or greater).
+4. Pass parameter `prerenderServiceUrl` in isomorphicRoutes from your app. If you wish to use the default prerender service set up by Quintype, the `prerenderServiceUrl` is `https://prerender.quintype.io`. If you wish to set up your custom prerender service, pass that URL here.
 
-2. The second step is to whitelist the list of urls in Cloudflare, for that, you may [contact support](mailto:support@quintype.com) for it.
-
-3. Once your list of urls are whitelisted in Cloudflare then you just need to pass prerenderServiceUrl in isomorphicRoutes from your app.
-
-In *app/server/app.js*
+In _app/server/app.js_
 
 ```javascript
 isomorphicRoutes(app, {
