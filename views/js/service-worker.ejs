@@ -14,4 +14,4 @@ initializeQServiceWorker(self, {
   hostname: <%- JSON.stringify(hostname) %>
 });
 
-workbox.routing.registerRoute(new RegExp('<%= mountAt %>/route-data.json*'), new workbox.strategies.NetworkFirst());
+workbox.routing.registerRoute(new RegExp('/route-data.json*'), new workbox.strategies.NetworkFirst());
