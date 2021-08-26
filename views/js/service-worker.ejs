@@ -11,7 +11,7 @@ const REQUIRED_ASSETS = [
 initializeQServiceWorker({
   routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
-  shell: "/shell.html?revision=<%= assetHash("app.js") %>"
+  shell: "/shell.html?revision=<%= assetHash("app.js") %>",
   hostname: <%- JSON.stringify(hostname) %>
 });
 
