@@ -5,13 +5,13 @@ const REQUIRED_ASSETS = [
   "<%= x %>",
   <%_ }) _%>
   // Put fonts here
-  "/shell.html?revision=<%= assetHash("app.js") %>"
+  "/shell.html?revision=<%= assetHash("app.js") %>-<%= configVersion %>"
 ];
 
 initializeQServiceWorker({
   routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
-  shell: "/shell.html?revision=<%= assetHash("app.js") %>",
+  shell: "/shell.html?revision=<%= assetHash("app.js") %>-<%= configVersion %>",
   hostname: <%- JSON.stringify(hostname) %>
 });
 
