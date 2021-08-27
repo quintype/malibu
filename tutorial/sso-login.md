@@ -10,6 +10,8 @@ parent: Malibu Tutorial
 
 Single sign-on (SSO) is an authentication method that enables users to securely authenticate with multiple applications and websites by using just one set of credentials. In this tutorial, we will explain how to set up SSO (Single Sign-On) using Bridgekeeper(Quintype’s authentication service).
 
+As you clone the Malibu Advanced repository, you will be getting this feature out of the box. All you have to do to add the corresponding keys in the configuration file in [BlackKnight](https://black-knight.quintype.com/ "BlackKnight"). If you intend to integrate SSO to your existing app or if you have cloned from Malibu, please follow the below steps.
+
 **Prerequisites:**
 
 - A realm for the publisher’s frontend website should already exist in Bridgekeeper.
