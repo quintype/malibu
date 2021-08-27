@@ -7,6 +7,7 @@
   "author": "Tejas Dinkar <tejas@gja.in>",
   "license": "MIT",
   "dependencies": {
+    "@formio/react": "^5.1.1",
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
     "@quintype/components": "^2.28.0",
@@ -17,7 +18,6 @@
     "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.12.0",
-    "react-formio": "^4.3.0",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
     "wretch": "^1.4.1"
@@ -38,7 +38,6 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^5.0.0",
-    "gumlet.js": "^2.0.0",
     "husky": "^4.3.6",
     "jest": "^26.0.1",
     "lint-staged": "^10.0.0",
