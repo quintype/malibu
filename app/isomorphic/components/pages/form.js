@@ -7,7 +7,7 @@ const FormPage = props => {
   const { headline, subheadline, status, "formio-url": formioUrl } = props.data.form;
   const isClosed = status === "closed";
   return (
-    <div>
+    <div className="container">
       <h1>{headline}</h1>
       <h2>{subheadline}</h2>
       {isClosed && <p>The form is closed for submissions.</p>}
