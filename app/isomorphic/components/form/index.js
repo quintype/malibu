@@ -13,7 +13,7 @@ const Form = ({ formioUrl, disabled }) => {
   }, []);
 
   return (
-    <div className={`bootstrap`}>
+    <div className={`bootstrap container`}>
       <link
         rel="stylesheet"
         href="https://toert.github.io/Isolated-Bootstrap/versions/4.1.0/iso_bootstrap4.1.0min.css"
