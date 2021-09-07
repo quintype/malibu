@@ -14,7 +14,6 @@ const Form = ({ formioUrl, disabled }) => {
 
   return (
     <div className={`bootstrap`}>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       <link
         rel="stylesheet"
         href="https://toert.github.io/Isolated-Bootstrap/versions/4.1.0/iso_bootstrap4.1.0min.css"
