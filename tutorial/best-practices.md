@@ -18,8 +18,10 @@ Link text that is discernible, unique, and focusable improves the navigation exp
 
 Similar to buttons, links primarily get their accessible name from their text content. Avoid filler words like "Here" or "Read more"; instead, put the most meaningful text into the link itself:
 
+aria-label attribute properly describes the purpose of the link element.
+
 ```
-    <a href="…">our guide to creating accessible web pages</a>
+    <a href="…" aria-label="link-to-accessibility-best-practices">our guide to creating accessible web pages</a>
 ```
 
 Learn more in https://web.dev/link-name/
