@@ -8,8 +8,6 @@ parent: Malibu Tutorial
 
 _This tutorial was contributed by [Andukuri Venkata Phaneendra](https://www.linkedin.com/in/venkata-phaneendra-andukuri/)_
 
-The website speed makes the first impression about your business. It’s essential to understand that you won’t get a second chance when it comes to user experience. Low website speed is one of the most frustrating things that will turn people off about your resource. Following some best practices can result in better user experience.
-
 In this tutorial we will discuss some of the best practices which improve the performance
 
 ## Accessibility
