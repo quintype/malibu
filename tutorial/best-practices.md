@@ -22,6 +22,8 @@ Similar to buttons, links primarily get their accessible name from their text co
     <a href="…">our guide to creating accessible web pages</a>
 ```
 
+Learn more in https://web.dev/link-name/
+
 ### Tap Targets should be sized properly
 
 Tap targets are the areas of a web page that users on touch devices can interact with. Buttons, links, and form elements all have tap targets.
@@ -29,3 +31,5 @@ Tap targets are the areas of a web page that users on touch devices can interact
 Many search engines rank pages based on how mobile-friendly they are. Making sure tap targets are big enough and far enough apart from each other makes your page more mobile-friendly and accessible.
 
 Any on-screen element that someone can click, touch, or otherwise interact with should be large enough for reliable interaction. Consider making sure these elements have a width and height of at least 48px
+
+Learn more in https://web.dev/tap-targets/
