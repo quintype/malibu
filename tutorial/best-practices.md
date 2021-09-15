@@ -62,14 +62,14 @@ For buttons without visible labels, like icon buttons, use the `aria-label` attr
 
 Learn more in [https://web.dev/button-name/](https://web.dev/button-name/)
 
-### Document doesn't have a <title> element
+### Document doesn't have a `<title>` element
 
-Having a <title> element on every page helps all your users:
+Having a `<title>` element on every page helps all your users:
 
 - Search engine users rely on the title to determine whether a page is relevant to their search.
 - The title also gives users of screen readers and other assistive technologies an overview of the page. The title is the first text that an assistive technology announces.
 
-Add a title element to the <head> of your page. Make sure the title clearly states what the page is about. For example:
+Add a title element to the `<head>` of your page. Make sure the title clearly states what the page is about. For example:
 
 ```javascript
 <!doctype html>
@@ -87,11 +87,11 @@ Add a title element to the <head> of your page. Make sure the title clearly stat
 
 Learn more in [https://web.dev/document-title](https://web.dev/document-title)
 
-### <html> element does not have a [lang] attribute
+### `<html>` element does not have a [lang] attribute
 
 To ensure correct pronunciation, screen readers use a different sound library for each language they support. Screen readers can switch between these language libraries easily, but only if a web page specifies which language to read for a given piece of content.
 
-If a page doesn't specify a language for the <html> element, a screen reader assumes the page is in the default language that the user chose when setting up the screen reader, often making it impossible to understand the content.
+If a page doesn't specify a language for the `<html>` element, a screen reader assumes the page is in the default language that the user chose when setting up the screen reader, often making it impossible to understand the content.
 
 ```javascript
 <html lang="en">...</html>
@@ -99,9 +99,9 @@ If a page doesn't specify a language for the <html> element, a screen reader ass
 
 Learn more in [https://web.dev/html-has-lang/](https://web.dev/html-has-lang/)
 
-### <html> element does not have a valid value for its [lang] attribute
+### `<html>` element does not have a valid value for its [lang] attribute
 
-To ensure correct pronunciation of the page as a whole, you must specify a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) for the <html> element.
+To ensure correct pronunciation of the page as a whole, you must specify a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) for the `<html>` element.
 
 ```javascript
 <html lang="en">...</html>
@@ -124,9 +124,9 @@ Informative elements should aim for short, descriptive alternate text. Decorativ
 
 Learn more in [https://web.dev/image-alt](https://web.dev/image-alt)
 
-### List items (<li>) are contained within <ul> or <ol> parent elements
+### List items (`<li>`) are contained within `<ul>` or `<ol>` parent elements
 
-Screen readers and other assistive technologies require list items (<li>) to be contained within parent <ul> or <ol> to be announced properly.
+Screen readers and other assistive technologies require list items (`<li>`) to be contained within parent `<ul>` or `<ol>` to be announced properly.
 
 When assistive technologies come to a list, they notify users how many items are within the list. If you don't wrap list items in a parent list element, assistive technologies can't set user expectations correctly.
 
@@ -145,7 +145,7 @@ When assistive technologies come to a list, they notify users how many items are
 
 [Click here](https://web.dev/aria-allowed-attr/) for the detailed information.
 
-### [aria-hidden="true"] is not present on the document <body>
+### [aria-hidden="true"] is not present on the document `<body>`
 
 [Click Here](https://web.dev/aria-hidden-body/) for the detailed information.
 
@@ -173,7 +173,7 @@ When assistive technologies come to a list, they notify users how many items are
 
 [Click Here](https://web.dev/duplicate-id-aria) for the detailed information.
 
-### [user-scalable="no"] is used in the <meta name="viewport"> element or the [maximum-scale] attribute is less than 5
+### [user-scalable="no"] is used in the `<meta name="viewport">` element or the [maximum-scale] attribute is less than 5
 
 [Click Here](https://web.dev/meta-viewport) for the detailed information.
 
@@ -225,6 +225,6 @@ When assistive technologies come to a list, they notify users how many items are
 
 [Click here](https://web.dev/label) for the detailed information.
 
-### Lists do not contain only <li> elements and script supporting elements (<script> and <template>)
+### Lists do not contain only `<li>` elements and script supporting elements (`<script>` and `<template>`)
 
 [Click here](https://web.dev/list) for the detailed information.
