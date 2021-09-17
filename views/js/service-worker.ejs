@@ -1,17 +1,19 @@
 <%- serviceWorkerHelper %>;
 
+const shellUrl = "/shell.html?revision=<%= assetHash("app.js") %>-<%= configVersion %>";
+
 const REQUIRED_ASSETS = [
   <%_ getFilesForChunks("app", "list", "story").map(x => { _%>
   "<%= x %>",
   <%_ }) _%>
   // Put fonts here
-  "/shell.html?revision=<%= assetHash("app.js") %>-<%= configVersion %>"
+  shellUrl
 ];
 
 initializeQServiceWorker({
   routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
-  shell: "/shell.html?revision=<%= assetHash("app.js") %>-<%= configVersion %>",
+  shell: shellUrl,
   hostname: <%- JSON.stringify(hostname) %>
 });
 
