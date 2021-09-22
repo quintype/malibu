@@ -69,6 +69,7 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
 
 app.get("/robots.txt", (req, res) => {
   res.render("text/robots", (err, content) => {
+    console.log("here come inside robots.txt");
     if (err) {
       console.log(err.stack);
       return;
