@@ -2,7 +2,7 @@
 title: Service Worker Updates
 parent: Malibu Tutorial
 nav_order: 30
-nav_exclude: true
+
 ---
 
 We have updated the workbox version from v2 to v6 in the service worker. If you are using *@quintype/framework* version *6.1.1* or higher than it, please update your service worker file.
