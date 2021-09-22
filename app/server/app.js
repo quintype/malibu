@@ -67,6 +67,19 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   return next();
 };
 
+app.get("/robots.txt", (req, res) => {
+  res.render("text/robots", (err, content) => {
+    if (err) {
+      console.log(err.stack);
+      return;
+    }
+    return res
+      .header("Cache-Control", "public,max-age=30,s-maxage=10, stale-while-revalidate=10,stale-if-error=10")
+      .header("Content-Type", "text/plain")
+      .send(content);
+  });
+});
+
 const logError = error => logger.error(error);
 
 getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
