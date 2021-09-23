@@ -21,6 +21,11 @@ export const STATIC_ROUTES = [
     exact: true,
     renderParams: { contentTemplate: "./story-preview" },
     disableIsomorphicComponent: false
+  },
+  {
+    path: "/robots.txt",
+    pageType: PAGE_TYPE.STATIC_PAGE,
+    renderParams: { contentTemplate: "./robots" }
   }
 ];
 

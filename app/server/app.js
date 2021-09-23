@@ -14,6 +14,8 @@ import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
 import { generateStaticData, generateStructuredData, SEO } from "@quintype/seo";
 import { Collection } from "@quintype/framework/server/api-client";
+import fetch from "node-fetch";
+
 export const app = createApp();
 
 upstreamQuintypeRoutes(app, {});
@@ -67,18 +69,12 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   return next();
 };
 
-app.get("/robots.txt", (req, res) => {
-  res.render("text/robots", (err, content) => {
-    console.log("here come inside robots.txt");
-    if (err) {
-      console.log(err.stack);
-      return;
-    }
-    return res
-      .header("Cache-Control", "public,max-age=30,s-maxage=10, stale-while-revalidate=10,stale-if-error=10")
-      .header("Content-Type", "text/plain")
-      .send(content);
-  });
+app.use("/robots.txt", function(req, res) {
+  fetch(`https://www.nationalheraldindia.com/api/v1/static-pages/robots.txt`)
+    .then(response => response.json())
+    .then(data => {
+      res.render("pages/robots", { content: data["static-page"].content });
+    });
 });
 
 const logError = error => logger.error(error);
