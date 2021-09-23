@@ -117,22 +117,22 @@ workflows:
           context: quay-login
           requires:
             - deploy_staging
-    perf_lighthouse_test:
-      jobs:
-        - build:
-            context: quay-login
-        - hold_perf:
-            type: approval
-            requires:
-              - build
-        - deploy_perf:
-            context: quay-login
-            requires:
-              - hold_perf
-        - perf_lighthouse_task:
-            context: quay-login
-            requires:
-              - deploy_perf
+  perf_lighthouse_test:
+    jobs:
+      - build:
+          context: quay-login
+      - hold_perf:
+          type: approval
+          requires:
+            - build
+      - deploy_perf:
+          context: quay-login
+          requires:
+            - hold_perf
+      - perf_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_perf
 
   lighthouse_test:
     jobs:
