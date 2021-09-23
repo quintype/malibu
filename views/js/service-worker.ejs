@@ -1,17 +1,20 @@
 <%- serviceWorkerHelper %>;
 
+const shellUrl = "/shell.html?revision=<%= assetHash("app.js") %>-<%= configVersion %>";
+
 const REQUIRED_ASSETS = [
   <%_ getFilesForChunks("app", "list", "story").map(x => { _%>
   "<%= x %>",
   <%_ }) _%>
   // Put fonts here
-  {url: '/shell.html', revision: '<%= assetHash("app.js") %>'}
+  shellUrl
 ];
 
-const workbox = initializeQServiceWorker(self, {
+initializeQServiceWorker({
   routes: <%- JSON.stringify(routes) %>,
   assets: REQUIRED_ASSETS,
+  shell: shellUrl,
   hostname: <%- JSON.stringify(hostname) %>
 });
 
-workbox.router.registerRoute('/route-data.json', workbox.strategies.networkFirst());
+workbox.routing.registerRoute(new RegExp('/route-data.json*'), new workbox.strategies.NetworkFirst());
