@@ -105,6 +105,10 @@ workflows:
     jobs:
       - build:
           context: quay-login
+          filters:
+            branches:
+              ignore:
+                - master
       - hold_staging:
           type: approval
           requires:
@@ -121,6 +125,10 @@ workflows:
     jobs:
       - build:
           context: quay-login
+          filters:
+            branches:
+              ignore:
+                - master
       - hold_perf:
           type: approval
           requires:
