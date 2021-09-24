@@ -14,7 +14,6 @@ import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
 import { generateStaticData, generateStructuredData, SEO } from "@quintype/seo";
 import { Collection } from "@quintype/framework/server/api-client";
-import fetch from "node-fetch";
 
 export const app = createApp();
 
@@ -69,14 +68,6 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   return next();
 };
 
-// app.use("/robots.txt", function(req, res) {
-//   fetch(`https://malibu-web.qtstage.io/api/v1/static-pages/robots.txt`)
-//     .then(response => response.json())
-//     .then(data => {
-//       res.render("pages/robots", { content: data["static-page"].content });
-//     });
-// });
-
 const logError = error => logger.error(error);
 
 getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
@@ -98,7 +89,10 @@ function generateSeo(config, pageType) {
 }
 
 ampRoutes(app, {
-  seo: generateSeo
+  seo: generateSeo,
+  featureConfig: {
+    alignLogo: "left"
+  }
 });
 
 isomorphicRoutes(app, {
