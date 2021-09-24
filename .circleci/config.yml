@@ -105,6 +105,10 @@ workflows:
     jobs:
       - build:
           context: quay-login
+          filters:
+            branches:
+              ignore:
+                - master
       - hold_staging:
           type: approval
           requires:
@@ -117,11 +121,35 @@ workflows:
           context: quay-login
           requires:
             - deploy_staging
+  perf_lighthouse_test:
+    jobs:
+      - build:
+          context: quay-login
+          filters:
+            branches:
+              ignore:
+                - master
+      - hold_perf:
+          type: approval
+          requires:
+            - build
+      - deploy_perf:
+          context: quay-login
+          requires:
+            - hold_perf
+      - perf_lighthouse_task:
+          context: quay-login
+          requires:
+            - deploy_perf
 
   lighthouse_test:
     jobs:
       - build:
           context: quay-login
+          filters:
+            branches:
+              only:
+                - master
       - hold_qa_staging:
           type: approval
           requires:
@@ -155,7 +183,6 @@ workflows:
             branches:
               only:
                 - master
-                - master-clone
       - deploy_production:
           context: quay-login
           requires:
@@ -164,7 +191,6 @@ workflows:
             branches:
               only:
                 - master
-                - master-clone
       - prod_lighthouse_task:
           context: quay-login
           requires:
