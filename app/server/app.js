@@ -14,7 +14,6 @@ import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
 import { generateStaticData, generateStructuredData, SEO } from "@quintype/seo";
 import { Collection } from "@quintype/framework/server/api-client";
-
 export const app = createApp();
 
 upstreamQuintypeRoutes(app, {});
@@ -89,10 +88,7 @@ function generateSeo(config, pageType) {
 }
 
 ampRoutes(app, {
-  seo: generateSeo,
-  featureConfig: {
-    alignLogo: "left"
-  }
+  seo: generateSeo
 });
 
 isomorphicRoutes(app, {
