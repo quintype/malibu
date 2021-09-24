@@ -69,13 +69,13 @@ const redirectCollectionHandler = () => async (req, res, next, { client, config 
   return next();
 };
 
-app.use("/robots.txt", function(req, res) {
-  fetch(`https://www.nationalheraldindia.com/api/v1/static-pages/robots.txt`)
-    .then(response => response.json())
-    .then(data => {
-      res.render("pages/robots", { content: data["static-page"].content });
-    });
-});
+// app.use("/robots.txt", function(req, res) {
+//   fetch(`https://malibu-web.qtstage.io/api/v1/static-pages/robots.txt`)
+//     .then(response => response.json())
+//     .then(data => {
+//       res.render("pages/robots", { content: data["static-page"].content });
+//     });
+// });
 
 const logError = error => logger.error(error);
 
