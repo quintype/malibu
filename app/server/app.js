@@ -90,7 +90,9 @@ function generateSeo(config, pageType) {
 ampRoutes(app, {
   seo: generateSeo,
   featureConfig: {
-    visualStoryLogoAlignment: config => "left"
+    visualStories: {
+      logoAlignment: "left"
+    }
   }
 });
 
