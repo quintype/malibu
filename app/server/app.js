@@ -88,7 +88,10 @@ function generateSeo(config, pageType) {
 }
 
 ampRoutes(app, {
-  seo: generateSeo
+  seo: generateSeo,
+  featureConfig: {
+    visualStoryLogoAlignment: config => "right"
+  }
 });
 
 isomorphicRoutes(app, {
