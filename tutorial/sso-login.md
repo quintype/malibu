@@ -145,7 +145,10 @@ const loginHandler = async e => {
 To logout a user, the application can make a GET request on `/api/auth/v1/logout` or call `logout` function from` @quintype/bridgekeeper-js`. As a result, the user will be logged out on all domains. An application can determine if the user is logged in or has logged out as before, by making a GET request to Bridgekeeper on `/api/auth/v1/users/me` or `getCurrentUser()` from `@quintype/bridgekeeper-js` library.
 
 ### Auto SSO
-This is similiar to the login workflow explained above. The difference is in the API and the login flow. In this, the User will be `logged-in` without clicking on login button or Avatar, if they are already `logged-in` in the other sub-domain. By default, this feature is disabled. Enabling, might affect the performance because of multiple redirects.
+This is similiar to the login workflow explained above. The difference is in the API and the login flow. Once the user comes to the domain, `getCurrentUser()` call is being made to check whether the user is logged-in and if that fails, auto sso call `getAutoSSOUrl()` is being made to check whether the user is logged-in, in auth domain. If the user is not logged-in, the auth domain will redirect to the callback uri with a query param `logged_in=false` as a response else it will redirect to the callback uri.
+
+In this feature, the User will be `logged-in` without clicking on login button or Avatar, if they are already `logged-in` in the other sub-domain.
+By default, this feature is disabled. Enabling, might affect the performance because of multiple redirects.
 
 #### Workflow
 
@@ -162,15 +165,31 @@ Example :
 
 
 ```javascript
+...
+import { getAutoSSOUrl } from "@quintype/bridgekeeper-js";
+...
+
 const publisherAttributes =  useSelector(state => get(state, ["qt", "config", "publisher-attributes"], {}));
+const isAutoSSOEnabled = get(publisherAttributes, ["auto_sso", "is_enable"], false);
  const clientId = get(publisherAttributes, ["sso_login", "client_id"], "");
   const redirectUrl = domainSlug
     ? get(publisherAttributes, ["sso_login", "subdomain", domainSlug, "redirect_Url"], "")
     : get(publisherAttributes, ["sso_login", "redirect_Url"], "");
 
 ```
-```
-<a href="/api/auth/v1/oauth/auto-sso/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&callback_uri=${uri}&response_type=code">
+```javascript
+
+useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const queryParamExists = queryParams.has("logged_in");
+
+    getCurrentUser().then(({ user }) => {
+      if (isAutoSSOEnabled && !user && !queryParamExists) {
+        const autoSsoUrl = getAutoSSOUrl(clientId, redirectUrl, window.location.href);
+        window.location.replace(autoSsoUrl);
+      }
+    });
+})
 
 ```
 **Note : ** To enable this feature, Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight") `/app/config/publisher.yml`, add `auto_sso: <value>` under publisher. Example :
