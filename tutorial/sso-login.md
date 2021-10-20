@@ -142,10 +142,10 @@ const loginHandler = async e => {
 ![Malibu Running]({{"images/sso-login.gif" | absolute_url}})
 
 
-To logout a user, the application can make a GET request on `/api/auth/v1/logout` or call `logout` function from` @quintype/bridgekeeper-js`. As a result, the user will be logged out on all domains. An application can determine if the user is logged in or has logged out as before, by making a GET request to Bridgekeeper on `/api/auth/v1/users/me` or `getCurrentUser()` from `@quintype/bridgekeeper-js` library. 
+To logout a user, the application can make a GET request on `/api/auth/v1/logout` or call `logout` function from` @quintype/bridgekeeper-js`. As a result, the user will be logged out on all domains. An application can determine if the user is logged in or has logged out as before, by making a GET request to Bridgekeeper on `/api/auth/v1/users/me` or `getCurrentUser()` from `@quintype/bridgekeeper-js` library.
 
 ### Auto SSO
-This is similiar to the login workflow explained above. The difference is in the API and the login flow. In this, the User will be `logged-in` without clicking on login button or Avatar, if they are already `logged-in` in the other sub-domain. By default, this feature is disabled. Enabling, might affect the performance.
+This is similiar to the login workflow explained above. The difference is in the API and the login flow. In this, the User will be `logged-in` without clicking on login button or Avatar, if they are already `logged-in` in the other sub-domain. By default, this feature is disabled. Enabling, might affect the performance because of multiple redirects.
 
 #### Workflow
 
