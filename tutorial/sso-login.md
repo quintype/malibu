@@ -144,6 +144,64 @@ const loginHandler = async e => {
 
 To logout a user, the application can make a GET request on `/api/auth/v1/logout` or call `logout` function from` @quintype/bridgekeeper-js`. As a result, the user will be logged out on all domains. An application can determine if the user is logged in or has logged out as before, by making a GET request to Bridgekeeper on `/api/auth/v1/users/me` or `getCurrentUser()` from `@quintype/bridgekeeper-js` library. 
 
+### Auto SSO
+This is similiar to the login workflow explained above. The difference is in the API and the login flow. In this, the User will be `logged-in` without clicking on login button or Avatar, if they are already `logged-in` in the other sub-domain. By default, this feature is disabled. Enabling, might affect the performance.
+
+#### Workflow
+
+1. When the user clicks on login on the client domain, the client application should make a GET request to Bridgekeeper on `/api/auth/v1/oauth/auto-sso/authorize` with query params as follows:
+
+```
+client_id=INTEGRATION_ID
+redirect_uri=CONFIGURED_REDIRECT_URI
+callback_uri=ORIGINAL_PAGE_TO_REDIRECT_USER
+response_type=code
+```
+
+Example :
+
+
+```javascript
+const publisherAttributes =  useSelector(state => get(state, ["qt", "config", "publisher-attributes"], {}));
+ const clientId = get(publisherAttributes, ["sso_login", "client_id"], "");
+  const redirectUrl = domainSlug
+    ? get(publisherAttributes, ["sso_login", "subdomain", domainSlug, "redirect_Url"], "")
+    : get(publisherAttributes, ["sso_login", "redirect_Url"], "");
+
+```
+```
+<a href="/api/auth/v1/oauth/auto-sso/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&callback_uri=${uri}&response_type=code">
+
+```
+**Note : ** To enable this feature, Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight") `/app/config/publisher.yml`, add `auto_sso: <value>` under publisher. Example :
+
+```
+...
+...
+publisher:
+  ...
+  auto_sso:
+    is_enable: true
+
+```
+
+We are keeping `clientId, redirectUrl and the default callbackUrl` in [BlackKnight](https://black-knight.quintype.com/ "BlackKnight"). The `redirect_uri` will be different for different domains. Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight") `/app/config/publisher.yml`, add `sso_login: <value>` under publisher. Example :
+
+```
+...
+...
+publisher:
+  ...
+  sso_login:
+    redirect_Url: "<CLIENT_DOMAIN>>/api/auth/v1/oauth/token" // Need to configure with Bridgekeeper DB
+    callback_Url: "<PAGE_TO_REDIRECT_USER>"
+    client_id :  "<INTEGRATION_ID>"  // Id of the integration linked to the realm to be authorized for
+    subdomain:
+      voices:
+        redirect_Url: "<SUB_DOMAIN>/api/auth/v1/oauth/token" // Need to configure with Bridgekeeper DB
+        callback_Url: "<PAGE_TO_REDIRECT_USER>"
+```
+
 
 ### Social Login
 For social login we can use `withFacebookLogin, withGoogleLogin, withAppleLogin` from `@quintype/bridgekeeper-js` library. We need to pass `redirectUrl`  as `https://<auth-domain>/api/auth/v1/oauth/authorize?client_id=<integration-id>&response_type=code&redirect_uri=<redirect-url>&callback_uri=<callback-url>` 
