@@ -9,13 +9,13 @@ nav_exclude: true
 # {{page.title}}
 
 _This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105)_
-Structured data, also called schema markup, is a type of code that makes it easier for search engines to crawl, organize, and display your content. Most common requirements for SEO optimization are handled by [@quintype/seo](https://developers.quintype.com/quintype-node-seo/). However, it is possible to create a new schema markup according to different page type.
+Structured data, also called schema markup, is a type of code that makes it easier for search engines to crawl, organize, and display your content. Most common requirements for SEO optimization are handled by [@quintype/seo](https://developers.quintype.com/quintype-node-seo/). However, it is possible to create a new schema markup according to the different page types.
 
 ## Adding new schema
 
-Let’s say you want to add `WebPage` Schema  for all story pages. Follow the steps below!
+Let’s say you want to add `WebPage` Schema for all story pages. Follow the steps below!
 
-1 . Go to `app/server/app.js` and pass list of `generators`, array items to `generateSeo` function to support custom schema.
+1 . Go to `app/server/app.js` and pass list of [generators](https://developers.quintype.com/quintype-node-seo/global.html#Generator "generators"), array items to `generateSeo` function to support custom schema.
 Eg:
 
 ```javascript
@@ -107,19 +107,3 @@ const customizedTags = config => {
 
 ```
 
-```javascript
-import { getCustomSeoMetadata } from "../../../../server/data-loaders/custom-seo";
-
-return _loadData().then((data) => {
-  return {
-    httpStatusCode: data.httpStatusCode || 200,
-    pageType: data.pageType || pageType,
-    data: Object.assign({}, data, {
-      navigationMenu: getNavigationMenuArray(config.layout.menu),
-      customSeo: getCustomSeoMetadata(data, pageType),
-    }),
-    config: pick(config.asJson(), WHITELIST_CONFIG_KEYS),
-  };
-});
-
-```
