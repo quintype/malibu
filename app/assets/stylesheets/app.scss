@@ -2,10 +2,10 @@
 @import "modal";
 @import "base";
 
-@import "./base/z-index.scss";
-@import "./base/colors.scss";
-@import "./base/normalize.scss";
-@import "./base/typography.scss";
+@import "./base/z-index";
+@import "./base/colors";
+@import "./base/normalize";
+@import "./base/typography";
 
 :root {
   --container-width: 1280px;

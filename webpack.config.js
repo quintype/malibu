@@ -1,31 +1,37 @@
-const webpackConfig = require("@quintype/build/config/webpack");
-const path = require("path");
-
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
-const svgSprite = {
+const path = require("path");
+const webpackConfig = require("@quintype/build/config/webpack");
+
+const { plugins, output, module: webpackModule } = webpackConfig;
+if (process.env.NODE_ENV !== "production") output.path = path.resolve("./public");
+const getSpritePlugin = () => new SpriteLoaderPlugin({ plainSprite: true });
+const insertIntoIndex = (arr, index, newItem) => [...arr.slice(0, index), newItem, ...arr.slice(index)];
+const enhancedPlugins = insertIntoIndex(plugins, 1, getSpritePlugin());
+const spriteRule = {
   test: /\.svg$/,
-  loader: "svg-sprite-loader",
-  options: {
-    extract: true,
-    publicPath: "/",
-    symbolId: filePath => {
-      return path
-        .basename(filePath)
-        .replace(".svg", "")
-        .toLowerCase();
+  use: [
+    {
+      loader: "svg-sprite-loader",
+      options: {
+        extract: true,
+        spriteFilename: process.env.NODE_ENV === "production" ? "svg-sprite-[hash].svg" : "svg-sprite.svg",
+        esModule: false,
+      },
     },
-    spriteFilename: process.env.NODE_ENV === "production" ? "sprite-[hash].svg" : "sprite.svg",
-    esModule: false
-  }
+    "svg-transform-loader",
+    "svgo-loader",
+  ],
 };
 
-webpackConfig.module.rules.push(svgSprite);
-webpackConfig.module.rules.find(rule => rule.loader === "file-loader").exclude = [/app\/assets\/icons\/[a-z-]+\.svg$/];
-
-const svgPlugin = () => new SpriteLoaderPlugin();
-
-webpackConfig.plugins.push(svgPlugin());
+const enhancedRules = insertIntoIndex(webpackModule.rules, 5, spriteRule);
+enhancedRules[8] = {
+  test: /\.(jpe?g|gif|png|woff|woff2|eot|ttf|wav|mp3|ico|mp4)$/,
+  loader: "file-loader",
+  options: { context: "./app/assets", name: "[name].[ext]" },
+};
 
 module.exports = {
-  ...webpackConfig
+  ...webpackConfig,
+  module: { ...webpackModule, ...{ rules: enhancedRules } },
+  plugins: enhancedPlugins,
 };
