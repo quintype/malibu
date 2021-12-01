@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <% if (isGtmEnable) { %>
-      <%- include ./partials/gtm -%>
+      <%- include ("./partials/gtm") -%>
     <% } %>
     <% if (isGaEnable) { %>
-      <%- include ./partials/ga -%>
+      <%- include ("./partials/ga") -%>
     <% } %>
     <%- metaTags -%>
     <link href="/manifest.json" rel="manifest">
@@ -13,8 +13,8 @@
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="<%- title -%>" name="apple-mobile-web-app-title">
-    <link rel="preconnect dns-prefetch" href="https://prod-analytics.qlitics.com" crossorigin />
-    <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="preconnect dns-prefetch" href="https://prod-analytics.qlitics.com" crossorigin >
+    <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin >
 
     <script type="text/javascript">
       window.GUMLET_CONFIG = {
@@ -51,7 +51,7 @@
 
   <body>
     <% if (isGtmEnable) { %>
-      <%- include ./partials/noscriptgtm -%>
+      <%- include ("./partials/noscriptgtm") -%>
     <% } %>
     <div class="page-wrapper">
       <div><%- topbar %></div>

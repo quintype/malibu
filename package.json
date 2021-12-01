@@ -9,8 +9,8 @@
   "dependencies": {
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
-    "@quintype/components": "^2.31.8-webpack5.2",
-    "@quintype/framework": "^6.1.5-webpack5.7",
+    "@quintype/components": "^3.0.0",
+    "@quintype/framework": "^7.0.0",
     "@quintype/seo": "^1.39.0",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.21",
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.8",
     "@lhci/cli": "^0.8.0",
-    "@quintype/build": "^3.14.0-webpack5.12",
+    "@quintype/build": "^4.0.0",
     "babel-eslint": "^10.0.3",
     "check-node-version": "^4.1.0",
     "cosmiconfig": "^7.0.0",
