@@ -9,6 +9,7 @@ nav_exclude: true
 # {{page.title}}
 
 _This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105)_
+
 Structured data, also called schema markup, is a type of code that makes it easier for search engines to crawl, organize, and display your content. Most common requirements for SEO optimization are handled by [@quintype/seo](https://developers.quintype.com/quintype-node-seo/). However, it is possible to create a new schema markup according to the different page types.
 
 ## Adding new schema
