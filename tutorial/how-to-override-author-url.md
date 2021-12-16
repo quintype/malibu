@@ -14,9 +14,19 @@ In August 2021, Google updated its [Schema-based structured data recommendations
 
 ## How to override author URL in Person Schema
 
-Let’s see how we can override author URL according to different publishers, for that we need to pass `authorSchema` function to structuredData which returns an array of authors with name and URL
+Let’s see how we can override author URL according to different publishers, for that we need to pass `authorSchema` function to structuredData which accept story as a paran and returns an array of authors with name and URL.
+
+```javascript
+"authorSchema" : (story)=> story.authors.map((author)=> {
+    return {
+      name: author.name,
+      url: `${config['sketches-host']}/author/${author.id}`
+    }
+
+```    
 
 1 . Go to `app/server/app.js` and pass `authorSchema` function to structuredData
+
 Example:
 
 ```javascript
