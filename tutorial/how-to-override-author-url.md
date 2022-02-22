@@ -10,7 +10,7 @@ nav_exclude: true
 
 _This tutorial was contributed by [Athira](https://www.linkedin.com/in/athira-m-r-835ab6105)_
 
-In August 2021, Google updated its [Schema-based structured data recommendations](https://developers.google.com/search/docs/data-types/article "Schema-based structured data recommendations") to include linking to an author’s bio page to help it disambiguate the correct author for an article. Most common requirements for SEO optimization are handled by [@quintype/seo](https://developers.quintype.com/quintype-node-seo/). By default the author URL will be `<Domain>/author/<authorSlug>` `Example: https://malibu-advanced-web.quintype.io/author/shraddha-k`
+In August 2021, Google updated its [Schema-based structured data recommendations](https://developers.google.com/search/docs/data-types/article "Schema-based structured data recommendations") to include linking to an author’s bio page to help it disambiguate the correct author for an article. Most common requirements for SEO optimization are handled by [@quintype/seo](https://developers.quintype.com/quintype-node-seo/).This change is available in [@quintype/seo@1.40.0] (https://www.npmjs.com/package/@quintype/seo/v/1.40.0) version or more. By default the author URL will be `<Domain>/author/<authorSlug>` `Example: https://malibu-advanced-web.quintype.io/author/shraddha-k`
 
 ## How to override author URL in Person Schema
 
