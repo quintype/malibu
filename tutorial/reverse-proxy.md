@@ -1,12 +1,13 @@
 ---
-
 title: Reverse Proxy
 parent: Malibu Tutorial
 nav_order: 31
 
---- In computer networks, a reverse proxy is the application that sits in front of back-end applications and forwards client requests to those applications.
+---
 
-To implement reverse proxy we are using an npm package name `http-proxy`. Here is a implementation of a sample reverse proxy:
+In computer networks, a reverse proxy is the application that sits in front of back-end applications and forwards client requests to those applications.
+
+To implement reverse proxy we are using an npm package named `http-proxy`. Here is a sample implementation of reverse proxy:
 
 ```
 const app = require('express')()
