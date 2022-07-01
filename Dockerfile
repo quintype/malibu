@@ -36,6 +36,6 @@ WORKDIR /app
 USER app
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "start.js"]
+CMD ["node", "--max-http-header-size=32768", "--max-old-space-size=1300", "start.js"]
 
 COPY --from=build --chown=app:app /app /app
