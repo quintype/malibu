@@ -9,6 +9,7 @@
   "dependencies": {
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
+    "@quintype/amp": "^2.4.29-pb-core-web-vitals.2",
     "@quintype/components": "^3.0.0",
     "@quintype/framework": "^7.3.4",
     "@quintype/seo": "^1.39.0",
