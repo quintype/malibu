@@ -42,29 +42,29 @@ const STRUCTURED_DATA = {
       "https://twitter.com/quintype_in",
       "https://plus.google.com/+quintype",
       "https://www.youtube.com/user/Quintype",
-    ]
+    ],
   },
   enableLiveBlog: true,
   enableVideo: true,
-  enableNewsArticle: true
+  enableNewsArticle: true,
 };
 
 const redirectCollectionHandler =
-   () =>
-    async (req, res, next, { client, config }) => {
-      const response = await Collection.getCollectionBySlug(
-              client,
-              req.params.collectionSlug,
-              { limit: 20 },
-              { depth: 2 }
-                  );
+  () =>
+  async (req, res, next, { client, config }) => {
+    const response = await Collection.getCollectionBySlug(
+      client,
+      req.params.collectionSlug,
+      { limit: 20 },
+      { depth: 2 }
+    );
     if (!response) {
       return next();
     }
     const collection = response && response.collection;
     if (collection.template === "section") {
       const sectionId = collection.metadata.section[0].id;
-      const section = config.sections.find(section => section.id === sectionId) || {};
+      const section = config.sections.find((section) => section.id === sectionId) || {};
       return res.redirect(301, `${section["section-url"]}`);
     }
 
