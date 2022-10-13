@@ -88,7 +88,12 @@ function generateSeo(config, pageType) {
 }
 
 ampRoutes(app, {
-  seo: generateSeo
+  seo: generateSeo,
+  featureConfig: {
+    infiniteScroll: {
+      source: "relatedStoriesApi"
+    },
+  },
 });
 
 isomorphicRoutes(app, {
