@@ -10,7 +10,7 @@
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
     "@quintype/components": "^3.0.0",
-    "@quintype/framework": "7.10.5-src-abs-url-relApi-customApi-tests.2",
+    "@quintype/framework": "7.10.5-src-abs-url-relApi-customApi-tests.3",
     "@quintype/seo": "^1.39.0",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.21",
