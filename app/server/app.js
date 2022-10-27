@@ -96,7 +96,7 @@ function generateSeo(config, pageType) {
 
 ampRoutes(app, {
   seo: generateSeo,
-  featureConfig: { showPoweredByQt: () => false },
+  featureConfig: { showPoweredByQt: false },
 });
 
 isomorphicRoutes(app, {
