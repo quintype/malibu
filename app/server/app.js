@@ -6,7 +6,7 @@ import {
   isomorphicRoutes,
   staticRoutes,
   ampRoutes,
-  getWithConfig
+  getWithConfig,
 } from "@quintype/framework/server/routes";
 import { generateRoutes, STATIC_ROUTES } from "./routes";
 import { renderLayout } from "./handlers/render-layout";
@@ -29,7 +29,7 @@ const STATIC_TAGS = {
   "google-play-app": undefined,
   "fb:app_id": undefined,
   "fb:pages": undefined,
-  "og:site_name": "Quintype"
+  "og:site_name": "Quintype",
 };
 
 const STRUCTURED_DATA = {
@@ -41,36 +41,43 @@ const STRUCTURED_DATA = {
       "https://www.facebook.com/quintype",
       "https://twitter.com/quintype_in",
       "https://plus.google.com/+quintype",
-      "https://www.youtube.com/user/Quintype"
-    ]
+      "https://www.youtube.com/user/Quintype",
+    ],
   },
   enableLiveBlog: true,
   enableVideo: true,
-  enableNewsArticle: true
+  enableNewsArticle: true,
 };
 
-const redirectCollectionHandler = () => async (req, res, next, { client, config }) => {
-  const response = await Collection.getCollectionBySlug(client, req.params.collectionSlug, { limit: 20 }, { depth: 2 });
-  if (!response) {
+const redirectCollectionHandler =
+  () =>
+  async (req, res, next, { client, config }) => {
+    const response = await Collection.getCollectionBySlug(
+      client,
+      req.params.collectionSlug,
+      { limit: 20 },
+      { depth: 2 }
+    );
+    if (!response) {
+      return next();
+    }
+    const collection = response && response.collection;
+    if (collection.template === "section") {
+      const sectionId = collection.metadata.section[0].id;
+      const section = config.sections.find((section) => section.id === sectionId) || {};
+      return res.redirect(301, `${section["section-url"]}`);
+    }
+
+    if (collection.template === "author") {
+      return res.redirect(301, `/author/${req.params.collectionSlug}`);
+    }
     return next();
-  }
-  const collection = response && response.collection;
-  if (collection.template === "section") {
-    const sectionId = collection.metadata.section[0].id;
-    const section = config.sections.find(section => section.id === sectionId) || {};
-    return res.redirect(301, `${section["section-url"]}`);
-  }
+  };
 
-  if (collection.template === "author") {
-    return res.redirect(301, `/author/${req.params.collectionSlug}`);
-  }
-  return next();
-};
-
-const logError = error => logger.error(error);
+const logError = (error) => logger.error(error);
 
 getWithConfig(app, "/collection/:collectionSlug", redirectCollectionHandler(), {
-  logError
+  logError,
 });
 
 function generateSeo(config, pageType) {
@@ -79,21 +86,24 @@ function generateSeo(config, pageType) {
     structuredData: Object.assign(generateStructuredData(config), {
       enableLiveBlog: true,
       enableVideo: true,
-      enableNewsArticle: true
+      enableNewsArticle: true,
     }),
     enableTwitterCards: true,
     enableOgTags: true,
-    enableNews: true
+    enableNews: true,
   });
 }
 
 ampRoutes(app, {
-  seo: generateSeo
+  seo: generateSeo,
+  featureConfig: {
+    showPoweredByQt: () => false,
+  },
 });
 
 isomorphicRoutes(app, {
   appVersion: require("../isomorphic/app-version"),
-  logError: error => logger.error(error),
+  logError: (error) => logger.error(error),
   generateRoutes: generateRoutes,
   loadData: loadData,
   pickComponent: pickComponent,
@@ -103,5 +113,5 @@ isomorphicRoutes(app, {
   staticRoutes: STATIC_ROUTES,
   seo: generateSeo,
   preloadJs: true,
-  prerenderServiceUrl: "https://prerender.quintype.io"
+  prerenderServiceUrl: "https://prerender.quintype.io",
 });
