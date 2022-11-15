@@ -91,6 +91,7 @@ function generateSeo(config, pageType) {
     enableTwitterCards: true,
     enableOgTags: true,
     enableNews: true,
+    ignoreAmpHtmlStoryTemplates: ["visual-story"],
   });
 }
 
