@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.8",
-    "@lhci/cli": "^0.8.0",
+    "@lhci/cli": "^0.10.0",
     "@quintype/build": "^4.0.0",
     "babel-eslint": "^10.0.3",
     "check-node-version": "^4.1.0",
