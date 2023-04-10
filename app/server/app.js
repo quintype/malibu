@@ -88,7 +88,8 @@ function generateSeo(config, pageType) {
       enableVideo: true,
       enableNewsArticle: true,
     }),
-    fallbackSocialImage: "https://images.assettype.com/malibu/2023-04/59d3e1a7-019f-46eb-ba51-03989f32c4c1/birds_7901303_960_720.jpeg",
+    fallbackSocialImage:
+      "https://images.assettype.com/malibu/2023-04/59d3e1a7-019f-46eb-ba51-03989f32c4c1/birds_7901303_960_720.jpeg",
     enableTwitterCards: true,
     enableOgTags: true,
     enableNews: true,
