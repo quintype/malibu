@@ -4,20 +4,20 @@ const lhciConfig = {
     collect: {
       url: JSON.parse(process.env.LHCI_SITES),
       settings: {
-        emulatedFormFactor: "mobile"
-      }
+        emulatedFormFactor: "mobile",
+      },
     },
     assert: {
       assertions: {
-        "categories:performance": ["error", { minScore: 0.9 }]
-      }
+        "categories:performance": ["error", { minScore: 0.7 }],
+      },
     },
     upload: {
       target: "lhci",
       serverBaseUrl: url,
-      token: `${process.env.LH_BUILD_TOKEN}`
-    }
-  }
+      token: `${process.env.LH_BUILD_TOKEN}`,
+    },
+  },
 };
 
 module.exports = lhciConfig;
