@@ -49,12 +49,7 @@ For overriding the header, We can modify the [render layout function](https://gi
 ```js
 ...
 ...
-
 export async function renderLayout(res, params) {
-
-...
-...
-
     res.setHeader(
     "Content-Security-Policy",
     `default-src data: 'unsafe-inline' 'unsafe-eval' https: http:;` +
@@ -71,9 +66,10 @@ export async function renderLayout(res, params) {
     `X-Frame-Options: ALLOW-FROM https://example.com/;`
     );
 
+}
 ...
 ...
 
-}
+```
 
 By inserting the above code snippet in the `render-layout.js` [file](https://github.com/quintype/malibu/blob/master/app/server/handlers/render-layout.js), the required headers will be added to the response, ensuring the specified content security policy and X-Frame-Options. You can check out [this](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) for more information. 
