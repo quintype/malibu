@@ -14,6 +14,7 @@ import { loadData, loadErrorData } from "./load-data";
 import { pickComponent } from "../isomorphic/pick-component";
 import { generateStaticData, generateStructuredData, SEO } from "@quintype/seo";
 import { Collection } from "@quintype/framework/server/api-client";
+import axios from "axios";
 export const app = createApp();
 
 upstreamQuintypeRoutes(app, {});
@@ -95,6 +96,19 @@ function generateSeo(config, pageType) {
     enableNews: true,
   });
 }
+
+app.get("/test", async (req, res) => {
+  try {
+    const pbahead = await axios.get("http://pbahead.internal.qtstage.io/api/v1/config");
+    const malibu = await axios.get("http://malibu.internal.qtstage.io/api/v1/config");
+    // const pbahead = await axios.get("http://pbahead.qtstage.io/api/v1/config");
+    // const malibu = await axios.get("http://malibu.qtstage.io/api/v1/config");
+    res.status(200).json({ pbahead: pbahead.data, malibu: malibu.data });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Some error occured");
+  }
+});
 
 ampRoutes(app, {
   seo: generateSeo,
