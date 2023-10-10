@@ -10,7 +10,7 @@
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
     "@quintype/components": "^3.4.3",
-    "@quintype/framework": "^7.19.22",
+    "@quintype/framework": "^7.20.1",
     "@quintype/seo": "^1.42.2",
     "fontfaceobserver": "^2.1.0",
     "lodash": "^4.17.21",
