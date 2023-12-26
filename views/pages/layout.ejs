@@ -40,12 +40,22 @@
       <%- criticalCss %>
     </style>
     <%_ if(pageChunk) { _%>
-    <%_ pageChunk.cssFiles.map(cssFile => {_%>
-      <style data-href="<%= cssFile.path %>"><%- cssFile.content %></style>
-    <%_ }) _%>
-    <%_ pageChunk.jsPaths.map(jsPath => {_%>
-      <link rel="preload" href="<%= jsPath %>" as="script">
-    <%_ }) _%>
+      <%_ pageChunk.cssFiles.map(cssFile => {_%>
+          <%_ if(isProduction) { _%>
+            <!-- Critical CSS is to be used on production -->
+            <style data-href="<%= cssFile.path %>"><%- cssFile.content %></style>
+          <%_ } else { _%>
+            <!-- External scripts is to be used on development; for immediate update -->
+            <link rel="stylesheet" href="<%= cssFile.path %>">
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ pageChunk.jsPaths.map(jsPath => {_%>
+          <link rel="preload" href="<%= jsPath %>" as="script">
+        <%_ }) _%>
+    <%_ } _%>
+    <!-- If not on production environment; request external css scripts -->
+    <%_ if(!isProduction) { _%>
+      <%- styleTags %>
     <%_ } _%>
   </head>
 

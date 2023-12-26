@@ -19,39 +19,45 @@ const cssContent = assetPath("app.css") ? readAsset("app.css") : "";
 const fontJsContent = assetPath("font.js") ? readAsset("font.js") : "";
 const allChunks = getAllChunks("list", "story");
 
-const getConfig = state => {
+const getConfig = (state) => {
   return {
     gtmId: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "id"], ""),
     isGtmEnable: get(state, ["qt", "config", "publisher-attributes", "google_tag_manager", "is_enable"], false),
     gaId: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "id"], ""),
     isGaEnable: get(state, ["qt", "config", "publisher-attributes", "google_analytics", "is_enable"], false),
-    cdnImage: get(state, ["qt", "config", "cdn-image"], "")
+    cdnImage: get(state, ["qt", "config", "cdn-image"], ""),
   };
 };
 
 const extractor = new ChunkExtractor({
   statsFile,
-  entrypoints: ["topbar", "navbar", "footer"]
+  entrypoints: ["topbar", "navbar", "footer"],
 });
 export const getCriticalCss = async () => {
   const criticalCss = await extractor.getCssString();
   return criticalCss.trim();
 };
 
+export const getStyleTags = async () => extractor.getStyleTags();
+
 export async function renderLayout(res, params) {
   const chunk = params.shell ? null : allChunks[getChunkName(params.pageType)];
   const { gtmId, gaId, cdnImage, isGtmEnable, isGaEnable } = getConfig(params.store.getState());
   const criticalCss = await getCriticalCss();
+  const styleTags = await getStyleTags();
+  const isProduction = process.env.NODE_ENV === "production";
 
   res.render(
     "pages/layout",
     Object.assign(
       {
+        isProduction,
         assetPath: assetPath,
         content: "",
         cssContent: cssContent,
         criticalCss: criticalCss,
         fontJsContent: fontJsContent,
+        styleTags,
         fontFace: fontFace,
         contentTemplate: null,
         title: params.title,
@@ -60,7 +66,7 @@ export async function renderLayout(res, params) {
         footer: renderLoadableReduxComponent(Footer, params.store, extractor),
         breakingNews: renderReduxComponent(BreakingNewsView, params.store, {
           breakingNews: [],
-          breakingNewsLoaded: false
+          breakingNewsLoaded: false,
         }),
         disableAjaxNavigation: false,
         gtmId,
@@ -72,7 +78,7 @@ export async function renderLayout(res, params) {
         shell: params.shell,
         serialize,
         isGtmEnable,
-        isGaEnable
+        isGaEnable,
       },
       params
     )
