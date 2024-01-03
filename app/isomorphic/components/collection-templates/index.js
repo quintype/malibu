@@ -1,5 +1,6 @@
 import { wrapCollectionLayout, EagerLoadImages } from "@quintype/components";
 import { FourColGrid } from "./four-col-grid";
+import { CollectionWidget } from "./collection-widget";
 import React from "react";
 
 // This should not be needed anymore as we are using Gumlet
@@ -7,7 +8,7 @@ function wrapEager(f) {
   const wrappedComponent = function WrapEager(props) {
     if (props.index === 0) {
       return (
-        <EagerLoadImages predicate={token => token === "above-fold"}>{React.createElement(f, props)}</EagerLoadImages>
+        <EagerLoadImages predicate={(token) => token === "above-fold"}>{React.createElement(f, props)}</EagerLoadImages>
       );
     } else {
       return React.createElement(f, props);
@@ -27,5 +28,6 @@ function wrapEager(f) {
 
 export default {
   FourColGrid: wrapEager(wrapCollectionLayout(FourColGrid)),
-  defaultTemplate: wrapEager(wrapCollectionLayout(FourColGrid))
+  CollectionWidget: wrapEager(wrapCollectionLayout(CollectionWidget)),
+  defaultTemplate: wrapEager(wrapCollectionLayout(FourColGrid)),
 };
