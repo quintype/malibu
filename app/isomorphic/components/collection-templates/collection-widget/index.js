@@ -14,7 +14,7 @@ export function CollectionWidget({ collection }) {
 
     widgetRef.current.innerHTML = "";
     widgetRef.current.appendChild(slotHtml);
-  },[]);
+  }, []);
 
   return (
     <div styleName="wrapper">
