@@ -12,6 +12,8 @@ Welcome to Quintype :-).
 
 In this post we will cover how to get started, building a Quintype publisher app with React, Node, and the Malibu framework.
 
+You can also watch the video tutorial [here](https://www.youtube.com/watch?v=BkolUAXkPwo&list=PLmoAgmawJJbX40j1xquvKk2aEyy-f1_9P)
+
 ## Prerequisites
 
 Before starting, please ensure the following is installed on your development machine:
