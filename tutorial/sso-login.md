@@ -142,7 +142,84 @@ const loginHandler = async e => {
 ![Malibu Running]({{"images/sso-login.gif" | absolute_url}})
 
 
-To logout a user, the application can make a GET request on `/api/auth/v1/logout` or call `logout` function from` @quintype/bridgekeeper-js`. As a result, the user will be logged out on all domains. An application can determine if the user is logged in or has logged out as before, by making a GET request to Bridgekeeper on `/api/auth/v1/users/me` or `getCurrentUser()` from `@quintype/bridgekeeper-js` library. 
+To logout a user, the application can make a GET request on `/api/auth/v1/logout` or call `logout` function from` @quintype/bridgekeeper-js`. As a result, the user will be logged out on all domains. An application can determine if the user is logged in or has logged out as before, by making a GET request to Bridgekeeper on `/api/auth/v1/users/me` or `getCurrentUser()` from `@quintype/bridgekeeper-js` library.
+
+### Auto SSO
+This is similiar to the login workflow explained above. The difference is in the API and the login flow. Once the user comes to the domain, `getCurrentUser()` call is being made to check whether the user is logged-in and if that fails, auto sso call `getAutoSSOUrl()` is being made to check whether the user is logged-in, in auth domain. If the user is not logged-in, the auth domain will redirect to the callback uri with a query param `logged_in=false` as a response else it will redirect to the callback uri.
+
+In this feature, the User will be `logged-in` without clicking on login button or Avatar, if they are already `logged-in` in the other sub-domain.
+By default, this feature is disabled. Enabling, might affect the performance because of multiple redirects.
+
+#### Workflow
+
+1. When the user clicks on login on the client domain, the client application should make a GET request to Bridgekeeper on `/api/auth/v1/oauth/auto-sso/authorize` with query params as follows:
+
+```
+client_id=INTEGRATION_ID
+redirect_uri=CONFIGURED_REDIRECT_URI
+callback_uri=ORIGINAL_PAGE_TO_REDIRECT_USER
+response_type=code
+```
+
+Example :
+
+
+```javascript
+...
+import { getAutoSSOUrl } from "@quintype/bridgekeeper-js";
+...
+
+const publisherAttributes =  useSelector(state => get(state, ["qt", "config", "publisher-attributes"], {}));
+const isAutoSSOEnabled = get(publisherAttributes, ["auto_sso", "is_enable"], false);
+ const clientId = get(publisherAttributes, ["sso_login", "client_id"], "");
+  const redirectUrl = domainSlug
+    ? get(publisherAttributes, ["sso_login", "subdomain", domainSlug, "redirect_Url"], "")
+    : get(publisherAttributes, ["sso_login", "redirect_Url"], "");
+
+```
+```javascript
+
+useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const queryParamExists = queryParams.has("logged_in");
+
+    getCurrentUser().then(({ user }) => {
+      if (isAutoSSOEnabled && !user && !queryParamExists) {
+        const autoSsoUrl = getAutoSSOUrl(clientId, redirectUrl, window.location.href);
+        window.location.replace(autoSsoUrl);
+      }
+    });
+})
+
+```
+**Note : ** To enable this feature, Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight") `/app/config/publisher.yml`, add `auto_sso: <value>` under publisher. Example :
+
+```
+...
+...
+publisher:
+  ...
+  auto_sso:
+    is_enable: true
+
+```
+
+We are keeping `clientId, redirectUrl and the default callbackUrl` in [BlackKnight](https://black-knight.quintype.com/ "BlackKnight"). The `redirect_uri` will be different for different domains. Go to [BlackKnight](https://black-knight.quintype.com/ "BlackKnight") `/app/config/publisher.yml`, add `sso_login: <value>` under publisher. Example :
+
+```
+...
+...
+publisher:
+  ...
+  sso_login:
+    redirect_Url: "<CLIENT_DOMAIN>>/api/auth/v1/oauth/token" // Need to configure with Bridgekeeper DB
+    callback_Url: "<PAGE_TO_REDIRECT_USER>"
+    client_id :  "<INTEGRATION_ID>"  // Id of the integration linked to the realm to be authorized for
+    subdomain:
+      voices:
+        redirect_Url: "<SUB_DOMAIN>/api/auth/v1/oauth/token" // Need to configure with Bridgekeeper DB
+        callback_Url: "<PAGE_TO_REDIRECT_USER>"
+```
 
 
 ### Social Login
